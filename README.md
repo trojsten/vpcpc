@@ -9,3 +9,4 @@ More info:
 
   * [Statements](statements/README.md)
   * [Tester data](tester/README.md)
+  * [Plans](plans.md)

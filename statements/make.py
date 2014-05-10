@@ -8,7 +8,7 @@ if os.path.dirname(sys.argv[0]) != "":
     os.chdir(os.path.dirname(sys.argv[0]))
 
 lang_all = ["lang-cz", "lang-en", "lang-hu", "lang-pl", "lang-sk"]
-day_all = ["day-cz", "day-hu", "day-pl", "day-sk", "day-mix"]
+day_all = ["day-cz", "day-hu", "day-pl", "day-sk", "day-mix1", "day-mix2"]
 
 # Chcek argument number
 if(len(sys.argv) != 3):
