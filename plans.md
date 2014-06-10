@@ -28,9 +28,9 @@ Day PL
 Day SK
 ------
 
-  * **(taskname)** - description
-  * **(taskname)** - description
-  * **(taskname)** - description
+  * **peaks** - (geometry) 3D with sweeping and rotational sorting
+  * **biunion** - (graph) union find but whith detecting 2-connected components
+  * **hotel** - (BST / interval tree) filling and releasing room sequences
 
 
 Day MIX 1
