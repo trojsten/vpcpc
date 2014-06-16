@@ -12,9 +12,9 @@ Day CZ
 Day HU
 ------
 
-  * **(taskname)** - description
-  * **(taskname)** - description
-  * **(taskname)** - description
+  * **(critical)** - (graph) Find all critical nodes of a dag in linear time
+  * **(networks)** - (geometry) Find a connecting segment of two networks in linear time
+  * **(nextperm)** - (combinatorial) Find the next 3-1-2 avoiding permutation
 
 
 Day PL
