@@ -14,7 +14,7 @@ Day HU
 
   * **(critical)** - (graph) Find all critical nodes of a dag in linear time
   * **(networks)** - (geometry) Find a connecting segment of two networks in linear time
-  * **(nextperm)** - (combinatorial) Find the next 3-1-2 avoiding permutation
+  * **(nextperm)** - (combinatorial) Find the next 3-1-2 pattern avoiding permutation
 
 
 Day PL
