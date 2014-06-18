@@ -20,9 +20,9 @@ Day HU
 Day PL
 ------
 
-  * **(taskname)** - description
-  * **(taskname)** - description
-  * **(taskname)** - description
+  * **(sorting)** - (longest increasing subsequence) given a set of numbers, count its subsets, which have some properties
+  * **(tree)** - (divide and conquer) given a tree, find a path with the highest average of weights, the path must be longer than k
+  * **(game)** - (number theory) recursive euclidean algorithm plus modular arithmetic
 
 
 Day SK
@@ -38,7 +38,7 @@ Day MIX 1
 
   * (*CZ*) - **black&white** - (graph) longest path in tree containing same number of black and white vertices
   * (*HU*) - **(taskname)** - description
-  * (*PL*) - **(taskname)** - description
+  * (*PL*) - **(wall)** - (dynamic programming) computing answer for every interval of a sequence with marked end
   * (*SK*) - **(taskname)** - description
 
 
@@ -47,5 +47,5 @@ Day MIX 2
 
   * (*CZ*) - **socks** - (graph) shortest **path** in graph from A to B, containing vertex C
   * (*HU*) - **(taskname)** - description
-  * (*PL*) - **(taskname)** - description
+  * (*PL*) - **(posters)** - (interval tree) find the area of a sum of rectangles intersected with another rectangle (many queries)
   * (*SK*) - **(taskname)** - description
