@@ -4,9 +4,9 @@ VPCPC 2014 Plans
 Day CZ
 ------
 
-  * **(taskname)** - description
-  * **(taskname)** - description
-  * **(taskname)** - description
+  * **paths** - (combinatorial) number of different paths in tree
+  * **(taskname)** - (open data) TBD
+  * **treasure** - (graph) generalized binary search on tree
 
 
 Day HU
@@ -36,7 +36,7 @@ Day SK
 Day MIX 1
 ---------
 
-  * (*CZ*) - **(taskname)** - description
+  * (*CZ*) - **black&white** - (graph) longest path in tree containing same number of black and white vertices
   * (*HU*) - **(taskname)** - description
   * (*PL*) - **(taskname)** - description
   * (*SK*) - **(taskname)** - description
@@ -45,7 +45,7 @@ Day MIX 1
 Day MIX 2
 ---------
 
-  * (*CZ*) - **(taskname)** - description
+  * (*CZ*) - **socks** - (graph) shortest **path** in graph from A to B, containing vertex C
   * (*HU*) - **(taskname)** - description
   * (*PL*) - **(taskname)** - description
   * (*SK*) - **(taskname)** - description
