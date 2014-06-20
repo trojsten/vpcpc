@@ -37,7 +37,7 @@ Day MIX 1
 ---------
 
   * (*CZ*) - **black&white** - (graph) longest path in tree containing same number of black and white vertices
-  * (*HU*) - **(taskname)** - description
+  * (*HU*) - **(newtree)** - (geometry) find a triangle containing a given point
   * (*PL*) - **(wall)** - (dynamic programming) computing answer for every interval of a sequence with marked end
   * (*SK*) - **(taskname)** - description
 
@@ -46,6 +46,6 @@ Day MIX 2
 ---------
 
   * (*CZ*) - **socks** - (graph) shortest **path** in graph from A to B, containing vertex C
-  * (*HU*) - **(taskname)** - description
+  * (*HU*) - **(tickets)** - (greedy) scheduling, union-find
   * (*PL*) - **(posters)** - (interval tree) find the area of a sum of rectangles intersected with another rectangle (many queries)
   * (*SK*) - **(taskname)** - description
