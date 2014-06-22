@@ -29,7 +29,7 @@ Day SK
 ------
 
   * **peaks** - (geometry) 3D with sweeping and rotational sorting
-  * **biunion** - (graph) union find but whith detecting 2-connected components
+  * **hyperways** - (graph) union find but whith detecting 2-connected components
   * **hotel** - (BST / interval tree) filling and releasing room sequences
 
 
