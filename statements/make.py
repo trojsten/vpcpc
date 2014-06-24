@@ -50,7 +50,8 @@ for l in langs:
             print("Making %s."%(f))
             subprocess.call(
                 ["pdflatex", "-output-directory", res_path, f],
-                stdout = subprocess.PIPE
+                stdout = sys.stderr,
+                stderr = sys.stderr
             )
 
 
