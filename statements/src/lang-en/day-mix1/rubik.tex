@@ -1,0 +1,157 @@
+\input sys/inputs.tex
+
+\begin{document}
+
+\bigheading{Cubic Art}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{rubik}{stdin}{stdout}{100}{1000 ms}{1 GB}
+
+The modern art is unpredictable.
+While Bob was tidying his room he has found his old Rubik's cube.
+Then the moment came.
+He closed his eyes, listened to his inner voice,
+made few\footnote{$65000$}
+moves and the masterpiece was nearly complete.
+All he need to do is a few\footnote{again $65000$}
+changes. Better said, he has to change some moves.
+And he would like to do see what each change does.
+But it is difficult to repeat the sequence
+of moves again and again.
+So someone has to code it.
+But who will code a Rubik's cube simulation?
+Why would one ever do it?
+
+\heading{Task}
+
+You are given a Rubik's cube (not neccessary solved),
+the sequence of moves Bob did.
+and the sequence of changes to the original moves.
+Output the final state of cube after each change.
+
+\heading{Cube's IO}
+
+Let the cube's colors be $A$,$B$,$C$,$D$,$E$,$F$
+When you are playing with the cube,
+the relative position of the middle squares
+does not change. Therefore, the cube
+can be always rotated to have middle
+squares in fixed positions.
+Then you can expand the surface of the cube
+and express it in this unique form:\\
+\texttt{
+???\\
+?A?\\
+???\\
+????????????\\
+?B??C??D??E?\\
+????????????\\
+???\\
+?F?\\
+???\\
+}
+
+\heading{Input}
+
+First 9 lines of the inputs are describtion of
+the starting state of the cube.
+
+Then there is a line with two integers $n$ and $m$.
+$n$ is the number of moves and $m$ is number of changes.
+
+Next $n$ lines are describing original Bob's moves.
+They have form of $C_i$ $d_i$,
+where $C_i$ is the middle color of moved side
+and $d_i$ is $-1$ in case of clockwise move
+and $1$ in case of counterclockwise move.
+
+
+The last $m$ lines describes changes.
+Each one has form of $a_j$ $C_j$ $d_j$,
+where $a_j$ is the number of move that
+is being replaced and $C_j$ $d_j$ describes the 
+new move.
+The moves are numbered $1 \dots n$.
+
+\smallskip
+
+It holds $n,m \leq 65000$.\\
+In the $50\%$ of testcases also holds
+$n,m \leq 1000$.
+
+\heading{Output}
+
+Output 9 lines describing cube's final state after each of $m$ changes.
+
+\heading{Samples}
+
+
+\sampleIN
+AAA
+AAA
+AAA
+BBBCCCDDDEEE
+BBBCCCDDDEEE
+BBBCCCDDDEEE
+FFF
+FFF
+FFF
+8 4
+E 1
+E -1
+B 1
+B -1
+F 1
+F -1
+E 1
+E -1
+2 C -1
+4 D -1
+6 A -1
+8 C -1
+\sampleCOMMENT
+The original moves are interfering.
+We transform them to the known trick
+that rotates the middles.
+\sampleOUT
+DAD
+DAD
+DAD
+ABACCCFDFEEE
+ABACCCFDFEEE
+ABACCCFDFEEE
+BFB
+BFB
+BFB
+CCC
+DAD
+CCC
+AAABCBFFFDED
+BBBFCFDDDAEA
+AAABCBFFFDED
+EEE
+BFB
+EEE
+CDC
+CAC
+CDC
+BCBFFFDEDAAA
+BBBFCFDDDAEA
+BCBFFFDEDAAA
+EBE
+EFE
+EBE
+DDD
+DAD
+DDD
+CCCFFFEEEAAA
+CBCFCFEDEAEA
+CCCFFFEEEAAA
+BBB
+BFB
+BBB
+\sampleEND
+
+
+\end{document}

@@ -1,0 +1,151 @@
+\input sys/inputs.tex
+
+\begin{document}
+
+\bigheading{Cubic Art}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{rubik}{stdin}{stdout}{100}{1000 ms}{1 GB}
+
+Moderné umenie je nepredvídateľné.
+Svoje o tom vie aj Bob.
+Minule si len upratoval izbu
+a našiel starú Rubikovu kocku.
+Zatvoril oči, vnímal svoj vnútorný hlas
+a spravil zopár\footnote{$65000$} ťahov.
+Vzniklo takmer dokonalé dielo.
+Potrebovalo už len zopár\footnote{opäť $65000$} úprav.
+Presnejšie, potrebovalo zmeniť niektoré pôvodné ťahov.
+Bob by však rád vedel čo tieto zmeny robia.
+A opakovať celú postupnosť zakaždým odznova je pracné.
+Preto to treba skódiť.
+Ale kto by to už len kódil?
+
+\heading{Úloha}
+
+Dostanete Rubikovu kocku, postupnosť
+Bobových ťahov a postupnosť zmien týchto ťahov.
+Po každej zmene vypíšte, ako vyzerá výsledná kocka.
+
+\heading{Formát kocky}
+
+Farby kocky označme $A$,$B$,$C$,$D$,$E$,$F$.
+Keď sa hráte s kockou nemení
+sa vzájomná poloha stredných štvorčekov.
+Teda vieme kocku vždy zrotovať tak,
+aby stredné štovrčeky mali fixné pozície.
+Potom môžeme rozbaliť povrch kocky a získame
+jednoznačný popis kocky:\\
+\texttt{
+???\\
+?A?\\
+???\\
+????????????\\
+?B??C??D??E?\\
+????????????\\
+???\\
+?F?\\
+???\\
+}
+
+\heading{Vstup}
+
+Prvých 9 riadkov popisuje kocku na začiatku.
+
+Nasledujúci riadok obsahuje 2 celé čísla $n$ a $m$.
+$n$ je počet ťahov a $m$ je počet zmien.
+
+Ďalších $n$ riadkov popisuje pôvodné Bobove ťahy.
+Majú tvar $C_i$ $d_i$,
+pričom $C_i$ je stred strany kocky ktorou točíme
+a $d_i$ je $-1$ ak točíme v smere a 
+$1$ ak točíme proti smeru hodinových ručiek.
+
+Posledných $m$ riadkov popisuje zmeny.
+Majú tvar $a_j$ $C_j$ $d_j$,
+kde $a_j$ je číslo ťahu, ktorý sa nahradzuje
+a $C_j$ $d_j$ popisujú nový ťah
+Ťahy sú číslované $1$ až $n$.
+
+\smallskip
+
+Platí $n,m \leq 65000$
+a v $50\%$ vstupov dokonca
+$n,m \leq 1000$.
+
+\heading{Výstup}
+
+Vypíšte 9 riadkov popisujúce konečný tvar kocky
+postupne po každej z $m$ zmien.
+
+\heading{Príklad}
+
+\sampleIN
+AAA
+AAA
+AAA
+BBBCCCDDDEEE
+BBBCCCDDDEEE
+BBBCCCDDDEEE
+FFF
+FFF
+FFF
+8 4
+E 1
+E -1
+B 1
+B -1
+F 1
+F -1
+E 1
+E -1
+2 C -1
+4 D -1
+6 A -1
+8 C -1
+\sampleCOMMENT
+Pôvodné ťahy sa navzájom vyrušia.
+Postupne ich meníme na známy trik
+rotácie stredov.
+\sampleOUT
+DAD
+DAD
+DAD
+ABACCCFDFEEE
+ABACCCFDFEEE
+ABACCCFDFEEE
+BFB
+BFB
+BFB
+CCC
+DAD
+CCC
+AAABCBFFFDED
+BBBFCFDDDAEA
+AAABCBFFFDED
+EEE
+BFB
+EEE
+CDC
+CAC
+CDC
+BCBFFFDEDAAA
+BBBFCFDDDAEA
+BCBFFFDEDAAA
+EBE
+EFE
+EBE
+DDD
+DAD
+DDD
+CCCFFFEEEAAA
+CBCFCFEDEAEA
+CCCFFFEEEAAA
+BBB
+BFB
+BBB
+\sampleEND
+
+
+\end{document}
