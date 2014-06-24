@@ -1,0 +1,93 @@
+\input sys/inputs.tex
+
+\begin{document}
+
+\bigheading{Hyperways}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{hyperways}{stdin}{stdout}{100}{3000 ms}{1 GB}
+
+Oods\&co intergalactic company will build a network of hyperways
+\footnote{hyperspace highways, also called hyhi}
+connecting planets of our galaxy in few next centuries.
+They have already prepared an construction plan.
+(An order of building hyperways.)
+It remains to check whether the plan satisfies
+intergalaxy hyhi safety regulations.
+To do this, Oods will need to calculate
+the number of safe highways
+after each step of construction.
+Acording to the
+Project of local planets integration
+you will code it.
+
+
+\heading{Task}
+
+The hyperway is safe
+if it is not the only one connecting
+some two planets
+(e.g. it lies on some hyperway cycle).
+You will be given the order in which hyperways
+will be constructed.
+After each construction there may
+be some hyperways, which have became safe.
+Output the number of them.
+Note that when you are just adding hyperways,
+they can just became safe from unsafe,
+not the other way!
+
+
+\heading{Input}
+
+On the first line of input are two integers $n$ and $m$.
+$n$ is the number of planets in the plan,
+$m$ is the number of hyperways.
+The planets are numbered $1$ \dots $n$.
+
+Each of next $m$ lines consists
+of two space separated integers --
+the id's of planets next hyperway will join.
+All the hyperways are passable in all directions.
+There can be a hyperway connecting a planet with itself.
+There can be a multiple hyperways between two planets.
+
+\smallskip
+
+It holds $n \leq 10^6$, $m \leq 2\cdot10^6$.\\
+In the $40\%$ of testcases also holds
+$n \leq 1000$, $m \leq 2000$.
+
+\heading{Output}
+
+Output a line with single integer for each hyperway in the input --
+the number of hyperways which will become safe by adding it
+(including the hyperway itself).
+
+\heading{Samples}
+
+
+\sampleIN
+5 8
+1 2
+3 3
+4 5
+2 3
+4 5
+3 4
+4 1
+5 2
+\sampleOUT
+0
+1
+0
+0
+2
+0
+4
+1
+\sampleEND
+
+
+\end{document}

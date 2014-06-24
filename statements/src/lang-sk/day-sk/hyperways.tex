@@ -1,0 +1,82 @@
+\input sys/inputs.tex
+
+\begin{document}
+
+\bigheading{Hypernice}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{hyperways}{stdin}{stdout}{100}{3000 ms}{1 GB}
+
+Intergalaktická spoločnosť Oods\&co vybuduje 
+počas nasledujúcich storočí v našej galaxii
+sieť hyperníc.\footnote{hyperpriestorové dialnice, tiež zvané hyhi}
+Plány stavby (poradie stavania dialnic) sú už hotové.
+Zostáva skontrolovať či sú dodržané
+smernice pre bezpečnosť výstavby hyperníc.
+A na to je potrebné zistiť zmeny počtov
+bezpečných hyperníc počas výstavby.
+Vrámci projektu rozvoja zaostalých planét
+to budete kódiť vy.
+
+\heading{Úloha}
+
+Hypernica je bezpečná ak neexistujú 2 planéty
+medzi ktorými je jedinou cestou.
+(Teda ak je súčasťou nejakého hypernicového cyklu.)
+Keď pridávame hypernice, počet bezpečných sa môže iba zvýšiť.
+Dostanete poradie, v ktorom staviame hypernice.
+Po každej stavbe povedzte, koľko hyperníc sa stalo bezpečnými.
+
+
+\heading{Vstup}
+
+Prvý riadok obsahuje 2 celé čísla $n$ a $m$.
+$n$ je počet planét,
+$m$ je počet hyperníc.
+Planéty sú číslované $1$ \dots $n$.
+
+Každý z nasledujúcich $m$ obsahuje 2
+medzerou oddelené celé čísla.
+Sú to indexy planét, ktoré spája ďalšia hypernica.
+Všetky hypernice sú obojsmerné.
+Medzi dvoma planétami môže viesť viacero hyperníc
+a hypernica môže viesť aj z plánety na ňu samotnú.
+
+\smallskip
+
+Platí $n \leq 10^6$, $m \leq 2\cdot10^6$.\\
+V $40\%$ vstupoch dokonca platí
+$n \leq 1000$, $m \leq 2000$.
+
+\heading{Výstup}
+
+Pre každú hypernicu na vstupe vypíšte do samostatného riadku,
+koľko hyperníc sa jej vybudovaním stalo bezpečnými (vrátane nej).
+
+\heading{Príklady}
+
+
+\sampleIN
+5 8
+1 2
+3 3
+4 5
+2 3
+4 5
+3 4
+4 1
+5 2
+\sampleOUT
+0
+1
+0
+0
+2
+0
+4
+1
+\sampleEND
+
+
+\end{document}
