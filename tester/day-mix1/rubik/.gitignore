@@ -1,0 +1,3 @@
+test/*
+!test/00.sample.a.in
+sol-sysel-ok
