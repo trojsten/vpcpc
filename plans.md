@@ -6,7 +6,7 @@ Day CZ
 
   * **paths** - (combinatorial) number of different paths in tree
   * **(taskname)** - (open data) TBD
-  * **treasure** - (graph) generalized binary search on tree
+  * **investigation** - (graph) generalized binary search on tree
 
 
 Day HU
