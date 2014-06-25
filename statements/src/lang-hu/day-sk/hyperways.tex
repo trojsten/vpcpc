@@ -1,0 +1,60 @@
+\input sys/inputs.tex
+
+\begin{document}
+
+\bigheading{Hyperways}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{hyperways}{stdin}{stdout}{100}{3000 ms}{1 GB}
+
+Oods\&co intergalaktikus vállalat  hipersztrádát kíván építeni
+%\footnote{hipersztráda, röviden hyhi}
+amely kapcsolatot létesít bolygók között. Már elészítették az építési tervet (amely megadja a sztráda szakaszok építésének a sorrendjét). A következő feladat annak eldöntése, hogy a megépítendő sztráda teljesíti-e a biztonsági előírást. Egy sztráda szakasz két bolygó között biztonságos, ha nem ez az egyetlen összeköttetés a két bolygó között (azaz, a két bolygó rajta van egy körön). 
+
+\heading{Task}
+
+Adva van a sztráda szakaszok építésének a sorrendje. Minden egyes szakasz megépítése előidézheti egy, vagy több szakasz biztonságossá válását. A programod írja ki minden újonnan épített szakasz után, hogy hány szakasz vált biztonságossá ezen szakasz megépítésével!\\
+Természetesen egy szakasz megépítésével csak nem biztonságos válhat biztonságossá, fordítva nem lehet.
+
+\heading{Input}
+
+A bemenet első sora két egész számot tartalmaz $n$ és $m$.
+$n$ a bolygók száma, $m$ pedig a sztráda szakaszok száma.
+A bolygókat az $1$ \dots $n$ számokkal azonosítjuk.
+A további $m$ sor mindegyike két egész számot tartalmaz egy szóközzel elválasztva, azon két bolygó azonosítóját, amely között sztráda szakasz épül. A sztáda szakaszok kétirányú közlekedést biztosítanak. Két bolygó között lehet több sztráda szakasz is, továbbá lehet önmagát összekötő is.
+
+\smallskip
+
+ $n \leq 10^6$, $m \leq 2\cdot10^6$.\\
+A tesztesetek $40\%$-ában $n \leq 1000$, $m \leq 2000$.
+
+\heading{Output}
+A kimenet $m$ sort tartalmazzon, amennyi a sztráda szakaszok száma. Az $i$-edik sorban az $i$-edik szakasz megépítésével keletkező biztonságos szakaszok száma legyen (beleértve az $i$-edik szakaszt is)!
+
+\heading{Samples}
+
+
+\sampleIN
+5 8
+1 2
+3 3
+4 5
+2 3
+4 5
+3 4
+4 1
+5 2
+\sampleOUT
+0
+1
+0
+0
+2
+0
+4
+1
+\sampleEND
+
+
+\end{document} 
