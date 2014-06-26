@@ -36,7 +36,7 @@ Day SK
 Day MIX 1
 ---------
 
-  * (*CZ*) - **black&white** - (graph) longest path in tree containing same number of black and white vertices
+  * (*CZ*) - **universities** - (graph) longest path in tree containing same number of black and white vertices
   * (*HU*) - **newtree** - (geometry) find a triangle containing a given point
   * (*PL*) - **wall** - (dynamic programming) computing answer for every interval of a sequence with marked end
   * (*SK*) - **rubic** - (data structures) resizable interval tree over permutations

@@ -1,0 +1,86 @@
+\input sys/inputs.tex
+
+\begin{document}
+
+\bigheading{Universities}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{universities}{stdin}{stdout}{100}{1000 ms}{1 GB}
+
+You have just graduated from the high school and are looking for a university to enroll in.
+There are $N$ magic universities in Bytelandia. Each university teaches either
+black magic or white magic. There are $N-1$ bidirectional roads between the universities, each road
+connecting two different universities. Universities are connected in such a way,
+that there exists a unique path between any two universities.
+
+You plan to visit some of the universities.
+Each university has a happiness factor, by which your overall happiness increases
+when you visit the university. Note that if the happiness factor is negative, your overall
+happiness decreases.
+
+To plan your trip, you choose two different universities,
+the departure and the destination university. You will visit all the universities
+on the path between the departure and destination universities, both of them including.
+To keep things in balance, you must visit the same number of white magic universities as black magic universities.
+
+You are now wondering, what is the optimal trip that maximizes the happiness of the trip,
+i.e. sum of the happiness factors of the universities you visit.
+
+\heading{Task}
+
+You are given the description of universities and connections between them.
+Find the optimal trip around the universities, in which you visit
+the same number of black and white magic universities and the happiness of the trip
+is as large as possible.
+
+\heading{Input}
+
+First line contains integer $N$ ($2 \leq N \leq 10^5$), number of universities (universities are numbered from $1$ to $N$).
+
+Second line contains string of length $N$, consisting of ``B'' and ``W'' characters.
+If the i-th character is ``B'', then the i-th university is teaching the black magic.
+If the i-th character is ``W'', then the i-th university is teaching the white magic.
+There will be at least one university teaching the white magic and at least one university teaching the black magic.
+
+Third line contains $N$ space-separated integers $h_1 h_2 \ldots h_N$ ($-10^5 \leq h_i \leq 10^5$).
+Integer $h_i$ is the happiness factor of the i-th university.
+
+Fourth line contains $N-1$ space-separated integers $v_1 v_2 \ldots v_{N-1}$.
+Integer $v_i$ means there is a road connecting the universities with numbers $v_i$ and $(i+1)$ ($1 \leq v_i \leq i$).
+
+
+\heading{Output}
+
+Output exactly one integer, maximum overall happiness of the trip, in which
+you visit the same number of black and white magic universities.
+
+\heading{Samples}
+
+
+\sampleIN
+6
+BWBBBW
+6 0 3 -2 100 5
+1 2 2 4 4
+\sampleOUT
+9
+\sampleCOMMENT
+In optimal trip you visit the universities 1,2,4,6.
+\sampleEND
+
+\bigskip
+
+\sampleIN
+3
+WBW
+1 -10 5
+1 2
+\sampleOUT
+-5
+\sampleCOMMENT
+Because you have to visit some universities, sometimes the
+answer can be negative.
+\sampleEND
+
+\end{document}
