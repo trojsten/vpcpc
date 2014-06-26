@@ -27,8 +27,8 @@ Day PL
 
 Day SK
 ------
-
-  * **peaks** - (geometry) 3D with sweeping and rotational sorting
+ 
+  * **shades** - (stringology) Aho-Corasic on fractions
   * **hyperways** - (graph) union find but whith detecting 2-connected components
   * **malloc** - (BST / interval tree) filling and releasing room sequences
 
