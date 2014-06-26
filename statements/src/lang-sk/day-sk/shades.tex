@@ -1,0 +1,91 @@
+\input sys/inputs.tex
+
+\begin{document}
+
+\bigheading{Tieňe mesta}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{shades}{stdin}{stdout}{100}{1000 ms}{1 GB}
+
+Kde bolo, tam bolo, bolo raz jedno mesto.
+\footnote{Sú tu určité pochybnosti o správnosti prekladu.}
+Teda \dots predpokladáme, že to bolo mesto.
+Každopádne, toto mesto zmizlo a nezanechalo nič.
+Takmer nič. Iba tieň. Studený, tmavý tieň.
+Tieň, ktorý sa nehýbe. Tieň osudu.
+Tieň \dots OK, dosť bolo rozprávok.
+Ideme kódiť.
+Potrebujeme zistiť výšky budov v meste.
+Tieň však môže byť ľubovoľne natiahnutý.
+Našťastie vieme detaily o architektúre civilizácie,
+ktorá obývala túto oblasť.
+
+Mesto pozostávalo z budov zoradených do jedného radu.
+Rovnako široké, rovnako vzdialené. Len výšky mali rôzne.
+A aj tie mali svoje vzory.
+
+Tvojou úlohou bude nájsť všetky výskyty vzorov v tieni
+a vypísať ich počet.
+
+
+\heading{Úloha}
+
+Tieň je postupnosť celých čísel - naškálovaných výšok.
+Vzor je tiež postupnosť celých čísel - výšok.
+Hovoríme že vzor má výskyt v tieni,
+ak existuje podpostupnosť tieňa taká,
+že po jej naškálovaní dostaneme vzor.
+(Vzor môže mať v tieni aj viac výskytov)
+
+
+\heading{Vstup}
+
+Prvý riadok vstupu obsahuje celé číslo $n$
+-- počet vzorov.
+
+Každý z nasledovných $n$ riadkov popisuje jeden vzor.
+Začína sa celým číslom $l_i$ -- dĺžkou vzoru.
+Po ňom nasleduje $l_i$ medzerou oddelených kladných celých čísel.
+
+Posledný riadok popisuje tieň
+Začína sa celým číslom $n$ -- dĺžkou tieňa.
+Po ňom nasleduje $n$ medzerou oddelených kladných celých čísel.
+
+\bigskip
+
+Platí:\\
+$1 \leq m \leq 3\cdot10^5$\\
+$1 \leq l_i$\\
+$\sum^{n}_{i=1} l_i \leq m$\\
+Všetky členy postupností su najviac $10000$.
+
+\smallskip
+
+V $40\%$ vstupov dokonca platí $m \leq 1000$.
+
+\heading{Výstup}
+
+Vypíšte jeden riadok s počtom všetkých výskytov
+všetkých vzorov v tieni.
+
+\heading{Príklady}
+
+
+\sampleIN
+4
+1 47
+2 21 42
+2 34 17
+3 1 2 1
+7 3 6 3 6 12 6 3
+\sampleOUT
+15
+\sampleCOMMENT
+Prvý vzor vie byť naškálovaný na akúkoľvek výšku.
+Preto sa vyskytuje 7 krát. Druhý s tretím sa
+vyskytujú 3 krát a posledný vzor 2 krát.
+\sampleEND
+
+
+\end{document}
