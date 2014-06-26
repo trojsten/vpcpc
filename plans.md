@@ -4,7 +4,7 @@ VPCPC 2014 Plans
 Day CZ
 ------
 
-  * **paths** - (combinatorial) number of different paths in tree
+  * **buslines** - (combinatorial) number of different paths in tree
   * **(taskname)** - (open data) TBD
   * **investigation** - (graph) generalized binary search on tree
 

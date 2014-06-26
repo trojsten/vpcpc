@@ -1,0 +1,86 @@
+\input sys/inputs.tex
+
+\begin{document}
+
+\bigheading{Bus lines}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{buslines}{stdin}{stdout}{100}{1000 ms}{1 GB}
+
+In the Czech city called Kocourkov they have a spectacular trafic system.
+There are $N$ bus stops and some of them are connected by $N - 1$ bidirectional streets.
+These streets intersect only at the bus stops and moreover it is possible to go from every bus stop
+to all of the others using a sequence of streets (i.e. the city forms a tree structure).
+
+Kocourkov Public Transportation Company has finally decided to introduce buses.
+Their representatives want to make sure that it is possible to travel between all pairs of bus stops.
+Because of that there will be a new bus line from each bus stop to each other.
+We can easily calculate that there will be $\frac{n \cdot (n - 1)}{2}$ lines in total.
+Some of the lines will consist of just two stops, others can have possibly up to $N$ stops.
+
+Everything sounds simple so far, but here comes a technical problem, which workers encountered while building the system.
+At each bus stop must be a timetable listing all of the lines which goes though the particular stop.
+The workers don't know how large the tables should be.
+
+\heading{Task}
+
+You are given the description of trafic system in the city of Kocourkov.
+For every bus stop in the city calculate the number of lines going through it (including lines, which starts or ends here).
+
+\heading{Input}
+
+First line contains an integer $N$, the number of bus stops in the city (stops are numbered from $1$ to $N$).
+The following $N - 1$ lines describes streets in the city.
+Every such line contains two different integers $1 \le x, y \le N$ meaning that there is a street from bus stop number $x$ to bus stop number $y$.
+You can expect that it describes a valid city according to the problem statement.
+
+\smallskip
+
+It holds $1 \leq N \leq 10^6$.\\
+In the $20\%$ of testcases $N \leq 20$.\\
+In the $40\%$ of testcases $N \leq 1000$.
+
+\heading{Output}
+
+Output $N$ lines. The $i$-th line should contain a signle integer, the number of bus lines going through the bus stop number $i$.
+
+\heading{Samples}
+
+
+\sampleIN
+5
+4 5
+2 1
+3 2
+2 5
+\sampleOUT
+4
+7
+4
+4
+7
+\sampleEND
+
+
+\bigskip
+
+
+\sampleIN
+6
+1 2
+2 3
+3 4
+4 5
+5 6
+\sampleOUT
+5
+9
+11
+11
+9
+5
+\sampleEND
+
+
+\end{document}
