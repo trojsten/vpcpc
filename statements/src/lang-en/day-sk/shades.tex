@@ -1,0 +1,96 @@
+\input sys/inputs.tex
+
+\begin{document}
+
+\bigheading{Shades of the town}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{shades}{stdin}{stdout}{100}{1000 ms}{1 GB}
+
+Long time ago in a galaxy far far away was a town.
+Well, we suppose it was a town.
+But it disappeared. And it left almost nothing.
+Just a shade. Dark, cold shade.
+Shade which doesn't move.
+Shade of the destiny.
+Shade \dots  OK, lets work.
+We want to know the heights of the buildings in the town.
+(To calculate the population.)
+But the heights of the shade may be scaled.
+Luckily, we know some architecture specifics of the culture
+which ocupied this planet.
+
+All the buildings in the town stand in a single line,
+with uniform widths and spaces beetwen them.
+The only thing which changes is the heights.
+There are some height paterns which are frequently used.
+
+Your task is to find every pattern occurence in the shade
+and output the number of occurences,
+so we can decide whether paterns can help us.
+
+
+\heading{Task}
+
+The shade is a positive integer sequence of scaled heights.
+The patern is an a positive integer sequence of heights.
+We say that pattern occurs in the shade,
+if there is an subsequence of shade, which can be scaled,
+to be the same as the pattern.
+Find out the number of the occurences
+of the all patterns in the shade.
+(One pattern can occur multiple times)
+
+
+\heading{Input}
+
+On the first line of input is a single integer $n$
+-- the number of paterns.
+
+Each of next $n$ lines describes one pattern.
+It starts with an integer $l_i$ -- the patern lenght.
+Then $l_i$ space separated positive integers follows.
+
+The last line describes the shade.
+It starts with an integer $m$ -- the shade lenght.
+Then $m$ space separated positive integers follows.
+
+\bigskip
+
+It holds:\\
+$1 \leq m \leq 3\cdot10^5$\\
+$1 \leq l_i$\\
+$\sum^{n}_{i=1} l_i \leq m$\\
+All the sequence numbers are at most $10000$.
+
+\smallskip
+
+In the $40\%$ of testcases also holds $m \leq 1000$.
+
+\heading{Output}
+
+Output a line with single integer
+-- the number of occurences of the patterns in the shade.
+
+\heading{Samples}
+
+
+\sampleIN
+4
+1 47
+2 21 42
+2 34 17
+3 1 2 1
+7 3 6 3 6 12 6 3
+\sampleOUT
+15
+\sampleCOMMENT
+The first patterns can be scaled to
+each height and so occurs 7 times.
+The second and the third patterns occurs each one 3 times.
+The fourth pattern occurs 2 times.
+\sampleEND
+
+
+\end{document}
