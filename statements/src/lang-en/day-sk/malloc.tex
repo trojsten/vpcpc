@@ -1,0 +1,82 @@
+\input sys/inputs.tex
+
+\begin{document}
+
+\bigheading{Dynamic memory allocation}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{malloc}{stdin}{stdout}{100}{FIXME}{1 GB}
+
+Kamila is once again devising a new amazing programming language that will be
+superior to all other languages in every aspect. Writing code will become even
+simpler than ABC, so little children will learn how to program before they will
+know how to write comments. This is not a bug,%
+\footnote{By the way, it will be impossible to introduce bugs into a program --
+Kamila's brilliant compiler will optimize them out.}
+as comments are absolutely unnecessary in Kamila's dreamt up language: Due to
+its intuitive syntax, the purpose of any block of code is immediately crystally
+clear. Also, the compiler will bake you a cake for your birthday.
+
+There is still a handful of outstanding issues though. For example, the language
+constructs for memory management do not work yet. Kamila prepared a precise
+specification of the memory allocation and freeing procedures, but she did not
+find enough time to implement them. Help her, and achieve instant fame for
+contributing to such an important project!
+
+
+\heading{Task}
+
+The available memory is an array of $n$ bytes numbered $0$ through $n-1$. At the
+beginning, all the bytes are free (i.e., not allocated). Then the memory
+management system allocates and frees the bytes according to a sequence of
+queries.
+
+An \emph{allocation} query is specified by an integer $\ell$. The system finds a
+block of $\ell$ consecutive free bytes, allocates them, and returns the position
+of the first byte in this block. If there are multiple such blocks available,
+the one starting at the position with the smallest number is chosen. If there is
+no such block available, the query is rejected and the system returns $-1$.
+
+A \emph{freeing} query is specified by two integers $x$ and $\ell$. The system
+marks the block of $\ell$ consecutive bytes starting at the position $x$ as
+free, and returns the number of actually freed bytes (i.e., the number of bytes
+in this block that were not free before the query).
+
+
+\heading{Input}
+
+The first line of the input consists of two integers $n$ and $q$ -- the number
+of bytes in the available memory and the number of queries ($1 \leq n \leq
+FIXME$, $1 \leq q \leq FIXME$).
+
+Each of the following $q$ lines describes a query. The first integer in a line
+determines the type of the query: $1$ is for allocation and $2$ for freeing. A
+line with an allocation query then continues with one additional integer $\ell$
+($1 \leq \ell \leq n$). Similarly, a line with a freeing query continues with
+two integers $x$ and $\ell$ ($0 \leq x \leq n-1$, $1 \leq \ell \leq n-x$).
+
+
+\heading{Output}
+
+For every query in the given sequence, output one line with the value returned
+by the system.
+
+
+\heading{Samples}
+
+\sampleIN
+5 4
+1 3
+1 3
+2 1 3
+1 4
+\sampleOUT
+0
+-1
+2
+1
+\sampleEND
+
+
+\end{document}
