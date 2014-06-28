@@ -5,7 +5,7 @@ Day CZ
 ------
 
   * **buslines** - (combinatorial) number of different paths in tree
-  * **(taskname)** - (open data) TBD
+  * **cutting** - (open data) separate points in a plane by the least amount of lines
   * **investigation** - (graph) generalized binary search on tree
 
 
