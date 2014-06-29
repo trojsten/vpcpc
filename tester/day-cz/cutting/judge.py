@@ -20,7 +20,7 @@ def get_stamp(point, lines):
   return tuple([which_side(point, line) for line in lines])
 
 def are_points_separated(points, lines):
-  stamps = set(tuple([get_stamp(point, lines) for point in points]))
+  stamps = set(get_stamp(point, lines) for point in points)
   return len(stamps) == len(points)
 
 def judge():
@@ -37,7 +37,7 @@ def judge():
     except ValueError:
       return FORMAT_ERROR  # there is not an integer
 
-    if L + 1 > MAX_LINES: return FORMAT_ERROR  # too many lines
+    if L > MAX_LINES: return FORMAT_ERROR  # too many lines
 
     lines = []
     for i in range(L):
