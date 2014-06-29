@@ -8,42 +8,36 @@
 % leave this values, if you are not interested
 \info{buslines}{stdin}{stdout}{100}{1000 ms}{1 GB}
 
-In the Czech city called Kocourkov they have a spectacular trafic system.
-There are $N$ bus stops and some of them are connected by $N - 1$ bidirectional streets.
-These streets intersect only at the bus stops and moreover it is possible to go from every bus stop
-to all of the others using a sequence of streets (i.e. the city forms a tree structure).
+In the Czech city called Kocourkov they have a spectacular public transportion system.
+It consists of $N$ bus stops and $N-1$ bidirectional roads, each road connecting two bus stops.
+It is possible to get from each bus stop to every other using a sequence of roads.
 
-Kocourkov Public Transportation Company has finally decided to introduce buses.
-Their representatives want to make sure that it is possible to travel between all pairs of bus stops.
-Because of that there will be a new bus line from each bus stop to each other.
-We can easily calculate that there will be $\frac{n \cdot (n - 1)}{2}$ lines in total.
-Some of the lines will consist of just two stops, others can have possibly up to $N$ stops.
+Every morning, from each bus stop departs $N-1$ buses, each bus heading into different bus stop.
+Each bus stops at every bus stop on the path between the departure and destination bus stop, both of them including.
 
-Everything sounds simple so far, but here comes a technical problem, which workers encountered while building the system.
-At each bus stop must be a timetable listing all of the lines which goes though the particular stop.
-The workers don't know how large the tables should be.
+At every bus stop there must be a timetable listing all the buses that stops on that particular stop.
+You are now wondering, how many buses are listed on each timetable.
 
 \heading{Task}
 
-You are given the description of trafic system in the city of Kocourkov.
-For every bus stop in the city calculate the number of lines going through it (including lines, which starts or ends here).
+You are given the description of the traffic system in Kocourkov.
+For every bus stop in the city calculate the number of buses that stop on that particular stop.
 
 \heading{Input}
 
 First line contains an integer $N$, the number of bus stops in the city (stops are numbered from $1$ to $N$).
-The following $N - 1$ lines describes streets in the city.
-Every such line contains two different integers $1 \le x, y \le N$ meaning that there is a street from bus stop number $x$ to bus stop number $y$.
-You can expect that it describes a valid city according to the problem statement.
+The following $N-1$ lines describe the roads in the city.
+Each line contains two different integers $1 \le x, y \le N$ meaning that there is a road connecting bus stops $x$ and $y$.
 
 \smallskip
-
+\noindent
 It holds $1 \leq N \leq 10^6$.\\
 In the $20\%$ of testcases $N \leq 100$.\\
 In the $50\%$ of testcases $N \leq 1000$.
 
 \heading{Output}
 
-Output $N$ lines. The $i$-th line should contain a signle integer, the number of bus lines going through the bus stop number $i$.
+Output $N$ lines. The $i$-th line should contain a signle integer, the number of buses that stop on the i-th bus stop.
 
 \heading{Samples}
 
@@ -55,12 +49,12 @@ Output $N$ lines. The $i$-th line should contain a signle integer, the number of
 4 5
 5 6
 \sampleOUT
-5
-9
-11
-11
-9
-5
+10
+18
+22
+22
+18
+10
 \sampleEND
 
 \bigskip
@@ -72,11 +66,11 @@ Output $N$ lines. The $i$-th line should contain a signle integer, the number of
 3 2
 2 5
 \sampleOUT
-4
-9
-4
-4
-7
+8
+18
+8
+8
+14
 \sampleEND
 
 \end{document}

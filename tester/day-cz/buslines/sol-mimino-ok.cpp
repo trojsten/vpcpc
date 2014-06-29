@@ -36,7 +36,7 @@ int main()
 	}
 	dfs(0, -1);
 	for (int i = 0; i < N; ++i)
-		printf("%lld\n", result[i]);
+		printf("%lld\n", result[i]*2);
 
 	return 0;
 }
