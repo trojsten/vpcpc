@@ -12,10 +12,12 @@ V Kocourkově mají skutečně pozoruhodný systém hromadné dopravy.
 Skládá se z $N$ autobusových zastávek a $N-1$ obousměrných cest mezi nimi. Každá cesta spojuje dvě zastávky.
 Navíc je možné se dostat z každé autobusové zastávky do všech ostatních za použítí nějaké posloupnosti cest.
 
-Každé ráno vyrazí z každé zastávky $N-1$ autobusů, každý směřující do jiné zastávky.
-Každý autobus zastaví na všech zastávkách, kterými během své cesty projede, a to včetně té startovní a cílové.
+Pro každou dvojici různých autobusových zastávek $a$ a $b$ platí, že každé ráno
+vyrazí jeden autobus ze zastávky $a$ a pojede do zastávky $b$ (po jediné možné cestě).
+Celkově tedy vyrazí $N(N-1)$ autobusů.
+Každý autobus zastaví na všech zastávkách, které během své cesty navštíví.
 
-Na všech zastávkách musí být jízdní řád obsahující všechny autobusy, které na nich zastavují.
+Na zastávkách musí být jízdní řád obsahující všechny autobusy, které na nich zastavují.
 Zajímalo by nás, kolik autobusů je na každém z jízdních řádů napsáno.
 
 \heading{Úloha}
