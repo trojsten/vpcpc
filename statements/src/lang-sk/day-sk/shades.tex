@@ -10,11 +10,11 @@
 
 Kde bolo, tam bolo, bolo raz jedno mesto.
 \footnote{Sú tu určité pochybnosti o správnosti prekladu.}
-Teda \dots predpokladáme, že to bolo mesto.
+Teda\dots{} predpokladáme, že to bolo mesto.
 Každopádne, toto mesto zmizlo a nezanechalo nič.
 Takmer nič. Iba tieň. Studený, tmavý tieň.
 Tieň, ktorý sa nehýbe. Tieň osudu.
-Tieň \dots OK, dosť bolo rozprávok.
+Tieň\dots{} OK, dosť bolo rozprávok.
 Ideme kódiť.
 Potrebujeme zistiť výšky budov v meste.
 Tieň však môže byť ľubovoľne natiahnutý.
@@ -31,12 +31,12 @@ a vypísať ich počet.
 
 \heading{Úloha}
 
-Tieň je postupnosť celých čísel - naškálovaných výšok.
-Vzor je tiež postupnosť celých čísel - výšok.
+Tieň je postupnosť celých čísel -- naškálovaných výšok.
+Vzor je tiež postupnosť celých čísel -- výšok.
 Hovoríme že vzor má výskyt v tieni,
-ak existuje podpostupnosť tieňa taká,
-že po jej naškálovaní dostaneme vzor.
-(Vzor môže mať v tieni aj viac výskytov)
+ak existuje \textbf{súvislá} podpostupnosť tieňa taká,
+že po jej naškálovaní (t.j.\ prenásobení výšok nejakou racionálnou konštantou) dostaneme vzor.
+Vzor môže mať v tieni aj viac výskytov, ktoré sa môžu aj prekrývať.
 
 
 \heading{Vstup}
@@ -48,7 +48,7 @@ Každý z nasledovných $n$ riadkov popisuje jeden vzor.
 Začína sa celým číslom $l_i$ -- dĺžkou vzoru.
 Po ňom nasleduje $l_i$ medzerou oddelených kladných celých čísel.
 
-Posledný riadok popisuje tieň
+Posledný riadok popisuje tieň.
 Začína sa celým číslom $m$ -- dĺžkou tieňa.
 Po ňom nasleduje $m$ medzerou oddelených kladných celých čísel.
 
@@ -58,7 +58,7 @@ Platí:\\
 $1 \leq m \leq 3\cdot10^5$\\
 $1 \leq l_i$\\
 $\sum^{n}_{i=1} l_i \leq m$\\
-Všetky členy postupností su najviac $10000$.
+Všetky členy postupností su najviac $10\,000$.
 
 \smallskip
 
@@ -66,7 +66,7 @@ V $40\%$ vstupov dokonca platí $m \leq 1000$.
 
 \heading{Výstup}
 
-Vypíšte jeden riadok s počtom všetkých výskytov
+Vypíšte jeden riadok s celkovým počtom všetkých výskytov
 všetkých vzorov v tieni.
 
 \heading{Príklady}
@@ -83,8 +83,8 @@ všetkých vzorov v tieni.
 15
 \sampleCOMMENT
 Prvý vzor vie byť naškálovaný na akúkoľvek výšku.
-Preto sa vyskytuje 7 krát. Druhý s tretím sa
-vyskytujú 3 krát a posledný vzor 2 krát.
+Preto sa vyskytuje 7-krát. Druhý s tretím sa
+vyskytujú 3-krát a posledný vzor 2-krát.
 \sampleEND
 
 
