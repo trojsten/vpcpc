@@ -1,0 +1,45 @@
+\input sys/inputs.tex
+
+\begin{document}
+
+\bigheading{Új fa}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{newtree}{stdin}{stdout}{100}{100 ms}{32 MiB}
+
+A város parkjában egy új fát ültettek, amit a kertész a szokásos módon védeni akar. A módszer az, hogy kiválaszt három meglévő fát és ezeket körbefogja egy szalaggal úgy, hogy csak az új fa legyen a háromszögön belül. Nem lehet az új fa a háromszög oldalán sem.\\
+A kertész a három közül már kiválasztott egy fát, a másik kettő kiválasztásában kell segíteni.
+
+\heading{Feladat}
+Írj olyan programot, amely meghatároz két olyan fát, hogy a már kiválasztott fával a három fa egy kívánt szabályos védelmi területet alkosson az új fa körül!
+
+\heading{Bemenet}
+A bemenet első sora két egész számot tartalmaz, a meglévő fák $N$ ($3 \leq N \leq 100000$) számát és a már kiválasztott fa $A$ ($1 \leq A \leq N$) azonosítóját. A fákat az $1,\ldots,N$ számokkal azonosítjuk, a bemenetbeli sorrendben. A második sor két egész számot tartalmaz, $x$-et és $y$-t, az új fa koordinátáit ($-1000000 \leq x,y \leq 1000000$). A következő $N$ sor mindegyike két egész számot tartalmaz: $x$ és $y$, egy meglévő fa koordinátáit ($-1000000 \leq x,y \leq 1000000$).\\
+\smallskip
+\noindent A tesztek $40 \%$-ában $N \leq 5000$.
+\heading{Kimenet}
+A kimenet első sora két egész számot tartalmazzon: $B$ és $C$, két meglévő fa azonosítóját. Teljesülni kell, hogy a három fa, $A$ (a már kiválasztott fa), $B$ és $C$ az órajárással ellentétes felsorolásban olyan háromszöget alkot, amely szabályos védelmi terület az új fa körül. Tehát teljesül, hogy az új fa szigorúan a háromszögön belül van, továbbá $A$, $B$ és $C$ kivételével egyetlen más fa sem esik a háromszögbe, vagy annak oldalára.\\
+Több megoldás esetén bármelyik megadható.\\
+Ha nincs megoldás, akkor a $0\,\, 0$ számpárt kell kiírni.
+
+\heading{Példa bemenet és kimenet}
+
+\sampleIN
+7 1
+9 3
+3 1
+8 7
+9 5
+11 5
+12 4
+9 1
+13 6
+\sampleOUT
+4 6
+\sampleCOMMENT
+
+\sampleEND
+\bigskip
+
+\end{document}

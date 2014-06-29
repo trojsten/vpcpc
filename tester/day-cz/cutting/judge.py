@@ -1,3 +1,4 @@
+import subprocess
 import sys
 
 if len(sys.argv) != 3:
@@ -5,7 +6,7 @@ if len(sys.argv) != 3:
   sys.exit(254)
 
 MAX_LINES = 10000
-MAX_VALUE = 10000
+MAX_VALUE = 1000000
 FORMAT_ERROR = -1
 POINTS_NOT_SEPARATED = -2
 
@@ -17,11 +18,22 @@ def which_side(point, line):
                point[0] - line[0], point[1] - line[1]) <= 0
 
 def get_stamp(point, lines):
-  return tuple([which_side(point, line) for line in lines])
+  return tuple(which_side(point, line) for line in lines)
 
 def are_points_separated(points, lines):
-  stamps = set(get_stamp(point, lines) for point in points)
-  return len(stamps) == len(points)
+  si = None
+  if hasattr(subprocess, 'STARTUPINFO'):
+    si = subprocess.STARTUPINFO()
+    si.dwFlags = subprocess.STARTF_USESHOWWINDOW
+    si.wShowWindow = subprocess.SW_HIDE
+  proc = subprocess.Popen(
+    ['validator', sys.argv[1], sys.argv[2]],
+    shell=False,
+    startupinfo=si)
+  proc.communicate()
+  return not proc.poll()
+  # stamps = set(get_stamp(point, lines) for point in points)
+  # return len(stamps) == len(points)
 
 def judge():
   with open(sys.argv[1], "r") as input_file:
@@ -66,7 +78,8 @@ def judge():
 
       lines.append(line)
 
-  if not are_points_separated(points, lines): return POINTS_NOT_SEPARATED
+  if not are_points_separated(points, lines):
+    return POINTS_NOT_SEPARATED
 
   return L
 
