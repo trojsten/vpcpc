@@ -9,25 +9,25 @@
 \info{investigation}{stdin}{stdout}{100}{1000 ms}{1 GB}
 
 Ve městě Bytelandia se stala loupež!
-Zloději se podařilo utéct and ukrýt někde ve městě.
-Vy tento zločin vyšetřujete. Vaším ůkolem je nalézt a uvěznit zloděje.
+Zloději se podařilo utéct and ukrýt se někde ve městě.
+Vy tento zločin vyšetřujete a vaším ůkolem je dostat zloděje za mříže.
 
 Město se skládá z $N$ domů a $N-1$ cest. Cesty spojují některé dvojice domů
-takovým spůsobem, že mezi každou dvojicí domů existuje právě jedna unikátní cesta
+takovým způsobem, že mezi každou dvojicí domů existuje právě jedna cesta
 (tzn. město má stromovou strukturu).
 Zloděj se ukrývá v jednom z domů.
 
-Aby jste zloděje nalezli, můžete si zvolit dům $h$ a celý jej prohledat.
+Abyste zloděje nalezli, můžete si zvolit dům $h$ a celý jej prohledat.
 Pokud se v tom domě zloděj nacházel, zatknete ho.
 V opačnem případě po drastickém vyslíchání všech obyvatel domu se dozvíte následující informaci:
 ``Pokud si představíte město jako zakořeněný strom, s domem $h$ jako kořenem a domy $c_1, c_2 \ldots c_m$ jako jeho syny,
-pak se zloděj ukrýva v jednom z domů v podstromu zakořeněném v $c_i$ (pro $i$, $1 \leq i \leq m$).''
+pak se zloděj ukrývá v jednom z domů v podstromě zakořeněném v $c_i$ (pro $i$, $1 \leq i \leq m$).''
 
 Domy musíte prohledávat až dokud zloděje nenajdete.
-Můžete předpokládat, že se zloděj ukrýva ve stejném domě po celou dobu vyšetřování (tzn. zloděj nemění svou lokaci).
+Můžete předpokládat, že se zloděj ukrývá ve stejném domě po celou dobu vyšetřování (tzn. zloděj nemění svou lokaci).
 
-Je zřejmé, že na pořadí, ve kterém domy prohledáváte záleží, protože i když v nějakém
-domě zloděje nenajdete, tak informace, kterou po vyslíchání získate může značně
+Je zřejmé, že záleží na pořadí, ve kterém domy prohledáváte, protože i když v nějakém
+domě zloděje nenajdete, tak informace, kterou po vyslíchání získate, může značně
 omezit počet domů, ve kterých se zloděj může nacházet.
 Potřebujete tedy vymyslet optimální strategii, se kterou minimalizujete počet
 prohledaných domů v nejhorším možném případě.
@@ -35,7 +35,7 @@ prohledaných domů v nejhorším možném případě.
 \heading{Úloha}
 
 Na vstupu dostanete popis města.
-Vymyslete strategii pro prohledávání domů, tak aby jste minimalizovali
+Vymyslete strategii pro prohledávání domů, tak abyste minimalizovali
 počet prohledaných domů v nejhorším možném případě.
 
 \heading{Vstup}
