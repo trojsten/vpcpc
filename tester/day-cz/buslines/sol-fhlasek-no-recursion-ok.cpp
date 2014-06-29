@@ -50,6 +50,6 @@ int main(int argc, char *argv[]) {
     graph[y].push_back(x);
   }
   dfs();
-  REP(i, N) printf("%lld\n", ans[i]);
+  REP(i, N) printf("%lld\n", 2 * ans[i]);
   return 0;
 }
