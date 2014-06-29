@@ -1,0 +1,76 @@
+\input sys/inputs.tex
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+\usepackage{polski}
+
+\begin{document}
+
+\bigheading{Hyperways}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{hyperways}{stdin}{stdout}{100}{3000 ms}{1 GB}
+
+Międzygalaktyczna firma Oods\&co ma plan zbudować sieć dróg ekspresowych,
+	łączących niektóre planety naszej galaktyki.
+Kolejność budowy dróg została już ustalona.
+Zostaje tylko sprawdzić, czy plan spełnia międzygalaktyczne warunki bezpieczeństwa.
+W tym celu, firma Oods\&co musi obliczyć liczbę bezpiecznych dróg po każdym etapie budowy.
+Twoim zadaniem będzie napisać program, który to zrobi.
+
+\heading{Task}
+
+Droga jest bezpieczna, jeśli nie jest jedyną drogą łączącą pewne dwie planety (czyli leży na pewnym cyklu).
+Masz daną kolejność budowy dróg ekspresowych.
+Po każdej wybudowanej drodze, niektóre drogi mogą stać się bezpieczne.
+Wypisz ich liczbę.
+Zauważ, że kiedy tylko dodajesz drogi, to niebezpieczne drogi mogą stać się bezpieczne, ale nie na odwrót!
+
+\heading{Input}
+
+W pierwszej linii wejścia znajdują się dwie liczby całkowite $n$ i $m$,
+	oznaczające liczbę planet i liczbę dróg w~planie firmy.
+Planety są ponumerowane od $1$ do $n$.
+
+Kolejne $m$ linii zawiera dwie liczby całkowite oddzielone spacją
+	-- numery planet, które połączy kolejna droga.
+Wszystkie drogi są dwukierunkowe.
+Może wystąpić droga łącząca pewną planetę z nią samą.
+Może być wiele dróg łączących te same dwie planety.
+
+Ograniczenia: $n \le 10^6$, $m \le 2 \cdot 10^6$.
+W $40\%$ testów zachodzą dodatkowe ograniczenia: $n \le 1\,000$, $m \le 2\,000$.
+
+\heading{Output}
+
+Dla każdej drogi z wejścia wypisz w oddzielnej linii jedną liczbę
+	-- liczbę dróg, które staną się bezpieczne po dodaniu danej drogi (włączając tę drogę).
+
+\heading{Sample}
+
+
+\sampleIN
+5 8
+1 2
+3 3
+4 5
+2 3
+4 5
+3 4
+4 1
+5 2
+\sampleOUT
+0
+1
+0
+0
+2
+0
+4
+1
+\sampleEND
+
+
+\end{document}

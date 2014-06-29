@@ -1,0 +1,79 @@
+\input sys/inputs.tex
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+\usepackage{polski}
+
+\begin{document}
+
+\bigheading{Shades of the town}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{shades}{stdin}{stdout}{100}{1000 ms}{1 GB}
+
+Dawno dawno temu, w odległej galaktyce było sobie miasto.
+W sumie, to tylko wydaje nam się, że to było miasto,
+	ponieważ już dawno zniknęło i praktycznie nic po nim nie zostało -- tylko cień.
+Chcielibyśmy znać wysokości budynków w mieście, aby policzyć mieszkańców.
+Jednak znamy jedynie wysokości cieni\footnote{bo po budynkach został tylko cień -- przyp. red.},
+	które są przeskalowanymi wysokościami budynków.
+
+\heading{Task}
+
+Wszystkie budynki w mieście mają jednakową szerokość i stoją w jednej linii, w równych odległościach od siebie.
+Budynki mogą się różnić tylko wysokościami.
+Znamy pewne architektoniczne schematy, używane przez mieszkańców tej planety.
+
+Schemat to ciąg dodatnich liczb całkowitych, oznaczających wysokości budynków.
+Mówimy, że schemat występuje w ciągu cieni budynków, jeśli istnieje spójny podciąg cieni budynków,
+	który po przeskalowaniu byłby taki sam jak schemat.
+
+Dla każdego schematu, znajdź liczbę jego wystąpień.
+
+\heading{Input}
+
+W pierwszej linii wejścia znajduje się jedna liczba całkowita $n$ -- liczba schematów do rozważenia.
+Każda z następnych $n$ linii opisuje jeden schemat.
+Opis schematu zaczyna się liczbą $l_i$ -- długością ciągu wysokości budynków.
+Po niej następuje $l_i$ dodatnich liczb całkowitych, oznaczających wysokości poszczególnych budynków w ciągu.
+
+Ostatnia linia wejścia opisuje ciąg cieni budynków.
+Zaczyna się jedną liczbą $m$ -- liczbą cieni.
+Po niej następuje $m$ dodatnich liczb całkowitych, oznaczających wysokości poszczególnych cieni.
+
+Ograniczenia:
+\begin{itemize}
+	\item $1 \le m \le 3 \cdot 10^5$
+	\item $1 \le l_i$
+	\item $\sum_{i = 1}^n l_i \le m$
+	\item wszystkie wysokości są nie większe niż $10\,000$
+\end{itemize}
+W $40\%$ testów zachodzi $m \le 1\,000$.
+
+\heading{Output}
+
+Na wyjście wypisz jedną liczbę -- liczbę wystąpień wszystkich schematów w ciągu cieni.
+
+\heading{Sample}
+
+
+\sampleIN
+4
+1 47
+2 21 42
+2 34 17
+3 1 2 1
+7 3 6 3 6 12 6 3
+\sampleOUT
+15
+\sampleCOMMENT
+Pierwszy schemat może zostać przeskalowany do dowolnej wysokości, więc występuje $7$ razy.
+Drugi schemat występuje $3$ razy.
+Trzeci schemat występuje $3$ razy.
+Czwarty schemat występuje $2$ razy.
+\sampleEND
+
+
+\end{document}

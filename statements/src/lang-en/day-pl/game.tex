@@ -1,0 +1,54 @@
+\input sys/inputs.tex
+
+\begin{document}
+
+\bigheading{Game}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{game}{stdin}{stdout}{100}{1000 ms}{64 MB}
+
+Mirek really likes playing with numbers. Together with his friend, Kamil, he plays a following game. At the beginning, there are two
+non-negative integers -- $A$ and $B$. Let's say $A \leqslant B$. The players can perform one of two moves in turns:
+
+\begin{itemize}
+	\item Replace $B$ with $B - A^K$. Number $K$ can be any integer chosen by the player, considering the limitations that $K > 0$
+	      and $B - A^K \ge 0$.
+	\item Replace $B$ with $B\ mod\ A$. 
+\end{itemize}
+
+If $B \leqslant A$, similar moves are possible. The player who changes any number into $0$, wins. Mirek always starts. He likes this game, but he likes winning much more. Help him determine who will win, if both of them play optimally.
+
+\heading{Task}
+
+You are given the description of games played by Mirek and Kamil. For every game determine who will win, Mirek or Kamil.
+
+\heading{Input}
+
+First line contains an integer $T$ ($1 \le T \le 10^4$), the number of games played by boys.
+In the next $T$ lines, there are descriptions of those games.
+Every such line contains two integers $A$, $B$ ($1 \le A, B \le 10^{18}$) 
+\smallskip
+
+In the $30\%$ of testcases $A,B \le 1000$.
+
+\heading{Output}
+
+Output $T$ lines. The $i$-th line should contain the name of the player who wins the $i$-th game, \texttt{Mirek} or \texttt{Kamil}.
+
+\heading{Samples}
+
+\sampleIN
+4
+1 1
+12 4
+4 6
+15 31
+\sampleOUT
+\texttt{Mirek}
+\texttt{Mirek}
+\texttt{Kamil}
+\texttt{Mirek}
+\sampleEND
+
+\end{document}

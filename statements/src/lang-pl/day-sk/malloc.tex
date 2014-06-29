@@ -1,0 +1,77 @@
+\input sys/inputs.tex
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+\usepackage{polski}
+
+\begin{document}
+
+\bigheading{Dynamic memory allocation}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{malloc}{stdin}{stdout}{100}{FIXME}{1 GB}
+
+Kamila wzięła się za stworzenie nowego niesamowitego języka programistycznego,
+	który będzie miał przewagę nad wszystkimi innymi językami pod każdym względem.
+Pisanie kodu stałoby się nawet prostsze niż nauczenie się alfabetu,
+	więc małe dzieci mogłyby zacząć programować zanim nauczyłyby się pisać komentarze do kodu.
+To nie jest bug\footnote{Swoją drogą, robienie bugów byłoby i tak niemożliwe,
+	bo genialny kompilator Kamili by naprawiał każdy błąd.},
+	bo pisanie komentarzy byłoby kompletnie niepotrzebne
+	(dzięki bardzo intuicyjnej składni języka, przeznaczenie każdego bloku kodu byłoby od razu jasne).
+Kompilator byłby również w stanie upiec Ci ciasto na Twoje urodziny.
+
+Jednak ciągle jest dużo pracy do zrobienia.
+Na przykład, składnia języka odpowiedzialna za zarządzanie pamięcią jeszcze nie działa.
+Kamila przygotowała dokładną specyfikację alokacji i dealokacji pamięci,
+	ale nie miała wystarczająco czasu, aby je zaimplementować.
+Pomóż jej i zdobądź wieczną chwałę za pomoc w tym wspaniałym projekcie!
+
+\heading{Task}
+
+Dostępna pamięć jest tablicą $n$ bajtów, ponumerowanych od $0$ do $n-1$.
+Na początku wszystkie bajty są wolne (czyli niezaalokowane).
+Potem następują zapytania, polegające na alokacji i zwalnianiu pamięci.
+
+Alokacja jest opisana przez liczbę $l$.
+System szuka wtedy bloku $l$ kolejnych wolnych bajtów, alokuje je i~zwraca pozycję pierwszego bajtu w tym bloku.
+Jeśli jest wiele możliwych bloków do wybrania, wybierany jest blok zaczynający się na najmniejszej pozycji.
+Jeśli nie istnieje taki blok, to zapytanie jest odrzucane i system zwraca $-1$.
+
+Zwalnianie jest opisane przez dwie liczby $x$ i $l$.
+System zwalnia (oznacza jako wolne) blok $l$ kolejnych bajtów zaczynających się od pozycji $x$
+	i zwraca liczbę bajtów, które naprawdę zostały zwolnione
+	(czyli liczbę bajtów w~tym bloku, które były zaalokowane przed tym zapytaniem).
+
+\heading{Input}
+
+W pierwszej linii wejścia znajdują się dwie liczby całkowite $n$ i $q$ ($1 \le n, q \le 3 \cdot 10^5$),
+	oznaczające liczbę bajtów, z których składa się pamięć oraz liczbę zapytań.
+Każda z kolejnych $q$ linii opisuje jedno zapytanie.
+Alokacja ma postać ,,\texttt{1 $l$}'' ($1 \le l \le n$), a dealokacja postać ,,\texttt{2 $x$ $l$}''
+	($0 \le x \le n -1$, $1 \le l \le n - x$).
+
+\heading{Output}
+
+Dla każdego zapytania wypisz jedną linię z wartością zwracaną przez system.
+
+\heading{Sample}
+
+
+\sampleIN
+5 4
+1 3
+1 3
+2 1 3
+1 4
+\sampleOUT
+0
+-1
+2
+1
+\sampleEND
+
+
+\end{document}
