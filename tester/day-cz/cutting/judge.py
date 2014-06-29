@@ -24,7 +24,6 @@ def are_points_separated(points, lines):
   return len(stamps) == len(points)
 
 def judge():
-
   with open(sys.argv[1], "r") as input_file:
     N = int(input_file.readline())
     points = [map(int, input_file.readline().split()) for i in range(N)]
@@ -37,7 +36,7 @@ def judge():
     except ValueError:
       return FORMAT_ERROR  # there is not an integer
 
-    if L > MAX_LINES: return FORMAT_ERROR  # too many lines
+    if not (0 <= L <= MAX_LINES): return FORMAT_ERROR  # too many lines
 
     lines = []
     for i in range(L):
