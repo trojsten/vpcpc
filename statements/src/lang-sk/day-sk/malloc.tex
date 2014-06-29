@@ -1,0 +1,81 @@
+\input sys/inputs.tex
+
+\begin{document}
+
+\bigheading{Dynamická alokácia pamäte}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{malloc}{stdin}{stdout}{100}{FIXME}{1 GB}
+
+Kamila sa zase raz snaží vytvoriť úžasný programovací jazyk, ktorý pošle všetky
+predchádzajúce jazyky do zabudnutia. Programovanie sa stane tak jednoduchým, že
+malé deti sa naučia kódiť skôr než budú schopné písať komentáre. Toto v žiadnom
+prípade nie je bug,%
+\footnote{Mimochodom, programy v novom jazyku budú zaručene bez chýb -- Kamilin
+brilantný kompilátor všetky bugy odoptimalizuje.}
+keďže komentáre už nikto potrebovať nebude: Kamila navrhla syntax svojho jazyka
+tak šikovne, že každému bude význam ktorejkoľvek časti kódu už na prvý pohľad
+zrejmá. Navyše, v deň vašich narodenín vám kompilátor napečie tortu.
+
+Treba ale priznať, že niekoľko detailov momentálne nie je úplne dotiahnutých do
+konca. Napríklad systém na správu pamäte stále nefunguje. Kamila síce pripravila
+úplne skvelú špecifikáciu, ako sa bude pamäť alokovať a uvoľňovať, no nestihla
+ju ešte implementovať. Pomôžte jej a získajte tak večnú slávu -- príležitosť
+pracovať na takomto významnom projekte sa vám núka len raz za život!
+
+
+\heading{Úloha}
+
+Dostupnú pamäť si môžete predstaviť ako pole $n$ bajtov, ktoré sú očíslované od
+$0$ do $n-1$. Na začiatku sú všetky bajty voľné (čiže nealokované). Následne
+systém na správu pamäte spracuje niekoľko požiadaviek a príslušne alokuje a
+uvoľní niektoré bajty.
+
+Požiadavka na \emph{alokáciu} obsahuje celé číslo $\ell$. Systém nájde súvislý
+blok $\ell$ voľných bajtov, alokuje ich a vráti pozíciu prvého bajtu v tomto
+bloku. Ak by takýchto blokov bolo viacero, systém zvolí ten, ktorý začína na
+pozícii s najmenším číslom. Naopak, ak žiadny vhodný blok neexistuje, systém
+požiadavku odmietne a vráti $-1$.
+
+Požiadavka na \emph{uvoľnenie} pozostáva z dvoch celých čísel $x$ a $\ell$.
+Systém označí súvislý blok $\ell$ bajtov začínajúci na pozícii $x$ ako voľný a
+vráti počet skutočne uvoľnených bajtov (čiže počet takých bajtov v tomto bloku,
+ktoré pred vykonaním požiadavky neboli voľné).
+
+
+\heading{Vstup}
+
+Prvý riadok vstupu pozostáva z dvoch celých čísel $n$ a $q$ -- počtu bajtov v
+dostupnej pamäti a počtu požiadaviek na systém ($1 \leq n, q \leq 3\cdot 10^5$).
+
+Každý z nasledujúcich $q$ riadkov popisuje jednu požiadavku. Prvé číslo v riadku
+určuje typ požiadavky: $1$ znamená alokáciu a $2$ uvoľnenie. Riadok s
+požiadavkou na alokáciu pokračuje jedným celým číslom $\ell$ ($1 \leq \ell \leq
+n$). Riadok s požiadavkou na uvoľnenie pokračuje dvoma celými číslami $x$ a
+$\ell$ ($0 \leq x \leq n-1$, $1 \leq \ell \leq n-x$).
+
+
+\heading{Výstup}
+
+Pre každú požiadavku zo vstupu vypíšte jeden riadok s hodnotou vrátenou
+systémom.
+
+
+\heading{Príklad}
+
+\sampleIN
+5 4
+1 3
+1 3
+2 1 3
+1 4
+\sampleOUT
+0
+-1
+2
+1
+\sampleEND
+
+
+\end{document}
