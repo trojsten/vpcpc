@@ -12,11 +12,14 @@ In the Czech city called Kocourkov they have a spectacular public transportion s
 It consists of $N$ bus stops and $N-1$ bidirectional roads, each road connecting two bus stops.
 It is possible to get from each bus stop to every other using a sequence of roads.
 
-Every morning, from each bus stop depart $N-1$ buses, each bus heading into different bus stop.
-Each bus stops at every bus stop on the path between the departure and destination bus stop, both of them including.
+Every morning, for each pair of distinct bus stops $a$ and $b$ there is exactly one bus
+that starts at $a$ and goes to $b$ (along the only direct path).
+That is, there are a total of $N(N-1)$ buses.
+Each bus stops at all bus stops it visits along the way.
 
-At every bus stop there must be a timetable listing all the buses that stops on that particular stop.
-You are now wondering, how many buses are listed on each timetable.
+At every bus stop there must be a timetable listing all the buses that stop there (including 
+buses that start or end their journey there).
+You are now wondering how many buses are listed on each timetable.
 
 \heading{Task}
 
