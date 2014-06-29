@@ -10,7 +10,7 @@
 
 Kocourkov város közlekedési hálózata nagyon speciális. $N$ buszmegálló van, és $N-1$ közvetlen kétirányú utca, amely két buszmegállót köt össze. Bármely két buszmegálló között pontosan egy útvonal van.
 
-Minden reggel minden egyes buszmegállóból $N-1$ busz indul az összes többi buszmegállóba. Az $A$-ból $B$-be és a $B$-ből $A$-ba közlekedő buszjáratok különbözőnek tekintendők. Minden busz mindegyik megállóban megáll a kezdő- és végállomást összekötő útvonalon (beleértve a kezdő- és végállomást is).
+Minden reggel minden különböző $a$ és $b$ buszmegálló pár esetén egy buszjárat indul $a$-ból $b$-be az egyetlen lehetséges útvonalon haladva (minden buszmegállót legfeljebb egyszer érintve). Így tehát $N(N-1)$ buszjárat van. Minden buszjárat mindegyik megállóban megáll a kezdő- és végállomást összekötő útvonalon (beleértve a kezdő- és végállomást is).
 
 Minden megállóba ki kell függeszteni, hogy az adott megállóban hány járat áll meg.
 
