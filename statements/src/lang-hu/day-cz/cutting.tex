@@ -1,0 +1,68 @@
+\input sys/inputs.tex
+
+\begin{document}
+
+\bigheading{Tortaszeletelés}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{cutting}{text files}{text files}{100}{-}{-}
+
+Mimino $N$-edik születésnapját ünnepli. Kamilla egy nagy\footnote{A torta olyan nagy, hogy egy végtelen síkkal reprezentálható} tortát sütött neki, és $N$ darab gyertyát helyezett el rajta. Mimino úgy akarja felszeletelni a tortát egyenes vonalakkal, hogy minden keletkező szeleten legfeljebb egy gyertya legyen. Mimino kíváncsi, hogy minimálisan hány szeleteléssel tudja ezt megoldani.
+
+
+\heading{Feladat}
+
+Adott a síkon $N$ darab pont. Add meg egyenesek olyan halmazát, amelyek úgy bontják a síkot részekre, hogy minden részbe legfeljebb egy pont essen! Törekedj arra, hogy minél kevesebb egyenessel oldd meg a feladatot!
+
+A pontok koordinátái egész számok. Minden egyenest két pontjával kell megadni (egész koordinátákkal). Az egyenesek irányítottnak tekintendők, az első pontjuktól a második felé. Az irányításnak akkor van jelentősége, ha a bemenet egy pontja egy egyenesre esik, ekkor a pontot az egyenestől jobbra lévőnek kell tekinteni.
+
+Az egyenesek csak vízszintesek, függőlegesek vagy átlósak lehetnek.
+
+\heading{Bemenet}
+
+A bemenet első sora a pontok $N$ számát tartalmazza. A következő $N$ sor mindegyike egy pont koordinátáit tartalmazza: az $i+1$. sor az $i$. pont $x$ és $y$ koordinátáját. 
+
+\heading{Kimenet}
+
+Az első sor az egyenesek $L$ számát tartalmazza. A következő $L$ sor mindegyike egy egyenest ad meg két pontjával. Mindegyik sor négy egész számot tartalmaz: $X_1$, $Y_1$, $X_2$, $Y_2$, a két pont koordinátáit. Az ($X_1$, $Y_1$) és ($X_2$, $Y_2$) pontoknak különbözőnek kell lennie, és teljesülnie kell az alábbiaknak:
+
+\begin{itemize}
+  \item $X_1 = X_2$ (függőleges egyenes)
+  \item $Y_1 = Y_2$ (vízszintes egyenes)
+  \item $X_1 - X_2 = Y_1 - Y_2$ (átlós egyenes)
+  \item $X_1 - X_2 = Y_2 - Y_1$ (átlós egyenes)
+\end{itemize}
+
+A megoldásod legfeljebb $10\,000$ egyenest tartalmazhat, és pontjai koordinátáinak abszolút értékei legfeljebb $10\,000$ lehet.
+
+
+\heading{Pontozás}
+
+Ez egy nyílt bemenetű feladat. Letöltheted mind a $10$ teszteset bemenetét. Csupán a megfelelő kimeneti állományok feltöltése szükséges.
+
+Ha a kimenet formailag hibás vagy az egyenesek nem megfelelően vágják részekre a síkot, akkor nulla pontot kapsz a tesztesetre.
+
+Különben pontszámodat az alábbi képlet alapján számolják:
+
+$$ 10 \cdot \left(1 - \sqrt{1 - L_{min} / L}\right)$$,
+
+ahol $L$ az egyenesek száma a megoldásodban, $L_{min}$ pedig a versenyzők által adott megoldások legjobbika. Ez utóbbit a verseny után állapítják meg.
+
+\pagebreak
+
+\heading{Példa bemenet és kimenet}
+
+\sampleIN
+4
+3 1
+4 5
+6 6
+8 4
+\sampleOUT
+2
+3 2 8 7
+2 8 8 2
+\sampleEND
+
+\end{document}

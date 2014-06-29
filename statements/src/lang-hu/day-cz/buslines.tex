@@ -8,29 +8,31 @@
 % leave this values, if you are not interested
 \info{buslines}{stdin}{stdout}{100}{1000 ms}{1 GB}
 
-Kocourkov város közlekedési hálózata nagyon speciális. $N$ buszmegálló van, és $N-1$ közvetlen utca a buszmegállók között. Bármely két buszmegálló között pontosan egy útvonal van (tehát az úthálózat fa szerkezetü).
+Kocourkov város közlekedési hálózata nagyon speciális. $N$ buszmegálló van, és $N-1$ közvetlen kétirányú utca, amely két buszmegállót köt össze. Bármely két buszmegálló között pontosan egy útvonal van.
 
-A város közlekedési vállalata elhatározta, hogy bármely két megálló között külön buszjáratot üzemeltet.
-Látható, hogy így összesen $\frac{N \cdot (N - 1)}{2}$ buszjárat lesz. Lesz olyan, amely csak két megállót tartalmaz, és olyan is, amely mind az $N$-et.
+Minden reggel minden egyes buszmegállóból $N-1$ busz indul az összes többi buszmegállóba. Az $A$-ból $B$-be és a $B$-ből $A$-ba közlekedő buszjáratok különbözőnek tekintendők. Minden busz mindegyik megállóban megáll a kezdő- és végállomást összekötő útvonalon (beleértve a kezdő- és végállomást is).
 
-A vállalat minden megállóba ki akarja függeszteni, hogy az adott megállón hány járat megy keresztül (beleértve azt is, ha a megálló a járat valamelyik végpontja).
+Minden megállóba ki kell függeszteni, hogy az adott megállóban hány járat áll meg.
 
 \heading{Feladat}
 
-Írj olyan programot, amely minden megállóra kiszámítja, hogy ott hány buszjárat megy keresztül!
+Írj olyan programot, amely minden megállóra kiszámítja, hogy ott hány buszjárat áll meg!
 
 \heading{Bemenet}
 
 A bemenet első sora egy egész számot tartalmaz, a buszmegállók $N$ számát. A buszmegállókat az $1,\ldots,N$ számokkal azonosítjuk.\\
-A következő $N-1$ sor adja meg a város utcáit. Mindegyik sor két különböző egész számot tartalmaz: $x \,\, y$  ($1 \le x, y \le N$), ami azt jelenti, hogy az $x$ és $y$ buszmegállók között van közvetlen utca.\\
-\smallskip
-\noindent \textbf{Korlátok:}\\
- $1 \leq N \leq 10^6$.\\
-A tesztesetek $20\%$-ában  $N \leq 100$.\\
-A tesztesetek $50\%$-ában $N \leq 1000$.
+A következő $N-1$ sor adja meg a város utcáit. Mindegyik sor két különböző egész számot tartalmaz: $x \,\, y$  ($1 \le x, y \le N$), ami azt jelenti, hogy az $x$ és $y$ buszmegállók között van közvetlen utca.
+
+\heading{Korlátok:}
+
+\begin{itemize}
+  \item $1 \leq N \leq 10^6$.
+  \item A tesztesetek $20\%$-ában  $N \leq 100$.
+  \item A tesztesetek $40\%$-ában $N \leq 1000$.
+\end{itemize}
 
 \heading{Kimenet}
-A kimenet pontosan $N$ sort tartalmazzon. Az $i$. sor azon buszjáratok számát tartalmazza, amelyek keresztül haladnak az $i$. buszmegállón!
+A kimenet pontosan $N$ sort tartalmazzon. Az $i$. sor azon buszjáratok számát tartalmazza, amelyek megállnak az $i$. buszmegállóban!
 
 \heading{Példa bemenet és kimenet}
 
@@ -42,12 +44,12 @@ A kimenet pontosan $N$ sort tartalmazzon. Az $i$. sor azon buszjáratok számát
 4 5
 5 6
 \sampleOUT
-5
-9
-11
-11
-9
-5
+10
+18
+22
+22
+18
+10
 \sampleEND
 
 \bigskip
@@ -59,11 +61,11 @@ A kimenet pontosan $N$ sort tartalmazzon. Az $i$. sor azon buszjáratok számát
 3 2
 2 5
 \sampleOUT
-4
-9
-4
-4
-7
+8
+18
+8
+8
+14
 \sampleEND
 
 \end{document}

@@ -1,0 +1,79 @@
+\input sys/inputs.tex
+
+\begin{document}
+
+\bigheading{Krájení dortu}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{cutting}{text files}{text files}{100}{-}{-}
+
+Mimino slaví narozeniny!
+Přestože je to skutečně skvělý programátor, tak mu je teprve $N$ let.
+Kamilin kompilátor (pamatujete ze včera?) mu upekl velký\footnote{Dort je tak velký, že si jej můžeme představit jako nekonečnou rovinu.}
+čokoládový dort a dal na něj $N$ svíček.
+Mimino a jeho kamarádi už mají fakt hlad a chtěli by dort nakrájet.
+Dort budou krájet rovnými řezy tak, aby na každém kusu dortu zbyla maximálně jedna svíčka.
+
+Kolik nejméně řezů je potřeba udělat, aby byly splněny výše uvedené podmínky?
+
+\heading{Úloha}
+
+Je daná rovina a body na ní. Nalezněte množinu přímek rozdělujících rovinu na souvislé oblasti tak, aby každá oblast obsahovala maximálně $1$ bod.
+Počet přímek má být co nejmenší.
+
+Souřadnice bodů jsou všechny celočíselné.
+Přímky jsou zadány jako dvojice bodů (s celočíselnými souřadnicemi).
+Každá přímka jde směrem od prvního bodu k druhému; to je důležité v případě, že přímka protíná nějaký bod. V takovém případě se bere, že bod skončil na pravé straně přímky.
+
+Prímky mohou být pouze horizontální, vertikální nebo diagonální.
+
+\heading{Vstup}
+
+První řádek obsahuje jedno celé číslo $N$, počet bodů v rovině.
+Dalších $N$ řádků popisuje body.
+
+$(i+1)$-ní řádek obsahuje mezerou oddělené souřadnice $i$-tého bodu, $x$ a $y$.
+
+\heading{Výstup}
+
+První řádek obsahuje číslo $L$, počet přímek.
+Dalších $L$ řádků popisuje přímky.
+
+$(i+1)$-ní řádek obsahuje čtyři mezerou oddělená čísla $X_1$, $Y_1$, $X_2$, $Y_2$. Body ($X_1$, $Y_1$) a ($X_2$, $Y_2$) musí být různé. $i$-tá přímka prochází oběma body. Alespoň jedna z následujících podmínek musí být splněna:
+
+\begin{itemize}
+  \item $X_1 = X_2$ (vertikální přímka)
+  \item $Y_1 = Y_2$ (horizontální přímka)
+  \item $X_1 - X_2 = Y_1 - Y_2$
+  \item $X_1 - X_2 = Y_2 - Y_1$
+\end{itemize}
+
+Vaše řešení může obsahovat nejvíce $10\,000$ přímek a absolutní hodnota všech souřadnic musí být menší nebo rovna $10\,000$.
+
+\heading{Bodování}
+
+Pro tuto úlohu máte všechny vstupy k dispozici. Ze submitovacího systému si můžete stáhnout všech $10$ testovacích vstupů. Submitujete pouze výstup v textovém souboru.
+
+Pokud vaše řešení nedodrží výše popsaný formát nebo nerozdělí body do samostatných oblastí, dostanete skóre $0$.
+
+V opačnem případě je vaše skóre pro daný vstup rovné
+$ 10 \cdot \left(1 - \sqrt{1 - L_{min} / L}\right)$,
+kde $L$ je počet přímek ve vašem řešení a $L_{min}$ je počet přímek v nejelepším řešení submitnutém během soutěže.
+Tohle skóre se vyhodnotí až po skončení soutěže.
+
+\heading{Příklad}
+
+\sampleIN
+4
+3 1
+4 5
+6 6
+8 4
+\sampleOUT
+2
+3 2 8 7
+2 8 8 2
+\sampleEND
+
+\end{document}
