@@ -1,0 +1,84 @@
+\input sys/inputs.tex
+
+\begin{document}
+
+\bigheading{O hrozienkach}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{cutting}{text files}{text files}{100}{-}{-}
+
+Mimino má narodeniny!
+Na to aký úžasný programátor je, má iba $N$
+rokov.\footnote{Miminov názor na to, čo je to iba $N$
+by nemal ovplyvniť vaše očakávania na optimálne riešenie}
+Kamilin kompilátor (ten zovčera) mu pripravil obrovský\footnote{tak veľký, že si ho môžete predstaviť ako nekonečnú rovinu}
+čokoládový koláč a položil naň $N$ hrozienok\footnote{sviečky nechutia ako koník}.
+Mimino s kamarátmi sú už hladní a keďže kamarátov je viac ako hrozienok,
+treba koláč rozdeliť na kúsky s najviac jedným hrozienkom.
+Rezať obrovský koláč je však namáhavé a teda to treba spraviť
+na čo najmenej rezov.
+
+\heading{Úloha}
+
+Máme rovinu z $N$ bodmi. Rozdeľte ju čo najmenším počtom priamok na oblasti obsahujúce najviac jeden bod.
+
+Súradnice bodov sú celé čísla. Priamky sú zadané pomocou dvoch celočíselných súradníc.
+Priamky sú orientované z prvého bodu do druhého.
+Orientáca sa používa na určenie do ktorej časti patrí
+vstupný bod, ak ho priamka pretína --
+patrí do časti napravo od priamky.
+
+Priamky môžu byť horizontálne, vertikálne alebo diagonálne.
+
+\heading{Vstup}
+
+Prvý riadok obsahuje jedno celé číslo $N$,
+počet bodov.
+Každý z nasledujúcich $N$ riadkov obsahuje
+2 medzerou oddelené celočíslené súradnice.
+
+\heading{Výstup}
+
+Prvý riadok obsahuje celé číslo $L$, počet priamok.
+Nasledujúcich $L$ riadkov popisuje priamky.
+$(i+1)$-ty riadok pozostáva zo štyroch medzerou
+oddelených celých čísel $X_1$, $Y_1$, $X_2$, $Y_2$.
+Body ($X_1$, $Y_1$) a ($X_2$, $Y_2$) musia byť rôzne a
+navyše musí byť splnená aspoň jedna z nasledujúcich podmienok:
+
+\begin{itemize}
+  \item $X_1 = X_2$ (vertikálna priamka)
+  \item $Y_1 = Y_2$ (horizontálna priamka)
+  \item $X_1 - X_2 = Y_1 - Y_2$
+  \item $X_1 - X_2 = Y_2 - Y_1$
+\end{itemize}
+
+Môžete vypísať najviac $10\,000$ priamok a absolútne hodnoty súradníc môžu byť najviac $10\,000$.
+
+\heading{Hodnotenie}
+Toto je opendata úloha. Z testovača si môžete stiahnuť všetkých $10$ vstupov.
+Submitujete iba výstupy.
+
+Ak vaše riešenie nedodrží formát alebo nerozdelí body správne, dostanete $0$ bodov.
+
+V opačnom prípade dostanete za každý vstup
+$ 10 \cdot \left(1 - \sqrt{1 - L_{min} / L}\right)$ bodov,
+kde $L$ je počet priamok vo vašom riešení a $L_{min}$ je najlepšie riešenie zo všetkých súťažiacich.
+Počet bodov sa vyhodnotí až na konci súťaže.
+
+\heading{Príklady}
+
+\sampleIN
+4
+3 1
+4 5
+6 6
+8 4
+\sampleOUT
+2
+3 2 8 7
+2 8 8 2
+\sampleEND
+
+\end{document}
