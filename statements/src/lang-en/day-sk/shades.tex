@@ -8,40 +8,34 @@
 % leave this values, if you are not interested
 \info{shades}{stdin}{stdout}{100}{1000 ms}{1 GB}
 
-Long time ago in a galaxy far far away was a town.
-Well, we suppose it was a town.
-But it disappeared. And it left almost nothing.
-Just a shade. Dark, cold shade.
-Shade which doesn't move.
-Shade of the destiny.
-Shade \dots  OK, lets work.
-We want to know the heights of the buildings in the town.
-(To calculate the population.)
-But the heights of the shade may be scaled.
-Luckily, we know some architecture specifics of the culture
-which ocupied this planet.
+A long long time ago in a galaxy far away, there was a town.
+Well, we assume that it was a town.
+But it disappeared and almost nothing was left.
+Just a shade. A dark, cold shade.
+A shade which doesn't move.
+The shade of destiny.
 
-All the buildings in the town stand in a single line,
-with uniform widths and spaces beetwen them.
-The only thing which changes is the heights.
-There are some height paterns which are frequently used.
+We assume that all the buildings in the town stood in a single line and were equally spaced.
+All buildings had the same width, only their heights differed.
+The buildings are now gone, only their shadows remain.
+Note that the lengths of shadows don't have to be the same as the heights of the original buildings:
+they can all be scaled by the same constant factor.
 
-Your task is to find every pattern occurence in the shade
-and output the number of occurences,
-so we can decide whether paterns can help us.
-
+We are interested in the architecture of the culture that occupied the planet.
+We have multiple sequences of building heights (called ``patterns'').
+For each such pattern, we would like to find all possible occurrences in the original sequence of buildings.
 
 \heading{Task}
 
-The shade is a positive integer sequence of scaled heights.
-The patern is an a positive integer sequence of heights.
-We say that pattern occurs in the shade,
-if there is an subsequence of shade, which can be scaled,
-to be the same as the pattern.
-Find out the number of the occurences
-of the all patterns in the shade.
-(One pattern can occur multiple times)
+You are given a sequence of positive integers: the lenghts of the preserved shadows.
+You are also given several queries.
+In each query we give you one pattern.
+The pattern is a sequence of positive integers: the heights of some buildings.
+We say that a pattern occurs in the shade if there is a contiguous subsequence of the shadows
+that is the same as the pattern, scaled by a positive real factor.
 
+For each pattern, find the number of its occurrences in the original sequence.
+(The occurrences are allowed to overlap.)
 
 \heading{Input}
 
@@ -49,32 +43,37 @@ On the first line of input is a single integer $n$
 -- the number of paterns.
 
 Each of next $n$ lines describes one pattern.
-It starts with an integer $l_i$ -- the patern lenght.
-Then $l_i$ space separated positive integers follows.
+It starts with an integer $l_i$ -- the patern length.
+Then $l_i$ space separated positive integers follow.
 
 The last line describes the shade.
-It starts with an integer $m$ -- the shade lenght.
-Then $m$ space separated positive integers follows.
+It starts with an integer $m$ -- the shade length.
+Then $m$ space separated positive integers follow.
 
 \bigskip
 
-It holds:\\
-$1 \leq m \leq 3\cdot10^5$\\
-$1 \leq l_i$\\
-$\sum^{n}_{i=1} l_i \leq m$\\
-All the sequence numbers are at most $10000$.
+Constraints:
+\begin{itemize}\itemsep -2pt
+\item
+$1 \leq m \leq 3\cdot10^5$
+\item
+$1 \leq l_i$
+\item
+$\sum^{n}_{i=1} l_i \leq m$
+\item
+All heights and lengths are between 1 and $10\,000$, inclusive.
+\end{itemize}
 
 \smallskip
 
-In the $40\%$ of testcases also holds $m \leq 1000$.
+In $40\%$ of testcases we have $m \leq 1000$.
 
 \heading{Output}
 
-Output a line with single integer
--- the number of occurences of the patterns in the shade.
+Output a single line with a single integer
+-- the total number of occurrences of all patterns in the shade.
 
 \heading{Samples}
-
 
 \sampleIN
 4
@@ -86,9 +85,8 @@ Output a line with single integer
 \sampleOUT
 15
 \sampleCOMMENT
-The first patterns can be scaled to
-each height and so occurs 7 times.
-The second and the third patterns occurs each one 3 times.
+The first patterns can be scaled to any height and so it occurs 7 times.
+The second and the third pattern each occur 3 times.
 The fourth pattern occurs 2 times.
 \sampleEND
 

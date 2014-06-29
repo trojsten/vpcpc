@@ -8,62 +8,50 @@
 % leave this values, if you are not interested
 \info{hyperways}{stdin}{stdout}{100}{3000 ms}{1 GB}
 
-Oods\&co intergalactic company will build a network of hyperways
+The intergalactic company Oods\&co is going to build a network of hyperways%
 \footnote{hyperspace highways, also called hyhi}
-connecting planets of our galaxy in few next centuries.
-They have already prepared an construction plan.
-(An order of building hyperways.)
-It remains to check whether the plan satisfies
-intergalaxy hyhi safety regulations.
-To do this, Oods will need to calculate
-the number of safe highways
-after each step of construction.
-Acording to the
-Project of local planets integration
-you will code it.
-
+that will connect the planets of our galaxy.
+They have already prepared a construction plan,
+i.e., a sequential order of building the hyperways.
+Each hyperway will be a bidirectional corridor that will connect two (not necessarily distinct) planets.
 
 \heading{Task}
 
-The hyperway is safe
-if it is not the only one connecting
-some two planets
-(e.g. it lies on some hyperway cycle).
-You will be given the order in which hyperways
-will be constructed.
-After each construction there may
-be some hyperways, which have became safe.
-Output the number of them.
-Note that when you are just adding hyperways,
-they can just became safe from unsafe,
-not the other way!
+A hyperway is \emph{safe} if it is not the only hyperway that connects (directly or indirectly)
+some pair of planets. In other words, a hyperway $H$ is \emph{unsafe} if there are two planets
+$A$ and $B$ such that when traveling from $A$ to $B$ we have to use $H$. (Alternately, note that safe 
+hyperways are the ones that lie on some cycle.)
 
+You will be given the order in which hyperways will be constructed.
+After each construction there may be some hyperways which have just become safe.
+(Including, possibly but not necessarily, the hyperway that was just built.)
+Count those hyperways.
+
+Note that if a hyperway is already safe, it will remain safe for the rest of the construction.
 
 \heading{Input}
 
-On the first line of input are two integers $n$ and $m$.
+On the first line of input are two integers $n$ and $m$:
 $n$ is the number of planets in the plan,
 $m$ is the number of hyperways.
 The planets are numbered $1$ \dots $n$.
 
 Each of next $m$ lines consists
 of two space separated integers --
-the id's of planets next hyperway will join.
-All the hyperways are passable in all directions.
+the ids of planets next hyperway will join.
 There can be a hyperway connecting a planet with itself.
 There can be a multiple hyperways between two planets.
 
 \smallskip
 
-It holds $n \leq 10^6$, $m \leq 2\cdot10^6$.\\
-In the $40\%$ of testcases also holds
-$n \leq 1000$, $m \leq 2000$.
+In all test cases, $n \leq 10^6$ and $m \leq 2\cdot10^6$.
+
+In $40\%$ of test cases, $n \leq 1000$ and $m \leq 2000$.
 
 \heading{Output}
 
-Output a line with single integer for each hyperway in the input --
-the number of hyperways which will become safe by adding it
-(including the hyperway itself).
+For each hyperway in the input, output a single line with a single integer:
+the number of hyperways that just became safe.
 
 \heading{Samples}
 
