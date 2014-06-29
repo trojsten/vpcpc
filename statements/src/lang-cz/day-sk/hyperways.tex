@@ -9,24 +9,24 @@
 \info{hyperways}{stdin}{stdout}{100}{3000 ms}{1 GB}
 
 Intergalaktická společnost Oods\&co vybuduje
-během následujícího století v naší galaxii
-sít hypernic.\footnote{hyperprostorové dálnice, takzvané hyhi}
-Plány stavby (pořadí stavění dálnic) jsou již hotové.
-Zbývá zkontrolovat zda jsou dodržené
-směrnice pro bezpečnost výstavby hypernic.
-A k tomu je potřeba zjistit změny v počtu
-bezpečných hypernic během výstavby.
-V rámci projektu rozvoje zaostalých planet
-to budete programovat vy.
+během následujícího století sít hypernic,\footnote{hyperprostorové dálnice, takzvané hyhi}
+které budou spojovat planety v naší galaxii.
+Již je také hotový plán stavby, t.j. pořadí stavby hypernic.
+Každá hypernice bude obousměrný tunel spojující dvě (ne nutně různé) planety.
 
 \heading{Úloha}
 
-Hypernice je bezpečná, pokud neexistují 2 planety,
-mezi kterými je jedinou cestou.
-(Tedy, pokud je součástí nějakého hypernicového cyklu.)
-Když přidáváme hypernice, počet těch bezpečných se může jedině zvýšit.
-Dostanete pořadí, ve kterém stavíme hypernice.
-Po každé stavbě řekněte, kolik hypernic se stalo bezpečnými.
+Hypernice je \emph{bezpečná}, pokud není jedinou hypernicí spojující (přímo nebo nepřímo) nějakou dvojici planet.
+Jinými slovy, hypernice $H$ je \emph{riziková} pokud existuje dvojice planet $A$ a $B$ taková, že
+pokud cestujeme z $A$ do $B$, tak musíme použít hypernici $H$.
+(Povšimněte si, že bezpečné hypernice jsou ty, které jsou součástí nějakého cyklu.)
+
+Na vstupu dostanete pořadí, ve kterém budou hypernice postaveny.
+Po každé stavbě se mohou nějaké hypernice stát bezpečnými.
+(Včetně, možná ale ne nutně, právě vybudované hypernice.)
+Spočítejte je.
+
+Povšimněte si, že hypernice, které již bezpečné jsou, tak bezpečnými zůstanou až do konce stavby.
 
 \heading{Vstup}
 
@@ -36,8 +36,8 @@ $m$ je počet hypernic.
 Planety jsou číslované $1 \dots n$.
 
 Každý z následujících $m$ řádků obsahuje 2
-mezerou oddělená celá čísla.
-Jsou to indexy planet, které spojuje další hypernice.
+mezerou oddělená celá čísla --
+indexy planet, které spojuje další hypernice.
 Všechny hypernice jsou obousměrné.
 Mezi dvěma planetami může vézt více hypernic
 a hypernice může vézt i z planety do ní samotné.
