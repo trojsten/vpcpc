@@ -1,0 +1,86 @@
+\input sys/inputs.tex
+
+\begin{document}
+
+\bigheading{Vyšetřování}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{investigation}{stdin}{stdout}{100}{1000 ms}{1 GB}
+
+Ve městě Bytelandia se stala loupež!
+Zloději se podařilo utéct and ukrýt někde ve městě.
+Vy tento zločin vyšetřujete. Vaším ůkolem je nalézt a uvěznit zloděje.
+
+Město se skládá z $N$ domů a $N-1$ cest. Cesty spojují některé dvojice domů
+takovým spůsobem, že mezi každou dvojicí domů existuje právě jedna unikátní cesta
+(tzn. město má stromovou strukturu).
+Zloděj se ukrývá v jednom z domů.
+
+Aby jste zloděje nalezli, můžete si zvolit dům $h$ a celý jej prohledat.
+Pokud se v tom domě zloděj nacházel, zatknete ho.
+V opačnem případě po drastickém vyslíchání všech obyvatel domu se dozvíte následující informaci:
+``Pokud si představíte město jako zakořeněný strom, s domem $h$ jako kořenem a domy $c_1, c_2 \ldots c_m$ jako jeho syny,
+pak se zloděj ukrýva v jednom z domů v podstromu zakořeněném v $c_i$ (pro $i$, $1 \leq i \leq m$).''
+
+Domy musíte prohledávat až dokud zloděje nenajdete.
+Můžete předpokládat, že se zloděj ukrýva ve stejném domě po celou dobu vyšetřování (tzn. zloděj nemění svou lokaci).
+
+Je zřejmé, že na pořadí, ve kterém domy prohledáváte záleží, protože i když v nějakém
+domě zloděje nenajdete, tak informace, kterou po vyslíchání získate může značně
+omezit počet domů, ve kterých se zloděj může nacházet.
+Potřebujete tedy vymyslet optimální strategii, se kterou minimalizujete počet
+prohledaných domů v nejhorším možném případě.
+
+\heading{Úloha}
+
+Na vstupu dostanete popis města.
+Vymyslete strategii pro prohledávání domů, tak aby jste minimalizovali
+počet prohledaných domů v nejhorším možném případě.
+
+\heading{Vstup}
+
+První řádek obsahuje jedno celé číslo $N$, počet domů ve městě (domy jsou očíslované od $0$ do $N-1$).
+
+Druhý řádek obsahuje $N-1$ mezerou oddělených čísel, $v_1 v_2 \ldots v_{N-1}$.
+Číslo $v_i$ ($1 \leq i \leq N-1$) znamená, že existuje cesta, která vede medzi domy s čísly $v_i$ a $i$ ($v_i < i$).
+
+\smallskip
+\noindent
+Platí $2 \leq N \leq 10^5$.\\
+Ve $20\%$ případů $N \leq 10$.\\
+Ve $40\%$ případů $N \leq 20$.\\
+Ve $60\%$ případů $N \leq 1000$.
+
+\heading{Výstup}
+
+Na výstup vypište právě jedno číslo, počet domů, které je nutné prohledat v
+nejhorším možném případě, když budete prohledávat podle optimálni strategie.
+
+\heading{Příklad}
+
+\sampleIN
+5
+0 1 1 1
+\sampleCOMMENT
+Struktura města vypadá jako hvězda, s domem č. 1 ve středu.
+\sampleOUT
+2
+\sampleCOMMENT
+Jako první prohledejte dům č. 1.
+Pokud tam zloděje nenajdete, tak po vyslíchání už budete vědět, ve kterém domě se nachází.
+\sampleEND
+
+
+\bigskip
+
+
+\sampleIN
+8
+0 1 2 1 3 5 6
+\sampleOUT
+3
+\sampleEND
+
+
+\end{document}
