@@ -1,0 +1,46 @@
+\input sys/inputs.tex
+
+\begin{document}
+
+\bigheading{Dinamikus memória foglalás}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{malloc}{stdin}{stdout}{100}{FIXME}{1 GB}
+Kamilla új programozási nyelvet tervez, ami minden eddigit felülmúl majd. Program írása egyszerűbb lesz, mint az ábécé, még kisgyerekek is képesek lesznek programozni\footnote{Megjegyzendő, hogy hibás programot nem lehet majd írni, mert a fordító kijavítja.}. Van azonban még néhány megoldandó kérdés, például a memóriakezelés még nem működik. \\
+Kamilla kidolgozta a memória foglalás és felszabadítás pontos specifikációját, de nem maradt ideje ezt megvalósítani, ebben kell segítened.
+
+\heading{Feladat}
+A rendelkezésre álló memória egy $n$ byte-ból álló sorozat,  $0$ tól $n-1$-ig sorszámozva a byte-okat. Kezdetben minden byte szabad (vagyis nem lefoglalt). A memóriakezelő-rendszer ezután lefoglal, illetve felszabadít memória blokkokat az érkező kéréseknek megfelelően.
+
+Minden \emph{lefoglal} kérést egy $\ell$ pozitív egész szám ad meg. A rendszer keres egy $\ell$ hosszú szabad blokkot, lefoglalja és a blokk kezdő byte-jának címét adja vissza. Ha több megfelelő blokk is lenne, akkor a legkisebb kezdőcíműt választja. Ha nincs megfelelő blokk, akkor $-1$ értéket ad vissza.
+
+Minden \emph{felszabadít} kérést két egész szám ad meg: $x$ és $\ell$. A rendszer megjelöli szabadként az $x$ kezdetű és $\ell$ hosszú összefüggő memória blokkot és visszaadja azon byte-ok számát, amelyek nem voltak szabadok a felszabadítás előtt.
+
+\heading{Bemenet}
+
+A bemenet első sora két egész számot tartalmaz: $n$ és $q$ -- a rendelkezésre álló memória byte-jainak számát és a kérések számát  ($1 \leq n \leq FIXME$, $1 \leq q \leq FIXME$).\\
+A következő $q$ sor mindegyike egy kérést tartalmaz. A sorban az első szám adja meg, hogy a kérés lefoglalás vagy felszabadítás: $1$ a lefoglalás, $2$ pedig a felszabadítás. Lefoglalás esetén a következő szám $\ell$ ($1 \leq \ell \leq n$) a lefoglalandó memória méretét adja meg. Felszabadítás kérés esetén két egész szám következik, $x$ és $\ell$ ($0 \leq x \leq n-1$, $1 \leq \ell \leq n-x$).
+
+
+\heading{Kimenet}
+
+ A kimenet $q$ sort tartalmazzon, ahány kérés volt. Az $i$. sor a rendszer által az $i$.  műveletre visszaadott értéket tartalmazza!
+
+\heading{Példa bemenet és kimenet}
+
+\sampleIN
+5 4
+1 3
+1 3
+2 1 3
+1 4
+\sampleOUT
+0
+-1
+2
+1
+\sampleEND
+
+
+\end{document}

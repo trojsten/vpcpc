@@ -1,0 +1,63 @@
+\input sys/inputs.tex
+
+\begin{document}
+
+\bigheading{Házak árnyékai}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{shades}{stdin}{stdout}{100}{1000 ms}{1 GB}
+Egy város házai egyetlen sorban, egymástól azonos távolságban helyezkednek el.
+Az épületek árnyékképének magasságait megmérték és feljegyezték, az eredmény egy egész számokat tartalmazó számsorozat.
+Az árnyékkép-sorozat elemei nem a házak valódi magasságát tartalmazzák, hanem torzítottak, de mindegyik azonos mértékben torzított (pl. mindegyik $t$-szerese a valódinak).\\
+Egy adott mintának az összes előfordulását keressük.
+
+\heading{Feladat}
+
+Adott egy árnyékkép-sorozat és több minta. Minden minta szintén egész számokból álló sorozat.
+Azt mondjuk, hogy a minta előfordul az árnyékkép-sorozatban, ha az árnyékkép-sorozatnak van olyan (összefüggő) részsorozata, hogy valamely $t$ torzítást erre alkalmazva az megegyezik a mintával.
+Egy minta többször is előfordulhat az árnyékkép-sorozatban.
+
+
+\heading{Bemenet}
+
+A bemenet első sora egy $n$ egész számot tartalmaz -- a minták számát.
+A következő $n$ sor mindegyike egy minta leírását tartalmazza. A sorban az első egész szám $l_i$ -- a minta hossza (a sorozat elemeinek a száma). Ezt követi egy-egy szóközzel elválasztva $l_i$ pozitív egész szám, a minta elemei.
+
+A bemenet utolsó sora tartalmazza az árnyékkép-sorozatot. A sorban az első szám $m$ az árnyékkép hossza (a sorozat elemeinek a száma). Ezt követi egy-egy szóközzel elválasztva $m$ pozitív egész szám, az árnyékkép-sorozat elemei.
+
+\bigskip
+
+\noindent Korlátok:\\
+$1 \leq m \leq 3\cdot10^5$\\
+$1 \leq l_i$\\
+$\sum^{n}_{i=1} l_i \leq m$\\
+Minden sorozat minden eleme legfeljebb $10000$.
+
+\smallskip
+
+A tesztesetek $40\%$-ában $m \leq 1000$.
+
+\heading{Kimenet}
+
+A kimenet egyetlen egész számot tartalmazzon, a minták előfordulási számát az árnyékkép-sorozatban!
+
+\heading{Minta bemenet és kimenet}
+
+\sampleIN
+4
+1 47
+2 21 42
+2 34 17
+3 1 2 1
+7 3 6 3 6 12 6 3
+\sampleOUT
+15
+\sampleCOMMENT
+Az első minta 7-szer fordul elő, mert az árnyékkép-sorozat minden eleméhez van olyan $t$, hogy annak $t$-szerese megegyezik a minta egyetlen elemével.\\
+A második és harmadik minta mindegyike 3-szor fordul elő.\\
+A negyedik minta kétszer fordul elő, így jön ki a 15 végeredmény.
+\sampleEND
+
+
+\end{document} 
