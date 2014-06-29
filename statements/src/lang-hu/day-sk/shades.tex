@@ -9,14 +9,14 @@
 \info{shades}{stdin}{stdout}{100}{1000 ms}{1 GB}
 Egy város házai egyetlen sorban, egymástól azonos távolságban helyezkednek el.
 Az épületek árnyékképének magasságait megmérték és feljegyezték, az eredmény egy egész számokat tartalmazó számsorozat.
-Az árnyékkép-sorozat elemei nem a házak valódi magasságát tartalmazzák, hanem torzítottak, de mindegyik azonos mértékben torzított (pl. mindegyik $t$-szerese a valódinak).\\
+Az árnyékkép-sorozat elemei nem a házak valódi magasságát tartalmazzák, hanem torzítottak, de mindegyik azonos mértékben torzított (pl. mindegyik $t$-szerese a valódinak, azaz a torzítás mértéke $t$).\\
 Egy adott mintának az összes előfordulását keressük.
 
 \heading{Feladat}
 
 Adott egy árnyékkép-sorozat és több minta. Minden minta szintén egész számokból álló sorozat.
-Azt mondjuk, hogy a minta előfordul az árnyékkép-sorozatban, ha az árnyékkép-sorozatnak van olyan (összefüggő) részsorozata, hogy valamely $t$ torzítást erre alkalmazva az megegyezik a mintával.
-Egy minta többször is előfordulhat az árnyékkép-sorozatban.
+Azt mondjuk, hogy a minta előfordul az árnyékkép-sorozatban, ha az árnyékkép-sorozatnak van olyan összefüggő részsorozata, hogy valamely $t$ torzítást erre alkalmazva az megegyezik a mintával.
+Egy minta többször is előfordulhat az árnyékkép-sorozatban, átfedés is megengedett.
 
 
 \heading{Bemenet}
@@ -28,11 +28,24 @@ A bemenet utolsó sora tartalmazza az árnyékkép-sorozatot. A sorban az első 
 
 \bigskip
 
-\noindent Korlátok:\\
-$1 \leq m \leq 3\cdot10^5$\\
-$1 \leq l_i$\\
-$\sum^{n}_{i=1} l_i \leq m$\\
-Minden sorozat minden eleme legfeljebb $10000$.
+Constraints:
+\begin{itemize}\itemsep -2pt
+\item
+$1 \leq m \leq 3\cdot10^5$
+\item
+$1 \leq l_i$
+\item
+$\sum^{n}_{i=1} l_i \leq m$
+\item
+All heights and lengths are between 1 and $10\,000$, inclusive.
+\end{itemize}
+
+
+%\noindent Korlátok:\\
+%$1 \leq m \leq 3\cdot10^5$\\
+%$1 \leq l_i$\\
+%$\sum^{n}_{i=1} l_i \leq m$\\
+%Minden sorozat minden eleme legfeljebb $10000$.
 
 \smallskip
 
@@ -40,7 +53,7 @@ A tesztesetek $40\%$-ában $m \leq 1000$.
 
 \heading{Kimenet}
 
-A kimenet egyetlen egész számot tartalmazzon, a minták előfordulási számát az árnyékkép-sorozatban!
+A kimenet egyetlen egész számot tartalmazzon, a minták összes előfordulási számát az árnyékkép-sorozatban!
 
 \heading{Minta bemenet és kimenet}
 
