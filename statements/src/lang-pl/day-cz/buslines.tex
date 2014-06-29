@@ -1,0 +1,84 @@
+\input sys/inputs.tex
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+\usepackage{polski}
+
+\begin{document}
+
+\bigheading{Bus lines}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{buslines}{stdin}{stdout}{100}{3000 ms}{1 GB}
+
+W czeskim mieście Kocourkov organizacja komunikacji miejskiej jest dosyć dziwna.
+W mieście znajduje się $N$ przystanków i $N-1$ dróg.
+Każda droga łączy dwa przystanki.
+Korzystając z tych dróg, możliwa jest podróż między dowolnymi dwoma przystankami.
+
+Każdego ranka, z każdego przystanku wyrusza $N-1$ autobusów -- każdy z nich kieruje się do innego przystanku.
+Sumarycznie busów jest $N \cdot (N - 1)$.
+Podczas trasy, autobus zatrzymuje się na wszystkich przystankach, które napotka na drodze.
+Na przystankach należy wywiesić rozkłady jazdy autobusów.
+Zastanawiasz się jak długi jest rozkład jazdy na każdym przystanku.
+
+\heading{Task}
+
+Mając dany opis przystanków i dróg, które je łączą,
+	oblicz dla każdego przystanku, ile autobusów się na nim zatrzymuje.
+
+\heading{Input}
+
+W pierwszej linii wejścia znajduje się jedna liczba $N$ ($1 \le N \le 10^6$),
+	oznaczająca liczbę przystanków autobusowych w Kocourkovie
+	(przystanki są ponumerowane od $1$ do $N$).
+Następne $N-1$ linii zawiera opisy dróg.
+Każda linia składa się z dwóch różnych liczb całkowitych $x$ i $y$ ($1 \le x, y \le N$),
+	które oznaczają, że istnieje droga łącząca przystanki nr $x$ i nr $y$.
+
+W $20\%$ testów zachodzi dodatkowy warunek $N \le 100$.
+
+W $40\%$ testów zachodzi dodatkowy warunek $N \le 1\,000$.
+
+\heading{Output}
+
+Wyjście powinno składać się z $N$ wierszy, a $i$-ty z nich powinien zawierać jedną liczbę całkowitą
+	-- liczbę autobusów zatrzymujących się na $i$-tym przystanku.
+
+\heading{Samples}
+
+
+\sampleIN
+6
+1 2
+2 3
+3 4
+4 5
+5 6
+\sampleOUT
+10
+18
+22
+22
+18
+10
+\sampleEND
+
+\sampleIN
+5
+4 5
+2 1
+3 2
+2 5
+\sampleOUT
+8
+18
+8
+8
+14
+\sampleEND
+
+
+\end{document}
