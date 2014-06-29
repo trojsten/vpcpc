@@ -6,7 +6,7 @@
 
 % \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
 % leave this values, if you are not interested
-\info{malloc}{stdin}{stdout}{100}{FIXME}{1 GB}
+\info{malloc}{stdin}{stdout}{100}{1200 ms}{1 GB}
 Kamilla új programozási nyelvet tervez, ami minden eddigit felülmúl majd. Program írása egyszerűbb lesz, mint az ábécé, még kisgyerekek is képesek lesznek programozni\footnote{Megjegyzendő, hogy hibás programot nem lehet majd írni, mert a fordító kijavítja.}. Van azonban még néhány megoldandó kérdés, például a memóriakezelés még nem működik. \\
 Kamilla kidolgozta a memória foglalás és felszabadítás pontos specifikációját, de nem maradt ideje ezt megvalósítani, ebben kell segítened.
 
@@ -19,7 +19,8 @@ Minden \emph{felszabadít} kérést két egész szám ad meg: $x$ és $\ell$. A 
 
 \heading{Bemenet}
 
-A bemenet első sora két egész számot tartalmaz: $n$ és $q$ -- a rendelkezésre álló memória byte-jainak számát és a kérések számát  ($1 \leq n \leq FIXME$, $1 \leq q \leq FIXME$).\\
+A bemenet első sora két egész számot tartalmaz: $n$ és $q$ -- a rendelkezésre álló memória byte-jainak számát és a kérések számát  ($1 \leq n, q \leq
+3\cdot 10^5$).\\
 A következő $q$ sor mindegyike egy kérést tartalmaz. A sorban az első szám adja meg, hogy a kérés lefoglalás vagy felszabadítás: $1$ a lefoglalás, $2$ pedig a felszabadítás. Lefoglalás esetén a következő szám $\ell$ ($1 \leq \ell \leq n$) a lefoglalandó memória méretét adja meg. Felszabadítás kérés esetén két egész szám következik, $x$ és $\ell$ ($0 \leq x \leq n-1$, $1 \leq \ell \leq n-x$).
 
 

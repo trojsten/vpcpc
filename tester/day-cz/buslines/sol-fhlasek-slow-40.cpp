@@ -1,5 +1,5 @@
 /* Written by Filip Hlasek 2014 */
-/* Complexity: O(N^3) means it should get at least 20 points */
+/* Complexity: O(N^2) means it should get 40 points */
 #include <cstdio>
 #include <cstdlib>
 #include <vector>
@@ -12,18 +12,14 @@ vector<int> graph[MAXN];
 int N;
 long long ans[MAXN];
 
-bool dfs(int start, int goal, int from) {
-  if (start == goal) {
-    ans[start]++;
-    return true;
+// Returns a subtree size
+int dfs(int node, int parent) {
+  int subtree_size = 1;
+  REP(i, graph[node].size()) if (graph[node][i] != parent) {
+    subtree_size += dfs(graph[node][i], node);
   }
-  REP(i, graph[start].size()) {
-    if (graph[start][i] != from && dfs(graph[start][i], goal, start)) {
-      ans[start]++;
-      return true;
-    }
-  }
-  return false;
+  ans[node] += subtree_size;
+  return subtree_size;
 }
 
 int main(int argc, char *argv[]) {
@@ -34,7 +30,7 @@ int main(int argc, char *argv[]) {
     graph[x].push_back(y);
     graph[y].push_back(x);
   }
-  REP(i, N) REP(j, i) dfs(i, j, -1);
-  REP(i, N) printf("%lld\n", 2 * ans[i]);
+  REP(i, N) dfs(i, -1);
+  REP(i, N) printf("%lld\n", 2 * (ans[i] / 2));
   return 0;
 }

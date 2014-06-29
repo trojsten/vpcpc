@@ -1,0 +1,91 @@
+\input sys/inputs.tex
+
+\begin{document}
+
+\bigheading{Stín města}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{shades}{stdin}{stdout}{100}{1000 ms}{1 GB}
+
+Bylo, nebylo, bylo jednou jedno město.\footnote{Vyskytují se jisté pochybnosti o správnosti překladu.}
+Tedy \dots předpokládejme, že to bylo město.
+Každopádně, toto město zmizelo a nezanechalo po sobě vůbec nic.
+Skoro nic. Jenom stín. Studený, tmavý stín.
+Stín, který se nehýbe. Stín osudu.
+Stín \dots OK, dost bylo povídání.
+Jdeme kódit.
+Potřebujeme zjistit výšky budov ve městě.
+Stín však může být libovolně roztažený.
+Naštěstí známe detaily o architektuře civilizace, která v této oblasti bydlela.
+
+Město se skládalo z budov seřazených v řadě.
+Stejně široké, stejně vzdálené. Pouze výšky měly různé.
+Dokonce i ty měly svoje vzory.
+
+Tvým úkolem bude najít všechny výskyty vzorů v stínu a vypsat jejich počet.
+
+\heading{Úloha}
+
+Stín je posloupnost celých čísel - naškálovaných výšek.
+Vzor je také posloupnost celých čísel - výšek.
+Řekneme, že vzor má výskyt ve stínu,
+pokud existuje taková souvislá podposloupnost stínu,
+že po jejím naškálování dostaneme vzor.
+(Vzor může mít ve stínu i více výskytů)
+
+\heading{Vstup}
+
+První řádek vstupu obsahuje celé číslo $n$
+-- počet vzorů.
+
+Každý z následujících $n$ řádků popisuje jeden vzor.
+Začíná jedním celým číslem $l_i$ -- délkou vzoru.
+Po něm následuje $l_i$ mezerou odddělených kladných celých čísel.
+
+Poslední řádek popisuje stín.
+Začíná jedním celým čáslem $m$ -- délkou stínu.
+Po něm následuje $m$ mezerou oddělených kladných celých čísel.
+
+\bigskip
+
+\noindent
+Platí:
+
+\begin{itemize}
+  \item $1 \leq m \leq 3\cdot10^5$
+  \item $1 \leq l_i$
+  \item $\sum^{n}_{i=1} l_i \leq m$
+\end{itemize}
+Všechny členy posloupností jsou nejvíce $10\ 000$.
+
+\smallskip
+
+\noindent
+Ve $40\%$ vstupů dokonce platí $m \leq 1000$.
+
+\heading{Výstup}
+
+Vypište jeden řádek s počtem všech výskytů
+všech vzorů ve stínu.
+
+\heading{Příklady}
+
+
+\sampleIN
+4
+1 47
+2 21 42
+2 34 17
+3 1 2 1
+7 3 6 3 6 12 6 3
+\sampleOUT
+15
+\sampleCOMMENT
+První vzor může být naškálovaný na jakoukoliv výšku.
+Proto se vyskytuje 7 krát. Druhý se třetím se
+vyskytují 3 krát a poslední vzor 2 krát.
+\sampleEND
+
+
+\end{document}
