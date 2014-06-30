@@ -8,12 +8,12 @@ for i in test/*.in ; do
 	echo -n "sysel: "
 	(time ./sol-sysel-ok < $i > $o) 2>&1 | grep "user"
 
-	# echo -n "bob: "
-	# (time ./sol-bob-TC < $i > temp.out) 2>&1 | grep "user"
+	echo -n "misof: "
+	(time ./sol-misof-sqrt < $i > temp.out) 2>&1 | grep "user"
 
-	# diff $o temp.out
+	diff $o temp.out
 
 	echo ""
 done
 
-# rm temp.out
+rm temp.out
