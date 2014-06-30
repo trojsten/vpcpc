@@ -1,0 +1,86 @@
+\input sys/inputs.tex
+
+\begin{document}
+
+\bigheading{Univerzity}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{universities}{stdin}{stdout}{100}{1000 ms}{1 GB}
+
+Keď Luxusko úspešne zmaturoval, čakalo ho neľahké rozhodnutie -- výber vhodnej vysokej školy.
+Povedal si teda, že sa poobzerá po všetkých zaujímavých vysokých školách. Takých je na Slovensku
+práve $N$ a rozlišujú sa podľa toho, či ich absolventi vychádzajú zo školy chlpatejší alebo
+plešatejší. O každej univerzite teda povieme, že je chlpatá alebo plešatá. Naviac, pre zvláštnu
+topológiu slovenských miest, sú tieto univerzity pospájané pomocou $N-1$ obojsmerných ciest. Dokonca
+je zaručené, že medzi každou dvojicou univerzít sa dá dostať postupnosťou ciest (všimnite si, že
+táto postupnosť je jednoznačná).
+
+Rozhodol sa, že si naplánuje výlet naprieč niektorými univerzitami. Každá univerzita má udanú
+konštantu šťastia, ktorá hovorí, o koľko sa zvýši Luxuskove šťastie, keď navštívi danú univerzitu. V
+prípade, že je táto hodnota záporná, Luxusko zosmutnie.
+
+Plán výletu vyzerá nasledovne. Vyberie si dve univerzity $x$ a $y$ a následne navštívi všetky
+univerzity na ceste z univerzity $x$ do univerzity $y$ vrátane $x$ a $y$. A aby si zachoval svoje
+krásne vlasy aj slizkú hruď, musí navštíviť rovnako veľa chlpatých ako plešatých univerzít, aby
+zostal vyvážený.
+
+Posledná otázka je, ako naplánovať výlet aby maximalizoval získané šťastie, ktoré z neho bude mať.
+To sa vypočíta ako súčet konštát šťastia pre navštívené univerzity.
+
+\heading{Úloha}
+
+Na vstupe dostanete popis univerzít a ciest, ktoré ich spájajú. Nájdite optimálny plán výletu, pri
+ktorom navštívi rovnaký počet chlpatých ako plešatých univerzít a celkové šťastie z výletu bude
+maximálne.
+
+\heading{Vstup}
+
+Na vstupe sú štyri riadky.
+
+Prvý riadok obsahuje celé číslo $N$ ($2 \leq N \leq 10^5$) -- počet univerzít. Tieto uviverzity
+číslujeme od $1$ po $N$.
+
+Druhý riadok obsahuje reťazec písmen dĺžky $N$, ktorý pozostáva z písmen \texttt{B} a \texttt{W}.
+$i$-ty znak je \texttt{B}, ak je $i$-ta univerzita plešatá a \texttt{W} ak je chlpatá. Môžete
+predpokladať, že na vstupe je aspoň jedna univerzita každého typu.
+
+Tretí riadok obsahuje $N$, medzerou oddelených čísiel $h_i$ ($-10^5 \leq h_i \leq 10^5$) --
+konštanta šťastia $i$-tej univerzity.
+
+Na poslednom riadku je $N-1$ medzerou oddelených čísiel $v_i$ ($1 \leq v_i \leq i$), kde číslo $v_i$ znamená, že medzi
+univerzitami $v_i$ a $i+1$ vedie cesta.
+
+\heading{Výstup}
+
+Vypíšte jedno číslo, maximálne možné šťastie, ktoré vie Luxusko získať na výlete, ak navštívi
+rovnako veľa chlpatých a plešatých univerzíť.
+
+\heading{Príklady}
+
+
+\sampleIN
+6
+BWBBBW
+6 0 3 -2 100 5
+1 2 2 4 4
+\sampleOUT
+9
+\sampleCOMMENT
+Optimálna cesta vyzerá: $1,2,4,6$.
+\sampleEND
+
+\bigskip
+
+\sampleIN
+3
+WBW
+1 -10 5
+1 2
+\sampleOUT
+-5
+\sampleCOMMENT
+Luxusko musí navštíviť aspoň dve univerzity a odpoveď teda môže byť aj záporná.
+\sampleEND
+
+\end{document}
