@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
-#define Maxn 20000
+#define Maxn 100007
 using namespace std;
 
 typedef long long int64;
