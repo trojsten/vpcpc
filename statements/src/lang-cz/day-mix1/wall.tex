@@ -28,8 +28,8 @@ tak celková cena jeho opravy je rovna:
 
 Jsou zadány souřadnice míst na hradbách, které je třeba spravit,
 a počáteční poloha robota.
-Navíc víte, že přesun robota z místa na souřadnici $x$ do místa na souřadnici $y$
-zabere $|x - y|$ jednotek času.
+  Navíc víte, že přesun robota z místa na souřadnici $x_1$ do místa na souřadnici $x_2$
+zabere $|x_1 - x_2|$ jednotek času.
 Spočítejte nejmenší cenu potřebnou k opravě všech míst, které to potřebují.
 Můžete předpokládat, že samotné opravy zaberou zanedbatelně mnoho času.
 
@@ -55,17 +55,17 @@ za kterou je možné hradby opravit.
 
 \sampleIN
 3 7
-3 5 1
 10 32 1
+3 5 1
 14 0 2
 \sampleOUT
 72
 \sampleCOMMENT
 Optimální plán opravy je následující:
 \begin{itemize}
-	\item Přesuň robota ze souřadnice $7$ na souřadnici $10$ a nechej ho opravit druhé místo v čase $3$.
+	\item Přesuň robota ze souřadnice $7$ na souřadnici $10$ a nechej ho opravit první místo v čase $3$.
 	\item Přesuň robota ze souřadnice $10$ na souřadnici $14$ a nechej ho opravit třetí místo v čase $3 + 4 = 7$.
-	\item Přesuň robota ze souřadnice $14$ na souřadnici $3$ a nechej ho opravit první místo v čase $3 + 4 + 11 = 18$.
+	\item Přesuň robota ze souřadnice $14$ na souřadnici $3$ a nechej ho opravit druhé místo v čase $3 + 4 + 11 = 18$.
 \end{itemize}
 Celková cena takové opravy hradeb je tedy rovna\\
 $5 + 18 \cdot 1 + 32 + 3 \cdot 1 + 0 + 7 \cdot 2 = 72$.
