@@ -1,0 +1,73 @@
+\input sys/inputs.tex
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+\usepackage{polski}
+
+\begin{document}
+
+\bigheading{Wall}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{wall}{stdin}{stdout}{100}{1000 ms}{128 MB}
+
+Mirek jest konserwatorem zabytków.
+Jego dzisiejszym zadaniem jest naprawa muru obronnego pewnej starej twierdzy.
+Mirek musi się spieszyć, bo mur jest w bardzo złym stanie i mało brakuje, żeby runął.
+Przeszukał Internet i znalazł robota, który został specjalnie zaprojektowany do naprawiania takich murów.
+Po zakupie robota, postanowił zaplanować optymalny sposób naprawy muru, jednak potrzebuje do tego Twojej pomocy.
+
+Można uznać, że mur jest nieskończoną linią prostą.
+Mirek zapisał sobie wszystkie punkty na tym murze, które wymagają naprawy.
+Dla każdego takiego punktu Mirek zna kosz naprawy $C_i$ i współczynnik $D_i$,
+	mówiący jak koszt naprawy wzrasta, jeśli punkt nie zostałby natychmiast naprawiony.
+Jeśli $i$-ty punkt zostałby naprawiony po czasie $t$, to koszt naprawy tego punktu byłby równy:
+\[ C_i + t \cdot D_i \]
+
+\heading{Task}
+
+Mając dane współrzędne punktów na murze i początkową pozycję robota,
+	i wiedząc, że transport robota z~punktu $x_1$ do punktu $x_2$ zajmuje $|x_1 - x_2|$
+	czasu\footnote{Tutaj $x_1$ i $x_2$ oznaczają współrzędne tych dwóch punktów (nie ich indeksy).},
+	oblicz minimalny koszt naprawy wszystkich zepsutych punktów.
+Możesz założyć, że czas naprawy jednego punktu jest pomijalnie mały.
+
+\heading{Input}
+
+W pierwszym wierszu wejścia znajdują się dwie liczby $N$ i $P$ ($1 \le N \le 2000$, $0 \le P \le 10^9$)
+	-- liczba punktów na murze, które wymagają naprawy i początkowa pozycja robota.
+W kolejnych $N$ liniach znajdują się opisy poszczególnych punktów.
+Opis jednego punktu składa się z trzech liczb $X_i$, $C_i$ i $D_i$
+	($0 \le X_i \le 10^9$, $0 \le C_i, D_i \le 10^6$, $X_i \neq P$)
+	-- są to: pozycja punktu i współczynniki kosztu naprawy.
+Żadne dwa punkty nie leżą na tych samych pozycjach.
+
+\heading{Output}
+
+Na wyjście wypisz jedną liczbę całkowitą -- minimalny koszt naprawy wszystkich punktów na murze.
+
+\heading{Samples}
+
+\sampleIN
+3 7
+10 32 1
+3 5 1
+14 0 2
+\sampleOUT
+72
+\sampleCOMMENT
+Optymalny plan jest następujący:
+\begin{itemize}
+	\item Przetransportować robota z punktu $7$ do punktu $10$
+		i naprawić pierwszy punkt po czasie $3$.
+	\item Przetransportować robota z punktu $10$ do punktu $14$
+		i naprawić trzeci punkt po czasie $3 + 4 = 7$.
+	\item Przetransportować robota z punktu $14$ do punktu $3$
+		i naprawić drugi punkt po czasie $3 + 4 + 11 = 18$.
+\end{itemize}
+Wówczas, sumaryczny koszt naprawienia ściany jest równy $5 + 18 \cdot 1 + 32 + 3 \cdot 1 + 0 + 7 \cdot 2 = 72$.
+\sampleEND
+
+\end{document}
