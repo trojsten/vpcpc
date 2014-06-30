@@ -6,7 +6,7 @@
 
 % \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
 % leave this values, if you are not interested
-\info{rubik}{stdin}{stdout}{100}{1000 ms}{1 GB}
+\info{rubik}{stdin}{stdout}{100}{1200 ms}{1 GB}
 
 Modern art is unpredictable.
 When Bob was tidying his room he found his old Rubik's cube.
@@ -117,16 +117,16 @@ FFF
 8 4
 E 1
 E -1
-B 1
-B -1
 F 1
 F -1
+B 1
+B -1
 E 1
 E -1
 8 C -1
 2 C -1
-6 A -1
-4 D -1
+6 D -1
+4 A -1
 \sampleCOMMENT
 The original moves cancel each other out.
 At the end of the original sequence of moves,
@@ -136,15 +136,15 @@ After we make the four changes described in the input,
 we obtain a sequence of moves that flips everything
 except for the centers of all sides.
 \sampleOUT
-DAD
-DAD
-DAD
-ABACCCFDFEEE
-ABACCCFDFEEE
-ABACCCFDFEEE
-BFB
-BFB
-BFB
+BAB
+BAB
+BAB
+FBFCCCADAEEE
+FBFCCCADAEEE
+FBFCCCADAEEE
+DFD
+DFD
+DFD
 FAF
 FAF
 FAF
@@ -154,24 +154,24 @@ DBDCCCBDBEEE
 AFA
 AFA
 AFA
-EDE
-FAF
-EDE
-DCDFCFBEBAEA
-ABADCDFDFBEB
-DCDFCFBEBAEA
-CBC
-AFA
-CBC
-DDD
-DAD
-DDD
-CCCFFFEEEAAA
-CBCFCFEDEAEA
-CCCFFFEEEAAA
-BBB
-BFB
-BBB
+FCF
+BAB
+FCF
+EFEDFDCACBAB
+DBDCCCBDBEEE
+EFEDFDCACBAB
+AEA
+DFD
+AEA
+CCC
+CAC
+CCC
+FFFDDDAAABBB
+FBFDCDADABEB
+FFFDDDAAABBB
+EEE
+EFE
+EEE
 \sampleEND
 
 
