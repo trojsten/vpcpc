@@ -26,7 +26,7 @@ tak celková cena jeho opravy je rovna:
 
 \heading{Úloha}
 
-Jsou zadány souřadnice míst na hradbách, které je třeba spravit,
+Jsou zadány souřadnice míst na hradbách, které je třeba opravit,
 a počáteční poloha robota.
   Navíc víte, že přesun robota z místa na souřadnici $x_1$ do místa na souřadnici $x_2$
 zabere $|x_1 - x_2|$ jednotek času.
@@ -42,7 +42,7 @@ na které začíná robot
 Náseleduje $N$ řádek, $i$-tý z těchto řádků popisuje $i$-té místo
 a obsahuje tři celá čásla $X_i$, $C_i$ a $D_i$
 ($0 \le X_i \le 10^9$, $0 \le C_i, D_i \le 10^6$, $X_i \neq P$)
--- souřadnice míst a informace o cenách.
+-- souřadnice $i$-tého místa a jeho výše popsané ceny.
 Žádná dvě místa neleží na stejné souřadnici.
 
 \heading{Výstup}
@@ -68,7 +68,7 @@ Optimální plán opravy je následující:
 	\item Přesuň robota ze souřadnice $14$ na souřadnici $3$ a nechej ho opravit druhé místo v čase $3 + 4 + 11 = 18$.
 \end{itemize}
 Celková cena takové opravy hradeb je tedy rovna\\
-$5 + 18 \cdot 1 + 32 + 3 \cdot 1 + 0 + 7 \cdot 2 = 72$.
+$32 + 3 \cdot 1 + 0 + 7 \cdot 2 + 5 + 18 \cdot 1 = 72$.
 \sampleEND
 
 \end{document}
