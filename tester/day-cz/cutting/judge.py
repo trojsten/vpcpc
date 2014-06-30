@@ -27,7 +27,7 @@ def are_points_separated(points, lines):
     si.dwFlags = subprocess.STARTF_USESHOWWINDOW
     si.wShowWindow = subprocess.SW_HIDE
   proc = subprocess.Popen(
-    ['validator', sys.argv[1], sys.argv[2]],
+    ['./validator', sys.argv[1], sys.argv[2]],
     shell=False,
     startupinfo=si)
   proc.communicate()
