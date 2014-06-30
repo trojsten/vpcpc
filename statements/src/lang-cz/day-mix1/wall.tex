@@ -1,0 +1,74 @@
+\input sys/inputs.tex
+
+\begin{document}
+
+\bigheading{Hradby}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{wall}{stdin}{stdout}{100}{1000 ms}{128 MB}
+
+Mirek se živí jako konzervátor.
+Jeho prací je starat se o monumenty a udržovat je v dobrém stavu.
+Mirkovým dnešním úkolem je opravit hradby starobylé pevnosti.
+Hradby se již skoro rozpadají, takže by měl raději hned začít.
+Aby se s tím nemusel pachtit sám, tak si na internetu zakoupil robota
+speciálně navrženého k extrémně rychlé opravě takových opevnění.
+Ukázalo se, že navrhnout optimální strategii na rekonstrukci nebude vůbec jednoduché.
+
+Hradby si můžete představit jako přímku.
+Mirek si již zapsal všechna místa na hradbách, která potřebují opravit.
+Pro $i$-té takové místo navíc ví, že jeho oprava bude stát $C_i$
+a dále koeficient $D_i$ -- jak moc cena roste, pokud místo není opravené okamžitě.
+Pokud $i$-té místo je opravené po $t$ časových jednotkách,
+tak celková cena jeho opravy je rovna:
+\[ C_i + t \cdot D_i \]
+
+\heading{Úloha}
+
+Jsou zadány souřadnice míst na hradbách, které je třeba spravit,
+a počáteční poloha robota.
+Navíc víte, že přesun robota z místa na souřadnici $x$ do místa na souřadnici $y$
+zabere $|x - y|$ jednotek času.
+Spočítejte nejmenší cenu potřebnou k opravě všech míst, které to potřebují.
+Můžete předpokládat, že samotné opravy zaberou zanedbatelně mnoho času.
+
+\heading{Vstup}
+
+Na první řádce vstupu jsou dvě celá čísla $N$ a $P$
+($1 \le N \le 2\,000$, $0 \le P \le 10^9$)
+-- počet míst na hradbách, která mají bý opravena, a souřadnice,
+na které začíná robot
+Náseleduje $N$ řádek, $i$-tý z těchto řádků popisuje $i$-té místo
+a obsahuje tři celá čásla $X_i$, $C_i$ a $D_i$
+($0 \le X_i \le 10^9$, $0 \le C_i, D_i \le 10^6$, $X_i \neq P$)
+-- souřadnice míst a informace o cenách.
+Žádná dvě místa neleží na stejné souřadnici.
+
+\heading{Výstup}
+
+Vypište jeden řádek obsahující nejmenší možnou cenu,
+za kterou je možné hradby opravit.
+
+\heading{Příklad}
+
+
+\sampleIN
+3 7
+3 5 1
+10 32 1
+14 0 2
+\sampleOUT
+72
+\sampleCOMMENT
+Optimální plán opravy je následující:
+\begin{itemize}
+	\item Přesuň robota ze souřadnice $7$ na souřadnici $10$ a nechej ho opravit druhé místo v čase $3$.
+	\item Přesuň robota ze souřadnice $10$ na souřadnici $14$ a nechej ho opravit třetí místo v čase $3 + 4 = 7$.
+	\item Přesuň robota ze souřadnice $14$ na souřadnici $3$ a nechej ho opravit první místo v čase $3 + 4 + 11 = 18$.
+\end{itemize}
+Celková cena takové opravy hradeb je tedy rovna\\
+$5 + 18 \cdot 1 + 32 + 3 \cdot 1 + 0 + 7 \cdot 2 = 72$.
+\sampleEND
+
+\end{document}
