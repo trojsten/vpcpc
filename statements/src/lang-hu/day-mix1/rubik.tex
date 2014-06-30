@@ -6,7 +6,7 @@
 
 % \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
 % leave this values, if you are not interested
-\info{rubik}{stdin}{stdout}{100}{1000 ms}{1 GB}
+\info{rubik}{stdin}{stdout}{100}{1200 ms}{1 GB}
 
 Bob megtalálta régi Rubik kockáját, és játszani kezdett vele. Csinált néhány\footnote{$65000$} lépést. De a végeredmény nem tetszett neki. Rájött, hogy néhány\footnote{megint $65000$} lépését más lépésre kellene cserélni. Azonban nehéz megismételni az összes lépést újra.
 
@@ -70,30 +70,30 @@ FFF
 8 4
 E 1
 E -1
-B 1
-B -1
 F 1
 F -1
+B 1
+B -1
 E 1
 E -1
 8 C -1
 2 C -1
-6 A -1
-4 D -1
+6 D -1
+4 A -1
 \sampleCOMMENT
 Az eredeti lépések kioltják egymást. Az eredeti lépéssorozat végére a kocka az eredeti állapotába tér vissza.
 
 A bemenetben megadott négy cserelépést elvégezve, olyan lépéssorozatot kapunk, amely mindent elforgat, kivéve az oldalak középpontjait.
 \sampleOUT
-DAD
-DAD
-DAD
-ABACCCFDFEEE
-ABACCCFDFEEE
-ABACCCFDFEEE
-BFB
-BFB
-BFB
+BAB
+BAB
+BAB
+FBFCCCADAEEE
+FBFCCCADAEEE
+FBFCCCADAEEE
+DFD
+DFD
+DFD
 FAF
 FAF
 FAF
@@ -103,24 +103,24 @@ DBDCCCBDBEEE
 AFA
 AFA
 AFA
-EDE
-FAF
-EDE
-DCDFCFBEBAEA
-ABADCDFDFBEB
-DCDFCFBEBAEA
-CBC
-AFA
-CBC
-DDD
-DAD
-DDD
-CCCFFFEEEAAA
-CBCFCFEDEAEA
-CCCFFFEEEAAA
-BBB
-BFB
-BBB
+FCF
+BAB
+FCF
+EFEDFDCACBAB
+DBDCCCBDBEEE
+EFEDFDCACBAB
+AEA
+DFD
+AEA
+CCC
+CAC
+CCC
+FFFDDDAAABBB
+FBFDCDADABEB
+FFFDDDAAABBB
+EEE
+EFE
+EEE
 \sampleEND
 
 

@@ -11,7 +11,7 @@
 
 % \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
 % leave this values, if you are not interested
-\info{rubik}{stdin}{stdout}{100}{1000 ms}{1 GB}
+\info{rubik}{stdin}{stdout}{100}{1200 ms}{1 GB}
 
 Sztuka współczesna jest nieprzewidywalna.
 Kiedy Bob sprzątał swój pokój, znalazł swoją starą kostkę Rubika.
@@ -104,16 +104,16 @@ FFF
 8 4
 E 1
 E -1
-B 1
-B -1
 F 1
 F -1
+B 1
+B -1
 E 1
 E -1
-2 C -1
-4 D -1
-6 A -1
 8 C -1
+2 C -1
+6 D -1
+4 A -1
 \sampleCOMMENT
 Oryginalne ruchy się nawzajem redukują, więc na końcu kostka pozostaje w początkowym układzie.
 
@@ -122,42 +122,42 @@ Oryginalne ruchy się nawzajem redukują, więc na końcu kostka pozostaje w poc
 Po zastosowaniu czterech zmian opisanych na wejściu,
 	otrzymamy sekwencję ruchów, która odwraca wszystkie kolory, poza środkami ścian.
 \sampleOUT
-DAD
-DAD
-DAD
-ABACCCFDFEEE
-ABACCCFDFEEE
-ABACCCFDFEEE
-BFB
-BFB
-BFB
+BAB
+BAB
+BAB
+FBFCCCADAEEE
+FBFCCCADAEEE
+FBFCCCADAEEE
+DFD
+DFD
+DFD
+FAF
+FAF
+FAF
+DBDCCCBDBEEE
+DBDCCCBDBEEE
+DBDCCCBDBEEE
+AFA
+AFA
+AFA
+FCF
+BAB
+FCF
+EFEDFDCACBAB
+DBDCCCBDBEEE
+EFEDFDCACBAB
+AEA
+DFD
+AEA
 CCC
-DAD
-CCC
-AAABCBFFFDED
-BBBFCFDDDAEA
-AAABCBFFFDED
-EEE
-BFB
-EEE
-CDC
 CAC
-CDC
-BCBFFFDEDAAA
-BBBFCFDDDAEA
-BCBFFFDEDAAA
-EBE
+CCC
+FFFDDDAAABBB
+FBFDCDADABEB
+FFFDDDAAABBB
+EEE
 EFE
-EBE
-DDD
-DAD
-DDD
-CCCFFFEEEAAA
-CBCFCFEDEAEA
-CCCFFFEEEAAA
-BBB
-BFB
-BBB
+EEE
 \sampleEND
 
 \end{document}
