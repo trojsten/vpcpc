@@ -1,0 +1,36 @@
+\input sys/inputs.tex
+
+\begin{document}
+
+\bigheading{Következő permutáció}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{nextperm}{stdin}{stdout}{100}{100 ms}{32 MiB}
+
+A permutációkat intenzíven kutatják a matematikában és az informatikában is. A mintamentes permutációk különösen érdekesek. Az $1,\ldots, n$ számoknak egy $p_1,p_2, \ldots, p_n$ permutációját 3-1-2 mintamentesnek nevezzük, ha nincs olyan három $1\leq i<j<k \leq n$ index, hogy $p_i>p_j$, $p_i>p_k$ és $p_j<p_k$.
+
+\heading{Feladat}
+Írj programot, amely egy adott 3-1-2 mintamentes permutációra kiszámolja a lexikografikus sorrendben következő 3-1-2 mintamentes permutációt!
+
+\heading{Bemenet}
+A bemenet első sora egy $n$ egész számot tartalmaz ($3 \leq n \leq 10000$). A második sor $n$ darab pozitív, egy-egy szóközzel elválasztott egész számot tartalmaz, ami az $1, \ldots, n$ természetes számok egy 3-1-2 mintamentes permutációja. A bemenet nem az $n,n-1,\ldots ,1$ csökkenő sorozat.
+
+\heading{Korlátok}
+A tesztesetek $40\%$-ában $n \leq 1000$.
+
+\heading{Kimenet}
+A kimenet első sorának azt a 3-1-2 mintamentes permutációt kell tartalmaznia, amely a bemenetben megadott permutációt a lexikografikus sorrendben követi. A számokat egy-egy szóköz válassza el.
+
+\heading{Példa bemenet és kimenet}
+
+\sampleIN
+5
+2 4 5 3 1
+\sampleOUT
+2 5 4 3 1
+\sampleCOMMENT
+
+\sampleEND
+
+\end{document}

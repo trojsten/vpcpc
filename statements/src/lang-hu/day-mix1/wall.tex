@@ -14,12 +14,11 @@ A fal egy egyenes vonallal írható le. Mirek feljegyezte a javításra váró p
 
 \[ C_i + t \cdot D_i \]
 
-Az optimális terv elkészítésénél figyelembe kell venni, hogy a robot az $x$ és $y$ pont közötti távolságot $|x - y|$ idő alatt teszi meg. Feltételezhető, hogy egy pont javítása nem vesz igénybe időt.
-
+Az optimális terv elkészítésénél figyelembe kell venni, hogy a robot az $x_1$ és $x_2$ pont közötti távolságot $|x_1 - x_2|$ idő alatt teszi meg\footnote{Itt $x_1$ és $x_2$ a két pont koordinátája (nem pedig az indexe).}. Feltételezhető, hogy egy pont javítása nem vesz igénybe időt.
 
 \heading{Feladat}
 
-Írj programot, amely kiszámolja az összes hibás pont javításának lehetséges legkisebb költségét. 
+Írj programot, amely kiszámolja az összes hibás pont javításának lehetséges legkisebb költségét!
 
 \heading{Bemenet}
 
@@ -35,17 +34,17 @@ A kimenetre egyetlen egész számot kell írni, amely a fal összes hibás pontj
 
 \sampleIN
 3 7
-3 5 1
 10 32 1
+3 5 1
 14 0 2
 \sampleOUT
 72
 \sampleCOMMENT
 A javítás optimális sorrendje:
 \begin{itemize}
-	\item Robot mozgatása a $7$-es ponttól a $10$-es pontig, és a második pont javítása $3$ időegység után.
+	\item Robot mozgatása a $7$-es ponttól a $10$-es pontig, és az első pont javítása $3$ időegység után.
 	\item Robot mozgatása a $10$-es ponttól a $14$-es pontig, és a harmadik pont javítása $3 + 4 = 7$ időegység után.
-	\item Robot mozgatása a $14$-es ponttól a $3$-as pontig, és az első pont javítása $3 + 4 + 11 = 18$ időegység után.
+	\item Robot mozgatása a $14$-es ponttól a $3$-as pontig, és a második pont javítása $3 + 4 + 11 = 18$ időegység után.
 \end{itemize}
 Így a fal összes javítási költsége: $5 + 18 \cdot 1 + 32 + 3 \cdot 1 + 0 + 7 \cdot 2 = 72$.
 \sampleEND
