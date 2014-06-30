@@ -2,20 +2,52 @@ import random
 
 random.seed(4189362)
 
+def relabel(vs):
+    vs = map(lambda x: x-1, vs)
+    N = len(vs)+1
+    graph = dict((i, []) for i in xrange(N))
+    deg = [0] * N
+    for i in xrange(len(vs)):
+        a, b = i+1, vs[i]
+        graph[a].append(b)
+        graph[b].append(a)
+        deg[a] += 1
+        deg[b] += 1
+
+    label = N-1
+    mapping = [-1] * N
+    next = [-1] * N
+    queue = [i for i in xrange(N) if deg[i] == 1]
+    visited = [False] * N
+    while queue:
+        index = random.randint(0, len(queue)-1)
+        queue[index], queue[-1] = queue[-1], queue[index]
+        node = queue.pop()
+        mapping[node] = label
+        label -= 1
+        visited[node] = True
+        for v in graph[node]:
+            if not visited[v]:
+                next[mapping[node]] = v
+                deg[v] -= 1
+                if deg[v] == 1:
+                    queue.append(v)
+    return [mapping[next[i]]+1 for i in xrange(1, N)]
+
 def gen_random(N):
-    return [random.randint(1, i) for i in xrange(1, N)]
+    return relabel([random.randint(1, i) for i in xrange(1, N)])
 
 def gen_path(N):
-    return [random.randint(max(1, i-2), i) for i in xrange(1, N)]
+    return relabel([random.randint(max(1, i-2), i) for i in xrange(1, N)])
 
 def gen_path_strict(N):
-    return [i for i in xrange(1, N)]
+    return relabel([i for i in xrange(1, N)])
 
 def gen_star(N):
-    return [random.randint(0, i-1)//100+1 for i in xrange(1, N)]
+    return relabel([random.randint(0, i-1)//100+1 for i in xrange(1, N)])
 
 def gen_bt(N):
-    return [i//2+1 for i in xrange(1, N)]
+    return relabel([i//2+1 for i in xrange(1, N)])
 
 gen_structure = [gen_random, gen_path, gen_star, gen_bt]
 
