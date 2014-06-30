@@ -14,27 +14,15 @@
 #include <stack>
 #include <algorithm>
 #include <ctime>
-using namespace std; 
+using namespace std;
 
 #define DEBUG(x) cerr << '>' << #x << ':' << x << endl;
 #define REP(i,n) for(int i=0;i<(n);i++)
 #define FOR(i,a,b) for(int i=(a);i<=(b);i++)
 #define FORD(i,a,b) for(int i=(a);i>=(b);i--)
-inline bool EQ(double a, double b) { return fabs(a-b) < 1e-9; }
 
 const int INF = 1<<29;
 typedef long long ll;
-
-inline int two(int n) { return 1 << n; }
-inline int test(int n, int b) { return (n>>b)&1; }
-inline void set_bit(int & n, int b) { n |= two(b); }
-inline void unset_bit(int & n, int b) { n &= ~two(b); }
-inline int last_bit(int n) { return n & (-n); }
-inline int ones(int n) { int res = 0; while(n && ++res) n-=n&(-n); return res; }
-
-template<class T> void chmax(T & a, const T & b) { a = max(a, b); }
-template<class T> void chmin(T & a, const T & b) { a = min(a, b); }
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 struct Point
 {
@@ -219,7 +207,7 @@ void normalize(vector<Point> & points, vector<pair<Point, Point> > & result)
 	}
 }
 
-string tc = "7";
+string tc;
 const int KOSTKA = 20;
 const int POKUSU = 2;
 const int MUTACE = 200;
@@ -250,30 +238,20 @@ void modify(vector<Point> & points, vector<pair<Point, Point> > & result)
 		result = old;
 }
 
-#define FROM_FILE
-#ifdef FROM_FILE
-ifstream fin((tc + ".in").c_str());
-#else
-istream & fin = cin;
-#endif
 
 void save(vector<pair<Point, Point> > & result)
 {
-#ifdef FROM_FILE
 	ofstream fout(("B" + tc + ".out").c_str());
 	cout << "New record: " << result.size() << endl;
 	REP(i, result.size())
 		fout << result[i].first.x << " " << result[i].first.y << " " << result[i].second.x << " " << result[i].second.y << endl;
 	fout.close();
-#else
-	cout << "New record: " << result.size() << endl;
-	REP(i, result.size())
-		cout << result[i].first.x << " " << result[i].first.y << " " << result[i].second.x << " " << result[i].second.y << endl;
-#endif
 }
 
-int main()
+int main(int argc, char **argv)
 {
+  tc = string(argv[1]);
+  ifstream fin((tc + ".in").c_str());
 	cout << "Running tc " << tc << endl;
 	srand(time(NULL));
 
@@ -289,15 +267,15 @@ int main()
 	backup = points;
 	
 	int best = INF;
-#ifdef FROM_FILE
-	ifstream fin2(("B" + tc + ".out").c_str());
-	best = 0;
-	string line;
-	while (getline(fin2, line))
-		++best;
-	fin2.close();
-	cout << "Current best is " << best << endl;
-#endif
+  if (true) {
+    ifstream fin2(("B" + tc + ".out").c_str());
+    best = 0;
+    string line;
+    while (getline(fin2, line))
+      ++best;
+    fin2.close();
+    cout << "Current best is " << best << endl;
+  }
 
 	vector<pair<Point, Point> > result;
 	list<vector<Point> > groups;
@@ -305,7 +283,7 @@ int main()
 	solve(groups, result);
 	normalize(points, result);
 	while (true)
-	{	
+	{
 		modify(points, result);	
 		if (!check(points, 0, result))
 		{
@@ -313,7 +291,7 @@ int main()
 			return 0;
 		}
 
-		cout << "Found: " << result.size() << endl;
+		// cout << "Found: " << result.size() << endl;
 		//cout << ".";
 		if (result.size() < best)
 		{

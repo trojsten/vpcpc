@@ -13,13 +13,13 @@ When Bob was tidying his room he found his old Rubik's cube.
 Then the moment came.
 He closed his eyes, listened to his inner voice,
 made a few moves (up to $65\,000$) and the masterpiece was nearly complete.
-But the final state was not to his liking. He realized he 
+But the final state was not to his liking. He realized he
 did some of the moves incorrectly. If only he could go back in time
 and change them!
 
 All he now needs to do is a few changes (again, up to $65\,000$ of them).
 Each of the changes consists of replacing one move with some other move.
-Bob would like to do see what each change does.
+Bob would like to see what each change does.
 But it is annoying to repeat the entire sequence
 of moves again and again.
 %So someone has to code it.
@@ -38,7 +38,7 @@ For each change, output the state of the cube \emph{at the end} of the
 entire sequence of moves.
 
 Note that the changes are permanent -- for example, the second change
-should be applied to the sequence of moves with the first change, 
+should be applied to the sequence of moves with the first change,
 not to the original sequence.
 
 \heading{Cube's I/O}
@@ -67,7 +67,7 @@ The surface of the cube can then be unfolded into the following form:\\
 
 First 9 lines of the input contain the description of
 the starting state of the cube. The description is given
-in the above form. You may assume that the centers of the 
+in the above form. You may assume that the centers of the
 six faces are labeled as shown above.\footnote{You may also assume
 that the starting state is a valid configuration that can be obtained
 from the solved state. However, this is actually irrelevant in our problem.}
@@ -84,7 +84,7 @@ and $1$ in case of a counterclockwise move.
 The last $m$ lines describe the changes, in order.
 Each one has the form ``$a_j$ $C_j$ $d_j$'',
 where $a_j$ is the (1-based) index of the move that
-is being replaced and $C_j$ $d_j$ describes the 
+is being replaced and $C_j$ $d_j$ describes the
 new move.
 
 \heading{Constraints}
@@ -98,7 +98,7 @@ In all test cases, $n,m \leq 65\,000$. In $50\%$ of testcases $n,m \leq 1000$.
 Let $S_i$ be the sequence of moves obtained from the initial sequence
 by applying the first $i$ changes.
 
-For each $i$ between 1 and $m$, inclusive, output 9 lines: the final state 
+For each $i$ between 1 and $m$, inclusive, output 9 lines: the final state
 of the cube obtained by starting in the initial configuration and performing
 the sequence of moves $S_i$. Use the same format as in the input.
 

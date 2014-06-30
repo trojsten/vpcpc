@@ -1,0 +1,87 @@
+\input sys/inputs.tex
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+\usepackage{polski}
+
+\begin{document}
+
+\bigheading{Universities}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{universities}{stdin}{stdout}{100}{1000 ms}{1 GB}
+
+W Bajtocji znajduje się $N$ uniwersytetów.
+Każdy z nich uczy albo czarnej, albo białej magii.
+Uniwersytety są połączone przy pomocy $N-1$ dróg,
+	tak, że między każdą parą z nich można przejść na dokładnie jeden sposób.
+
+Planujesz pozwiedzać niektóre uczelnie.
+Każdej z nich przypisałeś współczynnik fajności
+	(jeśli uniwersytet jest wyjątkowo słaby, to współczynnik fajności może być ujemny).
+Fajność wycieczki jest równa sumie fajności wszystkich odwiedzonych uniwersytetów.
+
+Aby zaplanować wycieczkę, musisz wybrać dwa różne uniwersytety i odwiedzić wszystkie uniwersytety
+	na ścieżce pomiędzy nimi (włącznie z tymi wybranymi).
+Aby zachować równowagę magii, musisz odwiedzić taką samą liczbę ,,białych'' uniwersytetów,
+	co ,,czarnych'' uniwersytetów.
+
+Zastanawiasz się teraz, jaka jest najfajniejsza wycieczka, którą możesz odbyć.
+
+\heading{Task}
+
+Masz dane opisy uniwersytetów i dróg między nimi.
+Znajdź najfajniejszą\footnote{taką, której współczynnik fajności jest największy}
+	wycieczkę, w której odwiedzisz taką samą liczbę ,,białych'', co ,,czarnych'' uniwersytetów.
+
+\heading{Input}
+
+Wejście składa się z czterech wierszy.
+
+W pierwszym wierszu znajduje się jedna liczba całkowita $N$ ($2 \le N \le 10^5$),
+	oznaczająca liczbę uniwersytetów w Bajtocji (ponumerowanych od $1$ do $N$).
+
+W drugim wierszu znajduje się napis złożony z liter \texttt{B} i \texttt{W}.
+Jeśli $i$-tą literą jest \texttt{B}, to $i$-ty uniwersytet uczy czarnej magii,
+	a jeśli $i$-tą literą jest \texttt{W}, to $i$-ty uniwersytet uczy białej magii.
+Możesz założyć, że wystąpi co najmniej jedna literka \texttt{B} i co najmniej jedna literka \texttt{W}.
+
+W trzecim wierszu znajduje się $N$ liczb całkowitych oddzielonych spacjami $h_1$, $h_2$, $\ldots$, $h_N$
+	($-10^5 \le h_i \le 10^5$).
+Liczba $h_i$ oznacza fajność $i$-tego uniwersytetu.
+
+W czwartym wierszu znajduje się $N - 1$ liczb całkowitych oddzielonych spacjami $v_1$, $v_2$, $\ldots$, $v_{N-1}$.
+Liczba $v_i$ oznacza, że istnieje droga łącząca uniwersytety nr $v_i$ i $(i + 1)$ ($1 \le v_i \le i$).
+
+\heading{Output}
+
+Wypisz dokładnie jedną liczbę -- fajność najfajniejszej wycieczki, spełniającej warunki zadania.
+
+\heading{Samples}
+
+\sampleIN
+6
+BWBBBW
+6 0 3 -2 100 5
+1 2 2 4 4
+\sampleOUT
+9
+\sampleCOMMENT
+W optymalnej wycieczce odwiedzasz uniwersytety $1$, $2$, $4$, $6$.
+\sampleEND
+
+\sampleIN
+3
+WBW
+1 -10 5
+1 2
+\sampleOUT
+-5
+\sampleCOMMENT
+Zawsze musisz odwiedzić jakieś dwa uniwersytety,
+	więc czasem wynik jest ujemny.
+\sampleEND
+
+\end{document}

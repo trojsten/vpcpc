@@ -1,0 +1,70 @@
+\input sys/inputs.tex
+
+\begin{document}
+
+\bigheading{Nový stromeček}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{newtree}{stdin}{stdout}{100}{100 ms}{32 MiB}
+
+V městském parku Bytelandie byl zasazen nový kouzelný stromeček.
+Jedná se o velmi vzácný druh, a proto ho chceme ochránit.
+Vybereme tři již existující stromy a natáhneme okolo nich pletivo tak,
+že výsledná ohrazená oblast tvoří trojúhelník s vybranými stromy jako vrcholy\footnote{Tloušťka stromu je zanedbatelná.}.
+Je nutné aby se nový stromeček nacházel ostře uvnitř ohrazené oblasti a aby se v
+ní žádný jiný strom nenacházel.
+
+Jeden z trojice stromů pro stavbu ohrady již byl určen. Pomozte nám vybrat zbylé dva.
+
+\heading{Úloha}
+
+Vaší úlohou je najít další dva stromy pro stavbu ohrady tak, aby ohrazená oblast
+obsahovala nový stromeček.
+
+\heading{Vstup}
+
+První řádek vstupu obsahuje dvě celá čísla, $N$ a $A$.
+$N$ ($3 \leq N \leq 100\,000$) je počet již existujících stromů a $A$ ($1 \leq A \leq N$)
+je číslo již vybraného stromu (stromy jsou číslované od $1$ do $N$).
+
+Druhý řádek obsahuje dvě celá čísla $x$ a $y$, souřadnice nového stromečku.
+
+Dále následuje $N$ řádků. $i$-tý z nich obsahuje dvě celá čísla $x$ a $y$, souřadnice stromu s číslem $i$.
+
+Pro všechny souřadnice platí $-1\,000\,000 \leq x,y \leq 1\,000\,000$.
+
+\smallskip
+
+Ve $40 \%$ případů platí $N \leq 5\,000$.
+
+\heading{Výstup}
+
+Na výstup vypište dvě celá čísla $B$ a $C$ oddělená mezerou.
+$B$ a $C$ jsou čísla již existujících stromů, pro která platí, že trojúhelník
+s vrcholy na souřadnicích stromů $A$, $B$ a $C$ (proti směru hodinových ručiček) splňuje výše popsaná pravidla.
+T.j. žádný jiný strom se nenachází na stranách trojúhelníku $A$, $B$ a $C$, a uvnitř trojúhelníku se nachází pouze nový stromeček.
+
+
+Pokud žádné řešení neexistuje, tak na výstup vypište 0 0.
+Pokud existuje více správných řešení, vypište libovolné z nich.
+
+\heading{Příklady}
+
+\sampleIN
+7 1
+9 3
+3 1
+8 7
+9 5
+11 5
+12 4
+9 1
+13 6
+\sampleOUT
+6 4
+\sampleCOMMENT
+
+\sampleEND
+
+\end{document}
