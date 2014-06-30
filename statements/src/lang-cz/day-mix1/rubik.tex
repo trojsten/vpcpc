@@ -9,33 +9,39 @@
 \info{rubik}{stdin}{stdout}{100}{1000 ms}{1 GB}
 
 Moderní umění je nepředvídatelné.
-Své o tom ví i Bob.
-Minule si jenom uklízel pokoj
-a našel starou Rubikovu kostku.
+Když si posledně Bob uklízel pokoj,
+našel svojí starou Rubikovu kostku.
 Zavřel oči, naslouchal svému vnitřnímu hlasu
-a udělal pár\footnote{$65\,00$0} rychlých pohybů.
+a udělal pár rychlých pohybů (nejvýše $65\,000$).
 Vzniklo téměř dokonalé dílo.
-Potřebovalo už jenom pár\footnote{znovu $65\,000$} úprav.
-Přesněji, potřebovalo změnit některé z původních tahů.
+Bobovi se ale zase tak úplně nelíbilo.
+Kdyby se tak jen mohl vrátit zpátky v čase a změnit některé své tahy!
+
+Všechno, co musí teď udělat je pár změn (znovu nejvýše $65\,000$).
+Každá změna odpovídá náhradě jednoho tahu za nějaký jiný.
 Bob by však rád věděl, co jednotlivé změny vlastně dělají.
 Ale nechce se mu opakovat celou posloupnost tahů pokaždé znovu.
-Rozhodl se, že si napíše program, který mu práci trochu usnadní.
 
 \heading{Úloha}
 
-Dostanete Rubikovu kostku (ne nutně vyřešenou),
-seznam Bobových tahů a posloupnost změn v tomto seznamu tahů.
-Po každé změně vypište, jak by vypadala výsledná kostka
-po použití všech tahů ze seznamu.
+Dostanete Rubikovu kostku (ne nutně vyřešenou).
+Dále dostanete seznam původních Bobových tahů a posloupnost změn.
+Každá změna je tvaru ``změň $k$-tý tah na tento nový tah.''
+Po každé změně vypište, jak by vypadala \textit{výsledná kostka
+po použití všech tahů} ze seznamu.
+
+Všimněte si, že změny jsou trvalé - například druhá změna
+se provede na seznam tahů, který je již upravený první změnou.
 
 \heading{Formát kostky}
 
 Barvy kostky označme $A$,$B$,$C$,$D$,$E$,$F$.
 Když si hrajete s kostkou, nemění
 se vzájemná poloha prostředních čtverečků stěn kostky.
-Můžeme tedy vždy kostku natočit tak,
-aby prostřední čtverečky měly fixní pozici.
-Potom můžeme rozvinout povrch do roviny kostky a získáme
+Postavíme kostku tedy vždy tak, aby střed vrchní stějny
+kostky měl barvu $A$, středy bočních stěn postupně barvy $B$, $C$, $D$, $E$
+a konečně střed spodní stěny barvu $F$.
+Potom můžeme rozvinout povrch kostky do roviny a získáme
 tak její jednoznačný popis:\\
 \texttt{
 ???\\
@@ -52,34 +58,40 @@ tak její jednoznačný popis:\\
 \heading{Vstup}
 
 Prvních $9$ řádků popisuje počáteční konfiguraci kostky
-ve výše zmíněném formátu.
+ve výše zmíněném formátu. Můžete předpokládat, že středy
+stěn kostky mají takové barvy, jak je popsáno
+výše.\footnote{Navíc můžete předpokládat, že počáteční konfigurace
+je validní stav kostky, který můžeme získat z vyřešeného stavu.
+Na druhou stranu to pro řešení úlohy není nijak důležité.}
 
 Následující řádek obsahuje $2$ celá čísla $n$ a $m$.
 $n$ je počet tahů a $m$ je počet změn.
 
 Dalších $n$ řádků popisuje původní Bobovy tahy.
-Mají tvar $C_i$ $d_i$,
+Mají tvar ``$C_i$ $d_i$'',
 kde $C_i$ je barva středu té stěny kostky,
 kterou během tahu otáčíme, a $d_i$ je rovno $-1$
 pokud točíme po směru chodu hodinových ručiček, případně
 rovno $1$ pokud točíme proti směru chodu hodinových ručiček.
 
 Posledních $m$ řádků popisuje změny.
-Mají tvar $a_j$ $C_j$ $d_j$,
+Mají tvar ``$a_j$ $C_j$ $d_j$'',
 kde $a_j$ je číslo tahu, který se nahrazuje
 a $C_j$ $d_j$ popisují nový tah.
 Tahy jsou číslované od $1$ do $n$.
 
-\smallskip
+\heading{Omezení}
 
-Platí $n,m \leq 65000$
-a v $50\%$ vstupů dokonce
-$n,m \leq 1000$.
+Ve všech vstupech platí $n, m \leq 65\,000$.
+V $50\%$ vstupů navíc $n, m \leq 1\,000$.
+
+\pagebreak
 
 \heading{Výstup}
 
-Po každé z $m$ změn vypište $9$ řádků
-popisujících konečnou konfiguraci kostky.
+Nechť $S_i$ je seznam tahů po použití prvních $i$ změn.
+
+Pro každé $i$ od $1$ do $m$ vypište $9$ řádků popisujících konečnou konfiguraci kostky, pokud aplikujeme tahy $S_i$ na počáteční konfiguraci kostky. Pužijte stejný formát jako na vstupu.
 
 \heading{Příklad}
 
