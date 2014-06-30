@@ -1,0 +1,68 @@
+\input sys/inputs.tex
+
+\begin{document}
+
+\bigheading{Egyetemek}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{universities}{stdin}{stdout}{100}{1000 ms}{1 GB}
+
+Bytelandiában $N$ mágikus egyetem van, mindegyik vagy fekete, vagy fehér mágiát tanít. $N-1$ kétirányú út köti össze az egyetemeket, minden út két különböző egyetemet köt össze. Az úthálózat olyan, hogy benne bármely két egyetem között pontosan egy útvonal létezik.
+
+Szeretnél meglátogatni néhány egyetemet, amelyek egy útvonalra esnek.
+Minden meglátogatott egyetemhez egy boldogságfaktor tartozik, amely érték megváltoztatja a boldogságodat. Pozitív boldogság faktor növeli, negatív pedig csökkenti a boldogságodat.
+
+A célod, hogy olyan két különböző egyetem közötti útvonalat válasszál, amely hatására a legboldogabb leszel az út végére. Az útvonalra eső összes egyetemet meg kell látogatnod. Azonban csak olyan útvonalat választhatsz, amelyen ugyanannyi a fehér és a fekete mágiát oktató egyetemek száma (beleértve az útvonal két végpontját is). 
+
+
+\heading{Feladat}
+
+Írjál programot, amely kiszámítja azt a legnagyobb boldogság értéket, amely egy útvonalra eső egyetemek boldogságfaktorainak összege, és amely útvonalon a fehér és a fekete mágiát oktató egyetemek száma megegyezik.
+
+% Az a feladatod, hogy olyan útvonalat válasszál, amelyen a fehér és a fekete mágiát oktató egyetemek száma megegyezik, és az útba eső egyetemek boldogságfaktorainak összege a lehető legnagyobb. 
+
+\heading{Bemenet}
+
+A bemenet négy sorból áll.
+
+Az első sorban egy egész szám van, az egyetemek $N$ száma ($2 \leq N \leq 10^5$). Az egyetemeket $1, \ldots, N$ számokkal azonosítjuk.
+
+A második sor egy $N$ darab, ``B'' vagy ``W'' karakterből álló szöveget tartalmaz. Az $i$. karakter adja meg, hogy az $i$. egyetem fekete (``B'') vagy fehér (``W'') mágiát oktat. Legalább egy fekete és legalább egy fehér egyetem van.
+
+A harmadik sor $N$ egész számot tartalmaz egy-egy szóközzel elválasztva: $h_1 h_2 \ldots h_N$ ($-10^5 \leq h_i \leq 10^5$). A $h_i$ az $i$. egyetem boldogságfaktora.
+
+A negyedik sor $N-1$ egész számot tartalmaz egy-egy szóközzel elválasztva: $v_1 v_2 \ldots v_{N-1}$. A $v_i$ azt adja meg, hogy a $v_i$ és az $(i+1)$ ($1 \leq v_i \leq i$) azonosítójú egyetemeket közvetlen út köti össze.
+
+\heading{Kimenet}
+
+A kimenet egyetlen egész számot tartalmaz, azt a legnagyobb boldogság értéket, amely egy útvonal során elérhető úgy, hogy azonos számú fehér és fekete mágiát oktató egyetemet tartalmaz az útvonal.
+
+\heading{Példa bemenet és kimenet}
+
+
+\sampleIN
+6
+BWBBBW
+6 0 3 -2 100 5
+1 2 2 4 4
+\sampleOUT
+9
+\sampleCOMMENT
+Az optimális útvonalra az 1,2,4,6 azonosítójú egyetemek esnek.
+\sampleEND
+
+\bigskip
+
+\sampleIN
+3
+WBW
+1 -10 5
+1 2
+\sampleOUT
+-5
+\sampleCOMMENT
+Az eredmény negatív is lehet, mert legalább két egyetemet meg kell látogatnod.
+\sampleEND
+
+\end{document}
