@@ -1,0 +1,54 @@
+\input sys/inputs.tex
+
+\begin{document}
+
+\bigheading{Fal}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{wall}{stdin}{stdout}{100}{1000 ms}{128 MB}
+
+Mireknek egy falat kell restaurálnia. Mivel a feladat sürgős, ezért a munka elvégzésére vásárolt egy robotot. Segíts Mireknek megtalálni a legoptimálisabb költségű helyreállítási tervet!
+
+A fal egy egyenes vonallal írható le. Mirek feljegyezte a javításra váró pontok helyét. Mindegyik javítandó pontról ismerjük azt a $C_i$ költséget, amennyibe az azonnali javítása kerülne. Ha viszont $t$ idő elteltével történik az $i$. pont javítása, akkor a költséget egy $D_i$ tényezővel kell számolni az alábbi módon: 
+
+\[ C_i + t \cdot D_i \]
+
+Az optimális terv elkészítésénél figyelembe kell venni, hogy a robot az $x$ és $y$ pont közötti távolságot $|x - y|$ idő alatt teszi meg. Feltételezhető, hogy egy pont javítása nem vesz igénybe időt.
+
+
+\heading{Feladat}
+
+Írj programot, amely kiszámolja az összes hibás pont javításának lehetséges legkisebb költségét. 
+
+\heading{Bemenet}
+
+A bemenet első sora két egész számot tartalmaz, a javítandó pontok $N$ számát és a robot kezdeti $P$ helyét ($1 \le N \le 2\,000$, $0 \le P \le 10^9$).
+A következő $N$ sor mindegyike egy javítandó pont adatait tartalmazza. Az $i$. pont adata az $i+1$. sorban van, és három egész számot tartalmaz: $X_i$, $C_i$ és $D_i$ ($0 \le X_i \le 10^9$, $0 \le C_i, D_i \le 10^6$, $X_i \neq P$), ahol $X_i$ a javítandó pont helye, $C_i$ és $D_i$ a javítás költségét meghatározó tényezők. Nincs két azonos pozíciójú pont.
+
+\heading{Kimenet}
+
+A kimenetre egyetlen egész számot kell írni, amely a fal összes hibás pontjának minimális javítási költsége.
+
+\heading{Példa bemenet és kimenet}
+
+
+\sampleIN
+3 7
+3 5 1
+10 32 1
+14 0 2
+\sampleOUT
+72
+\sampleCOMMENT
+A javítás optimális sorrendje:
+\begin{itemize}
+	\item Robot mozgatása a $7$-es ponttól a $10$-es pontig, és a második pont javítása $3$ időegység után.
+	\item Robot mozgatása a $10$-es ponttól a $14$-es pontig, és a harmadik pont javítása $3 + 4 = 7$ időegység után.
+	\item Robot mozgatása a $14$-es ponttól a $3$-as pontig, és az első pont javítása $3 + 4 + 11 = 18$ időegység után.
+\end{itemize}
+Így a fal összes javítási költsége: $5 + 18 \cdot 1 + 32 + 3 \cdot 1 + 0 + 7 \cdot 2 = 72$.
+\sampleEND
+
+
+\end{document}

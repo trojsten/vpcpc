@@ -1,0 +1,127 @@
+\input sys/inputs.tex
+
+\begin{document}
+
+\bigheading{Kockajáték}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{rubik}{stdin}{stdout}{100}{1000 ms}{1 GB}
+
+Bob megtalálta régi Rubik kockáját, és játszani kezdett vele. Csinált néhány\footnote{$65000$} lépést. De a végeredmény nem tetszett neki. Rájött, hogy néhány\footnote{megint $65000$} lépését más lépésre kellene cserélni. Azonban nehéz megismételni az összes lépést újra.
+
+\heading{Feladat}
+
+Adott a Rubik kocka kezdeti állapota (nem biztos, hogy a kirakott állapot), és a Bob által eredetileg elvégzett lépések sorozata.
+
+Adott továbbá a cserélendő lépések sorozata. Mindegyik cserelépés a következő formában adott: ``cseréld le a $k$. eredeti lépést erre az új lépésre''. Minden egyes cserére írd ki a kocka állapotát az \emph{összes lépés elvégzése után}.
+
+Megjegyzendő, hogy a cserelépések tartósak, azaz például a második cserelépést a már elvégzett első cserelépés eredményét figyelembe véve kell elvégezni, nem pedig csak az eredeti sorozatnak az adott elemét lecserélve.
+
+
+\heading{Kocka kezelése}
+
+A kocka oldalainak színei legyenek $A$,$B$,$C$,$D$,$E$,$F$. A kockán elvégzett lépések hatására az oldalak közép\-pontjainak egymáshoz való elhelyezkedése nem változik. Tehát mindig tarthatjuk a kockát úgy, hogy a felső oldal középső elemének a színe $A$, a függőleges oldalaké $B$, $C$, $D$, $E$ (ebben a sorrendben), és az alsóé pedig $F$. A kocka felületének síkba kiterített oldalait az alábbi ábra mutatja a fix oldalközéppontokat jelölve:\\
+\texttt{
+???\\
+?A?\\
+???\\
+????????????\\
+?B??C??D??E?\\
+????????????\\
+???\\
+?F?\\
+???\\
+}
+
+\heading{Bemenet}
+
+Az első 9 sor a kocka kezdeti állapotát adja meg a fenti kiterített formában. Feltételezhető, hogy az oldalak középpontjainak jelölése a fentieknek felel meg.\footnote{Szintén feltételezhető, hogy a kezdeti állapot a kocka egy lehetséges állapota. Ugyanakkor ez lényegtelen a megoldás szempontjából.}
+
+A következő sorban két egész szám található, $n$ és $m$: $n$ a Bob által megtett lépések száma, $m$ pedig a cserelépések száma.
+
+Az ezt követő $n$ sor Bob eredeti lépéseit írja le. Minden lépés ``$C_i$ $d_i$'' formában adott, ahol $C_i$ a mozgatott oldal középpontjának színe, és $d_i$ a forgatás irányát adja meg: $-1$, ha az óramutató járásával megegyező, $1$, ha vele ellentétes. A lépéseket az $1, \ldots, n$ számokkal azonosítjuk.
+
+A következő $m$ sor mindegyike egy-egy cserelépést ad meg az elvégzendő sorrendben három értékkel, \mbox{``$a_j$ $C_j$ $d_j$''} formában, ahol $a_j$ a lecserélni kívánt eredeti lépés sorszáma, és $C_j$ $d_j$ az új lépést adja meg.
+
+\heading{Korlátok}
+
+\noindent Minden tesztesetre $n,m \leq 65\,000$.\\
+A tesztesetek $50\%$-ában $n,m \leq 1000$.
+
+\heading{Kimenet}
+
+Legyen $S_i$ az a lépéssorozat, amelyet Bob eredeti lépéssorozatából úgy kapunk, hogy az első $i$ darab cserelépést helyettesítettük.
+
+Minden egyes $i$-re 1-től $m$-ig 9 sort kell kiírni: a kocka kezdeti állapotára alkalmazott $S_i$ lépéssorozat elvégzése utáni állapotát. Használd ugyanazt a formátumot, mint ami a bemenetnél van megadva.
+
+\heading{Példa bemenet és kimenet}
+
+\sampleIN
+AAA
+AAA
+AAA
+BBBCCCDDDEEE
+BBBCCCDDDEEE
+BBBCCCDDDEEE
+FFF
+FFF
+FFF
+8 4
+E 1
+E -1
+B 1
+B -1
+F 1
+F -1
+E 1
+E -1
+8 C -1
+2 C -1
+6 A -1
+4 D -1
+\sampleCOMMENT
+Az eredeti lépések kioltják egymást. Az eredeti lépéssorozat végére a kocka az eredeti állapotába tér vissza.
+
+A bemenetben megadott négy cserelépést elvégezve, olyan lépéssorozatot kapunk, amely mindent elforgat, kivéve az oldalak középpontjait.
+\sampleOUT
+DAD
+DAD
+DAD
+ABACCCFDFEEE
+ABACCCFDFEEE
+ABACCCFDFEEE
+BFB
+BFB
+BFB
+FAF
+FAF
+FAF
+DBDCCCBDBEEE
+DBDCCCBDBEEE
+DBDCCCBDBEEE
+AFA
+AFA
+AFA
+EDE
+FAF
+EDE
+DCDFCFBEBAEA
+ABADCDFDFBEB
+DCDFCFBEBAEA
+CBC
+AFA
+CBC
+DDD
+DAD
+DDD
+CCCFFFEEEAAA
+CBCFCFEDEAEA
+CCCFFFEEEAAA
+BBB
+BFB
+BBB
+\sampleEND
+
+
+\end{document}
