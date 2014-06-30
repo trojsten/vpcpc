@@ -1,0 +1,72 @@
+\input sys/inputs.tex
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+\usepackage{polski}
+
+\begin{document}
+
+\bigheading{New Tree}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{newtree}{stdin}{stdout}{100}{100 ms}{32 MiB}
+
+W parku, w centrum miasta, zostało posadzone nowe drzewo.
+Ogrodnik pragnie się nim starannie opiekować.
+Chce zbudować wokół niego ogrodzenie, które będzie je chroniło.
+Zbuduje je w ten sposób, że wybierze pewne
+	trzy stare drzewa\footnote{drzewa, które rosły przed posadzeniem nowego drzewa -- przyp. red.}
+	i rozciągnie między nimi siatkę.
+Nowe drzewo powinno wtedy znaleźć się wewnątrz ogrodzonego terenu
+	i żadne inne drzewo nie ma prawa już tam rosnąć.
+
+Ogrodnik wybrał już jedno ze starych drzew do zbudowania ogrodzenia.
+Pomóż mu znaleźć dwa pozostałe.
+
+\heading{Task}
+
+Twoim zadaniem jest znaleźć dwa stare drzewa, które wspólnie z tym wybranym będą odgradzały teren,
+	w~którym będzie się znajdować nowe drzewo i żadne inne.
+
+\heading{Input}
+
+W pierwszej linii wejścia znajdują się dwie liczby całkowite $N$ i $A$ ($3 \le N \le 100\,000$, $1 \le A \le N$),
+	oznaczające liczbę starych drzew i numer drzewa, wybranego przez ogrodnika (drzewa są ponumerowane od $1$ do $N$).
+W drugiej linii znajdują się dwie liczby $x$ i $y$ -- współrzędne nowego drzewa.
+W każdej z następnych $N$ linii znajdują się dwie liczby $x$ i $y$ -- współrzędne starego drzewa.
+Dla wszystkich współrzędnych zachodzi warunek: $-1\,000\,000 \le x, y \le 1\,000\,000$.
+
+W $40\%$ testów zachodzi dodatkowy warunek $N \le 5000$.
+
+\heading{Output}
+
+Na wyjście należy wypisać dwie liczby całkowite $B$ i $C$, oddzielone pojedynczym odstępem.
+Liczby $B$ i $C$ mają oznaczać numery starych drzew, takie, że jeśli $A$ jest numerem drzewa wybranego przez ogrodnika,
+	to trójkąt o wierzchołkach w drzewach $A$, $B$ i $C$ (\textbf{w kolejności przeciwnej do wskazówek zegara})
+	tworzą poprawny teren do ochrony nowego drzewa.
+Nie mogą istnieć drzewa (różne od $A$, $B$ i $C$) na bokach tego trójkąta,
+	oraz jedynym drzewem leżącym \textbf{ściśle} wewnątrz trójkąta musi być nowe drzewo.
+
+Jeśli nie można wybrać takich drzew $B$ i $C$, to należy wypisać \texttt{0 0}.
+
+Jeśli istnieje wiele poprawnych rozwiązań, należy wypisać dowolne z nich (nie ma znaczenia które).
+
+\heading{Sample}
+
+\sampleIN
+7 1
+9 3
+3 1
+8 7
+9 5
+11 5
+12 4
+9 1
+13 6
+\sampleOUT
+6 4
+\sampleEND
+
+\end{document}
