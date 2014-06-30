@@ -1,0 +1,153 @@
+\input sys/inputs.tex
+
+\begin{document}
+
+\bigheading{RubiKubismus}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{rubik}{stdin}{stdout}{100}{1000 ms}{1 GB}
+
+Moderní umění je nepředvídatelné.
+Své o tom ví i Bob.
+Minule si jenom uklízel pokoj
+a našel starou Rubikovu kostku.
+Zavřel oči, naslouchal svému vnitřnímu hlasu
+a udělal pár\footnote{$65\,00$0} rychlých pohybů.
+Vzniklo téměř dokonalé dílo.
+Potřebovalo už jenom pár\footnote{znovu $65\,000$} úprav.
+Přesněji, potřebovalo změnit některé z původních tahů.
+Bob by však rád věděl, co jednotlivé změny vlastně dělají.
+Ale nechce se mu opakovat celou posloupnost tahů pokaždé znovu.
+Rozhodl se, že si napíše program, který mu práci trochu usnadní.
+
+\heading{Úloha}
+
+Dostanete Rubikovu kostku (ne nutně vyřešenou),
+seznam Bobových tahů a posloupnost změn v tomto seznamu tahů.
+Po každé změně vypište, jak by vypadala výsledná kostka
+po použití všech tahů ze seznamu.
+
+\heading{Formát kostky}
+
+Barvy kostky označme $A$,$B$,$C$,$D$,$E$,$F$.
+Když si hrajete s kostkou, nemění
+se vzájemná poloha prostředních čtverečků stěn kostky.
+Můžeme tedy vždy kostku natočit tak,
+aby prostřední čtverečky měly fixní pozici.
+Potom můžeme rozvinout povrch do roviny kostky a získáme
+tak její jednoznačný popis:\\
+\texttt{
+???\\
+?A?\\
+???\\
+????????????\\
+?B??C??D??E?\\
+????????????\\
+???\\
+?F?\\
+???\\
+}
+
+\heading{Vstup}
+
+Prvních $9$ řádků popisuje počáteční konfiguraci kostky
+ve výše zmíněném formátu.
+
+Následující řádek obsahuje $2$ celá čísla $n$ a $m$.
+$n$ je počet tahů a $m$ je počet změn.
+
+Dalších $n$ řádků popisuje původní Bobovy tahy.
+Mají tvar $C_i$ $d_i$,
+kde $C_i$ je barva středu té stěny kostky,
+kterou během tahu otáčíme, a $d_i$ je rovno $-1$
+pokud točíme po směru chodu hodinových ručiček, případně
+rovno $1$ pokud točíme proti směru chodu hodinových ručiček.
+
+Posledních $m$ řádků popisuje změny.
+Mají tvar $a_j$ $C_j$ $d_j$,
+kde $a_j$ je číslo tahu, který se nahrazuje
+a $C_j$ $d_j$ popisují nový tah.
+Tahy jsou číslované od $1$ do $n$.
+
+\smallskip
+
+Platí $n,m \leq 65000$
+a v $50\%$ vstupů dokonce
+$n,m \leq 1000$.
+
+\heading{Výstup}
+
+Po každé z $m$ změn vypište $9$ řádků
+popisujících konečnou konfiguraci kostky.
+
+\heading{Příklad}
+
+\sampleIN
+AAA
+AAA
+AAA
+BBBCCCDDDEEE
+BBBCCCDDDEEE
+BBBCCCDDDEEE
+FFF
+FFF
+FFF
+8 4
+E 1
+E -1
+B 1
+B -1
+F 1
+F -1
+E 1
+E -1
+2 C -1
+4 D -1
+6 A -1
+8 C -1
+\sampleCOMMENT
+Původní tahy se navzájem vyřuší.
+Postupně je měníme na známý trik
+rotace středů.
+\sampleOUT
+DAD
+DAD
+DAD
+ABACCCFDFEEE
+ABACCCFDFEEE
+ABACCCFDFEEE
+BFB
+BFB
+BFB
+CCC
+DAD
+CCC
+AAABCBFFFDED
+BBBFCFDDDAEA
+AAABCBFFFDED
+EEE
+BFB
+EEE
+CDC
+CAC
+CDC
+BCBFFFDEDAAA
+BBBFCFDDDAEA
+BCBFFFDEDAAA
+EBE
+EFE
+EBE
+DDD
+DAD
+DDD
+CCCFFFEEEAAA
+CBCFCFEDEAEA
+CCCFFFEEEAAA
+BBB
+BFB
+BBB
+\sampleEND
+
+
+\end{document}
