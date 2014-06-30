@@ -1,0 +1,86 @@
+\input sys/inputs.tex
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+\usepackage{polski}
+
+\begin{document}
+
+\bigheading{Investigation}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{investigation}{stdin}{stdout}{100}{2500 ms}{1 GB}
+
+W Bajtocji, na wolności grasuje straszny złodziej.
+Jesteś detektywem i Twoim zadaniem jest go znaleźć i~aresztować.
+
+Bajtocja składa się z $N$ domów, połączonych $N-1$ drogami,
+	które łączą pewne domy w taki sposób, że między dowolną parą domów istnieje dokładnie jedna ścieżka
+	(czyli Bajtocja ma strukturę drzewa).
+Złodziej ukrywa się w jednym z tych domów.
+
+Aby zlokalizować złodzieja, możesz wybrać dowolny dom $h$ i go przeszukać.
+Jeśli w tym domu znajdował się złodziej, to aresztujesz go.
+W przeciwnym przypadku, przesłuchujesz domowników, a oni naprowadzają Cię na jego trop,
+	mówiąc w którym kierunku od danego domu znajduje się złodziej.
+Jeśli wyobrazisz sobie miasto jako ukorzenione drzewo, o korzeniu $h$, którego dziećmi
+	są domy $c_1$, $c_2$, $\ldots$, $c_m$, to domownicy powiedzą, w którym z poddrzew $c_i$
+	kryje się złodziej.
+
+Dopóki nie znajdziesz złodzieja, będziesz przeszukiwać kolejne domy.
+Możesz założyć, że w trakcie całego śledztwa złodziej nie opuści domu, w którym się ukrył.
+
+Oczywistym jest, że kolejność przeszukiwania domów ma znaczenie,
+	ponieważ nawet jeśli nie znajdziesz złodzieja w jednym domu, to informacja, którą uzyskasz od domowników
+	może bardzo zawężyć podejrzany zbiór domów.
+Twoim zadaniem jest znaleźć optymalną strategię, która minimalizuje liczbę przeszukanych domów
+	w~najgorszym możliwym przypadku.
+
+\heading{Task}
+
+Masz dany opis miasta.
+Znajdź optymalną strategię, która minimalizuje liczbę przeszukanych domów w~najgorszym możliwym przypadku.
+
+\heading{Input}
+
+W pierwszej linii wejścia znajduje się jedna liczba $N$ ($2 \le N \le 10^5$), oznaczająca liczbę domów w Bajtocji
+	(domy są ponumerowane od $0$ do $N-1$).
+
+W drugiej linii znajduje się $N-1$ liczb całkowitych $v_1$, $v_2$, $\ldots$, $v_{N-1}$.
+Liczba $v_i$ ($1 \le i \le N-1$) oznacza, że istnieje droga łącząca domy o numerach $v_i$ oraz $i$ ($v_i < i$).
+
+W $20\%$ testów zachodzi $N \le 10$.
+
+W $40\%$ testów zachodzi $N \le 20$.
+
+W $60\%$ testów zachodzi $N \le 1\,000$.
+
+\heading{Output}
+
+Na wyjście należy wypisać jedną liczbę całkowitą -- liczbę domów, które musisz odwiedzić w najgorszym możliwym przypadku,
+	podczas gdy stosujesz optymalną strategię.
+
+\heading{Samples}
+
+\sampleIN
+5
+0 1 1 1
+\sampleCOMMENT
+Bajtocja jest gwiazdą, z domem $1$ w środku.
+\sampleOUT
+2
+\sampleCOMMENT
+Najpierw należy przeszukać dom $1$.
+Jeśli złodzieja tam nie ma, to informacja uzyskana od mieszkańców, wskaże dom, w którym się ukrywa.
+\sampleEND
+
+\sampleIN
+8
+0 1 2 1 3 5 6
+\sampleOUT
+3
+\sampleEND
+
+\end{document}

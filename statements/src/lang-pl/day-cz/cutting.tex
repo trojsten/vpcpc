@@ -1,0 +1,91 @@
+\input sys/inputs.tex
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+\usepackage{polski}
+
+\begin{document}
+
+\bigheading{Cutting of a birthday cake}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{cutting}{plik tekstowy}{plik tekstowy}{100}{nie dotyczy}{nie dotyczy}
+
+Mimino obchodzi swoje urodziny.
+Jest świetnym programistą, chociaż ma tylko $N$ latek.
+Kompilator Kamili (tej z wczoraj \texttt{:D}) upiekł ogromne
+	ciasto czekoladowe\footnote{Tak duże, że można je utożsamiać z nieskończoną płaszczyzną}
+	na urodziny Mimina i umieścił na nim $N$ świeczek.
+Mimino i jego przyjaciele chcieliby zjeść to ciasto, ale przedtem muszą je odpowiednio podzielić.
+Ciasto można kroić wzdłuż wybranej prostej, która jest pionowa, pozioma, albo skośna.
+Po pokrojeniu ciasta, każdy kawałek może zawierać co najwyżej jedną świeczkę.
+
+Mimino zastanawia się ile minimalnie cięć musi wykonać, aby spełnione zostały wszystkie te wymagania.
+
+\heading{Task}
+
+Mając daną płaszczyznę z wyróżnionymi $N$ punktami, znajdź zbiór prostych,
+	które dzielą tę płaszczyznę tak, że każda część zawiera co najwyżej jeden wyróżniony punkt.
+Ten zbiór powinien być jak najmniejszy.
+
+Współrzędne wszystkich punktów są liczbami całkowitymi.
+Proste są zadane poprzez dwa różne punkty (o~całkowitych współrzędnych)
+	i są skierowane od pierwszego punktu do drugiego.
+To skierowanie jest istotne przy rozstrzyganiu remisów, gdy jakiś punkt leży na linii cięcia.
+	-- wówczas uznaje się, że taki punkt leży po prawej stronie prostej.
+Linie mogą być tylko pionowe, poziome, albo nachylone pod kątem $45^\circ$ do osi układu współrzędnych.
+
+\heading{Input}
+
+W pierwszej linii wejścia znajduje się jedna liczba całkowita $N$, oznaczająca liczbę punktów.
+Następne $N$ linii opisuje te punkty.
+W $(i+1)$-wszej linii znajdują się dwie liczby całkowite -- współrzędne $i$-tego punktu.
+
+\heading{Output}
+
+W pierwszym wierszu wyjścia należy wypisać jedną liczbę całkowitą $L$ -- liczbę cięć, które chcesz wykonać.
+Następne $L$ wierszy powinno zawierać opisy poszczególnych cięć.
+Opis jednego cięcia składa się z czterech liczb całkowitych oddzielonych spacją: $X_1$, $Y_1$, $X_2$, $Y_2$.
+Punkty $(X_1, Y_1)$ i $(X_2, Y_2)$ muszą być różne -- są to punkty, przez które ma przechodzić dane cięcie.
+Co najmniej jeden z poniższych warunków musi zachodzić:
+\begin{itemize}
+	\item $X_1 = X_2$ (pionowa linia)
+	\item $Y_1 = Y_2$ (pozioma linia)
+	\item $X_1 - X_2 = Y_1 - Y_2$ (skośna linia, typ I)
+	\item $X_1 - X_2 = Y_2 - Y_1$ (skośna linia, typ II)
+\end{itemize}
+Twoje rozwiązanie nie może wypisać więcej niż $10\,000$ cięć,
+	a wartość bezwzględna współrzędnych nie może być większa niż $1\,000\,000$.
+
+\heading{Scoring}
+
+To jest zadanie z jawnymi testami.
+Możesz pobrać wszystkie $10$ testów z systemu.
+Rozwiązaniem zadania są pliki wyjściowe (nie należy dołączać kodu).
+
+Jeśli Twoja odpowiedź nie będzie dokładnie przestrzegała specyfikacji wyjścia,
+	Twój wynik za dany test będzie równy $0$.
+
+W przeciwnym przypadku, Twoim wynikiem będzie $10 \cdot \left(1 - \sqrt{1 - L_{min} / L} \right)$,
+	gdzie $L$ jest liczbą cięć w Twoim wyjściu, a $L_{min}$ jest najlepszym wynikiem spośród wszystkich zawodników.
+Wyniki zostaną obliczone dopiero po zakończeniu zawodów.
+
+\newpage
+
+\heading{Sample}
+
+\sampleIN
+4
+3 1
+4 5
+6 6
+8 4
+\sampleOUT
+2
+3 2 8 7
+2 8 8 2
+\sampleEND
+
+\end{document}
