@@ -25,12 +25,14 @@ Ale nechce se mu opakovat celou posloupnost tahů pokaždé znovu.
 \heading{Úloha}
 
 Dostanete Rubikovu kostku (ne nutně vyřešenou).
-Dále dostanete seznam původních Bobových tahů a posloupnost změn.
+Dále dostanete seznam původních Bobových tahů.
+
+Na závěr dostanete seznam změn, které Bob plánuje provést.
 Každá změna je tvaru ``změň $k$-tý tah na tento nový tah.''
 Po každé změně vypište, jak by vypadala \textit{výsledná kostka
 po použití všech tahů} ze seznamu.
 
-Všimněte si, že změny jsou trvalé - například druhá změna
+Všimněte si, že změny přetrvávají -- například druhá změna
 se provede na seznam tahů, který je již upravený první změnou.
 
 \heading{Formát kostky}
@@ -38,7 +40,7 @@ se provede na seznam tahů, který je již upravený první změnou.
 Barvy kostky označme $A$,$B$,$C$,$D$,$E$,$F$.
 Když si hrajete s kostkou, nemění
 se vzájemná poloha prostředních čtverečků stěn kostky.
-Postavíme kostku tedy vždy tak, aby střed vrchní stějny
+Postavíme kostku tedy vždy tak, aby střed vrchní stěny
 kostky měl barvu $A$, středy bočních stěn postupně barvy $B$, $C$, $D$, $E$
 a konečně střed spodní stěny barvu $F$.
 Potom můžeme rozvinout povrch kostky do roviny a získáme
@@ -64,7 +66,7 @@ výše.\footnote{Navíc můžete předpokládat, že počáteční konfigurace
 je validní stav kostky, který můžeme získat z vyřešeného stavu.
 Na druhou stranu to pro řešení úlohy není nijak důležité.}
 
-Následující řádek obsahuje $2$ celá čísla $n$ a $m$.
+Následující řádek obsahuje dvě celá čísla $n$ a $m$.
 $n$ je počet tahů a $m$ je počet změn.
 
 Dalších $n$ řádků popisuje původní Bobovy tahy.
