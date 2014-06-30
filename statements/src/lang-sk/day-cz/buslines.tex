@@ -11,24 +11,19 @@
 V českom meste Kocourkov\footnote{narozdiel od nášho Kocúrkova je Kocourkov fiktívny}
 majú zaujímavý systém verejnej dopravy.
 Pozostáva z $N$ zastávok pospájaných pomocou $N-1$ obojsmerných ciest tak,
-že z ľubovoľnej zastávky sa možno dostať na ľubovoľnú inú
+že z ľubovoľnej zastávky sa možno dostať na ľubovoľnú inú,
 použitím nejakej postupnosti ciest.
 
-Každé ráno, pre každú dvojicu rôznych zastávok $x$ a $y$,
-vyrazí autobus z počiatočnej zastávky $x$ do konečnej zastávky $y$
-po jedinej možnej ceste medzi týmito zastávkami.
-Dokopy teda vyrazí $N(N-1)$ autobusov.
-Každý autobus stojí na všetkých zastávkach
-po ceste do konečnej.
+Každej dvojici rôznych zastávok $x$ a $y$ je pridelený autobus, ktorý vždy ráno vyrazí z počiatočnej
+zastávky $x$ do konečnej zastávky $y$, pričom ide po jedinej možnej ceste, ktorá spája tieto dve
+zastávky. Dokopy teda vyrazí $N(N-1)$ autobusov. Každý autobus naviac zastaví na všetkých
+zastávkach, cez ktoré prechádza počas svojej cesty.
 
 V Kocourkove sa koná budúcoročné VPCPC\footnote{ignorujte predošlú poznámku}
 a teda zháňame miesto na ubytovanie.
-Samozrejme, musí byť v blízkosti zastávky.
-(Komu sa chce šlapať?)
-Ale nepáči sa nám ak tam bude jazdiť priveľa autobusov.
-(Budú vás rušiť počas kontestu.)
-A preto nám pre každú zastávku zistíte,
-koľko autobusov na nej stojí.
+Samozrejme, musí byť v blízkosti zastávky, lebo sa nikomu nechce šlapať.
+Ale nepáči sa nám, ak tam bude jazdiť priveľa autobusov, lebo by vás rušili počas contestu.
+A preto nám pre každú zastávku zistite, koľko autobusov na nej stojí.
 
 \heading{Úloha}
 
@@ -41,7 +36,7 @@ Prvý riadok obsahuje celé číslo $N$,
 počet zastávok v meste.
 Zastávky sú číslované od $1$ po $N$.
 Nasledujúcich $N-1$ riadkov popisuje cesty v meste.
-Každý riadok obsahuje 2 celé čísla $1 \le x, y \le N$
+Každý riadok obsahuje $2$ celé čísla $1 \le x, y \le N$
 -- čísla zastávok, ktoré spája táto cesta.
 
 \bigskip
@@ -52,7 +47,7 @@ V $40\%$ vstupov platí $N \leq 1000$.
 
 \heading{Výstup}
 
-Vypíšte $N$ riadkov.
+Výstup obsahuje $N$ riadkov.
 V $i$-tom riadku vypíšte jedno celé číslo --
 počet autobusov, ktoré stoja na $i$-tej zastávke.
 
