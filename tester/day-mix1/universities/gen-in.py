@@ -59,20 +59,21 @@ def w(data):
 
 data = [[]]
 
-# small random data
-tc = [
-    (2, 'BW', [5, -10], [1]),
-    (3, 'WBB', [-10, -20, 100], [1, 2]),
-    (5, 'BWWWW', [0, 1, 2, 3, 4], [1, 2, 3, 4]),
-    (5, 'BWWWW', [0, 1, 2, 3, 4], [1, 1, 1, 1]),
-]
-for i in xrange(15):
-    N = random.randint(2, 50)
-    tc.append((N, gen_random_colors(N), gen_random_happy(N), gen_random(N)))
-data.append(tc)
 # data with increasing N
-for MIN_N, MAX_N in [(800, 1000), (8000, 10000), (40000, 50000), (100000, 100000)]:
+for MIN_N, MAX_N in [(8000, 10000), (40000, 50000), (100000, 100000)]:
     tc = []
+
+    if MIN_N == 8000:
+        tc.extend([
+            (2, 'BW', [5, -10], [1]),
+            (3, 'WBB', [-10, -20, 100], [1, 2]),
+            (5, 'BWWWW', [0, 1, 2, 3, 4], [1, 2, 3, 4]),
+            (5, 'BWWWW', [0, 1, 2, 3, 4], [1, 1, 1, 1])])
+    elif MIN_N == 100000:
+        N = 100000
+        tc.extend([
+            (N, gen_equal_random_colors_shuffle(N), gen_max_happy(N), gen_path_strict(N))])
+
     for structure in gen_structure:
         for colors in gen_colors:
             N = random.randint(MIN_N, MAX_N)
@@ -81,8 +82,5 @@ for MIN_N, MAX_N in [(800, 1000), (8000, 10000), (40000, 50000), (100000, 100000
         N = random.randint(MIN_N, MAX_N)
         tc.append((N, gen_random_colors(N), gen_random_happy(N, min_h=0, max_h=10**5), structure(N)))
     data.append(tc)
-# overflow check
-N = 100000
-data.append([(N, gen_equal_random_colors_shuffle(N), gen_max_happy(N), gen_path_strict(N))])
 
 w(data)

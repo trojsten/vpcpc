@@ -1,0 +1,76 @@
+\input sys/inputs.tex
+
+\begin{document}
+
+\bigheading{Nový strom}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{newtree}{stdin}{stdout}{100}{200 ms}{1 GB}
+
+Záhradník zasadil v mestskom parku nový strom, no keďže je ešte malý a slabý,%
+\footnote{ten strom}
+musí%
+\footnote{záhradník}
+ho%
+\footnote{ten strom}
+ochrániť plotom. Ohradená oblasť má mať tvar trojuholníka s vrcholmi v troch
+starých stromoch. Nový strom musí byť vnútri chránenej oblasti, no nesmie ležať
+na jej hranici. Žiadny zo starých stromov okrem tých vo vrcholoch trojuholníka
+nesmie ležať vnútri chránenej oblasti, a to ani na jej hranici.
+
+
+\heading{Úloha}
+
+Záhradník už vybral jeden starý strom. Nájdite ďalšie dva, ktoré spolu s ním
+vytvoria chránenú oblasť.
+
+
+\heading{Vstup}
+
+Prvý riadok vstupu obsahuje dve celé čísla $N$ a $A$ -- počet starých stromov
+($3 \leq N \leq 10^5$) a číslo vybraného starého stromu ($1 \leq A \leq N$).
+Staré stromy sú očíslované od $1$ do $N$.
+
+Druhý riadok obsahuje dve celé čísla $x$ a $y$ -- $x$-ovú a $y$-ovú súradnicu
+nového stromu. Každý z nasledujúcich $N$ riadkov obsahuje dve celé čísla $x_i$ a
+$y_i$ -- súradnice $i$-teho starého stromu. Žiadna zo súradníc v absolútnej
+hodnote neprekročí $10^6$.
+
+\bigskip
+
+Navyše máte garantované, že v testovacích vstupoch hodných $40$ bodov bude
+platiť $N \leq 5\,000$.
+
+
+\heading{Výstup}
+
+Na jediný riadok výstupu vypíšte dve celé čísla $B$ a $C$ oddelené jednou
+medzerou.
+
+Ak riešenie úlohy neexistuje, potom má platiť $B = C = 0$. V opačnom prípade
+majú staré stromy s číslami $A$, $B$ a $C$ tvoriť vrcholy chránenej oblasti v
+poradí proti smeru hodinových ručičiek. Ak existuje viacero riešení, vypíšte
+vaše najobľúbenejšie.
+
+
+\heading{Príklad}
+
+\sampleIN
+7 1
+9 3
+3 1
+8 7
+9 5
+11 5
+12 4
+9 1
+13 6
+\sampleOUT
+6 4
+\sampleCOMMENT
+
+\sampleEND
+\bigskip
+
+\end{document}

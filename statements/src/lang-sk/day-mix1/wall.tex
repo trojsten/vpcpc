@@ -1,0 +1,73 @@
+\input sys/inputs.tex
+
+\begin{document}
+
+\bigheading{Oprava cesty}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{wall}{stdin}{stdout}{100}{1000 ms}{128 MB}
+
+Slovenské cesty sú väčšinou v katastrofálnom stave. Obrovské jamy a výmole sú úplne bežné a človek
+musí vedieť šoférovať naozaj obratne, aby sa im všetkým vyhol. Samozrejme, nikomu z kompetentných to
+neprekáža až do okamihu, kým sa na návštevu neprihlási anglická kráľovná a nechce nás prísť
+navštíviť na VPCPC.
+
+V tom okamihu sa zalarumuje špeciálna vládna cestárska spoločnosť, ktorej jedinou úlohou je
+zaplátať všetky výmole na ceste z bratislavského letiska po ubytovňu v Danišovciach. Na túto prácu
+je vyhradený špeciálny stroj, ktorý sa teraz nachádza niekde medzi letiskom a Danišovcami. Ten
+dokáže opraviť ľubovoľnú dieru, na ktorej stojí, za nulový čas, bez ohľadu na to, ako je diera veľká. Avšak veľkosť
+diery ovplyvňuje množstvo asfaltu, ktorý musí využiť. A diery sa postupne zväčšujú, až kým nebudú
+opravené.
+
+Otázkou teda je, koľko najmenej asfaltu je potrebné na zaplátanie každého výmoľu na ceste, aby sa
+podľa toho dala vystaviť faktúra pre štát\footnote{Samozrejme, táto hodnota nebude korelovať s
+cenou, ktorá bude vo faktúre.}.
+
+\heading{Úloha}
+
+Cestu z letiska do Danišoviec si môžeme predstaviť ako rovnú čiaru, na ktorej sa nachádzajú body
+predstavujúce výmole. Pre každý výmoľ poznáme začiatočné množstvo asfaltu $C_i$, ktoré je potrebné
+na zaplátanie $i$-teho výmoľu a hodnotu $D_i$, ktorá vyjadruje, o koľko viac asfaltu bude treba na
+zaplátanie $i$-tej diery za každú sekundu, čo diera nebude opravená. Ak teda začneme opravovať výmoľ
+$i$ v sekunde $t$, oprava nás bude stáť $C_i + t \cdot D_i$.
+
+Na začiatku poznáme pozície jednotlivých dier $x_i$ a počiatočnú pozíciu stroja $P$. Vieme, že
+prejsť z bodu s pozíciou $x$ na pozíciu $y$ trvá stroju $|x-y|$ sekúnd. Zistite najmenšie množstvo
+asfaltu, ktoré je potrebné na zaplátanie všetkých dier na ceste.
+
+\heading{Vstup}
+
+Na prvom riadku vstupu sú dve čísla $N$ a $P$ ($1 \le N \le 2\,000$, $0 \le P \le 10^9$) -- počet
+výmoľov a počiatočnú pozíciu stroja.
+
+Nasledujúcich $N$ riadkov popisuje výmole pomocou trojice čísiel $x_i$, $C_i$ a $D_i$ ($0 \leq x_i
+\leq 10^9$, $0 \leq C_i,D_i \leq 10^6$, $x_i \neq P$) -- pozíciu výmoľu a koeficienty množstva
+asfaltu. Žiadne dva body nezdieľajú pozíciu.
+
+\heading{Výstup}
+
+Na výstup vypíšte jedno číslo -- najmenšie množstvo asfaltu potrebné na opravenie všetkých výmoľov.
+
+\heading{Príklad}
+
+
+\sampleIN
+3 7
+10 32 1
+3 5 1
+14 0 2
+\sampleOUT
+72
+\sampleCOMMENT
+Optimálny spôsob ako plátať diery je nasledovný:
+\begin{itemize}
+	\item Presuň stroj z pozície $7$ na pozíciu $10$ a oprav prvú dieru po tretej sekunde.
+	\item Presuň stroj z pozície $10$ na pozíciu $14$ a oprav druhý bod po čase $7$ sekúnd.
+	\item Presuň stroj z pozície $14$ na pozíciu $3$ a oprav tretí bod po čase $18$ sekúnd.
+\end{itemize}
+Celkové množstvo asfaltu, ktoré je potrebné na opravenie všetkých dier je teda $5 + 18 \cdot 1 + 32 + 3 \cdot 1 + 0 + 7 \cdot 2 = 72$.
+\sampleEND
+
+
+\end{document}

@@ -1,0 +1,163 @@
+\input sys/inputs.tex
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+\usepackage{polski}
+
+\begin{document}
+
+\bigheading{Cubic Art}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{rubik}{stdin}{stdout}{100}{1200 ms}{1 GB}
+
+Sztuka współczesna jest nieprzewidywalna.
+Kiedy Bob sprzątał swój pokój, znalazł swoją starą kostkę Rubika.
+Zaciekawiony znaleziskiem zaczął się nim bawić i wykonał kilka ruchów (nie więcej niż $65\,000$).
+Chciał stworzyć prześliczne arcydzieło, ale coś mu nie wyszło i nie był zbyt zadowolony z układu, który otrzymał.
+Dopiero później się zorientował, że kilka ruchów zrobił niepoprawnie.
+Gdyby tylko mógł się cofnąć w czasie i~naprawić swoje błędy...
+
+Bob pragnie dokonać kilku zmian w swoich ruchach (ale nie więcej niż $65\,000$).
+Każda zmiana polega na zastąpieniu jednego ruchu jakimś innym ruchem.
+Bob chciałby zobaczyć, jak będzie wyglądała kostka, po wprowadzeniu każdej zmiany.
+Nie chciałby jednak wykonywać za każdym razem tych ruchów na kostce.
+Pomóż mu i napisz program, który będzie w stanie zrobić to za niego.
+
+\heading{Task}
+
+Masz dany początkowy stan kostki Rubika (na początku kostka nie musi być ułożona).
+Masz również dany początkowy układ ruchów, wykonywanych przez Boba.
+
+Dane są również wszystkie zmiany, które Bob chciałby zastosować.
+Każda zmiana ma postać: ,,zastąp $k$-ty ruch nowym, podanym ruchem''.
+Po każdej zmianie, wypisz stan kostki po wykonaniu wszystkich ruchów.
+
+Wszystkie zmiany zachowują się pomiędzy kolejnymi poprawkami
+	-- czyli, na przykład, druga zmiana zostanie zastosowana do sekwencji ruchów
+	z pierwszą zmianą, a nie do początkowej sekwencji ruchów.
+
+\heading{Cube's I/O}
+
+Nazwijmy kolory na kostce: \texttt{A}, \texttt{B}, \texttt{C}, \texttt{D}, \texttt{E}, \texttt{F}.
+Kiedy obracasz ścianami kostki, środkowe kwadraciki się nie poruszają.
+Zatem zawsze \texttt{A} będzie kolorem środka górnej ściany, \texttt{B}, \texttt{C}, \texttt{D}, \texttt{E}
+	będą środkami bocznych ścian (w tej kolejności), a \texttt{F} będzie środkiem dolnej ściany.
+Kostkę można by rozciąć do poniższej siatki:
+
+\noindent
+\texttt{???} \\
+\texttt{?A?} \\
+\texttt{???} \\
+\texttt{????????????} \\
+\texttt{?B??C??D??E?} \\
+\texttt{????????????} \\
+\texttt{???} \\
+\texttt{?F?} \\
+\texttt{???} \\
+
+\heading{Input}
+
+Pierwsze dziewięć linii wejścia zwiera opis początkowego stanu kostki.
+Stan kostki jest zapisany w powyższej formie.
+Możesz założyć, że środki sześciu ścian mają takie kolory jakie są podane
+	powyżej.\footnote{Możesz również założyć, że początkowy stan jest poprawnym układem kostki Rubika,
+		czyli może zostać uzyskany z ułożonego układu.
+		To w ogóle nie ma znaczenia dla tego zadania, ale tak już jest i nie należy z tym dyskutować.}
+
+Dalej jest podana linia z dwiema liczbami $n$ i $m$, oznaczającymi liczbę ruchów i liczbę zmian wykonywanych przez Boba.
+
+W kolejnych $n$ liniach znajdują się opisy ruchów.
+Mają formę ,,\texttt{$C_i$ $d_i$}'', gdzie $C_i$ jest kolorem środka obracanej ściany, a $d_i$ jest równe $-1$
+	jeśli obraca się tę ścianę zgodnie ze wskazówkami zegara i $1$ jeśli przeciwnie do wskazówek zegara.
+
+W ostatnich $m$ liniach opisane są poszczególne zmiany.
+Każda linia jest postaci ,,\texttt{$a_j$ $C_j$ $d_j$}'', gdzie $a_j$ jest numerem\footnote{Ruchy są numerowane od $1$.}
+	ruchu, który należy zastąpić, a $C_j$ i $d_j$ opisują nowy ruch.
+
+We wszystkich testach zachodzi $n, m \le 65\,000$.
+W $50\%$ testów zachodzi $n, m \le 1000$.
+
+\newpage
+
+\heading{Output}
+
+Niech $S_i$ będzie sekwencją ruchów, uzyskaną z początkowej sekwencji, poprzez zastosowanie pierwszych $i$ zmian.
+Dla każdego $i$ od $1$ do $m$ włącznie, wypisz dziewięć linii, opisujących stan kostki po zastosowaniu
+	ruchów $S_i$ do początkowego układu kostki.
+Kostkę należy wypisać w takim samym formacie, co był w przypadku wejścia.
+
+\heading{Sample}
+
+\sampleIN
+AAA
+AAA
+AAA
+BBBCCCDDDEEE
+BBBCCCDDDEEE
+BBBCCCDDDEEE
+FFF
+FFF
+FFF
+8 4
+E 1
+E -1
+F 1
+F -1
+B 1
+B -1
+E 1
+E -1
+8 C -1
+2 C -1
+6 D -1
+4 A -1
+\sampleCOMMENT
+Oryginalne ruchy się nawzajem redukują, więc na końcu kostka pozostaje w początkowym układzie.
+
+\vspace{0.2cm}
+
+Po zastosowaniu czterech zmian opisanych na wejściu,
+	otrzymamy sekwencję ruchów, która odwraca wszystkie kolory, poza środkami ścian.
+\sampleOUT
+BAB
+BAB
+BAB
+FBFCCCADAEEE
+FBFCCCADAEEE
+FBFCCCADAEEE
+DFD
+DFD
+DFD
+FAF
+FAF
+FAF
+DBDCCCBDBEEE
+DBDCCCBDBEEE
+DBDCCCBDBEEE
+AFA
+AFA
+AFA
+FCF
+BAB
+FCF
+EFEDFDCACBAB
+DBDCCCBDBEEE
+EFEDFDCACBAB
+AEA
+DFD
+AEA
+CCC
+CAC
+CCC
+FFFDDDAAABBB
+FBFDCDADABEB
+FFFDDDAAABBB
+EEE
+EFE
+EEE
+\sampleEND
+
+\end{document}
