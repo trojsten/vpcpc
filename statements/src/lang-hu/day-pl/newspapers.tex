@@ -1,0 +1,43 @@
+\input sys/inputs.tex
+
+\begin{document}
+
+\bigheading{Újságkihordó}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{newspapers}{stdin}{stdout}{100}{2000 ms}{64 MB}
+
+Mirkow városa $n$ útkereszteződést tartalmaz, amelyeket $n-1$ kétirányú utca köt össze. Bármely út\-ke\-resz\-te\-ző\-dés\-ből bármely másikba el lehet jutni az utcákon keresztül.
+
+Mirek újságkihordóként dolgozik a városban. Minden utcáról tudja, hogy hányan laknak benne, akik újságot is rendelnek. Mirek minden reggel választ két kereszteződést, és a két kereszteződést összekötő legrövidebb útvonalon lakóknak viszi ki az újságot. Mirek napi bevétele arányos a kézbesített újságok átlagos számával, ahol az átlag a kézbesített újságok száma osztva az útvonalon lévő utcák számával. Mirek főnöke előírta, hogy csak olyan útvonalat választhat, amely legalább $k$ utcát tartalmaz.
+
+Segíts Mireknek kiválasztani a legtöbb bevételt eredményező útvonalat!
+
+\heading{Feladat}
+Írj programot, amely meghatározza a lehetséges legtöbb bevételt olyan útvonalon, amely legalább $k$ utcát tartalmaz! ??????????
+
+\heading{Bemenet}
+A bemenet első sora két egész számot tartalmaz, $n$-et és $k$-t ($1 \le n \le 100\,000$, $1 \le k \le n - 1$), ahol $n$ a kereszteződések száma és $k$ Mirek útvonalának minimális hossza. A következő $n-1$ sor mindegyikében három egész szám van, $a$, $b$ és $c$ ($1 \le a < b \le n$, $0 \le c \le 10^6$), ami azt jelenti, hogy az $a$ és $b$ kereszteződést utca köti össze, és ezen $c$ számú újságot kell kihordani.
+
+Feltételezhető, hogy létezik legalább egy $k$ hosszú útvonal.
+
+\heading{Korlátok}
+A tesztesetek $30\%$-ában $n \le 1\,000$.
+
+\heading{Output}
+A kimenetre ??????????
+
+\heading{Példa bemenet és kimenet}
+
+\sampleIN
+5 2
+1 2 4
+2 3 1
+3 4 3
+3 5 3
+\sampleOUT
+3.00000000 ??????
+\sampleEND
+
+\end{document}

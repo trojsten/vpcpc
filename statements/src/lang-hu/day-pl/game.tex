@@ -1,0 +1,48 @@
+\input sys/inputs.tex
+
+\begin{document}
+
+\bigheading{Játék}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{game}{stdin}{stdout}{100}{1000 ms}{64 MB}
+
+Mirek szeret a számokkal játszani. Barátjával, Kamillal, a következő játékot játsszák. Kezdetben adott két nem negatív egész szám: $A$ és $B$. Felváltva lépnek, minden lépésnél a soron következő játékos a nagyobbik számot cseréli le az alábbi két lehetőség szerint. Ha $A \leqslant B$, akkor
+
+\begin{itemize}
+	\item vagy lecseréli $B$-t $B - A^K$-ra, ahol $K$ tetszőleges olyan szám, amelyre teljesül, hogy $K > 0$ és $B - A^K \ge 0$;
+	\item vagy lecseréli $B$-t $B\ mod\ A$-ra. 
+\end{itemize}
+
+Ha $B \leqslant A$, akkor $A$-t cseréli le úgy, hogy a fenti szabályokban $B$ és $A$ helyet cserél. Az a játékos nyer, akinek a lépése után bármelyik szám 0 lesz. Mindig Mirek kezd. Segíts neki megmondani, hogy adott $A$ és $B$ esetén ki az, aki nyer, feltéve, hogy mindketten optimálisan játszanak.
+
+\heading{Feladat}
+Írj programot, amely adott kezdeti játékállásokra kiszámolja, hogy Mirek vagy Kamil nyer-e!
+
+\heading{Bemenet}
+A bemenet első sora a játékok $T$ számát tartalmazza ($1 \le T \le 10^4$).
+A következő $T$ sor mindegyike egy kezdeti játékállást ad meg, azaz $A$ és $B$ értékét ($1 \le A, B \le 10^{18}$).
+
+\heading{Korlátok}
+A tesztesetek $30\%$-ában $A,B \le 1000$.
+
+\heading{Kimenet}
+A kimenetre $T$ sort kell kiírni, ahány játékot játszottak. Az $i$. sorba annak a játékosan a nevét (\texttt{Mirek} vagy \texttt{Kamil}) kell írni, aki az $i$. játékban nyer.
+
+\heading{Példa bemenet és kimenet}
+
+\sampleIN
+4
+1 1
+12 4
+4 6
+15 31
+\sampleOUT
+\texttt{Mirek}
+\texttt{Mirek}
+\texttt{Kamil}
+\texttt{Mirek}
+\sampleEND
+
+\end{document}

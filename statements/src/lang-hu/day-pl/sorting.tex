@@ -1,0 +1,36 @@
+\input sys/inputs.tex
+
+\begin{document}
+
+\bigheading{Rendezés}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{sorting}{stdin}{stdout}{100}{5000 ms}{64 MB}
+
+Mireknek van néhány, egész számokból álló számsorozata. A sorozatokat növekvő sorrendbe szeretné rendezni. Talált ehhez egy alkalmazást, amely azonban szövegnek tekinti a számokat, és lexikografikus sorrendbe rendezi az elemeket. Az alkalmazás futtatása után Mirek meglepődött, hogy ennek ellenére a számsorozat is növekvően rendezett lett. 
+
+Mirek kíváncsi arra, hogy hogyan lehetséges az, hogy ezen számsorozatok numerikus sorrendje megegyezik a lexikografikus sorrendjükkel. Segíts a kíváncsiságát kielégíteni!
+
+\heading{Feladat}
+Adott az $[A, B]$ zárt intervallumba eső számok halmaza. Írj programot, amely meghatározza ezen intervallum azon részhalmazainak számát, amelyek lexikografikus és numerikus sorrendje ugyanaz! Az üres részhalmaz megfelel ennek a feltételnek.
+
+\heading{Bemenet}
+A bemenet első és egyetlen sora két egész számot tartalmaz, az intervallum $A$ és $B$ végpontját ($1 \le A \le B \le 10^{18}$, $B - A \le 10^5$).
+
+\heading{Kimenet}
+A kimenetre azt az egyetlen $M$ egész számot kell kiírni, ahol $M$ az $\{A, A+1, \ldots, B\}$ halmaz azon rész\-halma\-zainak száma, amelyek lexikografikus és numerikus sorrendje ugyanaz. Mivel ez a szám nagyon nagy is lehet, az értéket modulo $10^9 + 7$ írd ki!
+
+\heading{Példa bemenet és kimenet}
+
+
+\sampleIN
+98 101
+\sampleOUT
+7
+\sampleCOMMENT
+A részhalmazok a következők: $\emptyset$, $\{98\}$, $\{99\}$, $\{100\}$, $\{101\}$, $\{98, 99\}$, $\{100, 101\}$.
+\sampleEND
+
+
+\end{document}
