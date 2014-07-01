@@ -6,7 +6,7 @@
 
 % \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
 % leave this values, if you are not interested
-\info{critical}{stdin}{stdout}{100}{400 ms}{32 MiB}
+\info{critical}{stdin}{stdout}{100}{600 ms}{32 MiB}
 
 A large project is subdivided into $N$ different subprojects. The manager of the project established precedence relations among the subprojects. This means that there are pairs of subprojects $u$ and $v$ such that the completion of the subproject $u$ must be finished before the start of the subproject $v$. In this case we say that $u$ directly precedes $v$. We say that $u$ precedes $v$ if $u$ directly precedes $v$ or there is a subproject $z$ such that $u$ precedes $z$ and $z$ precedes $v$.
 Any subproject $u$ is considered critical if for each subproject $v$ (other than $u$) either $v$ precedes $u$ or $u$ precedes $v$. It is known that the whole project can be completed, e.i., there is no subproject $u$ such that $u$ precedes itself.
