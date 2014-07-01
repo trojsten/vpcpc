@@ -1,0 +1,49 @@
+\input sys/inputs.tex
+
+\begin{document}
+
+\bigheading{Tickets}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{tickets}{stdin}{stdout}{100}{800 ms}{32 MiB}
+
+Az év meccsét a következő héten játsszák. A stadionban $N$ ülőhely van, ezeket az $1, \ldots, N$ számokkal azonosítjuk. Minden szurkoló egy jegyet igényelhet, és megadhatja az ülőhelyek azon tartományát, amelyen belül ülni szeretne. A tartományt az intervallum $F$ első és $L$ utolsó ülőhelyének sorszámával adja meg. Tehát a szurkoló elfogad minden olyan $S$ ülőhelyet, amelyre teljesül, hogy $F \leq S \leq L$. A szervező $M$ igényt kapott a szurkolóktól, és meg szeretné határozni az egyszerre teljesíthető legtöbb igényt.
+
+\heading{Feladat}
+Írj programot, amely kiszámolja a legtöbb egyszerre teljesíthető igények számát, és meg is ad egy megfelelő ülőhely kiosztást! Természetesen nem ülhet egy helyre két szurkoló.
+
+\heading{Bemenet}
+A bemenet első sora két egész számot tartalmaz, az ülőhelyek $N$ számát ($1 \leq N \leq 100000$) és az igények $M$ számát ($1 \leq M \leq 1000000$). Az ülőhelyeket az $1, \ldots, N$ számokkal azonosítjuk. A következő $M$ sor mindegyike egy-egy igényt ad meg $F$ és $L$ egész számokkal ($1 \leq F \leq L \leq N$). Az igényeket az $1,\ldots,M$ számokkal azonosítjuk bemenetbeli sorrendben.
+
+\heading{Kimenet}
+A kimenet első sora a kielégített igények maximális $K$ számát tartalmazza. A következő $K$ sor mindegyike egy ülőhely kiosztást ad meg két egész számmal: $S\,R$, ahol $S$ egy ülőhely sorszáma és $R$ annak az igénynek a sorszáma, amely az $S$ ülőhelyet kapja a kiosztásban. Az ülőhely kiosztás tetszőleges sorrendben megadható. Ha több megoldás is van, akkor bármelyik megadható.
+
+\heading{Példa bemenet és kimenet}
+\sampleIN
+10 9
+1 3
+2 4
+5 7
+2 6
+1 5
+3 7
+4 8
+7 9
+3 8
+\sampleOUT
+9
+1 1
+2 5
+3 2
+4 4
+5 6
+6 9
+7 3
+8 7
+9 8
+\sampleCOMMENT
+
+\sampleEND
+
+\end{document}
