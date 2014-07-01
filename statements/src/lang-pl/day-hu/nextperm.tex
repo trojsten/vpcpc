@@ -1,0 +1,50 @@
+\input sys/inputs.tex
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+\usepackage{polski}
+
+\begin{document}
+
+\bigheading{Next Permutation}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{nextperm}{stdin}{stdout}{100}{100 ms}{32 MiB}
+
+Permutacje są bardzo ważnym bytem w środowisku matematycznym i informatycznym,
+	a permutacje, które nie zawierają pewnych wzorców są szczególnie ciekawe.
+Permutacja $p_1$, $p_2$, $\ldots$, $p_n$ liczb naturalnych $1$, $\ldots$, $n$
+	nazywa się permutacją bez wzorca 3-1-2, jeśli nie istnieją indeksy $i$, $j$, $k$ ($1 \le i < j < k \le n$),
+	takie, że $p_i > p_j$, $p_i > p_k$ i $p_j < p_k$.
+
+\heading{Task}
+
+Napisz program, który dla danej permutacji bez wzorca 3-1-2 znajdzie następną
+	taką permutację w kolejności leksykograficznej.
+
+\heading{Input}
+
+W pierwszej linii wejścia znajduje się jedna liczba $n$ ($3 \le n \le 10\,000$).
+W drugiej linii znajduje się $n$ liczb całkowitych, pooddzielanych pojedynczymi spacjami.
+Jest to permutacja liczb $1$, $\ldots$, $n$, bez wzorca 3-1-2.
+Permutacja z wejścia nie jest permutacją $n$, $n-1$, $\ldots$, $1$.
+
+W $40\%$ testów zachodzi $n \le 1000$.
+
+\heading{Output}
+
+W pierwszej linii wyjścia należy wypisać permutację bez wzorca 3-1-2, która następuje po permutacji z~wejścia.
+Liczby powinny być oddzielone pojedynczym odstępem.
+
+\heading{Sample}
+
+\sampleIN
+5
+2 4 5 3 1
+\sampleOUT
+2 5 4 3 1
+\sampleEND
+
+\end{document}
