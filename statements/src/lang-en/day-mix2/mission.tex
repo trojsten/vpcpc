@@ -1,0 +1,93 @@
+\input sys/inputs.tex
+
+\begin{document}
+
+\bigheading{Mission}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{mission}{stdin}{stdout}{100}{100 ms}{1 GB}
+
+\textbf{\textit{This task is not ready for translation yet!}}
+
+\noindent
+Hi soldier!
+
+\bigskip \noindent
+I have a special task for you. We have detected an enemy base and it needs to be destroyed. You will be given a map and enough bombs to blow it up. After the action a helicopter will be waiting for you behind the forest nearby.
+
+\bigskip \noindent
+Sounds easy, doesn't it? Find the fastest way to achieve the goal and make sure you don't visit any place twice, otherwise it would be easy to detect you.
+
+\bigskip \noindent
+Is everything clear? Very well... get ready, because you are leaving in 10 minutes!
+
+\bigskip \noindent
+I wish you good luck, don't get killed and see you at dinner.
+
+\heading{Task}
+
+You are given an undirected graph and its three different vertices: your base, enemy base and the place where helicopter is waiting. Find the shortest path in the graph from your base to the helicopter's place. The path must go through the enemy base and can't visit any vertex twice.
+
+\heading{Input}
+
+The first line of input contains five space separated integers $N$, $M$, $B$, $E$, $H$.
+
+The graph contains $N$ vertices numbered $1$ to $N$, your home base is at node $B$, enemy base at node $E$ and the helicopter is waiting at vertex $H$.
+
+Following $M$ lines describes edges of the graph.
+Each such line contain three space separated integers $v$, $w$ and $t$ ($1 \le v, w \le N$, $v \neq w$). That line means it is possible to get from the vertex $v$ to the vertex $w$ using $t$ units of time and similarly from $w$ to $v$ using the same amount of time.
+
+No two vertices are connected by more than one edge.
+
+It holds $3 \le N \le 1000$, $0 \le M \le 1000$ and $1 \le t \le 1\ 000\ 000$.
+In $40\%$ testcases $N\le 20$.
+
+\heading{Output}
+
+If there is no required way, output a single line with $-1$.
+
+Otherwise output a single line with the least units of time needed to complete the given task.
+
+\heading{Samples}
+
+
+\sampleIN
+3 2 1 2 3
+1 2 10
+2 3 20
+\sampleOUT
+30
+\sampleCOMMENT
+There is just one way.
+% \sampleCOMMENT
+% You must go from your base (place 1) to enemy base (place 2) using 10 units of time and than to helicopter (place 3) using another 20 units of time.
+\sampleEND
+
+
+\bigskip
+
+
+\sampleIN
+3 0 2 1 3
+\sampleOUT
+-1
+\sampleEND
+
+
+\bigskip
+
+
+\sampleIN
+4 4 3 2 4
+2 3 5
+3 1 1
+1 4 1
+2 4 100
+\sampleOUT
+105
+\sampleCOMMENT
+You can't go twice through your home base nor any other vertex.
+\sampleEND
+
+\end{document}
