@@ -45,7 +45,7 @@ int delete_way(int start, int end) {
     int d = -pq.top().first, v = pq.top().second; pq.pop();
     if (Distance[v] != d) continue;
     if (v == end) {
-      for (int i = ComeFrom[v]; i != -1; i = ComeFrom[i]) visited[i] = true;
+      for (int i = v; i != -1; i = ComeFrom[i]) visited[i] = true;
       return Distance[v];
     }
     REP(i, graph[v].size()) add(graph[v][i], d + cost[v][i], v);
@@ -59,8 +59,20 @@ int solve(int A, int B, int C) {
   reset_graph();
   int ans = delete_way(A, B) + delete_way(B, C);
   REP(i, N) if (i != A && i != B && i != C) {
-    reset_graph();
-    ans = min((long long)ans, (long long)delete_way(A, i) + delete_way(i, B) + delete_way(B, C));
+    int edges[3][2] = {{A, i}, {i, B}, {B, C}};
+    int perm[3] = {0, 1, 2};
+    do {
+      reset_graph();
+      visited[A] = visited[B] = visited[C] = visited[i] = true;
+      long long total = 0;
+      REP(i, 3) {
+        int a = edges[perm[i]][0], b = edges[perm[i]][1];
+        visited[a] = false; visited[b] = false;
+        total += delete_way(a, b);
+        visited[a] = true; visited[b] = true;
+      }
+      ans = min((long long)ans, total);
+    } while(next_permutation(perm, perm + 3));
   }
   return ans;
 }
