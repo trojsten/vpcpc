@@ -9,8 +9,8 @@
 \info{critical}{stdin}{stdout}{100}{600 ms}{32 MiB}
 
 Stavba tunelu Blanka je rozdělená na $N$ menších projektů.
-Hlavní architekt určil, které projekty je potrěbné dokončit před jinými projekty.
-Jinými slovy, existují dvojice projektů $u$ a $v$, takové že projekt $u$ musí být dokončen dřív, než se začne pracovat na projektu $v$.
+Hlavní architekt určil, které projekty je potrěba dokončit před jinými projekty.
+Jinými slovy, existují dvojice projektů $u$ a $v$ takové, že projekt $u$ musí být dokončen dřív, než se začne pracovat na projektu $v$.
 V takovém případě řekneme, že $u$ přímo předchází $v$.
 Řekneme, že $u$ předchází $v$, pokud $u$ přímo předchází $v$, nebo existuje projekt $z$ takový, že $u$ přímo předchází $z$ a $z$ předchází $v$.
 
@@ -24,10 +24,10 @@ Napište program, který nalezne všechny kritické projekty.
 \heading{Vstup}
 
 První řádek vstupu obsahuje dvě celá čísla, $N$ a $M$.
-$N$ ($1 \leq N \leq 100\,000$) je počet projektů a $M$ ($0 \leq M \leq 1\,000\,000$) je počet párů které se vzájemně přímo předchází.
+$N$ ($1 \leq N \leq 100\,000$) je počet projektů a $M$ ($0 \leq M \leq 1\,000\,000$) je počet dvojic projektů které se vzájemně přímo předchází.
 Projekty jsou očíslované od $1$ do $N$.
 
-Každý z následujících $M$ řádků obsahuje dvě celá čísla, $u$ a $v$ ($1 \leq u \neq v \leq N$), která znamenají, že projekt $u$ přímo předchází projekt $v$.
+Každý z následujících $M$ řádků obsahuje dvě celá čísla, $u$ a $v$ ($1 \leq u \neq v \leq N$), která znamenají, že projekt $u$ přímo předchází projektu $v$.
 
 \smallskip
 Pro $40 \%$ případů platí $N \leq 5\,000$ a $M \leq 30\,000$.
