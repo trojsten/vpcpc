@@ -6,24 +6,22 @@
 
 % \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
 % leave this values, if you are not interested
-\info{mission}{stdin}{stdout}{100}{100 ms}{1 GB}
-
-\textbf{\textit{This task is not ready for translation yet!}}
+\info{mission}{stdin}{stdout}{100}{1000 ms}{1 GB}
 
 \noindent
-Hi soldier!
+Attention soldier!
 
 \bigskip \noindent
-I have a special task for you. We have detected an enemy base and it needs to be destroyed. You will be given a map and enough bombs to blow it up. After the action a helicopter will be waiting for you behind the forest nearby.
+I have a special task for you. We have detected an enemy base and it needs to be destroyed. You will be given a map and enough bombs to blow it up. After the action a helicopter will be waiting for you in the forest nearby.
 
 \bigskip \noindent
-Sounds easy, doesn't it? Find the fastest way to achieve the goal and make sure you don't visit any place twice, otherwise it would be easy to detect you.
+Sounds easy, doesn't it? Find the fastest way to achieve the goal and make sure you don't visit any place twice, otherwise you will be detected.
 
 \bigskip \noindent
 Is everything clear? Very well... get ready, because you are leaving in 10 minutes!
 
 \bigskip \noindent
-I wish you good luck, don't get killed and see you at dinner.
+I wish you good luck, don't get killed and see you at the dinner.
 
 \heading{Task}
 
@@ -31,23 +29,25 @@ You are given an undirected graph and its three different vertices: your base, e
 
 \heading{Input}
 
-The first line of input contains five space separated integers $N$, $M$, $B$, $E$, $H$.
+First line of the input contains five space separated integers $N$, $M$, $B$, $E$, $H$.
 
-The graph contains $N$ vertices numbered $1$ to $N$, your home base is at node $B$, enemy base at node $E$ and the helicopter is waiting at vertex $H$.
+The graph contains $N$ vertices numbered $1$ to $N$, your home base is at vertex $B$, enemy base at vertex $E$ and the helicopter is waiting at vertex $H$.
 
-Following $M$ lines describes edges of the graph.
-Each such line contain three space separated integers $v$, $w$ and $t$ ($1 \le v, w \le N$, $v \neq w$). That line means it is possible to get from the vertex $v$ to the vertex $w$ using $t$ units of time and similarly from $w$ to $v$ using the same amount of time.
+Following $M$ lines describe the edges of the graph.
+Each line contains three space separated integers $v$, $w$ and $t$ ($1 \le v, w \le N$, $v \neq w$, $1 \le t \le 1\,000\,000$).
+It means there is an undirected edge connecting vertices $v$ and $w$ and it costs $t$ units of time to traverse the edge.
 
 No two vertices are connected by more than one edge.
 
-It holds $3 \le N \le 1000$, $0 \le M \le 1000$ and $1 \le t \le 1\ 000\ 000$.
+\smallskip
+It holds $3 \le N \le 1\,000$ and $0 \le M \le 1\,000$.
 In $40\%$ testcases $N\le 20$.
 
 \heading{Output}
 
-If there is no required way, output a single line with $-1$.
+Output a single line with a single integer, the least amount of time needed to complete the mission.
 
-Otherwise output a single line with the least units of time needed to complete the given task.
+If it is impossible to complete the mission, output $-1$ instead.
 
 \heading{Samples}
 
@@ -58,10 +58,6 @@ Otherwise output a single line with the least units of time needed to complete t
 2 3 20
 \sampleOUT
 30
-\sampleCOMMENT
-There is just one way.
-% \sampleCOMMENT
-% You must go from your base (place 1) to enemy base (place 2) using 10 units of time and than to helicopter (place 3) using another 20 units of time.
 \sampleEND
 
 
@@ -86,8 +82,6 @@ There is just one way.
 2 4 100
 \sampleOUT
 105
-\sampleCOMMENT
-You can't go twice through your home base nor any other vertex.
 \sampleEND
 
 \end{document}
