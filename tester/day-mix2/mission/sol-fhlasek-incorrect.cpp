@@ -57,7 +57,9 @@ int delete_way(int start, int end) {
 // not intersecting the first way
 int solve(int A, int B, int C) {
   reset_graph();
-  int ans = delete_way(A, B) + delete_way(B, C);
+  int ans = delete_way(A, B);
+  visited[B] = false;
+  ans += delete_way(B, C);
   REP(i, N) if (i != A && i != B && i != C) {
     int edges[3][2] = {{A, i}, {i, B}, {B, C}};
     int perm[3] = {0, 1, 2};
