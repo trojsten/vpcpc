@@ -21,7 +21,7 @@ using namespace std;
 #define FORD(i,a,b) for(int i=(a);i>=(b);i--)
 inline bool EQ(double a, double b) { return fabs(a-b) < 1e-9; }
 
-const int INF = 1<<29;
+const int INF = 1000000000;
 typedef long long ll;
 
 inline int two(int n) { return 1 << n; }
