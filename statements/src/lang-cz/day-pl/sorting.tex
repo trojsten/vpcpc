@@ -1,0 +1,52 @@
+\input sys/inputs.tex
+
+\begin{document}
+
+\bigheading{Sorting}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{sorting}{stdin}{stdout}{100}{5000 ms}{64 MB}
+
+Tvůj kamarád Mirek našel na disku soubor obsahující celá čísla.
+Rozhodl se v tom udělat trochu pořádek a setřídit je v rostoucím pořadí.
+Jelikož je Mirek poměrně zdantný ajťák, vyzkoušel okamžitě využít konzolový nástroj,
+který by problém okamžitě rozlousknul. Není těžké uhodnout jméno toho nástroje,
+ale bohužel to nefungovalo tak, jak Mirek očekával
+-- poté, co setřídil soubor setřídil, tak zjistil, že program pracuje
+dokonce i s čísly jako s řetězci a řadí je tedy lexikograficky.
+Mirek se obával, že něco takového by se mohlo stát, ale stejně byl překvapen tím,
+že čísla byla beztak uspořádána v rostoucím pořadí podle číselné hodnoty.
+
+Teď má se Mirek diví, jaké měl štěstí a jak se vůbec může stát,
+že nějaká čísla mají stejné lexikografické pořadí jako to číselné.
+Pomocte mu porozumnět této kuriozitě.
+
+\heading{Úloha}
+
+Je dán rozsah čísel $[A, B]$, spočítejte kolik podmbožin celých čísel z tohoto rozsahu
+má stejné lexikografické a číselné pořadí.
+
+\heading{Vstup}
+
+Na jediném řádku vstupu se nacházejí dvě celá čísla $A$ a $B$
+($1 \le A \le B \le 10^{18}$, $B - A \le 10^5$).
+
+\heading{Výstup}
+
+Vypište jeden řádek s počtem podmnožin množiny $\{A, A+1, \ldots, B\}$,
+splňujících popsanou podmínku.
+Neboť odpověd může být opravdu velká, vypište její zbytek po dělení číslem $10^9 + 7$.
+
+\heading{Příklad}
+
+\sampleIN
+98 101
+\sampleOUT
+7
+\sampleCOMMENT
+Hledané podmnožiny jsou: $\emptyset$, $\{98\}$, $\{99\}$, $\{100\}$, $\{101\}$, $\{98, 99\}$, $\{100, 101\}$.
+\sampleEND
+
+
+\end{document}

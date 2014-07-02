@@ -1,0 +1,68 @@
+\input sys/inputs.tex
+
+\begin{document}
+
+\bigheading{Noviny}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{newspapers}{stdin}{stdout}{100}{2000 ms}{64 MB}
+
+V nádherném polském městě Mirkově je $n$ křižovatek propojených $n - 1$
+obousměrnými cestami.
+Je možné cestovat mezi každou dvojicí křižovatek použitím těchto cest.
+
+Mirek v Mirkově pracuje jako pošťák a doručuje noviny domorodcům.
+Pro každou ulici je známé, kolik lidí v ní žije
+(to je také počet novin, které má do té ulice doručit).
+Každý den si Mirek zvolí dvě křižovatky a navštíví všechny cesty na nejkratší
+cestě mezi němi. Mirkův denní příjem je úměrný průměru počtu novin, které
+doručil na nějakou cetstu
+(počet doručených novin dělený počtem projetých cest).
+
+Nejprve chtěl Mirek přechytračit nadřízené doručeném novin pouze do těch ulic,
+kde žije nejvíce lidí, ale šéf brzy odhalil jeho strategii a rozhodl se ho zastavit,
+protože spousta lidí takto vůbec nedostávala denní tisk.
+Šéf dal tedy Mirkovi dodatečnou podmínku: musí během své cesty navštívit
+alespon $k$ různých ulic.
+Pomozte Mirkovi nalézt cestu, jejíž použitím vydělá co nejvíce peněz.
+
+\heading{Úloha}
+
+Je zadán popis Mirkowa, nalezněte cestu obsahující alespoň $k$ ulic,
+během které Mirek doručí největší průměrný počet novin na ulici.
+
+\heading{Vstup}
+
+Na první řádce vstupu se nacházejí dvě celá čísla $n$ a $k$
+($1 \le n \le 100\,000$, $1 \le k \le n - 1$)
+-- počet křižovatek v Mirkowě a nemenší dovolenou délku Mirkovy cesty.
+Na následujících $n-1$ řádkách je popis ulic.
+Každá ulice je reprezentována třemi celými čísly $a$, $b$ a $c$
+($1 \le a < b \le n$, $0 \le c \le 10^6$)
+-- znamenají, že ve městě se nachází cesta spojující křižovatky $a$ a $b$. V takové ulici žije $c$ rodin.
+
+Můžete předpokládat, že v zadaném měste existuje cesta délky $k$.
+
+Ve $30\%$ testovacích dat platí, že  $n \le 1\,000$.
+
+\heading{Výstup}
+
+Vypište jediné číslo -- průměrné množsví doručených novin do ulice při použití
+optimální cesty.
+Výstup bude považován za správný, pokud jeho vzdálenost od správného řešení
+je menší než $10^{-6}$.
+
+\heading{Příklad}
+
+\sampleIN
+5 2
+1 2 4
+2 3 1
+3 4 3
+3 5 3
+\sampleOUT
+3.00000000
+\sampleEND
+
+\end{document}
