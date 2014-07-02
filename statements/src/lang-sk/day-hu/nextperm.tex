@@ -1,0 +1,90 @@
+\input sys/inputs.tex
+
+\begin{document}
+
+\bigheading{\texttt{next\_permutation}}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{nextperm}{stdin}{stdout}{100}{100 ms}{32 MiB}
+
+V matematike aj informatike sa permutácie tešia širokej obľube. No nie všetky si
+to zaslúžia! Posadajte si, deťúrence, okolo ohníka a vypočujte si príbeh starší
+ako ľudstvo samo.
+
+V časoch, keď sa ešte len formulovali axiómy predikátovej logiky, povrch Zeme
+brázdili iba elementárne matematické objekty. Neboli vojny, hlad ani choroby,
+keďže také elementárne objekty nejedli, nekýchali, ba ani sa im nechcelo bojovať
+o to, ktorý z nich je elementárnejší. Žili si v harmónii, netušiac nič o hroznom
+osude, ktorý na nich číhal.
+
+Počas nasledujúcich stáročí sa postupne objavovali čoraz zložitejšie objekty,
+medzi nimi aj permutácie. Objekty rovnakého druhu sa väčšinou držali pokope a k
+cudzincom prechovávali nedôveru až nenávisť. Vytvárali uzavreté grupy, niektoré
+dokonca aj gangy. Prestrelky, únosy a binárne operácie sa stali bežnou súčasťou
+života. Časom už nebolo jediného matematického objektu, ktorý by zostal
+nepoznačený neustálymi bojmi -- dokonca i neutrálne prvky boli vyhnané z úkrytov
+v podzemí a donútené chopiť sa zbraní.
+
+Vtedy sa elementárne objekty podujali zastaviť boje a všetkých zmieriť. Na túto
+preťažkú úlohu by ste nenašli vhodnejších kandidátov -- elementárne objekty boli
+múdre, skúsené, a ešte stále požívali značnú úctu. Spustili ohromnú reklamnú
+kampaň, presviedčali zložitejšie objekty na ulici, navštevovali ich doma,
+rozšírili slogan ``\emph{Nehľaď na kategóriu, neskončíš v krematóriu!}''.
+Zakrátko ich snaha dosiahla úspech a boje ustali.
+
+Vtom sa na scéne objavila permutácia $(3,1,2)$ -- malá, no zaslepená nenávisťou
+k všetkému cudziemu. Táto permutácia sa cez vetraciu šachtu prešmykla priamo do
+Nukleárneho vojenského centra Symetrickej grupy a odpálila jadrovú hlavicu
+namierenú na Spojené kráľovstvo Šťastnej rodiny a Skupiny vyvrheľov. Tento čin
+rozpútal svetovú vojnu, ktorá zniesla všetky matematické objekty (elementárne i
+zložitejšie) z tohto sveta a poslala ich späť do platónskeho sveta ideí.
+
+Príbehu je koniec. A poučenie? Čítajte radšej anglické zadania, milé deťúrence.
+Ušetríte čas.
+
+
+\heading{Úloha}
+
+Permutácia $p_1, p_2, \dots, p_n$ prirodzených čísel $1, 2, \dots, n$ sa nazýva
+vzor-$(3,1,2)$-neobsahujúca, ak neexistujú také tri indexy $i,j,k$, že $1 \leq i
+< j < k \leq n$ a $p_j < p_k < p_i$.
+
+Autori súčasnej implementácie \texttt{next\_permutation} v C++ zjavne nepočuli
+príbeh o hanebnom čine permutácie $(3,1,2)$, inak by všetky permutácie
+obsahujúce vzor $(3,1,2)$ za trest ignorovali. Napravte ich nevedomosť; napíšte
+program, ktorý pre danú vzor-$(3,1,2)$-neobsahujúcu permutáciu nájde nasledujúcu
+vzor-$(3,1,2)$-neobsahujúcu permutáciu v lexikografickom poradí.
+
+
+\heading{Vstup}
+
+Prvý riadok vstupu obsahuje jedno celé číslo $n$ ($3 \leq n \leq 10\,000$).
+Druhý riadok obsahuje $n$ čísel oddelených medzerami -- nejakú
+vzor-$(3,1,2)$-neobsahujúcu permutáciu prirodzených čísel $1, 2, \dots, n$.
+Môžete predpokladať, že permutácia na vstupe nie je klesajúcou postupnosťou $n,
+n-1, \dots, 2, 1$.
+
+V $40\%$ vstupov navyše platí $n \leq 1\,000$.
+
+
+\heading{Výstup}
+
+Jediný riadok výstupu má obsahovať vzor-$(3,1,2)$-neobsahujúcu permutáciu,
+ktorá nasleduje za permutáciou na vstupe v lexikografickom poradí. Jednotlivé
+prvky permutácie oddeľujte jednou medzerou.
+
+
+\heading{Príklad}
+
+\sampleIN
+5
+2 4 5 3 1
+\sampleOUT
+2 5 4 3 1
+\sampleCOMMENT
+
+\sampleEND
+\bigskip
+
+\end{document}
