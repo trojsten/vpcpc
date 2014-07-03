@@ -27,10 +27,10 @@ Day PL
 
 Day SK
 ------
- 
+
   * **shades** - (stringology) Aho-Corasic on fractions
   * **hyperways** - (graph) union find but whith detecting 2-connected components
-  * **malloc** - (BST / interval tree) filling and releasing room sequences
+  * **malloc** - (BST / interval tree) allocating and freeing bytes in memory
 
 
 Day MIX 1
@@ -48,4 +48,4 @@ Day MIX 2
   * (*CZ*) - **socks** - (graph) shortest **path** in graph from A to B, containing vertex C
   * (*HU*) - **tickets** - (greedy) scheduling, union-find
   * (*PL*) - **posters** - (interval tree) find the area of a sum of rectangles intersected with another rectangle (many queries)
-  * (*SK*) - **(taskname)** - (geometry) find out the last time when set of parallel shrinking segments can be intersected by line.
+  * (*SK*) - **slalom** - (geometry) find the widest path through a set of vertical line segments
