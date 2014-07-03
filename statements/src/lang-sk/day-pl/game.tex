@@ -1,0 +1,68 @@
+\input sys/inputs.tex
+
+\begin{document}
+
+\bigheading{Hra}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{game}{stdin}{stdout}{100}{100 ms}{1 GB}
+
+% Mirek = Syslík
+% Kamil = Žabka
+
+Syslík a Žabka sa radi hrajú s číslami. Práve teraz frčia na takejto hre: Na
+začiatku si určia dve kladné celé čísla $A$ a $B$. Potom sa striedajú v ťahoch,
+začína Syslík.
+
+Povedzme, že $A \leq B$. Potom má hráč na ťahu na výber z nasledujúcich možných
+ťahov:
+\begin{itemize}
+\item
+Nahraď $B$ hodnotou $B - A^K$ pre nejaké celé číslo $K$. Číslo $K$ musí spĺňať
+$K > 0$ a $B - A^K \geq 0$.
+\item
+Nahraď $B$ hodnotou $B \bmod A$.
+\end{itemize}
+Ak platí $A \geq B$, potom má hráč na výber symetrické ťahy. Hru vyhrá ten hráč,
+ktorý svojím ťahom zmení niektoré z čísel $A$, $B$ na $0$.
+
+
+\heading{Úloha}
+
+Dostanete zadané počiatočné hodnoty $A$, $B$ pre niekoľko hier. Pre každú hru
+rozhodnite, kto ju vyhrá (Syslík alebo Žabka), ak obaja hráči hrajú optimálne s
+cieľom vyhrať.
+
+
+\heading{Vstup}
+
+Prvý riadok vstupu obsahuje celé číslo $T$ ($1 \leq T \leq 10^4$) -- počet hier.
+Nasledujúcich $T$ riadkov obsahuje popisy počiatočných stavov týchto hier. Každý
+riadok pozostáva z dvoch celých čísel $A$, $B$ ($1 \leq A, B \leq 10^{18}$).
+
+V $30\%$ vstupných sád bude navyše platiť $A, B \leq 1\,000$.
+
+
+\heading{Výstup}
+
+Vypíšte $T$ riadkov; $i$-ty riadok má obsahovať slovo \texttt{Mirek} ak $i$-tu
+hru vyhrá Syslík, resp.\ \texttt{Kamil} ak ju vyhrá Žabka.
+
+
+\heading{Príklad}
+
+\sampleIN
+4
+1 1
+12 4
+4 6
+15 31
+\sampleOUT
+Mirek
+Mirek
+Kamil
+Mirek
+\sampleEND
+
+\end{document}
