@@ -8,7 +8,7 @@
 
 % \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
 % leave this values, if you are not interested
-\info{posters}{stdin}{stdout}{100}{1000 ms}{256 MB}
+\info{posters}{stdin}{stdout}{100}{1000 ms}{1 GB}
 
 Mirek is a devoted fan of his favorite music band.
 He attends every concert and collects their posters.
@@ -40,12 +40,20 @@ It is described by four integers $x_1$, $y_1$, $x_2$, $y_2$
 	($0 \le x_1 < x_2 \le 10^9$, $0 \le y_1 < y_2 \le 10^9$),
 	denoting the coordinates of the bottom left corner and the top right corner.
 
-In the tests worth $50$ points, you can assume that the coordinates are not grater than $30\,000$.
+In $12.5\%$ of testcases $n, m \le 10$, the coordinates are not greater than $100$.
+
+In $25\%$ of testcases $n, m \le 50$.
+
+In $50\%$ of testcases $n, m \le 1000$.
+
+In $50\%$ of testcases the coordinates are not greater than $30\,000$.
 
 \heading{Output}
 
 For each new poster output one line containing an integer -- the answer for the Mirek's problem.
 The answers should be printed in the same order as the posters were given in the input.
+
+\newpage
 
 \heading{Sample}
 
