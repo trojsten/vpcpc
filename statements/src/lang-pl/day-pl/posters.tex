@@ -1,0 +1,102 @@
+\input sys/inputs.tex
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+\usepackage{polski}
+
+\usepackage{tikz}
+
+\begin{document}
+
+\bigheading{Posters}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{posters}{stdin}{stdout}{100}{1000 ms}{1 GB}
+
+Mirek jest oddanym fanem swojego ulubionego zespołu.
+Jeździ na ich wszystkie koncerty i kupuje drogie plakaty z ich wizerunkiem.
+Za każdym razem, gdy zdobędzie nowy plakat, wiesza go na ścianie nad swoim łóżkiem.
+Po wielu latach kolekcjonowania plakatów, zakleił już prawie całą ścianę i ciężko
+	jest mu znaleźć na niej trochę wolnego miejsca.
+
+Mirek właśnie kupił sobie trochę nowych plakatów i potrzebuje Twojej pomocy,
+	żeby znaleźć dla nich odpowiednie miejsce na ścianie.
+Dla każdego nowego plakatu i jego umiejscowienia na ścianie,
+	Mirek chciałby wiedzieć jak bardzo ten plakat przykryłby inne plakaty wiszące na ścianie.
+
+\heading{Task}
+
+Masz dane współrzędne wszystkich plakatów, które wiszą na ścianie,
+	oraz współrzędne wszystkich plakatów, które jeszcze tam nie wiszą,
+	ale Mirek chciałby je powiesić.
+Dla każdego nowego plakatu, oblicz sumaryczne pole powierzchni tych części plakatów (wiszących na ścianie),
+	które są bezpośrednio przykryte przez ten nowy plakat.
+Plakaty mogą na siebie nachodzić, więc jeśli część wspólna dwóch plakatów jest przykrywana,
+	to należy tę powierzchnie policzyć tylko raz.
+
+\heading{Input}
+
+W pierwszej linii wejścia znajduje się jedna liczba całkowita $N$ ($1 \le N \le 100\,000$),
+	oznaczająca liczbę plakatów, które już wiszą na ścianie.
+W następnych $N$ liniach znajdują się opisy tych plakatów.
+W $N+2$ linii znajduje się jedna liczba całkowita $M$ ($1 \le M \le 100\,000$),\
+	oznaczająca liczbę plakatów, które Mirek chciałby powiesić.
+W następnych $M$ liniach znajdują się opisy tych plakatów.
+
+Każdy plakat jest prostokątem, o bokach równoległych do osi układu współrzędnych.
+Ten prostokąt jest opisany przez cztery liczby całkowite $x_1$, $y_1$, $x_2$, $y_2$
+	($0 \le x_1 < x_2 \le 10^9$, $0 \le y_1 < y_2 \le 10^9$),
+	które oznaczają współrzędne lewego dolnego i prawego górnego rogu.
+
+W $12.5\%$ testów zachodzi $n, m \le 10$, oraz współrzędne są nie większe niż $100$.
+
+W $25\%$ testów zachodzi $n, m \le 50$.
+
+W $50\%$ testów zachodzi $n, m \le 1000$.
+
+W $50\%$ testów współrzędne są nie większe niż $30\,000$.
+
+\heading{Output}
+
+Dla każdego nowego plakatu wypisz jedną linię zawierającą jedną liczbę całkowitą
+	-- odpowiedź na pytanie Mirka.
+Odpowiedzi należy udzielać w tej samej kolejności,
+	w jakiej plakaty były podane na wejściu.
+
+\newpage
+
+\heading{Sample}
+
+
+\sampleIN
+2
+0 1 3 5
+2 3 6 6
+2
+1 0 5 4
+4 2 7 7
+\sampleCOMMENT
+Ściana Mirka jest przedstawiona na poniższym obrazku.
+Wykreskowane prostokąty to nowe plakaty,
+	a~wypełnione prostokąty to plakaty, które wiszą na ścianie.
+\begin{center}
+	\begin{tikzpicture}[scale=0.5]
+		\filldraw (0, 0) node[below left] {$(0, 0)$} circle(0.1);
+		\filldraw[gray!20] (0, 1) -- (3, 1) -- (3, 5) -- (0, 5) -- cycle;
+		\draw (0, 1) -- (3, 1) -- (3, 5) -- (0, 5) -- cycle;
+		\filldraw[gray!20] (2, 3) -- (6, 3) -- (6, 6) -- (2, 6) -- cycle;
+		\draw (2, 3) -- (6, 3) -- (6, 6) -- (2, 6) -- cycle;
+		\draw[dashed] (1, 0) -- (5, 0) -- (5, 4) -- (1, 4) -- cycle;
+		\draw[dashed] (4, 2) -- (7, 2) -- (7, 7) -- (4, 7) -- cycle;
+	\end{tikzpicture}
+\end{center}
+\sampleOUT
+8
+6
+\sampleCOMMENT
+\sampleEND
+
+
+\end{document}

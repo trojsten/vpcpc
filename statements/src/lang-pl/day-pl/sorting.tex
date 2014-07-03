@@ -1,0 +1,55 @@
+\input sys/inputs.tex
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+\usepackage{polski}
+
+\begin{document}
+
+\bigheading{Sorting}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{sorting}{stdin}{stdout}{100}{100 ms}{32 MiB}
+
+Mirek miał trochę plików zawierających liczby całkowite.
+Jego zadaniem było posortować liczby w każdym z~plików, w kolejności rosnącej.
+Mirek jest informatykiem, więc oczywiście próbował zrobić to jakimś narzędziem z wiersza poleceń.
+Nazwa programu, który sortuje nie była trudna do zgadnięcia, ale program nie działał do końca tak, jak Mirek by chciał
+	-- po posortowaniu plików Mirek zorientował się, że to narzędzie traktowało każdą liczbę jako napis
+	i posortowała je w porządku leksykograficznym.
+To było do przewidzenia, ale i tak Mirek był zaskoczony -- pomimo sortowania leksykograficznego,
+	liczby we wszystkich plikach były posortowane rosnąco.
+
+Teraz Mirek zastanawia się jak duże szczęście go spotkało i jak to w ogóle jest możliwe,
+	że liczby z tych plików mają ten sam porządek leksykograficzny, co numeryczny.
+Pomóż mu zaspokoić jego ciekawość.
+
+\heading{Task}
+
+Mając dany przedział liczb całkowitych $[A, B]$, znajdź liczbę podzbiorów tych liczb,
+	takich, że ich porządek leksykograficzny jest taki sam jak porządek numeryczny.
+
+\heading{Input}
+
+W pierwszej linii wejścia znajdują się dwie liczby całkowite $A$ i $B$
+	($1 \le A \le B \le 10^{18}$, $B - A \le 10^5$).
+
+\heading{Output}
+
+Na wyjście należy wypisać jedną liczbę całkowitą -- liczbę podzbiorów zbioru $\{A, A+1, \ldots, B\}$,
+	które mają własność opisaną w treści zadania.
+Odpowiedź może być bardzo duża, więc wypisz ją modulo $10^9+7$.
+
+\heading{Sample}
+
+\sampleIN
+98 101
+\sampleOUT
+7
+\sampleCOMMENT
+Tymi podzbiorami są: $\emptyset$, $\{98\}$, $\{99\}$, $\{100\}$, $\{101\}$,	$\{98, 99\}$, $\{100, 101\}$.
+\sampleEND
+
+\end{document}
