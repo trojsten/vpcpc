@@ -1,0 +1,60 @@
+\input sys/inputs.tex
+
+\begin{document}
+
+\bigheading{Triedenie}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{sorting}{stdin}{stdout}{100}{1000 ms}{1 GB}
+
+Milé deťúrence, posadajte si okolo ohníka a vypočujte si príbeh o Bobovi, ktorý nemal čas.
+
+Malý Bob bol strašne netrpezlivý a nerád zabíjal čas vecami, ktoré pokladal za zbytočné. Jedného dňa
+sa ocitol na CPSPC\footnote{Obdoba VPCPC z dávnych čias, keď sme sa stretávali ešte bez maďarov.}. A
+keďže si myslel, že slovenké preklady sú zdĺhavé a rozvláčne, odmietol ich čítať. Namiesto toho
+čítal zadania anglické.
+
+I dostal sa k jednej úlohe. Číta, číta a úloha sa mu zdá ľahká. Však stačí len utriediť čísla na
+vstupe od najmenšieho po najväčšie. Pustil sa teda do programovania a za malú chvíľu submitol svoje
+riešenie. Aké však bolo jeho prekvapenie, keď zisil, že len na niektorých vstupoch dostal OK.
+Myslel si, že má bug vo svojom riešení a tak debugoval a debugoval, všetko neúspešne. Nakoniec si
+ešte raz prečítal zadanie a zistil, že si nevšimol malú nevýraznú poznámku, že triediť mal
+lexikograficky.
+
+Naprogramoval teda nové riešenie, celý čas však rozmýšľal, aká to bola zhoda náhod, že predsa len
+dostal niekoľko OK, keď riešil inú úlohu. Po konci súťaže sa išiel posťažovať svojim kamarátom, ako
+nepekne sa okašľal a tí ho namiesto súcitu vysmiali, lebo si čítali slovenské zadanie, kde bolo
+slovo \textbf{lexikograficky} poriadne zvýraznené a teda nemali žiaden problém s riešením.
+
+Tým končí náš príbeh. A poučenie? Neverte Bobovi a čítajte slovenské zadania. Nie len, že sú super,
+ale častokrát sú viac zrozumiteľné.
+
+\heading{Úloha}
+
+Na vstupe dostanete uzavretý interval celých čísiel $<A,B>$. Nájdite počet podmnožín týchto čísiel
+takých, že ich utriedenie lexikograficky a numericky dáva tú istú postupnosť.
+
+\heading{Vstup}
+
+Na prvom riadku sú dve medzerou oddelené čísla $A$ a $B$ ($1 \leq A \leq B \leq 10^{18}$, $B-A \leq
+10^5$).
+
+\heading{Výstup}
+
+Vypíšte jedno číslo $M$, kde $M$ je počet podmnožín množiny $\{A, A+1 \dots B\}$, ktoré sa utriedia
+rovnako numericky aj lexikograficky. Odpoveď vypíšte modulo $10^9 + 7$.
+
+\heading{Príklad}
+
+
+\sampleIN
+98 101
+\sampleOUT
+7
+\sampleCOMMENT
+Hľadané podmnožiny sú: $\emptyset$, $\{98\}$, $\{99\}$, $\{100\}$, $\{101\}$, $\{98, 99\}$, $\{100, 101\}$.
+\sampleEND
+
+
+\end{document}
