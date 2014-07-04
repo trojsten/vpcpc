@@ -6,7 +6,7 @@
 
 % \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
 % leave this values, if you are not interested
-\info{newspapers}{stdin}{stdout}{100}{2000 ms}{64 MB}
+\info{newspapers}{stdin}{stdout}{100}{4000 ms}{1 GB}
 
 Mirkow városa $n$ útkereszteződést tartalmaz, amelyeket $n-1$ kétirányú utca köt össze. Bármely út\-ke\-resz\-te\-ző\-dés\-ből bármely másikba el lehet jutni az utcákon keresztül.
 
@@ -18,7 +18,7 @@ Segíts Mireknek kiválasztani a legtöbb bevételt eredményező útvonalat!
 Írj programot, amely meghatározza a lehetséges legnagyobb bevételt olyan útvonalon, amely legalább $k$ utcát tartalmaz!
 
 \heading{Bemenet}
-A bemenet első sora két egész számot tartalmaz, $n$-et és $k$-t ($1 \le n \le 100\,000$, $1 \le k \le n - 1$), ahol $n$ a kereszteződések száma és $k$ Mirek útvonalának minimális hossza. A következő $n-1$ sor mindegyikében három egész szám van, $a$, $b$ és $c$ ($1 \le a < b \le n$, $0 \le c \le 10^6$), ami azt jelenti, hogy az $a$ és $b$ kereszteződést utca köti össze, és ezen $c$ számú újságot kell kihordani.
+A bemenet első sora két egész számot tartalmaz, $n$-et és $k$-t ($1 \le n \le 50\,000$, $1 \le k \le n - 1$), ahol $n$ a kereszteződések száma és $k$ Mirek útvonalának minimális hossza. A következő $n-1$ sor mindegyikében három egész szám van, $a$, $b$ és $c$ ($1 \le a < b \le n$, $0 \le c \le 10^6$), ami azt jelenti, hogy az $a$ és $b$ kereszteződést utca köti össze, és ezen $c$ számú újságot kell kihordani.
 
 Feltételezhető, hogy létezik legalább egy $k$ hosszú útvonal.
 

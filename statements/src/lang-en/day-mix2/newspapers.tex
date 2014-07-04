@@ -6,7 +6,7 @@
 
 % \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
 % leave this values, if you are not interested
-\info{newspapers}{stdin}{stdout}{100}{2000 ms}{64 MB}
+\info{newspapers}{stdin}{stdout}{100}{4000 ms}{1 GB}
 
 In the beautiful Polish city called Mirkow, there are $n$ intersections which are connected by $n - 1$ bidirectional streets.
 It is possible to travel between every pair of intersections using these streets.
@@ -31,7 +31,7 @@ Given the description of Mirkow, find a path containing $k$ streets or more
 
 \heading{Input}
 
-On the first line of input there are two integers $n$ and $k$ ($1 \le n \le 100\,000$, $1 \le k \le n - 1$)
+On the first line of input there are two integers $n$ and $k$ ($1 \le n \le 50\,000$, $1 \le k \le n - 1$)
 	-- the number of intersections in Mirkow and the minimal length of Mirek's path.
 On the next $n-1$ lines there are descriptions of streets.
 Each description consists of three integers $a$, $b$ and $c$ ($1 \le a < b \le n$, $0 \le c \le 10^6$)
