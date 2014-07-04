@@ -9,9 +9,9 @@
 \info{tickets}{stdin}{stdout}{100}{800 ms}{32 MiB}
 
 Finálové utkání prestižní mezinárodní soutěže VPCPC se blíží.
-Očekává se nával fanoušků a proto je potřeba věci dobře naplánovat.
+Očekává se nával fanoušků, a proto je potřeba věci dobře naplánovat.
 
-K dispozici bude $N$ míst na sezení, očíslovaných od $1$ do $N$.
+K dispozici bude $N$ míst k sezení, očíslovaných od $1$ do $N$.
 Každý fanoušek má právo si předobjednat jeden lístek, ke kterému si také zvolí interval míst, na kterých je ochotný sedět.
 Interval je zadán jako dvě celá čísla $F$ a $L$, první a poslední místo v intervalu.
 Jinými slovy, fanoušek je ochotný sedět na libovolném místě $S$, pro které platí $F \leq S \leq L$.
@@ -20,27 +20,27 @@ Obdrželi jsme již $M$ objednávek.
 Je možné, že ne všechny objednávky půjdou vyřídit (z důvodu nekompatibility mezi objednávkami).
 Proto by nás zajímalo, jaký největší počet objednávek jsme schopní ůspěšně vyřídit.
 
-\heading{Task}
+\heading{Úloha}
 
 Napište program, který spočte největší počet fanoušků, pro které jsme schopni objednávku ůspěšne vyřídit a taky vypíše, kterému fanouškovi bylo přířazeno které místo.
 Žádní dva fanoušci nesmí obdržet stejné místo.
 
-\heading{Input}
+\heading{Vstup}
 
 První řádek vstupu obsahuje dvě celá čísla $N$ ($1 \leq N \leq 100\,000$), počet míst k sezení, a $M$ ($1 \leq M \leq 1\,000\,000$), počet obdržených objednávek. Místa jsou očíslovaná $1,\ldots,N$.
 
 Každý z následujících $M$ řádků obsahuje dvě celá čísla $F$ a $L$ ($1 \leq F \leq L \leq N$), objednávka i-tého fanouška.
 Fanoušci jsou očíslovaní $1,\ldots,M$ v pořadí, v jakém jsou zadaní na vstupu.
 
-\heading{Output}
+\heading{Výstup}
 
-Na první řádek výstupu vypište jedno celé číslo $K$, maximálni počet objednávek, které jsme schopní vyřídit.
-Každý z následujících $K$ řádků obsahuje dvě celá čísla $S$ a $R$, která znamenají, že místo číslo $S$ bylo přiřazeno fanouškovi číslo $R$.
+Na první řádek výstupu vypište jedno celé číslo $K$, maximální počet objednávek, jaký jsme schopni vyřídit.
+Každý z následujících $K$ řádků obsahuje dvě celá čísla $S$ a $R$, která znamenají, že místo s číslem $S$ bylo přiřazeno fanouškovi s číslem $R$.
 
 Informace o přiřazených místech můžete vypsat v jakémkoliv pořadí.
 Pokud existuje více správných řešení, vypište libovolné z nich.
 
-\heading{Samples}
+\heading{Příklad}
 \sampleIN
 10 9
 1 3
