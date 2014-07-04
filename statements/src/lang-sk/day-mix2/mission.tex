@@ -1,0 +1,105 @@
+\input sys/inputs.tex
+
+\begin{document}
+
+\bigheading{Olíviina misia}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{mission}{stdin}{stdout}{100}{1000 ms}{1 GB}
+
+Olívia sa naďalej snaží dosiahnuť svoj cieľ -- stať sa všeumelcom schopným vykonávať ľubovoľné
+povolanie. Po postúpení na vyššiu hodnosť v Kulte Skrytého Poznania pracuje ako terénny agent.
+Väčšinou je v zahraničí, kam jej posielajú samoničiace sa správy popisujúce misiu.
+
+A práve dnes jej prišla takáto správa:
+
+\bigskip
+
+``Agent Delfínik!''
+
+``V novej budove Federálnej Inštitúcie Idealizovaných Tubasov sa nachádza dokument, ktorý by mohol ohroziť
+celú našu organizáciu. Vašou úlohou bude preniknúť do vnútra budovy, lokalizovať daný dokument a
+zničiť ho.''
+
+``Ak sa vám naviac podarí úspešne uniknúť, pri neďalekej rieke vás bude čakať vrtuľník, ktorý vás
+odnesie na našu základňu.''
+
+``Veľa šťastia.''
+
+``Táto správa sa zničí o $5$ sekúnd.''
+
+\bigskip
+
+Olívia rýchlo odhodila diktafón s nahrávkou, vybrala mapu a začala plánovať trasu, ktorou vnikne do
+budovy a taktiež trasu, ktorou z nej unikne. Samozrejme chce, aby táto trasa bola dokopy čo
+najkratšia. A takisto nemôže prechádzať cez to isté miesto dvakrát, lebo by to bolo príliš
+nebezpečné. Viete jej pomôcť nájsť správnu cestu?
+
+\heading{Úloha}
+
+Na vstupe dostanete neorientovaný ohodnotený graf a tri rôzne vrcholy: miesto kde sa nachádza
+Olívia, budovu FIITky a miesto, kde bude čakať helikoptéra. Nájdite najkratšiu cestu od Olívii k
+helikoptére, aby táto cesta prechádzala cez FIITku a nešla cez žiaden vrchol viackrát.
+
+\heading{Vstup}
+
+Na prvom riadku je päť celých čísiel $n$, $m$, $b$, $e$ a $h$.
+
+Graf obsahuje $n$ vrcholov očíslovaných $1$ až $n$ a $m$ hrán. Čísla $b$, $e$ a $h$ sú čísla
+vrcholov zodpovedajúcich pozícii Olívie, FIITky a helikoptéry.
+
+Nasleduje $m$ hrán popisujúcich hrany grafu. Každá hrana je popísaná trojicou čísiel $u$, $w$ a $d$
+($1 \leq u,v \leq n$, $1 \leq d \leq 1\,000\,000$) -- začiatok a koniec hrany a dĺžku príslušnej
+hrany.
+
+Graf neobsahuje násobné hrany a slučky.
+
+\smallskip
+Platí, že $3 \leq n \leq 1\,000$ a $0 \leq m \leq 1\,000$.
+
+V $40\%$ vstupoch naviac platí, že $n\leq 20$.
+
+\heading{Výstup}
+
+Vypíšte jeden riadok s číslom, ktoré zodpovedá dĺžke najkratšej cesty od Olívii k helikoptére cez
+nepriateľskú budovu.
+
+Ak takáto cesta neexistuje, vypíšte $-1$.
+
+\heading{Príklady}
+
+
+\sampleIN
+3 2 1 2 3
+1 2 10
+2 3 20
+\sampleOUT
+30
+\sampleEND
+
+
+\bigskip
+
+
+\sampleIN
+3 0 2 1 3
+\sampleOUT
+-1
+\sampleEND
+
+
+\bigskip
+
+
+\sampleIN
+4 4 3 2 4
+2 3 5
+3 1 1
+1 4 1
+2 4 100
+\sampleOUT
+105
+\sampleEND
+
+\end{document}

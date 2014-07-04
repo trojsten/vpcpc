@@ -21,8 +21,8 @@ Day PL
 ------
 
   * **sorting** - (longest increasing subsequence) given a set of numbers, count its subsets, which have some properties
-  * **tree** - (divide and conquer) given a tree, find a path with the highest average of weights, the path must be longer than k
   * **game** - (number theory) recursive euclidean algorithm plus modular arithmetic
+  * **posters** - (interval tree) find the area of a sum of rectangles intersected with another rectangle (many queries)
 
 
 Day SK
@@ -47,5 +47,5 @@ Day MIX 2
 
   * (*CZ*) - **socks** - (graph) shortest **path** in graph from A to B, containing vertex C
   * (*HU*) - **tickets** - (greedy) scheduling, union-find
-  * (*PL*) - **posters** - (interval tree) find the area of a sum of rectangles intersected with another rectangle (many queries)
+  * (*PL*) - **newspapers** - (divide and conquer) given a tree, find a path with the highest average of weights, the path must be longer than k
   * (*SK*) - **slalom** - (geometry) find the widest path through a set of vertical line segments

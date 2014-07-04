@@ -15,7 +15,7 @@ Mirek újságkihordóként dolgozik a városban. Minden utcáról tudja, hogy h�
 Segíts Mireknek kiválasztani a legtöbb bevételt eredményező útvonalat!
 
 \heading{Feladat}
-Írj programot, amely meghatározza a lehetséges legtöbb bevételt olyan útvonalon, amely legalább $k$ utcát tartalmaz! ??????????
+Írj programot, amely meghatározza a lehetséges legnagyobb bevételt olyan útvonalon, amely legalább $k$ utcát tartalmaz!
 
 \heading{Bemenet}
 A bemenet első sora két egész számot tartalmaz, $n$-et és $k$-t ($1 \le n \le 100\,000$, $1 \le k \le n - 1$), ahol $n$ a kereszteződések száma és $k$ Mirek útvonalának minimális hossza. A következő $n-1$ sor mindegyikében három egész szám van, $a$, $b$ és $c$ ($1 \le a < b \le n$, $0 \le c \le 10^6$), ami azt jelenti, hogy az $a$ és $b$ kereszteződést utca köti össze, és ezen $c$ számú újságot kell kihordani.
@@ -26,7 +26,8 @@ Feltételezhető, hogy létezik legalább egy $k$ hosszú útvonal.
 A tesztesetek $30\%$-ában $n \le 1\,000$.
 
 \heading{Output}
-A kimenetre ??????????
+A kimenetre egyetlen valós (double) számot kell kiírni: egy optimális útvonalon kézbesített újságok átlagos számát, amely legalább $k$ utcát tartalmaz.
+A kiírt értéket akkor fogadják el, ha a helyes megoldástól való eltérése kisebb, mint $10^{-6}$ .
 
 \heading{Példa bemenet és kimenet}
 
@@ -37,7 +38,7 @@ A kimenetre ??????????
 3 4 3
 3 5 3
 \sampleOUT
-3.00000000 ??????
+3.00000000
 \sampleEND
 
 \end{document}

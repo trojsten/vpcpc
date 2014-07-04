@@ -1,0 +1,72 @@
+\input sys/inputs.tex
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+\usepackage{polski}
+
+\begin{document}
+
+\bigheading{Newspapers}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{newspapers}{stdin}{stdout}{100}{4000 ms}{1 GB}
+
+W pięknej polskiej wsi -- w Mirkowie -- znajduje się $N$ skrzyżowań
+	połączonych $N-1$ dwukierunkowymi drogami.
+Można się dostać z każdego skrzyżowania do każdego innego, korzystając jedynie z tych dróg.
+
+Mirek pracuje w Mirkowie jako doręczyciel gazet.
+Dla każdej drogi wiadomo, ilu mieszkańców przy niej mieszka
+	(i jest to również liczba gazet, które Mirek musi tam dostarczyć).
+Codziennie Mirek wybiera dwa skrzyżowania i odwiedza każdy dom na najkrótszej ścieżce między nimi.
+Jego dzienny zarobek jest proporcjonalny do średniej liczby gazet, dostarczonej na pojedynczej drodze
+	(czyli jest proporcjonalny do liczby dostarczonych gazet, podzielonej przez liczbę przebytych dróg).
+
+Na początku, Mirek chciał wykorzystać ten wspaniały system wynagrodzeń,
+	za każdym razem dostarczając gazety tylko ludziom, którzy mieszkają przy drodze
+	z największą liczbą mieszkańców.
+Jednak jego szef szybko wykrył jego sposób i był zmuszony zakończyć ten proceder,
+	ponieważ zbyt dużo osób nie dostawało gazety.
+Aby zmusić Mirka do dostarczania większej liczby gazet,
+	dał mu dodatkowe ograniczenie: Mirek musi za każdym razem wybrać ścieżkę,
+	przechodzącą przez co najmniej $K$ dróg.
+
+Pomóż Mirkowi i znajdź dla niego optymalną trasę.
+
+\heading{Task}
+
+Mając dany opis Mirkowa, znajdź ścieżkę, przechodzącą przez co najmniej $K$ dróg,
+	z największą średnią dostarczonych gazet na jednej drodze.
+
+\heading{Input}
+
+W pierwszym wierszu wejścia znajdują się dwie liczby całkowite $N$ i $K$ ($1 \le N \le 50\,000$, $1 \le K \le N-1$),
+	oznaczające liczbę skrzyżowań w Mirkowie i minimalną długość trasy Mirka.
+W następnych $N-1$ wierszach znajdują się opisy poszczególnych dróg.
+Opis jednej drogi składa się z trzech liczb całkowitych $A$, $B$ i $C$ ($1 \le A < B \le N$, $0 \le C \le 10^6$),
+	oznaczających drogę łączącą skrzyżowania $A$ i $B$, przy której mieszka $C$ osób.
+
+Możesz założyć, że istnieje co najmniej jedna trasa o długości $K$.
+
+W testach wartych $30$ punktów: $N \le 1000$.
+
+\heading{Output}
+
+Wypisz jedną liczbę -- średnią liczbę dostarczonych gazet na jednej drodze, w optymalnej trasie Mirka.
+Odpowiedź będzie uznana za poprawną, jeśli różnica między nią, a prawidłową odpowiedzią będzie mniejsza niż $10^{-6}$.
+
+\heading{Sample}
+
+\sampleIN
+5 2
+1 2 4
+2 3 1
+3 4 3
+3 5 3
+\sampleOUT
+3.00000000
+\sampleEND
+
+\end{document}

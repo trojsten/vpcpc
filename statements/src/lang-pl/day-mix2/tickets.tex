@@ -1,0 +1,75 @@
+\input sys/inputs.tex
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+\usepackage{polski}
+
+\begin{document}
+
+\bigheading{Tickets}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{tickets}{stdin}{stdout}{100}{800 ms}{32 MiB}
+
+Zbliża się ważny mecz, na który przyjdzie wielu kibiców.
+Na stadionie jest $N$ miejsc siedzących ponumerowanych liczbami całkowitymi od $1$ do $N$.
+Każdy kibic, kupując bilet, może wybrać przedział siedzeń, na których mógłby się zgodzić siedzieć.
+Ten przedział jest opisany przez dwie liczby całkowite $L$ i $P$, oznaczające pierwsze i~ostanie miejsce w przedziale.
+To oznacza, że kibic zgodzi się jedynie na miejsca $S$ takie, że zachodzi $L \le S \le P$.
+Dostano od kibiców $M$ pytań o kupno biletów.
+Jako, że umiesz co nieco programować, zlecono Ci napisanie programu, który przydzieli kibicom miejsca,
+	tak, aby jak najwięcej kibiców usiadło na właściwych miejscach.
+
+\heading{Task}
+
+Napisz program, który obliczy maksymalną liczbę kibiców, którzy mogą otrzymać bilety z ich upragnionym miejscem,
+	a następnie wypisze odpowiedni przydział miejsc.
+Żadnych dwóch kibiców nie może dostać tego samego miejsca.
+
+\heading{Input}
+
+W pierwszym wierszu wejścia znajdują się dwie liczby całkowite $N$ i $M$ ($1 \le N \le 100\,000$, $1 \le M \le 1\,000\,000$),
+	oznaczające odpowiednio liczbę miejsc siedzących i liczbę kibiców, którzy chcą kupić bilet.
+
+Każdy z następnych $M$ wierszy zawiera dwie liczby całkowite $L$ i $P$ ($1 \le L \le P \le N$),
+	oznaczające przedział siedzeń, wybranych przez kibica.
+Kibice są ponumerowani kolejnymi liczbami od $1$ do $M$ w tej samej kolejności, w jakiej pojawiają się na wejściu.
+
+\heading{Output}
+
+W pierwszym wierszu wyjścia wypisz jedną liczbę całkowitą $K$, oznaczającą największą możliwą liczbę kibiców,
+	których można usatysfakcjonować.
+W każdym z następnych $K$ wierszy wypisz dwie liczby całkowite $S$ i~$R$, oznaczające, że na siedzeniu
+	nr $S$ powinien usiąść kibic $R$.
+Przypisania kibiców do siedzeń mogą być wypisane w dowolnej kolejności.
+Jeśli jest wiele poprawnych odpowiedzi, Twój program może wypisać dowolną z nich.
+
+\heading{Sample}
+
+\sampleIN
+10 9
+1 3
+2 4
+5 7
+2 6
+1 5
+3 7
+4 8
+7 9
+3 8
+\sampleOUT
+9
+1 1
+2 5
+3 2
+4 4
+5 6
+6 9
+7 3
+8 7
+9 8
+\sampleEND
+
+\end{document}

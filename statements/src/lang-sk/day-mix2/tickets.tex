@@ -1,0 +1,73 @@
+\input sys/inputs.tex
+
+\begin{document}
+
+\bigheading{The International 4}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{tickets}{stdin}{stdout}{100}{800 ms}{1 GB}
+
+Tento rok sa už po štvrtýkrát koná obrovský celosvetový turnaj v DOTA 2, ktorý sa volá The
+International (TI4). Uskutoční sa 18.-21. júla v Seattle v Amerike. A pre veľký záujem fanúšikov o
+miesta do hľadiska, rieši teraz Valve nasledovný problém.
+
+Veľká hala, kde sa bude turnaj konať, má $n$ miest na sedenie. Tie sú očíslované od $1$ po $n$. Každý
+fanúšik, ktorý si chcel kúpiť lístok, zadal do systému dve čísla $f$ a $l$, ktoré hovoria o
+prvom a poslednom mieste, kde je ochotný sedieť. To znamená, že ak mu bude pridelené sedadlo $s$,
+pre ktoré platí, že $f \leq s \leq l$, tak bude spokojný, v opačnom prípade sa na to vykašle a začne
+hrať LoL. Valve sa teraz snaží vyhovieť čo najviac fanúšikom a usadiť ich na miesta, ktoré im
+vyhovujú. Pokúste sa im pomôcť.
+
+\heading{Úloha}
+
+Na vstupe dostanete požiadavky všetkých fanúšikov. Zistite maximálny počet fanúšikov, ktorý môžu
+dostať im vyhovujúce sedadlo a takisto nájdite jedno dobré priradenie miest fanúšikom. Samozrejme,
+dvaja fanúšikovia nemôžu sedieť na jednom sedadle\footnote{Ani keby veľmi chceli.}.
+
+\heading{Vstup}
+
+Prvý riadok obsahuje dve čísla $n$ ($1 \leq n \leq 100\,000$) a $m$ ($1 \leq m \leq 1\,000\,000$)
+-- počet miest na sedenie a počet fanúšikov, ktorý si chcú kúpiť lístok\footnote{Nebuďte prekvapení.
+Záujem je naozaj väčší ako kapacita haly.}. Každý z nasledujúcich $m$ riadkov obsahuje dve čísla $f$
+a $l$ ($1 \leq f \leq l \leq n$), ktoré popisujú požiadavky jednotlivých zákazníkov. Fanúšikovia sú
+číslovaný od $1$ po $m$ v poradí, v akom sa ich požiadavky vyskytli na vstupe.
+
+\heading{Výstup}
+
+Na prvý riadok výstupu vypíšte jedno číslo $k$ -- maximálny počet fanúšikov, ktorým vieme priradiť
+sedadlo.
+
+Nasleduje $k$ riadkov, každý obsahuje dve čísla $s$ a $r$, kde $s$ je číslo sedadla a $r$ je číslo
+fanúšika, ktorému bude toto sedadlo priradené. Táto časť výstupu môže byť v ľubovoľnom poradí a ak
+existuje viacero priradení, stačí vypísať ľubovoľné z nich.
+
+\heading{Príklad}
+\sampleIN
+10 9
+1 3
+2 4
+5 7
+2 6
+1 5
+3 7
+4 8
+7 9
+3 8
+\sampleOUT
+9
+1 1
+2 5
+3 2
+4 4
+5 6
+6 9
+7 3
+8 7
+9 8
+\sampleCOMMENT
+
+\sampleEND
+\bigskip
+
+\end{document}
