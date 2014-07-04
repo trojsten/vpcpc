@@ -1,0 +1,70 @@
+\input sys/inputs.tex
+
+\begin{document}
+
+\bigheading{Roznášač}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{newspapers}{stdin}{stdout}{100}{4000 ms}{1 GB}
+
+Hoci je Lamač slovenskou metropolou, jeho $n$ križovatiek je pospájaných len
+$n-1$ obojsmernými ulicami. Mesto za to vďačí svojmu predvídavému starostovi,
+ktorý takýmto opatrením podporuje turizmus: Medzi každými dvoma križovatkami
+existuje práve jedna cesta, takže v meste sa nedá stratiť!
+
+Hermi roznáša v Lamači noviny. Pre každú ulicu pozná počet jej obyvateľov a teda
+aj počet výtlačkov, ktoré na nej roznesie. Na začiatku dňa si Hermi vyberie dve
+križovatky a potom prejde všetkými ulicami na ceste medzi nimi. Noviny roznesie
+práve obyvateľom ulíc, cez ktoré prešiel. Jeho zárobok za tento deň sa rovná
+priemernému počtu výtlačkov doručených na jednej ulici (t.j.\ celkový počet
+roznesených výtlačkov vydelený počtom prejdených ulíc).
+
+Hermi hneď pochopil, že najvýhodnejšie pre neho je roznášať noviny len na ulici
+s najväčším počtom obyvateľov. Jeho šéfovi sa ale tento prístup nepozdával --
+príliš veľa ľudí sa sťažovalo, že im noviny nechodia. Preto šéf zakázal Hermimu
+vyberať si také cesty, ktoré majú menej ako $k$ ulíc.
+
+Pomôžte Hermimu a nájdite cestu, ktorá maximalizuje jeho zárobok.
+
+
+\heading{Úloha}
+
+Dostanete zadaný popis ulíc v Lamači a číslo $k$. Nájdite cestu s aspoň $k$
+ulicami, ktorá má najväčší počet doručených výtlačkov na ulicu.
+
+
+\heading{Vstup}
+
+V prvom riadku vstupu sú dve celé čísla $n$ a $k$ -- počet križovatiek v Lamači
+a minimálna dĺžka Hermiho cesty ($1 \leq n \leq 50\,000$, $1 \leq k \leq n -
+1$). Nasledujúcich $n-1$ riadkov obsahuje popisy ulíc. Každý popis pozostáva z
+troch celých čísel $a$, $b$ a $c$ ($1 \leq a < b \leq n$, $0 \leq c \leq 10^6$)
+s nasledovným významom: Existuje ulica spájajúca križovatky $a$ a $b$, pričom na
+tejto ulici býva $c$ ľudí.
+
+Môžete predpokladať, že v Lamači existuje nejaká cesta dĺžky aspoň $k$.
+
+V testovacích sadách ohodnotených $30$ bodmi navyše platí $n \leq 1\,000$.
+
+
+\heading{Výstup}
+
+Vypíšte jedno číslo -- priemerný počet doručených výtlačkov na jednej ulici v
+optimálnej ceste. Výstup sa bude považovať za správny, ak rozdiel medzi ním a
+správnou odpoveďou bude menší ako $10^{-6}$.
+
+
+\heading{Príklad}
+
+\sampleIN
+5 2
+1 2 4
+2 3 1
+3 4 3
+3 5 3
+\sampleOUT
+3.00000000
+\sampleEND
+
+\end{document}
