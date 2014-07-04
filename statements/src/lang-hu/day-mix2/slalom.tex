@@ -1,0 +1,58 @@
+\input sys/inputs.tex
+
+\begin{document}
+
+\bigheading{Szlalom}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{slalom}{stdin}{stdout}{100}{FIXME}{1 GB}
+
+Hubert kezdő síelő, olyannyira, hogy kanyarodni sem tud, csak egyenesen menni. Egy szlalom pályán szeretne lecsúszni. De lehet, hogy szerencséje van, mert a pálya tervezője talán nem volt elég körültekintő, és olyan pályát tervezett, amelyen kanyarodás nélkül is végig lehet menni.
+
+\heading{Feladat}
+Adott egy szlalompálya $n$ darab kapuval. A pálya balról jobbra halad. Minden egyes kaput a két kapurúd közötti függőleges szakasszal ábrázoljuk. Madártávlatból Hubertet egy $d$ átmérőjű körnek tekinthetjük ($d \geq 0$), és e kör középpontja egy egyenes vonalát követi. Hubert bármely olyan pontból indulhat, amely a legbaloldalibb kaputól balra van, és bármely olyan pontba érkezhet, amely a legjobboldalibb kaputól jobbra van. A pályán való végighaladáshoz Hubertnek teljes terjedelmével át kell haladni az összes kapun. A kapurudak érintése megengedett.
+
+Számítsd ki azt a legnagyobb $d$ átmérőt, amellyel Hubert végig tud menni a pályán!  
+
+\heading{Bemenet}
+A bemenet első sora egyetlen egész számot tartalmaz, a kapuk $n$ számát ($1 \leq n \leq 10^5$). A következő $n$ sor mindegyike egy-egy kapu adatait tartalmazza három egész számmal: $x, y_1, y_2$ ($0 \leq x \leq 10^9$,
+$0 \leq y_1 \leq y_2 \leq 10^9$), ahol $[x, y_1]$ és $[x, y_2]$ a két kapurúd koordinátája. A kapuk $x$ koordinátái különbözőek.
+
+\heading{Kimenet}
+A kimenetre a legnagyobb olyan $d$ számot kell kiírni, amellyel Hubert végig tud menni a pályán. A kiírt eredményt akkor fogadják el, ha a helyes megoldástól való eltérése kisebb, mint $10^{-9}$. C++-ban a megoldást a következőképpen lehet kiírni:
+\verb!printf("%.10lf\n", d);!
+ahol a $d$ egy double típusú kifejezés.
+
+Ha nincs olyan nemnegatív $d$ érték, amellyel a feladat megoldható, akkor a kimenetre az \texttt{Impossible} szöveget kell írni.
+
+\heading{Példa bemenet és kimenet}
+
+\sampleIN
+3
+4 3 7
+6 6 9
+1 5 10
+\sampleOUT
+1.3728129460
+\sampleEND
+
+\sampleIN
+2
+3 7 9
+10 4 4
+\sampleOUT
+0.0000000000
+\sampleEND
+
+\sampleIN
+3
+0 4 7
+2 0 3
+4 4 7
+\sampleOUT
+Impossible
+\sampleEND
+
+
+\end{document}
