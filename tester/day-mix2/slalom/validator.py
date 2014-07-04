@@ -25,7 +25,7 @@ number = r'(0|[1-9][0-9]*)'
 line = next_line()
 assert_syntax(line, '^{0}$'.format(number))
 n = int(line)
-assert_range(n, 'n', 1, 3 * 10**5)
+assert_range(n, 'n', 1, 10**5)
 
 X = set()
 for i in range(n):

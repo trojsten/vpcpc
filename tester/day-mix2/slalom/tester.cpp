@@ -45,7 +45,7 @@ char buf[BUF_LENGTH];
 
 char impossible_string[] = "Impossible\n";
 
-const double EPS = 1e-7;
+const double EPS = 1e-9;
 
 bool compare_doubles(double correct, double contestant) {
     if (fabs(correct - contestant) <= EPS)

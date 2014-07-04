@@ -1,0 +1,80 @@
+\input sys/inputs.tex
+
+\begin{document}
+
+\bigheading{An inexperienced slalomer}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{slalom}{stdin}{stdout}{100}{FIXME}{1 GB}
+
+It is Hubert's first slalom race, so naturally he feels very nervous. Moreover,
+it is also his first day on skis and he has not learnt how to make turns yet --
+he can only slide along a straight line. But nothing is lost yet. Maybe the
+designer of this particular course was not careful enough, so it is actually
+possible to pass through every gate without taking a single turn.
+
+
+\heading{Task}
+
+You are given the description of a slalom course with $n$ gates. Each gate is
+represented by a vertical line segment between two poles. From a bird's-eye
+view, Hubert looks like a disk with diameter $d$ ($d \geq 0$) and the trajectory
+of his center follows a straight line. To complete the course, Hubert must pass
+with his entire body between the poles of all gates. Touching the poles is
+allowed.
+
+Find the largest diameter $d$ such that there is a trajectory enabling Hubert to
+complete the course.
+
+
+\heading{Input}
+
+The first line of the input contains a single integer $n$ -- the number of gates
+($1 \leq n \leq 10^5$). Each of the $n$ following lines describes a gate and
+consists of three space-separated integers $x, y_1, y_2$ ($0 \leq x \leq 10^9$,
+$0 \leq y_1 \leq y_2 \leq 10^9$). The described gate is the vertical line
+segment with endpoints $[x, y_1]$ and $[x, y_2]$. No two gates have the same
+$x$-coordinate.
+
+
+\heading{Output}
+
+Output a single line with the largest $d$ such that Hubert can complete the
+course. We will accept answers with absolute or relative error less than
+$10^{-9}$.
+
+If there is no such non-negative value of $d$, output a single line with word
+\texttt{Impossible}.
+
+
+\heading{Samples}
+
+\sampleIN
+3
+4 3 7
+6 6 9
+1 5 10
+\sampleOUT
+1.37281294596728822347
+\sampleEND
+
+\sampleIN
+2
+3 7 9
+10 4 4
+\sampleOUT
+0
+\sampleEND
+
+\sampleIN
+3
+0 4 7
+2 0 3
+4 4 7
+\sampleOUT
+Impossible
+\sampleEND
+
+
+\end{document}

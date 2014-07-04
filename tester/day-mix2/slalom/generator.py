@@ -164,6 +164,7 @@ W.write(*generate(n, t, 1, 1, f, reflect(f, t), 1, f, reflect(f, t), 1, s))
 W.write(*generate(n, t, 1, 1, f, reflect(f, t), 0, f, reflect(f, t), 1, s))
 W.write(*generate(n, t, 1, 1, f, reflect(f, t), 1, f, reflect(f, t), 0, s))
 W.write(*generate(n, t, 1, 1, f, reflect(f, t), 0, f, scale(reflect(f, t), 0.5), 0, s))
+W.write([4], [20], [30])
 t = 10**9
 s = get_coeff_strategy(1 / 10**6)
 W.write(*generate(n, t, 1, 1, f, reflect(f, t), 0.7, f, reflect(f, t), 0.6, s))
