@@ -17,12 +17,14 @@ possible to pass through every gate without taking a single turn.
 
 \heading{Task}
 
-You are given the description of a slalom course with $n$ gates. Each gate is
-represented by a vertical line segment between two poles. From a bird's-eye
-view, Hubert looks like a disk with diameter $d$ ($d \geq 0$) and the trajectory
-of his center follows a straight line. To complete the course, Hubert must pass
-with his entire body between the poles of all gates. Touching the poles is
-allowed.
+You are given the description of a slalom course with $n$ gates. The course runs
+from left to right. Each gate is represented by a vertical line segment between
+two poles. From a bird's-eye view, Hubert looks like a disk with diameter $d$
+($d \geq 0$) and the trajectory of his center follows a straight line. He can
+choose his start point anywhere to the left of the leftmost gate, and his finish
+point anywhere to the right of the rightmost gate. To complete the course,
+Hubert must pass with his entire body between the poles of all gates. Touching
+the poles is allowed.
 
 Find the largest diameter $d$ such that there is a trajectory enabling Hubert to
 complete the course.
@@ -42,7 +44,8 @@ $x$-coordinate.
 
 Output a single line with the largest $d$ such that Hubert can complete the
 course. We will accept answers with absolute or relative error less than
-$10^{-9}$.
+$10^{-9}$. In C++, you can output the answer using
+\verb!printf("%.10lf\n", d);!
 
 If there is no such non-negative value of $d$, output a single line with word
 \texttt{Impossible}.
@@ -56,7 +59,7 @@ If there is no such non-negative value of $d$, output a single line with word
 6 6 9
 1 5 10
 \sampleOUT
-1.37281294596728822347
+1.3728129460
 \sampleEND
 
 \sampleIN
@@ -64,7 +67,7 @@ If there is no such non-negative value of $d$, output a single line with word
 3 7 9
 10 4 4
 \sampleOUT
-0
+0.0000000000
 \sampleEND
 
 \sampleIN
