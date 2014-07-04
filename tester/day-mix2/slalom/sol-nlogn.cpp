@@ -102,7 +102,7 @@ double point_line_distance(const PI& a, const PI& b, const PI& c) {
 }
 
 double hulls_distance(const vector<PI>& lower, const vector<PI>& upper) {
-    double res = 1e20;
+    double res = 1e40;
     int j = 0;
     FORD(i, SIZE(lower) - 2, 0) {
         PI normal(lower[i + 1].second - lower[i].second, lower[i].first - lower[i + 1].first);

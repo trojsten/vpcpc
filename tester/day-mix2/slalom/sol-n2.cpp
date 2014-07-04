@@ -130,7 +130,7 @@ int main() {
         return 0;
     }
 
-    double res = 1e20;
+    double res = 1e40;
     FORE(p, lower) REP(i, SIZE(upper) - 1)
         res = min(res, point_segment_distance(*p, upper[i], upper[i + 1]));
     FORE(p, upper) REP(i, SIZE(lower) - 1)
