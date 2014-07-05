@@ -1,0 +1,101 @@
+\input sys/inputs.tex
+
+\begin{document}
+
+\bigheading{Mise}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{mission}{stdin}{stdout}{100}{1000 ms}{1 GB}
+
+\noindent
+Pozor vojáku!
+
+\bigskip \noindent
+Dnes pro vás mám speciální úkol. Detekovali jsme nepřátelskou základnu,
+která musí být bezpodmínečně zničena. Na cestu dostanete mapu oblasti a dostatek
+výbušnin k vyhození cíle do povětří. Po dokončení akce vás vyzvedne helikoptéra,
+které bude čekat v nedalekém lese.
+
+\bigskip \noindent
+To zní jednoduše, ne? Nalezněte nerychlejší cestu, jak splnit stanovený úkol a
+zvláštní pozornost věnujte tomu, abyste žádné místo nenavštívil dvakrát.
+Potom by bylo pro nepřítele velmi jednoduché vás odhalit.
+
+\bigskip \noindent
+Nějaké otázky? Výborně\dots jděte se připravit, neboť za deset minut vyrážíte!
+
+\bigskip \noindent
+Přeji vám hodně štěstí, nenechejte se zastřelit a budu vás očekávat na večeři.
+
+\heading{Úloha}
+
+Je dán neorientovaný graf a jeho tři různé vrcholy: naše základna, nepřátelská
+základna a místo, kde vás bude čekat helikoptéra. Nalezněte nejkratší cestu
+v grafu z naší základny k helikoptéře. Cesta musí vézt přes nepřátelskou základnu
+a nesmí navštívit žádný vrchol vícekrát.
+
+\heading{Vstup}
+
+První řádek vstupu obsahuje pět mezerami oddělených celých čísel $N$, $M$, $B$, $E$, $H$
+($1 \le B, E, H \le N$, $B \neq E \neq H \neq B$).
+
+Graf se skládá z $N$ vrcholů číslovaných postupně od $1$ do $N$,
+naše základna se nachází ve vrcholu s číslem $B$,
+nepřátelská základna je ve vrcholu $E$ a
+helikoptéra bude čekat ve vrcholu $H$.
+
+Následuje $M$ řádků popisujících hrany grafu.
+Každý takový řádek obsahuje tři mezerami oddělená celá čísla
+$v$, $w$ a $t$ ($1 \le v, w \le N$, $v \neq w$, $1 \le t \le 1\,000\,000$).
+Jejich význam je takový, že neorientovaná hrana spojuje vrcholy $v$ a $w$
+a přesun po této hraně zabere $t$ jednotek času.
+
+Žádné dva vrcholy nejsou spojeny více než jednou hranou.
+
+\smallskip
+Ve všech testovacích vstupech platí $3 \le N \le 1\,000$ a $0 \le M \le 1\,000$.
+Navíc alespoň ve $30\%$ vstupů je $N\le 20$.
+
+\heading{Výstup}
+
+Vypište jediné celé číslo, nejmenší počet jednotek času potřebný ke splnění celé mise.
+
+Pokud není možné misi splnit, vypište místo toho jediný řádek obsahující číslo $-1$.
+
+\heading{Příklady}
+
+
+\sampleIN
+3 2 1 2 3
+1 2 10
+2 3 20
+\sampleOUT
+30
+\sampleEND
+
+
+\bigskip
+
+
+\sampleIN
+3 0 2 1 3
+\sampleOUT
+-1
+\sampleEND
+
+
+\bigskip
+
+
+\sampleIN
+4 4 3 2 4
+2 3 5
+3 1 1
+1 4 1
+2 4 100
+\sampleOUT
+105
+\sampleEND
+
+\end{document}

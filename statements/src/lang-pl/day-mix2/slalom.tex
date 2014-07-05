@@ -1,0 +1,81 @@
+\input sys/inputs.tex
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+\usepackage{polski}
+
+\begin{document}
+
+\bigheading{An inexperienced slalomer}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{slalom}{stdin}{stdout}{100}{300 ms}{1 GB}
+
+To jest pierwszy slalom Mirka, więc nic dziwnego, że jest barzo zdenerwowany.
+Dodatkowo, jest to jego pierwszy raz na nartach
+	i jeszcze się nie nauczył robić skrętów -- potrafi tylko ślizgać się w~linii prostej.
+Ale nic straconego.
+Być może twórca trasy nie był zbyt uważny i da się przejechać przez każdą bramkę bez robienia pojedynczego skrętu.
+
+\heading{Task}
+
+Masz dany opis slalomu z $n$ bramkami.
+Trasa biegnie od lewej do prawej.
+Każda bramka jest reprezentowana przez pionowy odcinek między dwoma słupkami.
+Z~lotu ptaka Mirek wygląda jak dysk o średnicy $d$ ($d \geq 0$), którego środek porusza się po linii prostej.
+Mirek może wybrać jako punkt startowy dowolny punkt położony na lewo od wszystkich bramek,
+	a jako punkt końcowy dowolny punkt położony na prawo od wszystkich bramek.
+Żeby ukończyć trasę, Mirek musi przejechać całym swoim ciałem pomiędzy wszystkimi bramkami.
+Dotykanie słupków jest dozwolone. 
+
+Znajdź największą średnicę $d$, dla której Mirek jest w~stanie przejechać slalom.
+
+\heading{Input}
+
+W~pierwszej linii wejścia znajduje się jedna liczba całkowita $n$ -- liczba bramek
+	($1 \leq n \leq 10^5$).
+Każda z~kolejnych linii opisuje bramkę i zawiera trzy liczby całkowite $x, y_1, y_2$
+	($0 \leq x \leq 10^9$, $0 \leq y_1 \leq y_2 \leq 10^9$).
+Opisywana bramką jest pionowym odcinkiem o końcach w~punktach $[x, y_1]$ i $[x, y_2]$.
+Żadne dwie bramki nie mają takiej samej współrzędnej $x$.
+
+\heading{Output}
+
+Twój program powinien wypisać na wyjście największe takie $d$, że Mirek może przejechać slalom.
+Odpowiedź zostanie uznana za poprawną jeśli jej bezwzględny bądź względny błąd będzie mniejszy niż $10^{-9}$.
+W C++, możesz wypisać odpowiedź używając \verb!printf("%.10lf\n", d);!
+
+Jeśli nie istnieje żadne nieujemne $d$ spełniające warunki zadania, wypisz \texttt{Impossible}.
+
+\heading{Samples}
+
+\sampleIN
+3
+4 3 7
+6 6 9
+1 5 10
+\sampleOUT
+1.3728129460
+\sampleEND
+
+\sampleIN
+2
+3 7 9
+10 4 4
+\sampleOUT
+0.0000000000
+\sampleEND
+
+\sampleIN
+3
+0 4 7
+2 0 3
+4 4 7
+\sampleOUT
+Impossible
+\sampleEND
+
+
+\end{document}

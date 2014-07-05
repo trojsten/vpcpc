@@ -1,0 +1,83 @@
+\input sys/inputs.tex
+
+\begin{document}
+
+\bigheading{Slalomár-začiatočník}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{slalom}{stdin}{stdout}{100}{300 ms}{1 GB}
+
+Držte všetci Hubertovi prsty -- dnes po prvýkrát štartuje na pretekoch v
+slalome! Horšie je, že dnes taktiež po prvýkrát stojí na lyžiach a ešte sa
+nenaučil zatáčať. Keď sa spustí dole kopcom, pokračuje po priamke, až kým
+neskončí v plote. V slalome to zvyčajne predstavuje neprekonateľnú nevýhodu, no
+Hubert sa nevzdáva: Možno bola táto trať navrhnutá neporiadne a v skutočnosti sa
+dá prejsť bez jedinej zatáčky.
+
+
+\heading{Úloha}
+
+Dostanete zadaný popis trate slalomu s $n$ bránkami. Trať prebieha zľava
+doprava. Každá bránka je reprezentovaná zvislou úsečkou medzi jej dvoma žŕdkami.
+Hubert vyzerá pri pohľade zhora ako kruh s priemerom $d$ ($d \geq 0$) a
+trajektória jeho stredu kopíruje priamku. Svoj začiatočný bod si môže Hubert
+zvoliť kdekoľvek naľavo od najľavejšej bránky a svoj konečný bod kdekoľvek
+napravo od najpravejšej bránky. Na úspešné zvládnutie trate potrebuje prejsť
+celým svojím telom pomedzi žŕdky každej bránky. Dotknúť sa žŕdky je povolené.
+
+Nájdite najväčší priemer $d$ taký, že existuje trajektória, po ktorej Hubert
+úspešne zvládne trať.
+
+
+\heading{Vstup}
+
+Prvý riadok vstupu obsahuje jedno celé číslo $n$ -- počet bránok ($1 \leq n
+\leq 10^5$). Každý z nasledujúcich $n$ riadkov popisuje jednu bránku a pozostáva
+z troch celých čísel $x, y_1, y_2$ oddelených medzerami ($0 \leq x \leq 10^9$,
+$0 \leq y_1 \leq y_2 \leq 10^9$). Popísaná bránka je zvislá úsečka s koncovými
+bodmi $[x, y_1]$ a $[x, y_2]$. Žiadne dve bránky nemajú rovnakú $x$-ovú
+súradnicu.
+
+
+\heading{Výstup}
+
+Vypíšte jediný riadok obsahujúci najväčšiu hodnotu $d$, pre ktorú Hubert môže
+úspešne zvládnuť trať. Budeme akceptovať odpovede s absolútnou alebo relatívnou
+chybou menšou ako $10^{-9}$. V C++, svoju odpoveď môžete vypísať príkazom
+\verb!printf("%.10lf\n", d);!
+
+Ak neexistuje žiadna vyhovujúca nezáporná hodnota $d$, vypíšte jediný riadok so
+slovom \texttt{Impossible}.
+
+
+\heading{Príklady}
+
+\sampleIN
+3
+4 3 7
+6 6 9
+1 5 10
+\sampleOUT
+1.3728129460
+\sampleEND
+
+\sampleIN
+2
+3 7 9
+10 4 4
+\sampleOUT
+0.0000000000
+\sampleEND
+
+\sampleIN
+3
+0 4 7
+2 0 3
+4 4 7
+\sampleOUT
+Impossible
+\sampleEND
+
+
+\end{document}

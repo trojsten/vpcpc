@@ -1,0 +1,103 @@
+\input sys/inputs.tex
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+\usepackage{polski}
+
+\begin{document}
+
+\bigheading{Mission}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{mission}{stdin}{stdout}{100}{1000 ms}{1 GB}
+
+\noindent
+Uwaga żołnierzu!
+
+\bigskip \noindent
+Mam dla Was specjalne zadanie.
+Wykryliśmy bazę wroga i musi ona zostać zniszczona.
+Dostaniecie mapę i~wystarczająco dużo bomb by zniszczyć wszystko.
+Po udanej akcji będzie czekał na Was helikopter w~pobliskim lesie.
+
+\bigskip \noindent
+Brzmi łatwo, co nie?
+Znajdźcie najszybszą drogę by osiągnąć cel i upewnijcie się, że nie odwiedzicie tego samego miejsca dwa razy.
+W~przeciwnym wypadku zostaniecie wykryci.
+
+\bigskip \noindent
+Czy wszystko jasne?
+Barzo dobrze... przygotujcie się, ponieważ wyruszacie za 10 minut!
+
+\bigskip \noindent
+Życzę Wam powodzenia, nie dajcie się zabić i do zobaczenia na obiedzie.
+
+\heading{Task}
+
+Otrzymujecie nieskierowany graf ważony oraz trzy różne wierzchołki:
+	Waszą bazę, bazę wroga i miejsce, w~którym czeka helikopter.
+Znajdźcie najkrótszą ścieżkę w~grafie między Waszą bazą i miejscem, w~którym czeka helikopter.
+Ścieżka musi przechodzić przez bazę wroga i nie może odwiedzić żadnego wierzchołka więcej niż raz.
+
+\heading{Input}
+
+W~pierwszej linii wejścia znajduje się pięć liczb całkowitych $N$, $M$, $B$, $W$, $H$
+	($3 \le N \le 1000, 0 \le M \le 1000, 1 \le B,W,H \le N, B \neq W, W \neq H, B \neq H$),
+	oznaczające odpowiednio: liczbę wierzchołków grafu,
+	liczbę krawędzi grafu,
+	numer wierzchołka, w~którym znajduje się Wasza baza,
+	numer wierzchołka, w~którym znajduje się baza wroga
+	i numer wierzchołka, w~którym znajduje się helikopter.
+Wierzchołki grafu są ponumerowane od $1$ do $N$.
+Kolejne $M$ linii opisuje krawędzie grafu.
+Każda linia zawiera trzy liczby całkowite $v$, $w$ i $t$
+	($1 \le v,w \le N, v \neq w, 1 \le t \le 1\,000\,000$).
+Oznaczają one, że istnieje nieskierowana krawędź między wierzchołkami
+	o~numerach $v$ oraz $w$ i przejście nią zajmuje $t$ jednostek czasu.
+Żadne dwa wierzchołki nie są połączone więcej niż jedną krawędzią.
+
+\smallskip
+W $30\%$ testów zachodzi $N \le 20$.
+
+\heading{Output}
+Wypiszcie jedną linię z~jedną liczbą całkowitą, oznaczającą minimalny czas potrzebny do wykonania misji.
+Jeżeli wykonanie misji jest niemożliwe to poddajcie się i nie wracajcie na obiad, lub wypiszcie $-1$.
+
+\heading{Samples}
+
+
+\sampleIN
+3 2 1 2 3
+1 2 10
+2 3 20
+\sampleOUT
+30
+\sampleEND
+
+
+\bigskip
+
+
+\sampleIN
+3 0 2 1 3
+\sampleOUT
+-1
+\sampleEND
+
+
+\bigskip
+
+
+\sampleIN
+4 4 3 2 4
+2 3 5
+3 1 1
+1 4 1
+2 4 100
+\sampleOUT
+105
+\sampleEND
+
+\end{document}

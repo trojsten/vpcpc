@@ -1,0 +1,71 @@
+\input sys/inputs.tex
+
+\begin{document}
+
+\bigheading{Lístky}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{tickets}{stdin}{stdout}{100}{800 ms}{32 MiB}
+
+Finálové utkání prestižní mezinárodní soutěže VPCPC se blíží.
+Očekává se nával fanoušků, a proto je potřeba věci dobře naplánovat.
+
+K dispozici bude $N$ míst k sezení, očíslovaných od $1$ do $N$.
+Každý fanoušek má právo si předobjednat jeden lístek, ke kterému si také zvolí interval míst, na kterých je ochotný sedět.
+Interval je zadán jako dvě celá čísla $F$ a $L$, první a poslední místo v intervalu.
+Jinými slovy, fanoušek je ochotný sedět na libovolném místě $S$, pro které platí $F \leq S \leq L$.
+
+Obdrželi jsme již $M$ objednávek.
+Je možné, že ne všechny objednávky půjdou vyřídit (z důvodu nekompatibility mezi objednávkami).
+Proto by nás zajímalo, jaký největší počet objednávek jsme schopní ůspěšně vyřídit.
+
+\heading{Úloha}
+
+Napište program, který spočte největší počet fanoušků, pro které jsme schopni objednávku ůspěšne vyřídit a taky vypíše, kterému fanouškovi bylo přířazeno které místo.
+Žádní dva fanoušci nesmí obdržet stejné místo.
+
+\heading{Vstup}
+
+První řádek vstupu obsahuje dvě celá čísla $N$ ($1 \leq N \leq 100\,000$), počet míst k sezení, a $M$ ($1 \leq M \leq 1\,000\,000$), počet obdržených objednávek. Místa jsou očíslovaná $1,\ldots,N$.
+
+Každý z následujících $M$ řádků obsahuje dvě celá čísla $F$ a $L$ ($1 \leq F \leq L \leq N$), objednávka i-tého fanouška.
+Fanoušci jsou očíslovaní $1,\ldots,M$ v pořadí, v jakém jsou zadaní na vstupu.
+
+\heading{Výstup}
+
+Na první řádek výstupu vypište jedno celé číslo $K$, maximální počet objednávek, jaký jsme schopni vyřídit.
+Každý z následujících $K$ řádků obsahuje dvě celá čísla $S$ a $R$, která znamenají, že místo s číslem $S$ bylo přiřazeno fanouškovi s číslem $R$.
+
+Informace o přiřazených místech můžete vypsat v jakémkoliv pořadí.
+Pokud existuje více správných řešení, vypište libovolné z nich.
+
+\heading{Příklad}
+\sampleIN
+10 9
+1 3
+2 4
+5 7
+2 6
+1 5
+3 7
+4 8
+7 9
+3 8
+\sampleOUT
+9
+1 1
+2 5
+3 2
+4 4
+5 6
+6 9
+7 3
+8 7
+9 8
+\sampleCOMMENT
+
+\sampleEND
+\bigskip
+
+\end{document}

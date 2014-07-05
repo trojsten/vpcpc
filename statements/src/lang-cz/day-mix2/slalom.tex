@@ -1,0 +1,87 @@
+\input sys/inputs.tex
+
+\begin{document}
+
+\bigheading{Nezkušený lyžař}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{slalom}{stdin}{stdout}{100}{FIXME}{1 GB}
+
+Tohle je Filipův velký den! Jeho první závod ve slalomu na lyžích.
+
+\bigskip \noindent
+- ``Filipe, jsi nervózní?''\\
+- ``Trochu.''
+\bigskip \noindent
+
+No, ještě aby nebyl nervózní, vždyť na lyžích ješte nikdy nestál.
+Zátačky dělat neumí a jediné co dokáže je spustit se shora dolů po rovné přímce.
+
+Ale možná nic není ztraceno.
+Je tu určitá šance, že mu jeho technika postačí na projetí celého závodu.
+
+\heading{Úloha}
+
+Dostanete popis tratě, na které je $n$ branek, kterými musí závodníci projet.
+Směr tratě je zleva do prava.
+Každá branka je reprezentovaná jako svislá (při pohledu zhora) úsečka spojující dva body.
+Z ptačí perspektivy vypadá Filip jako kruh s průměrem $d$ ($d \geq 0$) a
+trajektorie jeho středu se pohybuje po rovné přímce.
+
+Filip si na začátku může vybrat bod, ze kterého bude startovat, kdekoliv nalevo od nejlevější branky,
+a bod, ve kterém skončí, kdekoliv napravo od nejpravější branky.
+Aby Filip závod úspěšně projel, musí celým tělem projet mezi hraničnými body každé branky.
+
+Najděte největší průměr $d$, pro který je možné závod ůspěšně dokončit.
+
+
+\heading{Vstup}
+
+První řádek vstupu obsahuje jedno celé číslo $n$, počet branek ($1 \leq n \leq 10^5$).
+
+Každý z následujících $n$ řádků popisuje jednu branku jako tři mezerou oddělená čísla $x, y_1, y_2$ ($0 \leq x \leq 10^9$,
+$0 \leq y_1 \leq y_2 \leq 10^9$).
+Branka je reprezentováná jako svislá úsečka s krajními body na souřadnicích $[x, y_1]$ a $[x, y_2]$.
+Žádné dvě branky nemají stejnou x-ovou souřadnici.
+
+\heading{Výstup}
+
+Vypište jediný řádek obsahující největší $d$ takové, že Filip s průměrem $d$ může závod dokončit.
+Akceptujeme každou odpověď, která se od správné liší (absolutně nebo relativně) o méně než $10^{-9}$.
+
+V C/C++, můžete odpověď vypsat pomocí \verb!printf("%.10lf\n", d);!
+
+Pokud žadné takové nezáporné $d$ neexistuje, vypište jediný řádek se slovem \texttt{Impossible}.
+
+
+\heading{Příklady}
+
+\sampleIN
+3
+4 3 7
+6 6 9
+1 5 10
+\sampleOUT
+1.3728129460
+\sampleEND
+
+\sampleIN
+2
+3 7 9
+10 4 4
+\sampleOUT
+0.0000000000
+\sampleEND
+
+\sampleIN
+3
+0 4 7
+2 0 3
+4 4 7
+\sampleOUT
+Impossible
+\sampleEND
+
+
+\end{document}

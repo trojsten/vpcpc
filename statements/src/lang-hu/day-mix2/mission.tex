@@ -27,7 +27,7 @@ Sok szerencsét, és élve gyere vissza a vacsorára!
 Adott egy irányítatlan gráf és három különböző pontja: a kiindulási bázis, az ellenséges bázis és a helikopter helye. Add meg annak a legrövidebb útnak a hosszát, amely a kiindulási bázistól a helikopter helyéig halad, és keresztül megy az ellenséges bázison úgy, hogy nem mehet keresztül kétszer egyetlen ponton sem!
 
 \heading{Bemenet}
-A bemenet első sora öt, szóközökkel elválasztott egészt tartalmaz: $N$, $M$, $B$, $E$, $H$. $N$ a gráf pontjainak száma, amelyeket az $1, \ldots, N$ számokkal azonosítunk. $M$ a gráf éleinek száma. $B$ a kiindulási bázis, $E$ az ellenséges bázis, $H$ pedig a helikopter helyének megfelelő pont azonosítója.
+A bemenet első sora öt, szóközökkel elválasztott egészt tartalmaz: $N$, $M$, $B$, $E$, $H$ ($1 \le B, E, H \le N$, $B \neq E \neq H \neq B$). $N$ a gráf pontjainak száma, amelyeket az $1, \ldots, N$ számokkal azonosítunk. $M$ a gráf éleinek száma. $B$ a kiindulási bázis, $E$ az ellenséges bázis, $H$ pedig a helikopter helyének megfelelő pont azonosítója.
 
 A következő $M$ sor mindegyike három egész számot tartalmaz: $v$, $w$ és $t$ ($1 \le v, w \le N$, $v \neq w$, $1 \le t \le 1\,000\,000$). Ez azt jelenti, hogy a $v$ és $w$ pontokat irányítatlan él köti össze, és ezen az élen $t$ idő alatt lehet az egyik pontból a másikba eljutni.
 
@@ -36,7 +36,7 @@ Két pont között legfeljebb egy él lehet.
 \heading{Korlátok}
 $3 \le N \le 1\,000$ és $0 \le M \le 1\,000$.
 
-A tesztesetek $40\%$-ában $N\le 20$.
+A tesztesetek $30\%$-ában $N\le 20$.
 
 \heading{Kimenet}
 A kimenetre egyetlen egész számot írj ki, a küldetés teljesítéséhez szükséges minimális időt! 
