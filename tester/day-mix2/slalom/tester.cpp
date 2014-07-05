@@ -64,19 +64,29 @@ bool test(FILE* correct, FILE* contestant) {
     if (!correct_is_impossible)
         assert(sscanf(buf, "%lf", &correct_answer) == 1);
 
-    if (fgets(buf, BUF_LENGTH, contestant) == NULL)
+    if (fgets(buf, BUF_LENGTH, contestant) == NULL) {
+        printf("failed to read the contestant's answer\n");
         return false;
+    }
     bool contestant_said_impossible = (strcmp(buf, impossible_string) == 0);
     double contestant_answer;
     if (!contestant_said_impossible)
-        if (sscanf(buf, "%lf", &contestant_answer) != 1)
+        if (sscanf(buf, "%lf", &contestant_answer) != 1) {
+            printf("the contestant's answer is neither 'Impossible' nor a double\n");
             return false;
+        }
 
     if (correct_is_impossible && contestant_said_impossible)
         return true;
-    if (correct_is_impossible || contestant_said_impossible)
+    if (correct_is_impossible || contestant_said_impossible) {
+        printf("our answer: %spossible, the contestant's answer: %spossible\n", correct_is_impossible ? "im" : "", contestant_said_impossible ? "im" : "");
         return false;
-    return compare_doubles(correct_answer, contestant_answer);
+    }
+    if (!compare_doubles(correct_answer, contestant_answer)) {
+        printf("our answer: %.10lf, the contestant's answer: %.10lf\n", correct_answer, contestant_answer);
+        return false;
+    }
+    return true;
 }
 
 // ./tester OUR_OUTPUT CONTESTANTS_OUTPUT
