@@ -84,6 +84,15 @@ bool Sless(Point p1, Point p2, Point q1, Point q2){
    int qp2=Turn(q1,q2,p2);
    return pq1<=0 && pq2<=0 || qp1>=0 && qp2>=0;
 }
+bool Between(Point p1,Point p2, Point p3){
+//Global: P
+//In: P[i1]-P[i2]-P[i3] colinear
+   return   (abs(p1.x-p3.x)<=abs(p2.x-p1.x)) &&
+            (abs(p2.x-p3.x)<=abs(p2.x-p1.x)) &&
+            (abs(p1.y-p3.y)<=abs(p2.y-p1.y)) &&
+            (abs(p2.y-p3.y)<=abs(p2.y-p1.y)) ;
+}
+//
 int main (){
    ReadIn();
    Point a=P[w][mini[w]]; Point b=P[!w][mini[!w]];
@@ -116,12 +125,14 @@ int main (){
    if(c1.y<=b.y){
       c=c1;
       for(int i=i;i<=n[w];i++)
-         if(Turn(a,b,P[w][i])<0 && Turn(c1,c2,P[w][i])<0 && Turn(b,c,P[w][i])<0 )
+         if(Turn(a,b,P[w][i])<0 && Turn(c1,c2,P[w][i])<0 &&
+            (Turn(b,c,P[w][i])<0 ||  Turn(b,c,P[w][i])==0 && Between(b,c,P[w][i])))
             c=P[w][i];
    }else{
       c=c2;
       for(int i=i;i<=n[w];i++)
-         if(Turn(a,b,P[w][i])>0 && Turn(c1,c2,P[w][i])<0 && Turn(b,c,P[w][i])>0 )
+         if(Turn(a,b,P[w][i])>0 && Turn(c1,c2,P[w][i])<0 &&
+            (Turn(b,c,P[w][i])>0 ||  Turn(b,c,P[w][i])==0 && Between(b,c,P[w][i])))
             c=P[w][i];
    }
    if(w)
