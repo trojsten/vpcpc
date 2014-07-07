@@ -1,0 +1,68 @@
+\bigheading{Shades of the town}
+
+\authors{FIXME Problem Setter}{FIXME Testdata Developers}{FIXME Writeup Author}
+
+We will first discuss a simple brute-force solution.
+Then, we will show how to reduce this problem to a standard string matching problem,
+and then we will solve that problem.
+
+\heading{Solution using brute force}
+
+Given a pattern of length $\ell_i$, we can simply try all $m-\ell_i+1$ possible offsets
+between the pattern and the sequence of shadows. For a fixed offset, we simply verify
+whether all pairs (building,shadow) give the same scaling factor. This can be done
+in $O(\ell_i)$.
+
+Thus, the total time complexity of the brute force solution is $O(m\cdot\sum\ell_i)$.
+
+\heading{Reduction to string matching}
+
+The main trick in solving this task is getting rid of the scaling. To do that, we can
+make the following observation: the only thing that matters are ratios of consecutive
+building heights / shadow lengths.
+
+\bigskip
+
+Here's the same thing formally.
+
+Notation: Given a sequence $A=(a_1,\dots,a_k)$ of positive reals, the sequence $\rho(A)$ 
+(read ``ratios of $A$'') is defined as follows: $(a_2/a_1,\, a_3/a_2,\, \dots,\, a_n/a_{n-1})$.
+
+Lemma: Given two sequences $A=(a_1,\dots,a_k)$ and $B=(b_1,\dots,b_k)$ of positive reals,
+the sequence $B$ can be obtained by scaling $A$ if and only if $\rho(A)=\rho(B)$.
+
+Proof of the lemma should be obvious.
+
+\bigskip
+
+Thus, instead of solving the original problem, we can compute the ratios of all patterns
+and look for those in the ratios of the shadow lengths. Thus we get a standard string
+matching problem: given a long string (``haystack'') and a collection of short strings
+(``needles''), count the number of occurrences of all needles in the haystack.
+Of course, the \emph{alphabet} we are using are actually \emph{fractions}: each 
+``letter'' of our strings is actually a rational number.
+
+This standard string matching problem can be solved optimally using the Aho-Corasick algorithm
+The time complexity of this solution is $O(m + \sum\ell_i)$, that is, linear in the input size.
+
+A slightly slower but slightly simpler solution is to use an $O(m+\ell_i)$ string matching 
+algorithm (such as KMP or Rabin-Karp hashing) separately for each pattern. With $n$ patterns,
+this gives us the total time complexity $O(nm + \sum\ell_i)$.
+
+\heading{The Aho-Corasick algorithm}
+
+The Aho-Corasick algorithm can be seen as a generalization of the Knuth-Morris-Pratt algorithm
+for a single pattern. In Aho-Corasick we insert all patterns into a trie, and then build a set
+of back-links that corresponds to the failure function of the KMP algorithm. Formally, for each
+node $v$ in the trie (other than the root) we have a single back-link that points to the deepest
+node $w$ that is less deep than $v$, and has the property that the string that corresponds to $w$
+is a suffix of the string that corresponds to $v$. (I.e., if, after processing some letters 
+of the haystack, we can be in the node $v$, we can also be in the node $w$.)
+
+Some care must be taken when counting the matches. For example, if we are looking for the needles
+\verb!abcd! and \verb!bc! in the haystack \verb!pqrabcuvw!, after processing the letters
+\verb!pqrabc! we will be in the trie node that corresponds to the string \verb!abc! -- however,
+at this moment we should count one occurrence of \verb!bc!. In a full implementation of Aho-Corasick
+this is handled using a second type of back-links (``output links''), but in our case we can simply
+precompute this information in linear time once we have the trie with back-links ready.
+

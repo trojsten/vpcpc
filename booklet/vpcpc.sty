@@ -130,32 +130,14 @@ points: {\tt #4} & time limit: {\tt #5} & memory limit: {\tt #6} \\
   \begincodeb@x
 }
 
-\def\autori#1#2{
-  \vynechaj@ktreba{1.5cm}%
-  \noindent{\sf\large\bfseries Task authors}%
-  \par\bigskip%
+\def\authors#1#2#3{
+  \vspace{0.5cm}%
   \begin{tabular}{rl}
-  Problemsetter: & #1 \\
+  Problem author: & #1 \\
   Task preparation: & #2 \\
+  Solution writeup: & #3 \\
   \end{tabular}
-  \par\bigskip%
-}
-
-\def\zadanie{%
-  %\vynechaj@ktreba{1cm}%
-  %\noindent{\sf\large\bfseries Problem statement}%
-  \refstepcounter{subsection}
-  \addcontentsline{toc}{subsection}{Problem statement}%
-  %\par\bigskip%
-}
-
-\def\riesenie{
-  %\newpage
-  \vynechaj@ktreba{0.5cm}%
-  \noindent{\sf\large\bfseries Solution}%
-  \refstepcounter{subsection}
-  \addcontentsline{toc}{subsection}{Solution}%
-  \par\bigskip%
+  \vspace{1cm}%
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%% EOF %%%%%%%%%%%%%%%%%%%%%%%%%%%%%

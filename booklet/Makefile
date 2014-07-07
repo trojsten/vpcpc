@@ -4,7 +4,7 @@ all: pdf
 pdf: output/BOOKLET.pdf
 
 misc = Makefile $(wildcard *.sty)
-texsources = $(wildcard statements/*.tex)
+texsources = $(wildcard statements/*.tex) $(wildcard solutions/*.tex)
 
 output/BOOKLET.pdf: BOOKLET.tex $(texsources) $(misc)
 	mkdir -p output
