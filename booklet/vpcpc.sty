@@ -1,0 +1,164 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{vpcpc}
+\RequirePackage{fancyhdr}
+\RequirePackage{fancybox}
+\RequirePackage{amsmath}
+\RequirePackage{amsfonts}
+\RequirePackage{amssymb}
+\RequirePackage{amsthm}
+\RequirePackage{epsfig}
+\RequirePackage{lastpage}
+\RequirePackage{tabularx}
+%\RequirePackage{floatflt}
+\RequirePackage[usenames,dvipsnames]{color}
+\RequirePackage{url}
+\RequirePackage{tikz}
+\RequirePackage{hyperref}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% SAFE INPUT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\reportmissing#1{\par\vskip\baselineskip\noindent{\Large\bf Missing file: '#1'!\par}}
+\long\def\safeinput#1{\InputIfFileExists{#1.tex}{}{\reportmissing {#1.tex}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% PAGE DIMENSIONS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\voffset 1.5cm \advance\voffset -1truein
+\topmargin 0pt
+\headheight 49pt
+\headsep 25pt
+\textheight 20.5cm
+\footskip 30pt
+
+\hoffset 2.5cm \advance\hoffset -1truein
+\oddsidemargin 0pt
+\textwidth 16cm
+\marginparsep 0pt
+\marginparwidth 0pt
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% HYPERREF %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\hypersetup{
+    bookmarks=false,        % show bookmarks bar?
+    unicode=true,           % non-Latin characters in Acrobat's bookmarks
+    colorlinks=true,        % false: boxed links; true: colored links
+    linkcolor=red,          % color of internal links
+    citecolor=green,        % color of links to bibliography
+    filecolor=magenta,      % color of file links
+    urlcolor=MidnightBlue    % color of external links
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% PAGE HEADERS AND FOOTERS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\lhead{\Large\scshape VPCPC 2014}
+\chead{}
+\rhead{\large\sf June 28 -- July 6, 2014}
+\lfoot{}
+\cfoot{page {\bfseries\thepage} of {\bfseries\pageref{LastPage}}}
+\rfoot{licensed under CC BY-SA 3.0}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\pagestyle{fancy}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% HEADINGS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\vynechaj@ktreba#1{\par\ifdim\lastskip>\parskip\else \vskip#1\relax\fi}
+\def\bigheading#1{\vynechaj@ktreba{1cm}\noindent\centerline{\sf\large\bfseries #1}\refstepcounter{subsection}\addcontentsline{toc}{subsection}{#1}\par\medskip}
+\def\heading#1{\vynechaj@ktreba{12pt}\noindent{\sf\bfseries #1}\par\medskip}
+
+\newcommand\info[6]{
+\global\def\men@ulohy{#1}%
+\centerline{\begin{tabularx}{0.9\textwidth}{|>{\hsize=\hsize}X|>{\hsize=\hsize}X|>{\hsize=\hsize}X|}
+\hline
+task: {\tt #1} & input file: {\tt #2} & output file: {\tt #3} \\
+\hline
+points: {\tt #4} & time limit: {\tt #5} & memory limit: {\tt #6} \\
+\hline
+\end{tabularx}}
+\par\bigskip
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% I/O %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\dospecials{\do\ \do\\\do\{\do\}\do\$\do\&\do\#\do\^\do\^^K\do\_\do\^^A\do\%\do\~\do\"}
+
+\newlength{\myb@xwidth}
+\myb@xwidth=\textwidth
+\divide\myb@xwidth 2
+\advance\myb@xwidth -17pt
+\def\databoxl@bel{}
+
+% definujeme active chary _ a medzera
+\begingroup\catcode`\_=13\gdef_{\begingroup\string_\endgroup}\endgroup
+\begingroup\catcode`\ =13\gdef {\begingroup~\endgroup}\endgroup
+
+\def\begincodeb@x{\noindent\begin{Sbox}\begin{minipage}[t]{\myb@xwidth}\tt\obeylines\obeyspaces\catcode`\_=13 }
+\def\endcodeb@x{\end{minipage}\end{Sbox}}
+\def\begindisplaycodeb@x{\noindent\begin{minipage}[t]{0.48\textwidth}\noindent\centerline{\databoxl@bel}\smallskip\par\fbox{\TheSbox}}
+\def\enddisplaycodeb@x{\end{minipage}}
+
+\def\sampleIN{
+  \def\sampleCOMMENT{
+    \endcodeb@x
+    \begindisplaycodeb@x
+    \par\medskip\sl
+    \def\sampleOUT{
+      \enddisplaycodeb@x
+      \hfill
+      \ifx\outputlabel\undefined\def\databoxl@bel{output}\else\def\databoxl@bel{\outputlabel}\fi
+      \begincodeb@x
+    }
+    \def\sampleEND{
+      \enddisplaycodeb@x
+      \medskip\par
+    }
+  }
+  \def\sampleOUT{
+    \endcodeb@x
+    \begindisplaycodeb@x
+    \enddisplaycodeb@x
+    \hfill
+    \ifx\outputlabel\undefined\def\databoxl@bel{output}\else\def\databoxl@bel{\outputlabel}\fi
+    \begincodeb@x
+  }
+  \def\sampleEND{
+    \endcodeb@x
+    \begindisplaycodeb@x
+    \enddisplaycodeb@x
+    \medskip\par
+  }
+  \ifx\inputlabel\undefined\def\databoxl@bel{input}\else\def\databoxl@bel{\inputlabel}\fi
+  \begincodeb@x
+}
+
+\def\autori#1#2{
+  \vynechaj@ktreba{1.5cm}%
+  \noindent{\sf\large\bfseries Task authors}%
+  \par\bigskip%
+  \begin{tabular}{rl}
+  Problemsetter: & #1 \\
+  Task preparation: & #2 \\
+  \end{tabular}
+  \par\bigskip%
+}
+
+\def\zadanie{%
+  %\vynechaj@ktreba{1cm}%
+  %\noindent{\sf\large\bfseries Problem statement}%
+  \refstepcounter{subsection}
+  \addcontentsline{toc}{subsection}{Problem statement}%
+  %\par\bigskip%
+}
+
+\def\riesenie{
+  %\newpage
+  \vynechaj@ktreba{0.5cm}%
+  \noindent{\sf\large\bfseries Solution}%
+  \refstepcounter{subsection}
+  \addcontentsline{toc}{subsection}{Solution}%
+  \par\bigskip%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% EOF %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\endinput
+

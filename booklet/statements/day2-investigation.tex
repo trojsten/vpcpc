@@ -1,0 +1,81 @@
+\bigheading{Investigation}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{investigation}{stdin}{stdout}{100}{2500 ms}{1 GB}
+
+There was a robbery in a city of Bytelandia.
+The thief successfully escaped and hid somewhere in the city.
+You are investigating this crime. Your goal is to find and arrest the thief.
+
+The city consists of $N$ houses and $N-1$ roads, connecting some of the houses in
+such a way, that there exists a unique path between any two houses (i.e. the city forms a tree structure).
+The thief is hiding in one of the houses.
+
+To locate the thief, you can choose a house $h$ and search it.
+If it was the house where the thief was hiding, you arrest him.
+Otherwise you interrogate the inhabitants of the house and they provide you with the following information:
+``If you picture the city as a rooted tree, with house $h$ as its root and houses $c_1, c_2 \ldots c_m$ as the children of $h$,
+then the thief is hiding in one of the houses of the subtree rooted at $c_i$ (for some $i$, $1 \leq i \leq m$).''
+
+You have to keep searching the houses until you find and arrest the thief.
+You can suppose that the thief stays hidden in the same house during the whole investigation process (i.e. he doesn't change the location).
+
+Obviously, the order in which you search the houses matters, because even if you don't
+find the thief in a house, with the provided piece of information you can highly reduce
+the number of possible houses where the thief can be hiding.
+So you need to come up with an optimal strategy that
+minimizes the number of searched houses in the worst possible scenario.
+
+\heading{Task}
+
+You are given the description of the city.
+Come up with a strategy for searching the houses, that minimizes the number
+of houses you need to search in the worst possible scenario.
+
+\heading{Input}
+
+First line contains a single integer $N$, the number of houses in the city (houses are numbered from $0$ to $N-1$).
+
+Second line contains $N-1$ space separated integers, $v_1 v_2 \ldots v_{N-1}$.
+Integer $v_i$ ($1 \leq i \leq N-1$) means there is a road connecting the houses with numbers $v_i$ and $i$ ($v_i < i$).
+
+\smallskip
+\noindent
+It holds $2 \leq N \leq 10^5$.\\
+In the $20\%$ of testcases $N \leq 10$.\\
+In the $40\%$ of testcases $N \leq 20$.\\
+In the $60\%$ of testcases $N \leq 1000$.
+
+\heading{Output}
+
+Output exactly one integer, the number of houses you need to search in the worst possible scenario,
+when searching using the optimal strategy.
+
+\heading{Samples}
+
+
+\sampleIN
+5
+0 1 1 1
+\sampleCOMMENT
+The city looks like a star, with house 1 in the middle.
+\sampleOUT
+2
+\sampleCOMMENT
+First search the house 1.
+If the thief wasn't there, after interrogation you will know in which house is the thief hiding.
+\sampleEND
+
+
+\bigskip
+
+
+\sampleIN
+8
+0 1 2 1 3 5 6
+\sampleOUT
+3
+\sampleEND
+
+

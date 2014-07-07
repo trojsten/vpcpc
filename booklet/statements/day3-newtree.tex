@@ -1,0 +1,37 @@
+\bigheading{New Tree}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{newtree}{stdin}{stdout}{100}{200 ms}{1 GB}
+
+A new tree has been planted in the city park and the gardener wants to protect it. To do so, he creates a protected area around the new tree by selecting three of the old trees, and encircling them with a band. The new tree must be strictly inside the protected area but no other tree is allowed to be there. The gardener has already selected one of the old trees. Help him find the other two.
+
+\heading{Task}
+The task is to compute two old trees that form a valid protected area together with the already selected old tree.
+\heading{Input}
+The first line of the input contains two integers, $N$ and $A$. $N$ ($3 \leq N \leq 100000$) is the number of old trees and $A$ ($1 \leq A \leq N$) is the identifier of the preselected old tree. The trees are identified by the numbers $1,\ldots,N$. The second line contains two integers $x$ and $y$, the $x$-and $y$-coordinates of the new tree. Each of the next $N$ lines contains two integers $x$ and $y$, ($-1000000 \leq x,y \leq 1000000$) the coordinates of an old tree.
+
+\bigskip
+In $40 \%$ of the testcases $N \leq 5000$ also holds.
+\heading{Output}
+The first line of the output must contain two integers $B$ and $C$ separated by a single space, where $B$ and $C$ are old tree identifiers with the following property: if $A$ is the identifier of the preselected old tree, then the triangle with nodes $A$, $B$ and $C$ (in counterclockwise order) forms a valid protected area. That is, there are no trees on the sides of the triangle other than $A$, $B$ and $C$, and the only tree strictly inside the triangle is the new tree.
+If there is no solution then the output must be 0 0. If there are multiple solutions, your program should output only one; it does not matter which one.
+\heading{Samples}
+
+\sampleIN
+7 1
+9 3
+3 1
+8 7
+9 5
+11 5
+12 4
+9 1
+13 6
+\sampleOUT
+6 4
+\sampleCOMMENT
+
+\sampleEND
+\bigskip
+

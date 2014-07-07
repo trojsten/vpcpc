@@ -1,0 +1,76 @@
+\bigheading{Hyperways}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{hyperways}{stdin}{stdout}{100}{3000 ms}{1 GB}
+
+The intergalactic company Oods\&co is going to build a network of hyperways%
+\footnote{hyperspace highways, also called hyhi}
+that will connect the planets of our galaxy.
+They have already prepared a construction plan,
+i.e., a sequential order of building the hyperways.
+Each hyperway will be a bidirectional corridor that will connect two (not necessarily distinct) planets.
+
+\heading{Task}
+
+A hyperway is \emph{safe} if it is not the only hyperway that connects (directly or indirectly)
+some pair of planets. In other words, a hyperway $H$ is \emph{unsafe} if there are two planets
+$A$ and $B$ such that when traveling from $A$ to $B$ we have to use $H$. (Alternately, note that safe 
+hyperways are the ones that lie on some cycle.)
+
+You will be given the order in which hyperways will be constructed.
+After each construction there may be some hyperways which have just become safe.
+(Including, possibly but not necessarily, the hyperway that was just built.)
+Count those hyperways.
+
+Note that if a hyperway is already safe, it will remain safe for the rest of the construction.
+
+\heading{Input}
+
+On the first line of input are two integers $n$ and $m$:
+$n$ is the number of planets in the plan,
+$m$ is the number of hyperways.
+The planets are numbered $1$ \dots $n$.
+
+Each of next $m$ lines consists
+of two space separated integers --
+the ids of planets next hyperway will join.
+There can be a hyperway connecting a planet with itself.
+There can be a multiple hyperways between two planets.
+
+\smallskip
+
+In all test cases, $n \leq 10^6$ and $m \leq 2\cdot10^6$.
+
+In $40\%$ of test cases, $n \leq 1000$ and $m \leq 2000$.
+
+\heading{Output}
+
+For each hyperway in the input, output a single line with a single integer:
+the number of hyperways that just became safe.
+
+\heading{Samples}
+
+
+\sampleIN
+5 8
+1 2
+3 3
+4 5
+2 3
+4 5
+3 4
+4 1
+5 2
+\sampleOUT
+0
+1
+0
+0
+2
+0
+4
+1
+\sampleEND
+
+

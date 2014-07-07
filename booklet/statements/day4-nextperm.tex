@@ -1,0 +1,33 @@
+\bigheading{Next Permutation}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{nextperm}{stdin}{stdout}{100}{100 ms}{32 MiB}
+
+Permutations are intensively studied in mathematics and computer science. Pattern avoiding permutations are of special interest. A permutation $p_1,p_2, \ldots, p_n$ of the natural numbers $1,\ldots, n$ is called 3-1-2 pattern avoiding if there are no three indices $1\leq i<j<k \leq n$ such that $p_i>p_j$,  $p_i>p_k$ and $p_j<p_k$.
+
+\heading{Task}
+Write a program that computes for a given 3-1-2 pattern avoiding permutation the next
+3-1-2 pattern avoiding permutation according to the lexicographic ordering.
+
+\heading{Input}
+The first line of the input contains one integer $n$ ($3 \leq n \leq 10000$). The second line contains $n$ positive integers separated by single spaces, a 3-1-2 pattern avoiding permutation of the natural numbers $1, \ldots, n$. The input is not the decreasing sequence $n,n-1,\ldots ,1$.
+
+\heading{Constraints}
+In the $40\%$ of the testcases  $n \leq 1000$ also holds.
+
+\heading{Output}
+The first line of the output must contain the 3-1-2 pattern avoiding permutation that follows the input permutation in the lexicographic ordering. The numbers must be separated by a single space.
+
+\heading{Samples}
+
+\sampleIN
+5
+2 4 5 3 1
+\sampleOUT
+2 5 4 3 1
+\sampleCOMMENT
+
+\sampleEND
+\bigskip
+

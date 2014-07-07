@@ -1,0 +1,64 @@
+\bigheading{Wall}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{wall}{stdin}{stdout}{100}{1000 ms}{1 GB}
+
+Mirek is a conservator.
+His job is to maintain monuments, keeping them in good condition.
+Mirek's today task is to repair the defense wall of an old fortress.
+The wall is about to fall to pieces, so he must hurry.
+He~searched through the Internet and found a robot designed to repair such walls extremely fast.
+After purchasing the robot, he tried to make the optimal repairment plan, but this was way too difficult for him.
+
+The wall can be considered as a straight line.
+Mirek wrote down all points on the wall, which require repairing.
+For each point he knows, what would be the cost $C_i$ of repairing it, and a coefficient $D_i$
+	-- how would the cost increase if it wasn't repaired immediately.
+If~the $i$-th point will be repaired after time $t$, then the cost of repairing it would be equal to:
+\[ C_i + t \cdot D_i \]
+
+\heading{Task}
+
+Given the coordinates of all points on the wall and the initial position of the robot,
+	and knowing that transportation of the robot from
+	point $x_1$ to point $x_2$ would take $|x_1 - x_2|$
+	time\footnote{Here, $x_1$ and $x_2$ are the coordinates of these two points (not their indices).},
+	calculate the minimum cost of repairing all spoiled points.
+You can assume that repairing a single point takes no time.
+
+\heading{Input}
+
+On the first line of input there are two integers $N$ and $P$ ($1 \le N \le 2\,000$, $0 \le P \le 10^9$)
+	-- the number of points on the wall, which should be repaired, and the initial position of the robot.
+Then, $N$ lines follow, $i$-th of these lines describes $i$-th point on the wall
+	and contains three integers $X_i$, $C_i$ and $D_i$ ($0 \le X_i \le 10^9$, $0 \le C_i, D_i \le 10^6$, $X_i \neq P$)
+	--~the position of the point and cost coefficients.
+There are no two points with equal positions.
+
+\heading{Output}
+
+Output a single line with integer $C$, where $C$ is the minimal cost of repairing
+	all points on the wall.
+
+\heading{Sample}
+
+
+\sampleIN
+3 7
+10 32 1
+3 5 1
+14 0 2
+\sampleOUT
+72
+\sampleCOMMENT
+The optimal plan of repairing points is:
+\begin{itemize}
+	\item Transport robot from point $7$ to point $10$ and repair the first point after time $3$.
+	\item Transport robot from point $10$ to point $14$ and repair the third point after time $3 + 4 = 7$.
+	\item Transport robot from point $14$ to point $3$ and repair the second point after time $3 + 4 + 11 = 18$.
+\end{itemize}
+Thus, the total cost of repairing the wall is $5 + 18 \cdot 1 + 32 + 3 \cdot 1 + 0 + 7 \cdot 2 = 72$.
+\sampleEND
+
+

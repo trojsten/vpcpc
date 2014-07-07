@@ -1,0 +1,83 @@
+\bigheading{Mission}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{mission}{stdin}{stdout}{100}{1000 ms}{1 GB}
+
+\noindent
+Attention soldier!
+
+\bigskip \noindent
+I have a special task for you. We have detected an enemy base and it needs to be destroyed. You will be given a map and enough bombs to blow it up. After the action a helicopter will be waiting for you in the forest nearby.
+
+\bigskip \noindent
+Sounds easy, doesn't it? Find the fastest way to achieve the goal and make sure you don't visit any place twice, otherwise you will be detected.
+
+\bigskip \noindent
+Is everything clear? Very well... get ready, because you are leaving in 10 minutes!
+
+\bigskip \noindent
+I wish you good luck, don't get killed and see you at the dinner.
+
+\heading{Task}
+
+You are given an undirected graph and its three different vertices: your base, enemy base and the place where helicopter is waiting. Find the shortest path in the graph from your base to the helicopter's place. The path must go through the enemy base and can't visit any vertex twice.
+
+\heading{Input}
+
+First line of the input contains five space separated integers $N$, $M$, $B$, $E$, $H$
+($1 \le B, E, H \le N$, $B \neq E \neq H \neq B$).
+
+The graph contains $N$ vertices numbered $1$ to $N$, your home base is at vertex $B$, enemy base at vertex $E$ and the helicopter is waiting at vertex $H$.
+
+Following $M$ lines describe the edges of the graph.
+Each line contains three space separated integers $v$, $w$ and $t$ ($1 \le v, w \le N$, $v \neq w$, $1 \le t \le 1\,000\,000$).
+It means there is an undirected edge connecting vertices $v$ and $w$ and it costs $t$ units of time to traverse the edge.
+
+No two vertices are connected by more than one edge.
+
+\smallskip
+It holds $3 \le N \le 1\,000$ and $0 \le M \le 1\,000$.
+In at least $30\%$ testcases $N\le 20$.
+
+\heading{Output}
+
+Output a single line with a single integer, the least amount of time needed to complete the mission.
+
+If it is impossible to complete the mission, output $-1$ instead.
+
+\heading{Samples}
+
+
+\sampleIN
+3 2 1 2 3
+1 2 10
+2 3 20
+\sampleOUT
+30
+\sampleEND
+
+
+\bigskip
+
+
+\sampleIN
+3 0 2 1 3
+\sampleOUT
+-1
+\sampleEND
+
+
+\bigskip
+
+
+\sampleIN
+4 4 3 2 4
+2 3 5
+3 1 1
+1 4 1
+2 4 100
+\sampleOUT
+105
+\sampleEND
+

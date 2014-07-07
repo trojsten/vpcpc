@@ -1,0 +1,165 @@
+%%
+%% This is file `ksp-lst-utf8.sty'.
+%%
+%% It is a modified version of the file listingsutf8.sty by Heiko Oberdiek <oberdiek@uni-freiburg.de>
+%% The file listingsutf8.sty is available at CTAN as a part of the `oberdiek' package bundle.
+%%
+%% This file (C) 2012 by Michal Forisek <misof@ksp.sk>
+%% 
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either
+%% version 1.3 of this license or (at your option) any later
+%% version. The latest version of this license is in
+%%    http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of
+%% LaTeX version 2005/12/01 or later.
+%% 
+%% This work has the LPPL maintenance status "author-maintained".
+%% 
+
+%% UTF-8 CHARACTERS NOTES:
+%%
+%% Accented characters ONLY work in listings read from an external file.
+%% The inline and display block formats do NOT support accented characters.
+%%
+%% If you want accented characters, store the program into a separate file and use \listing.
+%% The file encoding MUST be UTF-8.
+%% All characters used in the file MUST be convertible into the iso-latin2 character set.
+
+%% USAGE EXAMPLES:
+%%
+%% \listing{filename.cc}          % syntax highlighting guessed for extensions {cc,cpp,pas,py}
+%% \listing[Pascal]{filename.ext} % typesets filename.ext using Pascal highlighting
+%% \listing[bash]{filename.ext}   % any language supported by listings.sty can be used
+%% \listing*[bash]{filename.ext}  % the starred version does not print the "Listing programu" header
+%% 
+%% In a sentence, use \lstlang{cc}\lstinline!for (int x=0; x<10; ++x) { y+=x; }!.
+%%
+%% As a display block, use:
+%% \lstlang{pas}\begin{lstlisting}
+%%   for i:=0 to n-1 do y := y+x;
+%% \end{lstlisting}
+%%
+%% In addition to {cc,cpp,pas,py} any language supported by listings.sty works for \lstlang:
+%% \lstlang{Java}\lstinline!import java.util.*;!.
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{ksp-lst-utf8}[2012/05/08 KSP listings in (IL2 subset of) UTF-8 v1.0]
+
+%% content copied and tweaked from listingsutf8.sty begin
+\begingroup
+  \catcode123 1 \catcode125 2
+  \def\x{\endgroup
+    \expandafter\edef\csname lstU@AtEnd\endcsname{%
+      \catcode35 \the\catcode35\relax   \catcode64 \the\catcode64\relax
+      \catcode123 \the\catcode123\relax \catcode125 \the\catcode125\relax
+    }%
+  }%
+\x
+\catcode35 6 \catcode64 11 \catcode123 1 \catcode125 2
+\def\TMP@EnsureCode#1#2{\edef\lstU@AtEnd{\lstU@AtEnd\catcode#1 \the\catcode#1\relax}\catcode#1 #2\relax}
+\TMP@EnsureCode{34}{12}  % these are double quotes, changed to catcode 13 by a ksp macro
+\TMP@EnsureCode{10}{12}  \TMP@EnsureCode{33}{12}  \TMP@EnsureCode{36}{3}  \TMP@EnsureCode{38}{4}  \TMP@EnsureCode{39}{12}
+\TMP@EnsureCode{40}{12}  \TMP@EnsureCode{41}{12}  \TMP@EnsureCode{42}{12} \TMP@EnsureCode{43}{12} \TMP@EnsureCode{44}{12}
+\TMP@EnsureCode{45}{12}  \TMP@EnsureCode{46}{12}  \TMP@EnsureCode{47}{12} \TMP@EnsureCode{58}{12} \TMP@EnsureCode{60}{12}
+\TMP@EnsureCode{61}{12}  \TMP@EnsureCode{62}{12}  \TMP@EnsureCode{94}{7}  \TMP@EnsureCode{95}{8}  \TMP@EnsureCode{96}{12}
+\TMP@EnsureCode{124}{12} \TMP@EnsureCode{126}{13}
+\g@addto@macro\lstU@AtEnd{\endinput}
+\DeclareOption*{\PassOptionsToPackage\CurrentOption{listings}}
+\ProcessOptions*
+\RequirePackage{listings}[2002/04/01]
+\AtBeginDocument{\@ifundefined{inputencoding}{\RequirePackage{inputenc}}{}}
+\RequirePackage{pdftexcmds}[2007/11/11]
+\def\lstU@temp#1#2{%
+  \begingroup\expandafter\expandafter\expandafter\endgroup
+  \expandafter\ifx\csname #1\endcsname\relax
+    \PackageWarningNoLine{ksp-lst-utf8}{%
+      Package loading is aborted because of missing %
+      \@backslashchar#1.\MessageBreak
+      #2%
+    }%
+    \expandafter\lstU@AtEnd
+  \fi
+}
+\lstU@temp{scantokens}{It is provided by e-TeX}
+\lstU@temp{pdf@unescapehex}{It is provided by pdfTeX >= 1.30}
+\lstU@temp{pdf@filedump}{It is provided by pdfTeX >= 1.30}
+\lstU@temp{pdf@filesize}{It is provided by pdfTeX >= 1.30}
+\RequirePackage{stringenc}[2007/10/22]
+\newif\iflstU@utfviii
+\def\lstU@inputenc#1{\expandafter\lstU@@inputenc#1utf8/utf8/\@nil}
+\def\lstU@@inputenc#1utf8/#2utf8/#3\@nil{\ifx\\#1\\\lstU@utfviiitrue\def\lst@inputenc{#2}\else\lstU@utfviiifalse\fi}
+\lst@Key{inputencoding}\relax{\def\lst@inputenc{#1}\lstU@inputenc{#1}}
+\def\lstU@input#1{%
+  \iflstU@utfviii
+    \edef\lstU@text{\pdf@unescapehex{\pdf@filedump{0}{\pdf@filesize{#1}}{#1}}}%
+    \StringEncodingConvert\lstU@text\lstU@text{utf8}\lst@inputenc
+    \def\lstU@temp{\scantokens\expandafter{\lstU@text}}%
+  \else
+    \def\lstU@temp{\input{#1}}%
+  \fi
+  \lstU@temp
+}
+\def\lstU@temp#1\def\lst@next#2#3\@nil{\def\lst@InputListing##1{#1\def\lst@next{\lstU@input{##1}}#3}}
+\expandafter\lstU@temp\lst@InputListing{#1}\@nil
+%% listingsutf8.sty end
+
+%% By default, listings.sty gets the fonts wrong for some characters.
+%% This looks ugly once we start using \ttfamily fonts.
+%% Below are ugly low-level fixes for the characters - < > _ { }
+
+\lst@CCPutMacro\lst@ProcessOther{"2D}{\lst@ttfamily{-{}}{-{}}}\@empty\z@\@empty
+\lst@CCPutMacro\lst@ProcessOther{"3C}{\lst@ttfamily{<{}}{<{}}}\@empty\z@\@empty
+\lst@CCPutMacro\lst@ProcessOther{"3E}{\lst@ttfamily{>{}}{>{}}}\@empty\z@\@empty
+\lst@CCPutMacro\lst@ProcessOther{"5F}{\lst@ttfamily{\char '137{}}{\char '137{}}}\@empty\z@\@empty
+\lst@CCPutMacro\lst@ProcessOther{"7B}{\lst@ttfamily{\char '173{}}{\char '173{}}}\@empty\z@\@empty
+\lst@CCPutMacro\lst@ProcessOther{"7D}{\lst@ttfamily{\char '175{}}{\char '175{}}}\@empty\z@\@empty
+
+%% Below we have our general settings for listings in all languages.
+
+\lstset{
+    basicstyle=\fontfamily{pcr}\fontseries{m}\fontshape{n}\fontsize{7}{9}\selectfont, % a very small \tt font
+    keywordstyle=\fontseries{b}\fontshape{n}\selectfont, % the same but in bold
+    commentstyle=\fontseries{m}\fontshape{sl}\selectfont, % the same but slanted
+    tabsize=8,
+    showtabs=false,
+    inputencoding=utf8/latin2,
+    lineskip=-2pt, % more dense baselines
+    keepspaces=true, % for instance to keep "/* comment" from turning to "/*comment"
+}
+
+%% Finally, we define the commands for users of this package.
+
+\def\@lstheader#1{\par\ifdim\lastskip>\parskip\else\vskip0.4cm\relax\fi\noindent{\sf\bfseries Listing programu\ifnum\pdfstrcmp{#1}{}=0\relax\else\ (#1)\fi}\par\smallskip}
+
+\def\lstlang#1{%
+    \lstset{language={}}%
+    \ifnum\pdfstrcmp{#1}{cc}=0\lstset{language=C++}\else
+    \ifnum\pdfstrcmp{#1}{cpp}=0\lstset{language=C++}\else
+    \ifnum\pdfstrcmp{#1}{pas}=0\lstset{language=Pascal}\else
+    \ifnum\pdfstrcmp{#1}{py}=0\lstset{language=Python,morekeywords={as,assert,with,yield}}\else
+    \lstset{language=#1}\fi\fi\fi\fi
+}
+
+\newif\iflisting@star
+\newcommand{\listing}{\@ifstar{\listing@startrue\listing@i*}{\listing@starfalse\listing@i*}}
+\def\listing@i*{\@ifnextchar[{\listing@ii*}{\listing@ii*[@]}}
+\def\listing@ii*[#1]#2{%
+    \def\hllang{}%
+    \ifnum\pdfstrcmp{#1}{@}=0% no optional argument provided, try to guess language from extension
+        \ifnum\pdfmatch{[.]cc$}{#2}=1\def\hllang{C++}\lstset{language=C++}\fi
+        \ifnum\pdfmatch{[.]cpp$}{#2}=1\def\hllang{C++}\lstset{language=C++}\fi
+        \ifnum\pdfmatch{[.]pas$}{#2}=1\def\hllang{Pascal}\lstset{language=Pascal}\fi
+        \ifnum\pdfmatch{[.]py$}{#2}=1\def\hllang{Python}\lstset{language=Python,morekeywords={as,assert,with,yield}}\fi
+        \ifnum\pdfstrcmp{\hllang}{}=0\def\hllang{Text}\lstset{language={}}\fi
+    \else
+        \def\hllang{#1}\lstset{language=#1}%
+    \fi
+    \iflisting@star\relax\else\@lstheader{\hllang}\fi% make a header if not in the starred version
+    \lstinputlisting{#2}%
+}
+
+\lstU@AtEnd
+\endinput
+%%
+%% End of file `ksp-lst-utf8.sty'.

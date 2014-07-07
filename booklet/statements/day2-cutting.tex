@@ -1,0 +1,70 @@
+\bigheading{Cutting of a birthday cake}
+
+% \info{task_name}{infile}{outfile}{points}{timelimit}{memlimit}
+% leave this values, if you are not interested
+\info{cutting}{text files}{text files}{100}{-}{-}
+
+Mimino is celebrating his birthday!
+Although an incredible programmer, he is only $N$ years old.
+Kamila's compiler (remember from yesterday?) cooked a huge\footnote{The cake is so big, it can be represented as an infinite plane.}
+chocolate cake for his birthday party and placed $N$ candles on the top of it.
+Mimino and his friends are all getting really hungry and want to cut the cake.
+They want to cut the cake with the straight cuts, such that there will be at most one candle on each slice.
+
+Mimino is now wondering, what is the minimum number of cuts needed to satisfy above constraints.
+
+\heading{Task}
+
+Having a plane and some points in it, give a set of lines that separate the plane into subplanes so that each subplane can contain at most $1$ point. The set should be as small as possible.
+
+Point coordinates are all integers. Lines are given by two different points (with integer coordinates). Lines have a direction from their first point to their second point; this is used to determine that when a line intersects an input point, the input point is considered to be on the right side of the line.
+
+Lines can only be horizontal, vertical or diagonal.
+
+\heading{Input}
+
+The first line contains a single integer $N$, the number of points.
+Following $N$ lines describe the points.
+
+The $(i+1)$-th line contains a pair of space separated integer coordinates $x$ and $y$ of the $i$-th point.
+
+\heading{Output}
+
+The first line should contain $L$, the number of lines.
+Following $L$ lines describe the lines.
+
+The $(i+1)$-th line contains four space separated integers $X_1$, $Y_1$, $X_2$, $Y_2$. Points ($X_1$, $Y_1$) and ($X_2$, $Y_2$) must be different, the line goes through both of them. At least one of the following conditions must held:
+
+\begin{itemize}
+  \item $X_1 = X_2$ (vertical line)
+  \item $Y_1 = Y_2$ (horizontal line)
+  \item $X_1 - X_2 = Y_1 - Y_2$
+  \item $X_1 - X_2 = Y_2 - Y_1$
+\end{itemize}
+
+Your solution should output at most $10\,000$ lines and the absolute value of all coordinates must be less than or equal to $1\,000\,000$.
+
+\heading{Scoring}
+This is an open data problem. You can download all $10$ testcases from the submission system. You are only required to submit your output files.
+
+If your output doesn't follow the output format or doesn't separate the points correctly, your score will be zero for the testcase.
+
+Otherwise, your score for the testcase is equal to
+$ 10 \cdot \left(1 - \sqrt{1 - L_{min} / L}\right)$,
+where $L$ is the number of lines in your output and $L_{min}$ is the best submission made by any contestant during the contest.
+Note that this score is calculated after the contest.
+
+\heading{Samples}
+
+\sampleIN
+4
+3 1
+4 5
+6 6
+8 4
+\sampleOUT
+2
+3 2 8 7
+2 8 8 2
+\sampleEND
+
