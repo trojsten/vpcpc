@@ -1,0 +1,78 @@
+\bigheading{Dynamic memory allocation}
+
+\authors{Peter `Bob' Fulla}{Peter `Bob' Fulla}{Peter `Bob' Fulla}
+
+It is quite obvious how to process a query of either type in time $O(n)$, but
+such a solution would certainly fail to achieve the perfect score for this task.
+We will describe two approaches that lead to algorithms with time complexity
+$O(\log n)$ per query.
+
+
+\heading{Solution based on segment trees}
+
+We build a segment tree on top of the array of bytes. In each node, we store the
+following information about the segment represented by the node:
+\begin{itemize}
+\item the number of allocated bytes in the segment,
+\item the length of the longest continuous block of free bytes in the segment,
+\item the number of consecutive free bytes at the beginning of the segment,
+\item the number of consecutive free bytes at the end of the segment.
+\end{itemize}
+Note that we can easily compute these values for a node from the values stored
+in its two children.
+
+\bigskip
+
+To process an allocation query, we first check whether the longest block of free
+bytes in the entire array would be long enough to satisfy the query. If it is
+too short, we return $-1$. Otherwise, we need to find the leftmost block of
+length at least $\ell$. This can be done using recursion: If the longest block
+in the left-hand half of the array is of length $\ell$ or more, we continue
+looking for the answer there. If this is not the case, we check whether we
+obtain a sufficient block of free bytes by concatenating the block at the end of
+the left-hand half of the array with the block at the beginning of the right-hand
+half. If this option also fails, the sought block must lie completely in the
+right-hand half of the array.
+
+After we find the position of the block to allocate, we need to change the state
+of bytes in it and make necessary updates to the values in the segment tree.
+However, the number of bytes allocated in a query may reach $\Theta(n)$, so we
+must employ a technique called lazy propagation: Whenever we want to allocate
+all bytes in the segment corresponding to a node of the segment tree, we simply
+mark the node with a flag meaning ``all bytes below are allocated'', update the
+values stored in it, and do not descend to its subtree at all. When processing
+a subsequent query, we may enter a marked node. Only at that time we unmark the
+node and propagate the flag to its two children.
+
+Freeing a block of bytes is very similar to allocating, we just need a different
+flag meaning ``all bytes below are free''. To compute the number of allocated
+bytes before a query, we simply add up the corresponding values stored in nodes
+of the segment tree.
+
+The lazy propagation technique guarantees that we visit at most $2 \log n$ nodes
+when updating the tree. Therefore, the time complexity is $O(\log n)$ per query.
+
+
+\heading{Solution based on self-balancing binary search trees}
+
+This approach requires us to implement a customized self-balancing binary search
+tree, for example a treap. The nodes of the tree will represent maximal blocks
+of consecutive free bytes and they will be ordered by their positions in the
+array. In addition, we need to maintain the following values in every node:
+\begin{itemize}
+\item the sum of lengths of blocks in the node's subtree,
+\item the maximum of these lengths.
+\end{itemize}
+
+\bigskip
+
+Using the precomputed maxima of subtrees, we can easily find the leftmost block
+with length $\ell$ or more in time $O(\log n)$. To completely process an
+allocation query, we just need to update the found block (or remove it, if its
+length equals exactly $\ell$).
+
+Dealing with freeing queries is now a bit more complicated, as they are not
+necessarily aligned with blocks of free bytes. We split the tree before the
+first block and after the last block contained by the freed interval, update the
+adjacent blocks if necessary, and merge the parts of the tree together. These
+operations can be implemented with time complexity $O(\log n)$.

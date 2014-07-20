@@ -1,0 +1,41 @@
+\bigheading{An inexperienced slalomer}
+
+\authors{Peter `Bob' Fulla}{Peter `Bob' Fulla, Marián `Syseľ' Horňák}{Peter `Bob' Fulla}
+
+A gate has two endpoints; we will call the one with smaller $y$-coordinate the
+\emph{bottom} endpoint and the other one the \emph{top} endpoint. In order to
+pass through each gate, Hubert must ski above every bottom endpoint and below
+every top endpoint. He moves along a straight line, therefore we may replace
+this requirement by ``Hubert must ski above the upper convex hull of bottom
+endpoints and below the lower convex hull of top endpoints'', which is
+equivalent to it.
+
+If the intersection of the two convex hulls has a positive area, the answer will
+be \texttt{Impossible}, as no straight line will separate the hulls. Otherwise,
+let us choose a point $P$ belonging to one of the hulls and a point $Q$
+belonging to the other hull such that their distance is minimal among all such
+pairs of points; we will denote their distance by $d$. In other words, $d$
+equals the distance between the two convex hulls. We claim that $d$ is also the
+answer to our problem. Clearly, a disk of a diameter strictly greater than $d$
+cannot pass through the line segment $PQ$, therefore its trajectory cannot
+separate the two convex hulls. On the other hand, there is a valid trajectory
+for a disk of diameter exactly $d$: Its center will move along the perpendicular
+bisector of the line segment $PQ$. One can show that this trajectory does not
+intersect the two convex hulls (though it touches them) -- if it did, there
+would be a pair of points $P'$, $Q'$ with a smaller distance than $d$.
+
+The intersection of the two convex hulls has a positive area iff a vertex of one
+hull lies strictly inside the other hull. We can check this by a simple sweep
+line algorithm. The distance of the convex hulls can be computed as follows:
+Without loss of generality, we may assume that at least one of the points $P$,
+$Q$ is a vertex of the convex hull it belongs to; the other may also be a vertex
+or it may lie on a line segment on the hull's border. For any fixed vertex $V$
+on a convex hull, we can compute its distance to the other hull $H$ in time
+$O(n)$ simply by iterating through all vertices and line segments of $H$ and
+taking the minimum of obtained distances. This would lead to a solution with
+time complexity $O(n^2)$. Realizing that the sequence of distances from a fixed
+vertex $V$ is at first decreasing and then increasing, we can find its minimum
+using a ternary search in time $O(\log n)$. Another option is to use the two
+pointers technique to find minima for all vertices $V$ in time $O(n)$. As we
+have to sort the gates at the beginning, the overall time complexity is in both
+cases $O(n\log n)$.
