@@ -1,0 +1,142 @@
+\bigheading{Investigation}
+
+\authors{Michal `Mimino' Danilák}{Michal `Mimino' Danilák}{Michal `Mimino' Danilák}
+
+\heading{Terminology}
+
+In the following text will refer to the problem in the terms from graph theory,
+where the houses are vertices and the roads are edges of the graph, which is also a
+tree.
+
+By \emph{querying a vertex} we mean to choose some house and search it.
+
+By a \emph{strategy} we mean a correct decision tree of queries leading to discovery of the thief.
+By an \emph{optimal strategy} we mean the decision tree of the lowest possible height.
+In the following text we will consider only the reasonable strategies, where
+we will never query a vertex for which the answer can be infered from the previous queries and answers.
+
+
+\heading{What doesn't work}
+
+During the contest we saw a plenty of submissions trying to solve the problem
+with various incorrect strategies:
+\begin{itemize}
+\item choose the center \footnote{http://en.wikipedia.org/wiki/Graph_center} of the tree,
+\item choose a vertex, which minimizes the size of the biggest subtree,
+\item choose a vertex, which minimizes the length of the longest path in any of the subtrees.
+\end{itemize}
+
+Even though every such strategy returns an asymptotically optimal solution,
+requiring $O(\log N)$ queries, for each of them there exists a counter-example
+where the strategy returns the answer worse by a constant factor.
+
+
+\heading{Brute-force solution}
+
+In each step we remember the set of vertices where the thief can possibly be hiding.
+Then we try all the possible ways to choose the next vertex, solve the problem
+recursively and return the best answer.
+
+Clever implementation with bitmasks and memoization has time complexity $O(N*2^N)$.
+Implementing this solution first would not only give you 40 points, but it would also
+help you find the counter-examples for the incorrect strategies you might come
+up with and help you better understand the devil in this problem.
+
+
+\heading{Optimal solution}
+
+Imagine you already have a strategy which in the worst case requires $X$ queries.
+We will now define a \emph{strategy function} $f : V \to \mathbb Z_{> 0}$ which maps
+the vertices of the tree into positive integers. For each vertex $v$,
+$f(v) = |height of the node in the strategy's decision tree in which you query v|$.
+In other words, if $v_1$ is in the root of the decision tree (i.e. you first query $v_1$), then $f(v_1) = X$.
+If vertices $v_2, v_3 ... v_i$ are on the second level of the decision tree
+(i.e. based on the first answer you would query one of the $v_2, v_3 ... v_i$), then $f(v_2) = f(v_3) ... = f(v_i) = X-1$.
+And so on, until you assign $1$ to the vertices deepest in the decision tree.
+Because decision trees of reasonable strategies have for each vertex $v$ exactly
+one node in which you query it, the function is always well-defined.
+
+Lemma (\emph{path property}):
+For any strategy function holds that for each pair of distinct vertices $v_1, v_2 \in V$ if $f(v_1) = f(v_2)$, then
+on the simple path from $v_1$ to $v_2$ there is a vertex $v_3$ such that $f(v_3) > f(v_1)$.
+
+Proof:
+It should be obvious from the construction of strategy function.
+
+We will now show that actually every function $f : V \to \mathbb Z_{> 0}$ satisfying
+the \emph{path property} represents a valid strategy which in the worst case
+requires no more than $M_f$ queries, where $M_f$ is the maximum value of $f(v)$.
+We will prove it by constructing a valid strategy from such function:
+
+First vertex to query, $v$, will be the one with value $M_f$. There should be only
+one such vertex in the tree, otherwise the \emph{path property} would not hold.
+The second vertex to query in each of the subtrees separated by $v$ is the vertex with
+the maximum value in that subtree. Again, from the \emph{path property} we know
+there should be only one such vertex in each subtree. And so on.
+
+So to determine the optimal strategy it suffices to compute a strategy function
+with the lowest maximum value $M_f$.
+
+We arbitrarily root the tree and compute $f(v)$ for each vertex in the bottom-up order.
+For each $v$, $T(v)$ represents the subtree rooted at $v$.
+Also we say that vertex $w \in T(v)$ is visible from $v$ if on the path from $v$
+to $w$ there is no vertex $y$ such that $f(y) > f(w)$. If $w$ is visible from $v$,
+we also say that value $f(w)$ is visible from $v$. Actually for each vertex
+we can store the bitmask of all the values visible from $v$ in $T(v)$. For
+example if values $\{5,4,2,0\}$ are visible, we will store $(110101)_2$. We will
+call it a \emph{visibility mask} a write it $S(v)$.
+
+For the bottommost vertices we set $f(v) = 1$.
+
+For every other vertex $v$, $f(v)$ will be set to the lowest possible value, while
+taking the visible values in $T(v)$ into account. For a vertex $v$ value $X$ is
+forbidden in any of the two conditions hold:
+\begin{itemize}
+\item value $X$ is visible from $v$,
+\item value $Y$ is visible from $v$ in at least two different subtrees and $Y \gte X$.
+\end{itemize}
+
+From the visibility masks $S(v_1), S(v_2) ... S(v_k)$ of the children of $v$ and the value $f(v)$
+we can compute the value of $S(v)$ using the bit operators as follows:
+$S_f = 1 << f(v)$
+$S(v) = (S(v_1) | S(v_2) ... | S(v_k) | S_f) & ~(S_f - 1)$.
+
+What the complicated-looking formula does, is basically a bit OR of all the
+children's visibility masks with the mask of $f(v)$ and then erasing all the
+values lower than $f(v)$ from the mask, which are not visible anymore.
+
+Finally the answer to the original problem is $M_f$, the maximum value $f(v)$ assigned
+to any of the vertices.
+
+Depending on how fast can we calculate the value of $f(v)$ the run time of the
+algorithm can be $O(N)$ if we use the clever bit operations machinery and
+calculate it in constant time. Otherwise we can simply sequentially find the lowest
+possible value for $f(v)$, resulting in the total run time $O(N * \log N)$ which
+would also score 100 points.
+
+
+\heading{Proof of correctness}
+
+Now we will prove that the above algorithm always calculates the optimal strategy,
+even though rooting the same tree by the different vertex can result into a possibly
+different strategy, which is nevertheless optimal.
+
+The function calculating the visibility mask $S(v)$ (i.e. the ugly bitwise expression above)
+is \emph{monotone} and \emph{minimizing}. By \emph{monotone} we mean that by increasing
+the value of the visibility masks of some of its children, we do not decrease
+the value of the visibility mask of their parent. By \emph{minimizing} we mean
+that for the given visibility masks of the children, we calculate the $S(v)$ with
+the minimum possible value.
+
+Lemma: If the function calculating $S(v)$ is \emph{monotone} and \emph{minimizing}, then
+the bottom-up algorithm calculates a strategy function $f(v)$ for which $M_f$ is minimal.
+
+Proof: First we will show that the computed visibility mask of the root is minimal. We will
+prove it by induction on the height of the tree. Suppose that the masks computed for the
+children of $v$ are minimal. It means that they are not greater than corresponding masks for
+any other strategy function. Since $S(v)$ is \emph{monotone}, it wouldn't help if
+any of the children values would be bigger. And because $S(v)$ is also \emph{minimizing},
+there is no smaller visibility mask $S(v)$ for any strategy function.
+
+Because the visibility mask at the root is minimal, so is $M_f$, because the visibility mask
+from the root always contains $M_f$ and no greater values.
