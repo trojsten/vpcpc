@@ -1,0 +1,95 @@
+\bigheading{Universities}
+
+\authors{Michal `Mimino' Danilák}{Michal `Mimino' Danilák}{Michal `Mimino' Danilák}
+
+In the following text I will refer to the problem in the terms from graph theory,
+where the universities are vertices and the roads are edges of the graph, which is also a
+tree. Each vertex is either black or white and has a cost associated with it.
+We say that the path in the tree is \emph{balanced} if
+it contains the same number of black and white vertices.
+We are looking for the cost of the balanced path for which the sum of costs
+of its vertices is maximized.
+
+First I will explain the solution to the easier subproblem. Then I will apply
+that solution to the original problem.
+
+
+\heading{Subproblem}
+
+You are given a vertex $v$, find the optimal balanced path that goes through $v$.
+
+We root the tree by the vertex $v$. For each other vertex $w$ we calculate the path balance
+$B[w] = \sum_{x \in path_{w->v}}balance_x$, where $balance_x$ is $1$ if the vertex is black and $-1$ otherwise.
+Obviously if $B[w] = 0$, then the path from $w$ to $v$ is balanced.
+For each vertex we also calculate the path cost
+$C[w] = \sum_{x \in path_{w->v}}cost_x$.
+
+Now we have two choices on how the optimal path can look like:
+\begin{enumerate}
+\item $v$ is one of the endpoints on the path,
+\item $v$ is one of the inner vertices on the path.
+\end{enumerate}
+
+In the first case we can simply look at the vertices $w$ with $B[w] = 0$ and store
+the best value $C[w]$ among them.
+
+In the second case, let $c_1, c_2, ... c_k$ be the children of $v$, and $T(c_i)$
+represent the subtree rooted at $c_i$. Then the endpoints of the optimal path
+must lie in two different subtrees.
+For each $c_i$ we will calculate the array $BEST_{c_i}[b] = \max_{w \in T(c_i), B[w] = b}C[w]$,
+i.e. for each balance $b$ we will store the cost of the best path from $w$ to $v$ with balance $b$.
+Because the indexes to this array can be negative, in C++ either use \emph{map} or
+the following trick:
+\lstlang{cpp}\begin{lstlisting}
+// now you can index array best even with negative indexes with absolute value up to MAX_BALANCE
+int _best[2*MAX_BALANCE], * best = _best + MAX_BALANCE;
+\end{lstlisting}
+
+If we want to find the optimal path with endpoints in subtrees $T(c_1)$ and $T(c_2)$, we can
+iterate through all the values stored in $BEST_{c_2}$ and for each balance $b$
+we can get the cost of the balanced path starting in $T(c_2)$ and ending in $T(c_1)$
+as $BEST_{c_2}[b] + BEST_{c_1}[balance_v-b] - cost_v$ and update the best value found so far.
+For simplicity the missing values in $BEST$ arrays have value $-\infty$.
+
+After we processed the subtrees $T(c_1)$ and $T(c_2)$, we can merge their $BEST$ arrays
+into one $BEST_{c_12}[b] = \max(BEST_{c_1}[b], BEST_{c_2}[b])$.
+In the next step we will process the arrays $BEST_{c_12}$ and $BEST_{c_3}$ in the same way as described above.
+
+Time complexity of this solution is linear in the number of vertices of the tree.
+
+
+\heading{Original problem}
+
+Back to the original problem, where the optimal path can go through any vertex.
+We will define the strategy function previously introduced in the solution of \emph{Investigation} task.
+
+Function $f : V \to \mathbb Z_{> 0}$, mapping the vertices into positive integers, is a \emph{strategy function} if
+for each pair of distinct vertices $v_1, v_2 \in V$ with $f(v_1) = f(v_2)$ holds that
+on the simple path from $v_1$ to $v_2$ there is a vertex $v_3$ such that $f(v_3) > f(v_1)$.
+
+We can either construct an optimal strategy function as described in the solution of \emph{Investigation} task
+or for the purposes of this problem any such function with the maximum value of $O(\log N)$ would be sufficient.
+So you could also use any strategy described in \emph{What doesn't work} section of the \emph{Investigation} solution.
+
+For each vertex $v$ we define $T_f(v) = \{w | w \in V, \forall y \in path_{w->v}: f(y) \leq f(v) \}$.
+Basically it is the subtree consisting of vertices reachable from $v$ by traversing only the vertices for which $f(w) \leq f(v)$.
+
+Lemma: For each pair of distinct vertices $v_1, v_2 \in V$ with $f(v_1) = f(v_2)$ holds that
+the subtrees $T_f(v_1)$ and $T_f(v_2)$ are disjoint.
+
+Proof: Follows from the property of strategy function.
+
+What will we do now is for each vertex $v$ we will `guess' that the optimal path
+goes through $v$ and solve the subproblem with the algorithm described above.
+But for the subproblem we will only consider the vertices of
+the subtree $T_f(v)$, not the whole tree.
+
+Imagine the optimal path in the graph. Let $M_path = \max\{f(v) | v \in path\}$.
+There is exactly one vertex $v$ for which $f(v) = M_path$,
+for which holds that $path \subseteq T_f(v)$. Therefore we would discover this
+optimal path when solving the subproblem for the vertex $v$.
+
+Time complexity of the whole algorithm is $O(N * \log N)$ - there are $O(\log N)$ different values of $f(v)$
+and from the lemma we know, that the subtrees $\{T_f(v) | v \in V, f(v) = x\}$ are
+pairwise disjoint, therefore solving all the subtrees with the same root value takes in total $O(N)$.
+
