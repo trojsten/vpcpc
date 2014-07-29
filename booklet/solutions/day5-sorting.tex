@@ -1,0 +1,58 @@
+\bigheading{Sorting}
+
+\authors{JAG Practice Contest, Tokyo, 2011-11-06}{Marek Sommer \& Błażej Magnowski}{Marek Sommer}
+
+Let's see what would happen if we would put the numbers $A$, $A+1$, $\ldots$, $B-1$, $B$ into an array,
+	and then sort them lexicographically
+		(sorting may be done just by converting each number into a string, and then comparing two strings letter by letter).
+We may call this sorted sequence, a sequence $S$.
+Let $n$ be the length of the sequence $S$ (and also the size of set $\{A, A+1, \ldots, B-1, B\}$).
+
+If we would look at any ascending subsequence of $S$, and if we would consider
+	a set containing numbers from this subsequence, then this set would meet conditions stated in the task.
+That's because this subsequence is in lexicographical order (as a subsequence of a sequence with lexicographical order),
+	and also it is in numerical order (because it's ascending).
+
+From the other side, if we look at any subset of $\{A, A+1, \ldots, B-1, B\}$,
+	with the given property, and we would sort it lexicographically,
+	then it would form a subsequence of sequence $S$
+		(because $S$ contains all elements of this subsequence and these elements are correctly ordered).
+Moreover, this sequence would be ascending, because the set has the property, that lexicographical and numerical
+	orders are the same.
+Hence, this subset would be formed from an ascending subsequence of sequence $S$.
+
+So, the number of subsets of $\{A, A+1, \ldots, B-1, B\}$ with the given property
+	is equal to the number of ascending subsequences of sequence $S$.
+
+To find the number of such subsequences we will use an algorithm very similar to the algorithm
+	which computes the longest ascending subsequence.
+We will use dynamic programming and for each element of the sequence $S$,
+	we will compute the number of ascending subsequences, ending exactly on this element.
+Let's call this value $p_i$ for $i$-th element.
+If we would be able to compute such values, then the answer would be the sum of them
+	(as each ascending subsequence should end in one of those elements), plus one (we must add empty subsequence).
+
+We will compute these values starting from the first element and ending on the last one.
+The value $p_1$ is always $1$ (no matter what the first element is).
+If we try to compute the answer for the $i$-th element ($S_i$),
+	then we must find the sum of all $p_j$ such that $j < i$ and $S_j < S_i$.
+This sum is the number of all ascending subsequences, ending in $i$-th element, of length greater than one.
+Therefore we must increase this sum by one to obtain the number of all subsequences ending in the $i$-th element.
+
+At this point we already have an $O(n^2)$ solution.
+We can make it better by finding the sums of $p_j$ more efficiently then by checking each possible $j$.
+
+Let's create an array of length $n$.
+First element of this array would represent $A$, second element would represent $A+1$, and so on.
+After we compute a value $p_i$, we should store it in the array in the element representing $S_i$.
+If we would like to compute the sum of $p_j$ with $j < i$ and $S_j < S_i$,
+	then we should simply calculate the sum of array's elements from the one representing $A$ to the one representing $S_i - 1$.
+This continuous part of the array contains $p_j$ values such that $S_j < S_i$.
+The second constraint that $j < i$ is simply hold thanks to the order in which we compute the values $p_i$
+	(from $i=1$, to $i=n$), so in the array there are only $p_j$ such that $j < i$.
+
+We reduced the problem to construction of an array, on which we could make two queries:
+	setting one element, and computing a sum of elements on a range of elements.
+This could be done with a segment tree, or a Fenwick tree, giving us an $O(n\log n)$ algorithm
+	to count the number of ascending subsequences.
+The overall solution is a bit slower, because the lexicographical sorting was done in $O(n\log n \log B)$ time.

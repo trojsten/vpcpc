@@ -1,0 +1,57 @@
+\bigheading{Game}
+
+\authors{Codeforces}{Błażej Magnowski \& Marek Sommer}{Błażej Magnowski}
+
+Lets try to find a way to determine whether the first player can win when the starting numbers are $A$ and $B$.
+In other words, we want to know if ($A,B$) is a winning state.
+Lets assume $A \geqslant B$.
+We have two types of moves.
+The first type of move is to move to state ($A$ mod $B, B$)
+	and the second type of move is to go to state ($A - B^k, B$) where $k$ is a positive integer. 
+
+\bigskip
+
+If one of the numbers is equal to zero, we know it is a winning state.
+So from now on, lets assume that $A \geqslant B > 0$.
+We know we can make a move of the first type to a state ($A$ mod $B,B$).
+If this is a losing state then ($A,B$) is a winning state.
+Lets assume ($A$ mod $B, B$) is a winning state.
+So the other possible moves are the moves of the second type to a state ($A - B^k, B$).
+If $A - B^k < B$ then $A - B^k = (A$ mod $B)$ and we reached state ($A$ mod $B, B$) which we know is a winning state.
+If $A - B^k \geqslant B$ then from state ($A - B^k, B$)
+	by making a move of the first type we will reach state ($A$ mod $B, A$)
+	because $A - B^k \equiv A ($mod $B)$.
+So from now on none of the players will make a move of the first type because it will lead their opponent to a winning state. 
+
+\bigskip
+
+So we reduced our game to a subgame: we start from state ($A,B$)
+	where $A \geqslant B$ and we can only use moves of the second type. 
+Whoever moves to state ($A$ mod $B, B$), loses.
+We can redefine this game.
+Let $X = \lfloor \frac{A}{B} \rfloor$.
+The possible moves are to subtract $B^k$ from $X$ where $k$ is a non-negative integer.
+Whoever will turn $X$ to zero loses.
+If $B$ is an odd number then $B^k \equiv 1 ($mod $2)$ for any $k$ so the value $X$ mod $2$ determines who wins.
+If $B$ is an even number then lets look at the value of $X$ mod $(B + 1)$.
+We will prove that if and only if this value is even then this is a winning state.
+Let's assume that $X$ mod $(B+1)$ is even.
+If $X$ mod $(B+1) \neq 0$ then we can subtract $B^0 = 1$ from $X$ and then $(X-1)$ mod $(B+1)$ will be odd.
+If $X$ mod $(B+1) = 0$ then either $X = 0$ and that means that our opponent reached zero so we won or $X \geqslant B$.
+In the second case we can subtract $B^1 = B$ from $X$ and now $(X - B)$ mod $(B+1) = 1$.
+Now let's assume that $X$ mod $(B+1)$ is odd.
+We can see that $B^k \equiv (-1)^k ($mod $(B+1))$ so no matter what move we make,
+	we can either decrease or increase the value of $X$ mod $(B+1)$ by $1$.
+So if the value of $X$ mod $(B+1)$ is odd then no matter what move we will make then $(X - B^k)$ mod $(B+1)$ will be even.
+Also if the value of $X$ mod $(B+1)$ is even we either already won or we can make such a move
+	that $(X - B^k)$ mod $(B+1)$ will be even.
+Therefore we proved that for given numbers $X$ and $B$ ($B$ is even)
+	this state is a winning state if and only if $X$ mod $(B+1)$ is even.
+
+\bigskip
+
+In short, to check if ($A,B$) is a winning state ($A \geqslant B > 0$)
+	we have to find out if ($A$ mod $B,B$) is a winning state.
+After that in constant time we can tell if ($A,B$) is a winning state.
+There will be at most $O(\log A)$ states to check,
+	so the time complexity of determining if ($A,B$) is a winning state is $O(\log A)$.

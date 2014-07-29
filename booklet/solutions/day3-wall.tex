@@ -1,0 +1,69 @@
+\bigheading{Wall}
+
+\authors{ACM Regionals Central Europe 2004}{Błażej Magnowski \& Marek Sommer}{Marek Sommer}
+
+For the sake of simplicity let's create an additional point on the wall
+	in which the robot starts repairment, and set its cost coefficients to $0$ $0$ (so that it won't change the result).
+Let's name all the points (including the false one) in order they appear on the wall: $W_1$, $W_2$, $W_3$, $\ldots$, $W_n$.
+Let's say that the robot starts in point $W_k$.
+
+First of all, we can see that the first cost coefficient $C_i$ does not really affect the order of visiting
+	the points on the wall.
+No matter what that order would be, these coefficients are constant and always should be added to the final cost.
+We must count the sum of $C_i$ coefficients, add them to the result, and then we can ignore them to the rest of our algorithm,
+	assuming, that from now on there is only one cost coefficient -- $D_i$.
+
+Let's compute the prefix and suffix sums of points coefficients, which will help us later.
+To be more precise, let's construct two arrays $P$ and $S$ such that for each $i \in \{1, 2, \ldots, n\}$:
+\[ P[i] = \sum_{j = 1}^i D_j \]
+\[ S[i] = \sum_{j = i}^n D_j \]
+Also, let's assume that for $i \not \in \{1, 2, \ldots, n\}$, $P[i] = S[i] = 0$
+	(that will help us deal with special cases when $i = 0$ or $i = n+1$).
+
+After applying above three preparation steps, we can proceed to the algorithm.
+We will use dynamic programming.
+Let's compute the answers for some subsets of our points, which will lead us to the answer for all the points.
+Let's create an array $dp[i][j][f]$ with the following meaning:
+\begin{itemize}
+	\item If $f = 0$, $dp[i][j][f]$ is equal to the minimal cost of repairing points
+		$W_1, W_2, \ldots, W_i, W_j, W_{j+1}, \ldots, W_n$ with the robot starting at position $W_i$.
+	\item If $f = 1$, $dp[i][j][f]$ is equal to the minimal cost of repairing points
+		$W_1, W_2, \ldots, W_i, W_j, W_{j+1}, \ldots, W_n$ with the robot starting at position $W_j$.
+\end{itemize}
+In short, $dp[i][j][f]$ is equal to the cost of repairing points from only a prefix $1..n$ and a suffix $j..n$,
+	starting from position $i$ or $j$ (which depends on $f$ -- if it is $0$ or $1$).
+Not all the fields in this array will be used.
+Only those which meet conditions: $0 \le i < j \le n+1$, $f \in \{0, 1\}$.
+For simplicity, let's say that prefix $1..0$ is empty and suffix $(n+1)..n$ is also empty.
+
+If $i=0$ and $j=n+1$, there are no points to repair, so:
+\[ dp[0][n + 1][0] = dp[0][n + 1][1] = 0 \]
+
+In some more general situations (let's assume that $i \neq 0$ and $j \neq n+1$):
+\[ dp[0][j][0] = \textrm{(let's leave it undefined)} \]
+\[ dp[0][j][1] = |X_j - X_{j+1}| \cdot S[j+1] + dp[0][j+1][1] \]
+\[ dp[i][n+1][0] = |X_{i-1} - X_i| \cdot P[i-1] + dp[i-1][n+1][0] \]
+\[ dp[i][n+1][1] = \textrm{(let's leave it undefined)} \]
+
+In the most general situations (when $i \neq 0$ and $j \neq n+1$):
+\[
+	dp[i][j][0] = \min \left( |X_{i-1} - X_i| \cdot \left( P[i-1] + S[j] \right) + dp[i-1][j][0],
+		|X_i - X_j| \cdot \left( P[i-1] + S[j] \right) + dp[i-1][j][1] \right)
+\]
+\[
+	dp[i][j][1] = \min \left( |X_j - X_{j+1}| \cdot \left( P[i] + S[j+1] \right) + dp[i][j+1][1],
+		|X_i - X_j| \cdot \left( P[i] + S[j+1] \right) + dp[i][j+1][0] \right)
+\]
+
+Two equations above jest check two possibilities to go left or to go right and they choose the one, with smaller cost.
+
+All theses equations together allow to compute any value $dp[i][j][f]$.
+The only difficulty left, is to process them in a correct order
+	(to assure that every value on the right side of equation, is computed before the value on the left side).
+We can notice that every equation uses answers for a smaller number of points,
+	so we can process the dynamic states in order from the one with $0$ points to the ones with $n$ points
+	(the order of states within the same number of points does not matter).
+
+After computing answer for every state, the answer to the problem will
+	be held under $dp[k][k + 1][0]$ or $dp[k - 1][k][1]$, where $k$ is the initial position of the robot
+		(the false point we made at the beginning).

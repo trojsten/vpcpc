@@ -1,0 +1,50 @@
+\bigheading{Newspapers}
+
+\authors{Błażej Magnowski}{Błażej Magnowski \& Marek Sommer}{Błażej Magnowski}
+
+We will use binary search to solve this problem.
+So now, we want to know if for a given value $S$, there exists in our tree a path of length at least $K$,
+	such that the arithmetic average of its edges is equal to or greater then $S$.
+Let's say that such a path exists and its length is equal to $N$.
+Let's denote the values of the edges that lay on this path as $V_1, V_2, \ldots, V_N$.
+Let's say that the value of the path is the sum of the values of the edges.
+We know that:
+
+\[\frac{V_1 + V_2 + \ldots + V_N}{N} \geqslant S\ \qquad | \cdot N \]
+\[V_1 + V_2 + \ldots + V_N \geqslant NS\ \qquad | - NS\]
+\[(V_1 - S) + (V_2 - S) + \ldots + (V_N - S) \geqslant 0\]
+
+By subtracting $S$ from the values of edges we were able to change our to problem to finding out
+	if the maximal value of the paths of length at least $K$ is equal to or greater then zero.
+To solve this, we will use the same method that was used in task Universities.
+We choose some vertex and find the maximal value of the paths of length at least $K$ which go through this vertex.
+After that, we erase that vertex from our tree and continue our procedure in the subtrees.
+The vertex we choose for the given subtree can be its centroid.
+Due to that, all the subtrees created from removing that vertex will be at least
+	two times smaller than the starting subtree.
+If we can find the maximal value of the paths of length at least $K$
+	which go through a vertex in a given subtree in linear time,
+	the complexity of this part of the algorithm will be $O(N \log N)$.
+
+\bigskip
+
+Now, we need to know how to find the maximal value of the paths of length at least $K$ which go through a given vertex.
+Let's name the given vertex $X$ and let's make this tree rooted in $X$.
+Also let's call the path we are looking for the maximal path, and let's call the paths that start in $X$ tails.
+At first, we need to compute the values of all the tails.
+The maximal path consist of at most two tails.
+Let's take any tail and assume that this path is one of the parts of the maximal path.
+Let's say that $L$ is the length of this tail.
+Then, the other part of the maximal path will be a path of length at least $K-L$
+	which starts in $X$ and goes into a different subtree then the first tail.
+Of course, the value of the other tail has to be maximal possible.
+Let's say the length of the longest tail is equal to $M$.
+We will construct an array $P$ and for every $i$ from $0$ to $M$, $P[i]$
+	will hold two maximal values of tails of length $i$, which go into different subtrees.
+With this array, for every $i$ from $0$ to $M$, we can compute two maximal values of tails
+	of length at least $i$, which go into different subtrees.
+Now, for every tail, we can assume that it is one of the tails of the maximal path,
+	and add to it the most fitting tail in constant time.
+So we will find the value of the maximal path in linear time.
+Overall, the complexity of our solution is $O(N \log N \log D)$ where $D$ is the maximal value
+	of an edge, divided by the relative or absolute error that is accepted.
