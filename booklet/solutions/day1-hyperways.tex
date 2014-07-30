@@ -1,0 +1,102 @@
+\bigheading{Hyperways}
+
+\authors{Marián Horňák}{Marián Horňák}{Michal Forišek, Marián Horňák}
+
+Formally, planets are graph vertices, hyperways are edges and unsafe hyperways
+are bridges in the graph. Graph is not directed but can contain multi-edges and
+self-loops. Our task is to output how many edges are not more bridges after
+each edge addition.
+
+\heading{Slow solutions}
+
+Basic idea of slow solutions is to recalculate number of bridges after each
+edge addition. You can do it in quadratic time deleting each edge and running
+BFS / DFS to find out whether it has changed the number of components.
+(The edge is bridge if and only if you split the graph deleting it.)
+This solution runs in $O(m^3)$ time.
+
+To improve it, you can find all the bridges running a single DFS. You need to
+remember the ``time'' you first visited each vertex. It is called visit time.
+Time can be for example the number of vertices you visited before.
+When returning from
+vertex $v$ back to vertex $u$ using some edge $e$,
+consider the earliest visit time you have met since you entered $e$.
+Lets call it return time. Return time can be calculated
+as the minimum of visit time of $v$ and the return times
+of all the other edges incident to $v$. If this wasn't first visit of
+$v$, we returned directly and it is just $v$'s visit time.
+
+If the return time of $e$ is higher than (or equal to) the first visit time
+of $u$, vertices $u$ and $v$ can be connected through the vertex this
+time belongs to and thus $e$ is not a bridge.
+Otherwise, part of graph we visited has no other connection to the rest
+and $e$ is a bridge. Therefore, we can easily decide whether $e$ is a bridge
+or not. Solution works in $O(m^2)$ time.
+
+\heading{Union Find algorithm}
+
+Union Find algorithm is a prerequisite to the optimal solution
+Since it is well known algorithm, I just mention it briefly.
+
+Imagine you have a number of disjoint sets of elements.
+Union Find allows you to perform two operation on these sets:
+join two sets into one and find out the set given element is in.
+It works in amortized time complexity $O(k\cdot \alpha(k))$,
+where $k$ is the number of operations and $\alpha$ is the inverse
+of extremely fast-growing Ackermann function.
+
+\heading{Optimal solution}
+
+Union Find can be used to determine the component vertex belongs to.
+When adding an edge that connects two components, this edge must
+be a bridge and thus the number of edges that are no more bridges is $0$.
+
+Problem is with edges that connects vertices from the same component.
+Suppose, the first such edge was added. Since, it is the first one,
+graph was a forest before and this edge creates a cycle $c$. All the edges
+in the cycle are no more bridges, so we can output cycle size.
+
+Imagine we have added few new edges and there is at least one edge $e$
+incident to some vertex of the cycle $c$. Now we move $e$ to the another
+vertex of the cycle $c$. This operation will not create or remove any
+new cycles, because all the cycles that may be affected intersect with $c$
+before as well as after the operation. Therefore, this operation does not
+bridgeness of any edge. This allows us to do not care
+about which cycle we are using and thus merge cycle $c$ into one vertex.
+
+Since $c$ is the only cycle in the time of its creation,
+merge will make our graph the forest again.
+Repeating this, we can process all the vertices.
+
+The only question is, how to merge the cycle.
+
+\heading{Cycle merging}
+
+Union Find can be used to merge the vertices. The problem is to
+calculate the cycle.
+
+Consider the spanning forest of the complete graph, created by
+by skipping all the edges, that would create a cycle. This can be easily
+precalculated (using Union Find to check whether next edge will be bridge).
+Then one can select root in every tree of the forest and use DFS
+to direct the edges to the root.
+
+When the first non-bridge edge comes, all edges in the real graph
+are bridges. Therefore, they are subset of the edges in the precalculated
+directed spanning forest and the created cycle is the same in both graphs.
+In the directed graph we are able to find the lowest common ancestor (LCA) of
+connected vertices which is the top vertex of the cycle.
+
+LCA can be found by repeatedly moving deeper vertex one generation up
+(depths can be also precalculated).
+
+After the cycle is found, vertices are merged also in precalculated graph.
+This does not affect the the structure of the graph and we can suppose
+they were never split so the above argumentation can be used again.
+
+Every merge decreases the number of mergeable elements by one.
+There are three levels of merges: precalculation, components and vertex
+merges. The number of Union find requests is linear to the number of edges
+and the number of merges. DFS runs in linear time. Finding LCA visits
+each vertex once (then is merged). Therefore, the time complexity
+is $O(m\cdot \alpha(m))$.
