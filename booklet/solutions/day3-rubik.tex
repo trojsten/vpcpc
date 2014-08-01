@@ -1,0 +1,101 @@
+\bigheading{Cubic Art}
+
+\authors{Marián Horňák}{Marián Horňák}{Marián Horňák}
+
+It is not hard to realize that the simple simulation
+would work in quadratic time, which was enough to
+score $50\%$ points! The problem is to write a bugless
+code that simulates the cube. The key to do it
+are the permutations.
+
+\heading{Permutations}
+
+Although I am sure the reader had met the permutations before,
+I am going to explain basics. 
+In the following discussion I will use array indexing
+starting at $1$.
+
+\smallskip
+
+Permutation is an array $P$ containing each of the numbers
+$1$\dots$k$ once. It is understood to be a rearrangement
+of the array. $P[i]$ is the index $i$-th array element should
+be moved to. Applying permutation $P$ to the array $A$ creates
+an array $B = A \circ P$ such that
+$\forall i: B[i] = (A \circ P)[i] = A[P[i]]$.
+Permutation application can be implemented using simple loop.
+
+\smallskip
+
+It is easy to see that for array A and permutations P, Q holds:
+$$\forall i: ((A \circ P) \circ Q)[i] = (A \circ P)[Q[i]] = A[P[Q[i]]] =
+A[(P \circ Q)[i]] = (A \circ (P \circ Q))[i]$$ and thus
+$(A \circ P) \circ Q = A \circ (P \circ Q)$.
+What does this mean? Applying P to the A and
+then Q to the result will have the same effect as
+applying Q to the P and the the result to the A.
+In other words, we can join P and Q to a single permutation
+before we use them. Permutation joining is just
+an application of the first one to the second.
+The above equation also says, that the joining of the
+permutations is associative (the order does not matter)
+
+\smallskip
+
+Permutation $I$ that satisfies $\forall i: I[i] = i$
+is called identity and does nothing.
+If $Q \circ P = I$ holds, $Q$ is called inverse
+of $P$. Applying one permutation and then
+another is same as doing nothing. Therefore,
+the permutations must have opposite effects.
+The equation $Q[P[i]] = I[i] = i$ can be used to
+calculate $Q$ using $P$.
+
+\heading{Cube simulation}
+
+The simplest way to simulate the Rubik's cube,
+is to represent any sequence of moves as a permutation
+of small color squares. To keep it as simple as possible,
+we can include all $54$ ($6\cdot3\cdot3$) squares
+in the order they are in the input (and will be in
+the output.)
+
+\smallskip
+
+Since the middles don't move, we can precalculate
+the permutation for every elementary move. One way is
+to do it all by hand. One can calculate rotating to
+the other side using inverse. The other possibility is
+to  write the foursomes that swaps in the cycle
+and parse them to the permutation.
+
+\smallskip
+
+Now it's quite easy to make a simple simulation.
+Read the moves and store corresponding permutations
+in the array. After each update just rejoin whole
+array and apply result to the original cube.
+This works in $O(n \cdot m)$ time.
+
+\heading{Optimal solution}
+
+The only repetitive work we are doing is rejoining.
+To make it effective we can use simple interval tree.
+
+\smallskip
+
+Let's enlarge the array of moves to the next
+power of $2$ using identity permutation.
+This twices the array in the worst, so it does not
+affect the time complexity. Now build a complete
+binary tree using the array as the leafs. Then let
+each node to be a join of its children. Since
+the permutation joining is associative, the root
+will now contain the join of the whole array.
+
+\smallskip
+
+After updating a move and its permutation in the leaf,
+it is sufficient to recalculate the path to the root.
+This takes approximately $log(n)$ steps.
+Therefore, the time complexity is $O(n + m \cdot log(n))$.
