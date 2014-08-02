@@ -74,10 +74,11 @@ So you could also use any strategy described in \emph{What doesn't work} section
 For each vertex $v$ we define $T_f(v) = \{w | w \in V, \forall y \in path_{w->v}: f(y) \leq f(v) \}$.
 Basically it is the subtree consisting of vertices reachable from $v$ by traversing only the vertices for which $f(w) \leq f(v)$.
 
-Lemma: For each pair of distinct vertices $v_1, v_2 \in V$ with $f(v_1) = f(v_2)$ holds that
+\begin{description}
+\item[Lemma:] For each pair of distinct vertices $v_1, v_2 \in V$ with $f(v_1) = f(v_2)$ holds that
 the subtrees $T_f(v_1)$ and $T_f(v_2)$ are disjoint.
-
-Proof: Follows from the property of strategy function.
+\item[Proof:] Follows from the property of strategy function.
+\end{description}
 
 What will we do now is for each vertex $v$ we will `guess' that the optimal path
 goes through $v$ and solve the subproblem with the algorithm described above.

@@ -21,7 +21,7 @@ we will never query a vertex for which the answer can be infered from the previo
 During the contest we saw a plenty of submissions trying to solve the problem
 with various incorrect strategies:
 \begin{itemize}
-\item choose the center \footnote{http://en.wikipedia.org/wiki/Graph_center} of the tree,
+\item choose the center \footnote{http://en.wikipedia.org/wiki/Graph\_center} of the tree,
 \item choose a vertex, which minimizes the size of the biggest subtree,
 \item choose a vertex, which minimizes the length of the longest path in any of the subtrees.
 \end{itemize}
@@ -37,7 +37,7 @@ In each step we remember the set of vertices where the thief can possibly be hid
 Then we try all the possible ways to choose the next vertex, solve the problem
 recursively and return the best answer.
 
-Clever implementation with bitmasks and memoization has time complexity $O(N*2^N)$.
+Clever implementation with bitmasks and memoization has time complexity $O(N\cdot2^N)$.
 Implementing this solution first would not only give you 40 points, but it would also
 help you find the counter-examples for the incorrect strategies you might come
 up with and help you better understand the devil in this problem.
@@ -48,7 +48,7 @@ up with and help you better understand the devil in this problem.
 Imagine you already have a strategy which in the worst case requires $X$ queries.
 We will now define a \emph{strategy function} $f : V \to \mathbb Z_{> 0}$ which maps
 the vertices of the tree into positive integers. For each vertex $v$,
-$f(v) = |height of the node in the strategy's decision tree in which you query v|$.
+$f(v) = |\text{height of the node in the strategy's decision tree in which you query $v$}|$.
 In other words, if $v_1$ is in the root of the decision tree (i.e. you first query $v_1$), then $f(v_1) = X$.
 If vertices $v_2, v_3 ... v_i$ are on the second level of the decision tree
 (i.e. based on the first answer you would query one of the $v_2, v_3 ... v_i$), then $f(v_2) = f(v_3) ... = f(v_i) = X-1$.
@@ -56,12 +56,13 @@ And so on, until you assign $1$ to the vertices deepest in the decision tree.
 Because decision trees of reasonable strategies have for each vertex $v$ exactly
 one node in which you query it, the function is always well-defined.
 
-Lemma (\emph{path property}):
+\begin{description}
+\item [Lemma] (\emph{path property}):
 For any strategy function holds that for each pair of distinct vertices $v_1, v_2 \in V$ if $f(v_1) = f(v_2)$, then
 on the simple path from $v_1$ to $v_2$ there is a vertex $v_3$ such that $f(v_3) > f(v_1)$.
-
-Proof:
+\item[Proof:]
 It should be obvious from the construction of strategy function.
+\end{description}
 
 We will now show that actually every function $f : V \to \mathbb Z_{> 0}$ satisfying
 the \emph{path property} represents a valid strategy which in the worst case
@@ -93,13 +94,15 @@ taking the visible values in $T(v)$ into account. For a vertex $v$ value $X$ is
 forbidden in any of the two conditions hold:
 \begin{itemize}
 \item value $X$ is visible from $v$,
-\item value $Y$ is visible from $v$ in at least two different subtrees and $Y \gte X$.
+\item value $Y$ is visible from $v$ in at least two different subtrees and $Y \ge X$.
 \end{itemize}
 
 From the visibility masks $S(v_1), S(v_2) ... S(v_k)$ of the children of $v$ and the value $f(v)$
 we can compute the value of $S(v)$ using the bit operators as follows:
-$S_f = 1 << f(v)$
-$S(v) = (S(v_1) | S(v_2) ... | S(v_k) | S_f) & ~(S_f - 1)$.
+\begin{align}
+S_f &= 1 << f(v)
+S(v) &= (S(v_1) | S(v_2) ... | S(v_k) | S_f) \& ~(S_f - 1).
+\end{align}
 
 What the complicated-looking formula does, is basically a bit OR of all the
 children's visibility masks with the mask of $f(v)$ and then erasing all the
@@ -111,7 +114,7 @@ to any of the vertices.
 Depending on how fast can we calculate the value of $f(v)$ the run time of the
 algorithm can be $O(N)$ if we use the clever bit operations machinery and
 calculate it in constant time. Otherwise we can simply sequentially find the lowest
-possible value for $f(v)$, resulting in the total run time $O(N * \log N)$ which
+possible value for $f(v)$, resulting in the total run time $O(N \cdot \log N)$ which
 would also score 100 points.
 
 
