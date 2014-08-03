@@ -1,0 +1,49 @@
+%%
+\bigheading{Mission}
+\authors{Filip Hlásek \& Michal `Mimino' Danilák}{Filip Hlásek \& Michal `Mimino' Danilák}{Filip Hlásek}
+
+Every path from $B$ to $E$ to $H$ is equivalent to a pair of vertex disjoint
+paths -- one from $E$ to $B$ and the other from $E$ to $B$. We can even add 
+a new vertex $X$ and join it by edges of the same length with $B$ and $E$
+respectively. Now the problem is to find two vertex disjoint paths from
+$E$ to $X$.
+
+We have reduced the task to a standard
+\emph{Minimum-cost flow problem}\footnote{\url{
+  http://en.wikipedia.org/wiki/Minimum-cost_flow_problem
+}}
+\footnote{\url{
+  http://community.topcoder.com/tc?module=Static&d1=tutorials&d2=minimumCostFlow1
+}}.
+Usually there are edges with capacities, but in our case vertices
+have capacities equal to 1.
+
+\heading{Vertex capacities}
+
+We must ensure that no vertex is visited more than once. We can do it by
+splitting every vertex into two -- one is called input and the other output.
+A directed edge $(a, b)$ from the original network goes from the output
+part of vertex $a$ to the input part of vertex $b$ in the new network.
+Additionally there is a directed edge from the input part to the output part
+of a vertex and its capacity is equal to the vertex's capacity. The resulting
+network is equivalent to the given network (in sense of flow), but only edges
+have capacities. The size of network was only linearly increased.
+
+\heading{Min-cost max-flow}
+
+There are many approaches to this problem and all of them should be sufficient
+to solve the task. We will present one of the easiest without the proof of
+correctness.
+
+\begin{enumerate}
+  \item Find the shortest path from $E$ to $X$ using Bellman-Ford
+  algorithm (or any other).
+  \item For every edge on the path,
+  decrease it's capacity by 1 and add an edge in the opposite
+  direction with capacity equal to 1 and opposite cost.
+  \item Find the shortest path from $E$ to $X$ using Bellman-Ford
+  algorithm (or any other which can deal with negative cost edges).
+  \item Sum of cost of the two paths is the required answer.
+\end{enumerate}
+
+Overall complexity of the given algorithm is $O(NM)$.
