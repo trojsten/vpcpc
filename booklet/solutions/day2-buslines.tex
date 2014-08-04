@@ -2,33 +2,37 @@
 \bigheading{Bus lines}
 \authors{Filip Hlásek}{Filip Hlásek}{Filip Hlásek}
 
-We are given an undirected connected graph with $N$ vertices and $N - 1$ edges.
-It must be a tree.
+We are given an undirected connected graph with $N$ vertices and $N - 1$ edges,
+therefore a tree.
 
-Let's try to calculate how many paths between two wertices go through a vertex $x$.
-Imagine that the tree is rooted at $x$. It has $k$ descendants and they determine subtrees
-of sizes $s_1, s_2, \dots, s_k$.
-There is a path between every two vertices from all pairs of
-different subtrees and a path from $x$ to all other vertex. All paths must be counted
-twice since they are used in both directions.
-The required count equals
+Let's try to count the number of paths that go through a vertex $x$.
+Imagine that the tree is rooted at $x$. It has $k$ children, each of them is
+a root of the subtree of size $s_1, s_2, \dots, s_k$, respectively.
+The paths that go through $x$ have either $x$ as one of the endpoints or have
+the endpoints in two different subtrees of $x$'s children.
+The total count equals:
 \begin{align*}
-busses(x) &= 2(N - 1) + 2\left(s_1s_2 + s_1s_3 + \dots s_{k - 1}s_k\right) \cr
-          &= 2(N - 1) + 2\sum_{1\le i < j \le k} s_i s_j \cr
-          &= 2(N - 1) + \left(\sum_{i = 1}^k s_i\right)^2 - \sum_{i = 1}^k s_i^2 \cr
-          &= 2(N - 1) + (N - 1)^2 - \sum_{i = 1}^k s_i^2 \cr
-          &= N^2 - 1 - \sum_{i = 1}^k s_i^2 \cr
+numPaths(x) &= 2(N - 1) + 2\left(s_1s_2 + s_1s_3 + \dots s_{k - 1}s_k\right) \cr
+            &= 2(N - 1) + 2\sum_{1\le i < j \le k} s_i s_j \cr
+            &= 2(N - 1) + \left(\sum_{i = 1}^k s_i\right)^2 - \sum_{i = 1}^k s_i^2 \cr
+            &= 2(N - 1) + (N - 1)^2 - \sum_{i = 1}^k s_i^2 \cr
+            &= N^2 - 1 - \sum_{i = 1}^k s_i^2 \cr
 \end{align*}
 
 We can obtain the same result by considering all $N(N - 1)$ paths from which
-$s_1(s_1 - 1) + \dots + s_N(s_N - 1)$ don't pass through the vertex $x$.
+$s_1(s_1 - 1) + \dots + s_k(s_k - 1)$ don't go through the vertex $x$.
 
-The last thing is to calculate the sizes of all subtrees for every vertex.
-Imagine that the tree is rooted at an arbitrary vertex (e.g. $1$).
-We will run a simple DFS starting from the root, which returns the number of vertices
-in the explored subtree. All of the sizes are the same as if it was rooted at the
-current vertex, but if it is not root, there is one size missing. We can calculate
-the missing size from the fact that $\sum_{i=1}^k s_i = N - 1$.
+So far we have counted the number of paths that go through some chosen vertex $x$.
+Now we have to do it for every vertex in the tree, but with better time complexity than $O(N^2)$.
+
+Let's root the tree at an arbitrary vertex. We will run a DFS algorithm from the root.
+For each vertex $x$ it calculates the number of paths that go through $x$, store it
+in some global variable, and return the size of the subtree rooted at $x$.
+Please note, that to successfully use the above $numPaths(x)$ formula, for each
+vertex $x$ we have to know the sizes of all the child subtrees if the whole tree
+was actually rooted at $x$. In our DFS traversal we are missing the size of one
+subtree for each non-root vertex. To calculate it, we can use the fact that
+$\sum_{i=1}^k s_i = N - 1$.
 
 The complete algorithm is illustrated by the following peseudocode:
 
@@ -46,4 +50,4 @@ function DFS(x):
   return subtree_size
 \end{lstlisting}
 
-The running time of the algoritm is $O(N)$
+The time complexity of the algoritm is $O(N)$
