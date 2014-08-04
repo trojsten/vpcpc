@@ -9,7 +9,7 @@ Usually the first thing to do with open-data problems is to visualize the data.
 The reason for doing it is that most of the time the given data are not random
 and their structure can be exploited in some ways. This was also true for this
 problem and small inputs could be solved optimally even by hand.
-I strongly advice converting the input data into some simple image file format,
+I recommend converting the input data into some simple image file format,
 like PPM \footnote{http://en.wikipedia.org/wiki/Netpbm\_format}, which is pure
 ASCII format, and can be opened in GIMP.
 
@@ -17,7 +17,7 @@ Our reference solution for this problem is just a basic hill-climbing algorithm:
 \begin{enumerate}
 \item Until the points are not completely separated, add the line which separates most
 of the points from each other.
-\item It can happen that some lines becomame redundant during the process. So for each
+\item It can happen that some lines become redundant during the process. So for each
 line that can be removed, while keeping all the points separated, remove it.
 \item Now we have a valid solution. Output the best solution found so far.
 \item For each line, remove it with the probability $P$ (in our case $0.05$).
