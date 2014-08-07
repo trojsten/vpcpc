@@ -1,0 +1,93 @@
+
+The following table contains some statistics for the individual tasks. 
+The columns of the table contain the following information:
+
+\begin{itemize}
+\item The column ``full'' is the number of contestants who achieved a perfect score (i.e., 100 points).
+\item The column ``mean'' is the arithmetic mean (average) of all scores.
+\item The column ``median'' is the median score -- more precisely, the average of the scores of the 12th best 
+and the 13th best solver of that task.
+\end{itemize}
+
+The task day2-cutting was an open-data task with relative scoring. The best score awarded to a contestant was 84.21.
+\bigskip
+
+\begin{center}
+\begin{tabular}{l|rrr}
+task id & full & mean & median  \\
+\hline
+day1-hyperways     &  3 & 33.33 &  40.00 \\
+day1-malloc        &  8 & 52.50 &  40.00 \\
+day1-shades        &  5 & 55.83 &  60.00 \\
+\hline
+day2-buslines      & 18 & 84.16 & 100.00 \\
+day2-cutting       &  0 & 24.84 &  16.95 \\
+day2-investigation &  2 & 23.33 &  20.00 \\
+\hline
+day3-newtree       &  1 & 20.00 &   0.00 \\
+day3-rubik         &  4 & 21.88 &   0.00 \\
+day3-universities  &  7 & 41.54 &  33.00 \\
+day3-wall          &  8 & 36.25 &  10.00 \\
+\hline
+day4-critical      &  8 & 52.50 &  40.00 \\
+day4-networks      &  4 & 29.06 &   8.25 \\
+day4-nextperm      & 15 & 64.16 & 100.00 \\
+\hline
+day5-game          &  8 & 48.75 &  30.00 \\
+day5-posters       &  1 & 22.92 &  12.50 \\
+day5-sorting       & 12 & 67.50 &  85.00 \\
+\hline
+day6-mission       &  4 & 29.04 &  33.00 \\
+day6-newspaper     &  3 & 36.25 &  30.00 \\
+day6-slalom        &  0 &  0.00 &   0.00 \\
+day6-tickets       & 17 & 75.00 & 100.00 \\
+\end{tabular}
+\end{center}
+
+% below are the sources used to produce these stats:
+% 
+% def full(pts): return pts.count(100)
+% def mean(pts): return sum(pts)/len(pts)
+% def median(pts): return 0.5*(sorted(pts)[11]+sorted(pts)[12])
+% 
+% tasknames = input().split()
+% 
+% points = {}
+% for task in tasknames: points[task] = []
+% 
+% while True:
+%     try:
+%         contestant = [ float(x) for x in input().split() ]
+%     except:
+%         break
+%     for i, task in enumerate(tasknames): points[task].append( contestant[i] )
+% 
+% for task in tasknames:
+%     print( task, full(points[task]), mean(points[task]), median(points[task]) )
+% 
+% 
+% day6-tickets day6-slalom day6-newspaper day6-mission day5-sorting day5-posters day5-game day4-nextperm day4-networks day4-critical day3-wall day3-universities day3-rubik day3-newtree day2-investigation day2-cutting day2-buslines day1-shades day1-malloc day1-hyperways
+% 100.00 0.00 30.00 100.00 100.00 100.00 100.00 100.00 100.00 100.00 100.00 100.00 100.00 40.00 100.00 59.50 100.00 100.00 80.00 100.00 
+% 100.00 0.00 100.00 100.00 100.00 0.00 100.00 0.00 100.00 100.00 100.00 100.00 100.00 0.00 40.00 56.37 100.00 60.00 100.00 100.00 
+% 100.00 0.00 100.00 33.00 100.00 50.00 30.00 100.00 100.00 100.00 100.00 100.00 0.00 40.00 0.00 84.21 100.00 0.00 100.00 100.00 
+% 100.00 0.00 90.00 100.00 100.00 0.00 100.00 100.00 0.00 100.00 100.00 100.00 0.00 0.00 40.00 54.98 100.00 100.00 100.00 0.00 
+% 100.00 0.00 100.00 0.00 100.00 37.50 30.00 100.00 0.00 40.00 100.00 100.00 0.00 0.00 40.00 24.52 100.00 100.00 100.00 80.00 
+% 100.00 0.00 30.00 33.00 100.00 50.00 30.00 100.00 16.50 40.00 10.00 0.00 100.00 40.00 40.00 24.14 100.00 60.00 100.00 40.00 
+% 100.00 0.00 30.00 33.00 100.00 37.50 100.00 100.00 33.00 40.00 10.00 33.00 0.00 0.00 20.00 0.00 100.00 100.00 100.00 40.00 
+% 100.00 0.00 30.00 100.00 100.00 12.50 100.00 100.00 0.00 100.00 100.00 33.00 0.00 40.00 40.00 13.59 100.00 0.00 0.00 0.00 
+% 80.00 0.00 30.00 0.00 100.00 37.50 100.00 100.00 0.00 100.00 100.00 100.00 0.00 0.00 0.00 51.70 100.00 0.00 0.00 40.00 
+% 100.00 0.00 30.00 33.00 100.00 12.50 30.00 100.00 100.00 40.00 0.00 100.00 0.00 0.00 0.00 48.26 100.00 60.00 40.00 40.00 
+% 100.00 0.00 30.00 0.00 100.00 12.50 30.00 100.00 49.50 100.00 10.00 33.00 0.00 40.00 20.00 32.59 100.00 60.00 40.00 60.00 
+% 100.00 0.00 10.00 0.00 60.00 12.50 10.00 100.00 0.00 100.00 0.00 33.00 0.00 100.00 20.00 9.54 100.00 60.00 0.00 0.00 
+% 100.00 0.00 0.00 0.00 40.00 12.50 30.00 0.00 0.00 40.00 100.00 0.00 75.00 0.00 100.00 6.90 40.00 60.00 40.00 40.00 
+% 0.00 0.00 30.00 33.00 50.00 37.50 0.00 0.00 0.00 20.00 0.00 0.00 100.00 40.00 0.00 34.46 100.00 100.00 0.00 40.00 
+% 0.00 0.00 30.00 33.00 0.00 0.00 100.00 0.00 16.50 40.00 0.00 33.00 0.00 0.00 40.00 3.19 100.00 60.00 100.00 20.00 
+% 100.00 0.00 30.00 33.00 60.00 12.50 30.00 0.00 33.00 40.00 10.00 33.00 0.00 20.00 0.00 6.99 40.00 60.00 40.00 20.00 
+% 100.00 0.00 0.00 0.00 100.00 12.50 0.00 20.00 83.00 40.00 10.00 0.00 0.00 40.00 20.00 20.30 40.00 40.00 40.00 0.00 
+% 100.00 0.00 20.00 0.00 10.00 12.50 30.00 100.00 33.00 20.00 10.00 0.00 0.00 40.00 0.00 41.74 40.00 60.00 40.00 0.00 
+% 20.00 0.00 30.00 0.00 30.00 12.50 100.00 100.00 0.00 20.00 0.00 0.00 50.00 0.00 0.00 6.99 40.00 60.00 40.00 40.00 
+% 100.00 0.00 30.00 33.00 10.00 25.00 30.00 0.00 0.00 0.00 0.00 33.00 0.00 40.00 0.00 2.57 100.00 60.00 40.00 0.00 
+% 0.00 0.00 30.00 0.00 30.00 50.00 30.00 20.00 0.00 20.00 0.00 33.00 0.00 0.00 20.00 6.75 100.00 60.00 40.00 40.00 
+% 0.00 0.00 30.00 33.00 20.00 0.00 0.00 100.00 33.00 40.00 0.00 0.00 0.00 0.00 20.00 0.00 100.00 40.00 20.00 0.00 
+% 0.00 0.00 0.00 0.00 70.00 12.50 30.00 100.00 0.00 20.00 10.00 0.00 0.00 0.00 0.00 0.00 20.00 40.00 100.00 0.00 
+% 100.00 0.00 30.00 0.00 40.00 0.00 30.00 0.00 0.00 0.00 0.00 33.00 0.00 0.00 0.00 6.90 100.00 0.00 0.00 0.00 
